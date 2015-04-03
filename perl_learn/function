@@ -1,0 +1,16 @@
+#!/usr/bin/perl -w
+#use feature 'say';
+#use 5.010;
+#use diagnostics;
+
+sub printtwo{
+ print 2;
+}
+ 
+sub three{
+ 3;
+}
+ 
+$s = \&three;
+print &$s;
+print &three;

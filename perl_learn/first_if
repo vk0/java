@@ -1,0 +1,26 @@
+#!/usr/bin/perl
+#use feature 'say';
+use 5.010;
+use diagnostics;
+
+#$system_os = "Linux";
+#$name = `uname`;
+#if ( $name eq 'Linux' ) {
+#print "You system is '$name'\n";
+#} else {
+#print "I dont know\n";
+#
+
+#chomp($line = <STDIN>);
+#print "Your word was: $line\n";
+
+
+#$count = 0;
+#while ($count < 10) {
+#$count += 1;
+#print "count is now $count\n"
+#}
+
+for ($n = 0; $n < 50; $n++) {
+print "$n\n";
+}

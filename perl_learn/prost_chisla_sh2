@@ -1,0 +1,23 @@
+#!/bin/sh
+lpn=5
+echo 2 
+fpn=3 
+while test $fpn -le $lpn 
+do 
+i=2 
+x=`expr $fpn - 1` 
+while test $i -le $x 
+do 
+if [ `expr $fpn % $i` -ne 0 ] 
+then 
+i=`expr $i + 1` 
+else 
+break 
+fi 
+done 
+if [ $i -eq $fpn ] 
+then 
+echo $fpn 
+fi 
+fpn=`expr $fpn + 1` 
+done

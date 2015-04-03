@@ -1,0 +1,4 @@
+Here's a sentence that has been
+split across several lines, accumulated some       extra white space,
+and which our program is going to
+join up.

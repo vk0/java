@@ -1,0 +1,52 @@
+$quote$
+Clothes make the man. Naked people have little or no influence on society. 
+$byline$
+Mark Twain
+$quote$
+Don't count the days, make the days count.
+$byline$
+Muhammad Ali
+$quote$
+Computers are useless. They can only give you answers.
+$byline$
+Pablo Picasso
+$quote$
+One original thought is worth a thousand mindless quotings.
+$byline$
+Diogenes of Sinope
+$quote$
+Intelligence without ambition is a bird without wings. 
+$byline$
+Salvador Dali
+$quote$
+Action speaks louder than words but not nearly as often. 
+$byline$
+Mark Twain
+$quote$
+Be careful about reading health books. You may die of a misprint. 
+$byline$
+Mark Twain
+$quote$
+Analyzing humor is like dissecting a frog. Few people are interested and the frog dies of it. 
+$byline$
+E.B. White
+$quote$
+Comedy has to be based on truth. You take the truth and you put a little curlicue at the end. 
+$byline$
+Sid Ceasar
+$quote$
+Who are you going to believe, me or your own eyes? 
+$byline$
+Groucho Marx
+$quote$
+A countryman between two lawyers is like a fish between two cats. 
+$byline$
+Benjamin Franklin
+$quote$
+A computer once beat me at chess, but it was no match for me at kick boxing. 
+$byline$
+Bill Weinman
+$quote$
+The most exciting phrase to hear in science, the one that heralds new discoveries, is not "Eureka!" but "That's funny ..." 
+$byline$
+Issac Asimov

@@ -1,0 +1,19 @@
+#!/usr/bin/perl
+#use feature 'say';
+use 5.010;
+use diagnostics;
+
+##$radios = 12.5;
+chomp ($radios = <STDIN>);
+$otvet = "$radios" * (2 * 3.14);
+if ($radios <0) {
+$otvet = 0;}
+print "Dlina okrusznosti s radiosom=$radios ravna=$otvet\n"
+
+
+print "Vvedite 1 Znachenie ";
+$one = <STDIN>;
+print "Vvedite 2 Znachenie ";
+chomp ($two = <STDIN>);
+$otvet = "$one" x "$two";
+print "$otvet";

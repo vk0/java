@@ -1,0 +1,18 @@
+#!/usr/bin/perl -w
+#use feature 'say';
+#use 5.010;
+#use diagnostics;
+
+
+#foreach (<STDIN>) {
+#print "I print $_";
+#}
+
+#while (<>) {
+#chomp;
+#print "In file i saw $_\n"
+#}
+##print $ARGV; #name of file
+#print $0;
+
+print sort <>;

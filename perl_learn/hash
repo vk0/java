@@ -1,0 +1,24 @@
+#!/usr/bin/perl
+#use feature 'say';
+#use 5.010;
+#use diagnostics;
+
+$hash{fruit} =  apple;
+$hash{sandwich} =  hamburger;
+$hash{drink} =  cola;
+#delete ($hash{"fruit"});
+#f (exists($hash{"fruit"})){
+#print "YES\n";}
+#else {
+#print "NO\n";}
+
+#while (($key, $value) = each(%hash)) {
+#print "$key => $value\n";
+#};
+
+#foreach $values (values %hash) {
+#print "$values\n";
+#}
+
+print join("-", keys %hash);
+print join("-", values %hash);

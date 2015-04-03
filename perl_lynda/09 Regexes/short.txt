@@ -1,0 +1,15 @@
+This page describes the syntax of regular expressions in Perl.
+
+If you haven't used regular expressions before, a quick-start
+introduction is available in perlrequick, and a longer tutorial
+introduction is available in perlretut.
+
+For reference on how regular expressions are used in matching
+operations, plus various examples of the same, see discussions of "m//",
+"s///", "qr//" and "??" in "Regexp Quote-Like Operators" in perlop.
+
+Matching operations can have various modifiers. Modifiers that relate to
+the interpretation of the regular expression inside are listed below.
+Modifiers that alter the way a regular expression is used by Perl are
+detailed in "Regexp Quote-Like Operators" in perlop and "Gory details of
+parsing quoted constructs" in perlop.

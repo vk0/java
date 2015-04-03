@@ -1,0 +1,42 @@
+#!/usr/bin/perl
+#use feature 'say';
+#use 5.010;
+#use diagnostics;
+
+@array = ("one","two","three");
+@array2 = ("four","five","six");
+@bigarray = (@array, @array2);
+@rev = reverse @bigarray;
+@array_test = @bigarray[0,5];
+
+
+#chitaem iz massiva
+#while (<>) {
+#$word = $array[$_];
+#print "$word\n";}
+#print $#array, ":", @array,"\n";
+
+#udalyaem iz massiva
+#$delete = pop(@array);
+#print "$delete/@array";
+
+#schitame massive
+print "\@array has " . scalar(@array) . " elements.\n";
+print "\@array has " . ($#array + 1) . " elements.\n";
+print "\@bigarray has " . ($#bigarray + 1) . " elements.\n";
+#print $bigarray[5];
+$,=", ";
+#print "Test array @array_test\n";
+#print join(",", @array_test);
+
+#print array as reverse - naoborot
+print "@rev\n";
+
+#perebor massiva
+#foreach $element (@array, @array2) {
+#for $element (@array, @array2) {
+#for (@array, @array2) {
+#print "$_\n";
+#}
+
+

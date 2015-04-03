@@ -1,0 +1,29 @@
+#!/usr/bin/perl
+#use feature 'say';
+#use 5.010;
+#use diagnostics;
+
+#print "Vvedite Znachenie ";
+#@one = <STDIN>;
+#@two = reverse @one;
+#print @two;
+
+$resstring = "HOST-RESOURCES-MIB::hrStorageDescr.1 = STRING: Physical memory";
+$tsid = substr($resstring,35,1);
+#print $tsid;
+
+$resstring2 = "HOST-RESOURCES-MIB::hrStorageAllocationUnits.1 = INTEGER: 4096 Bytes";
+@unit=split(/:/,$resstring2);
+@unit1=split(/\ /,$unit[3]);
+$unit1=$unit1[1];
+#print $unit1;
+
+$resultat3 = "HOST-RESOURCES-MIB::hrStorageSize.1 = INTEGER: 1045025";
+$resstring3 = $resultat3;
+@ta=split(/INTEGER/,$resstring3);
+chomp($ta[1]);
+$size1=substr($ta[1],1);
+$fullsize1 = $fullsize1 + $size1;
+$fullsize1 = $fullsize1 * $unit1;
+print $size1;
+#print $fullsize1;

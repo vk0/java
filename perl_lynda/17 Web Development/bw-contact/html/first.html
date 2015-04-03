@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!--
+    first.html
+    Example files for bw-contact
+    
+    by Bill Weinman  http:bw.org/
+    Copyright (c) 2009 BHG LLC
+-->
+
+<head>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="stylesheet" type="text/css" href="html/main.css" />
+    <title>
+        Bill Weinman's bw-contact &middot; Contact Form
+    </title>
+</head>
+
+<div id="outer">
+
+$CONFIRM_ERROR$
+
+<h1> Contact Form </h1>
+
+<form action="$SELF$" method="post">
+
+<p>Your Name
+<br><input type="text" name="Efromname" value="$Efromname$">
+</p>
+
+<p>Your Email Address
+<br><input type="text" name="Efromemail" value="$Efromemail$">
+</p>
+
+<p>Subject
+<br><input type="text" name="Esubject" value="$Esubject$">
+</p>
+
+<p>Message
+<br><textarea name="Emessage">$Emessage$</textarea>
+</p>
+
+<p><b><input type="submit" name="Esend" value=" Send "></b>
+</p>
+
+$HIDDENS$
+
+</form>
+
+</div> <!-- outer -->
+
+<hr noshade size="1">
+<p class="copyright"> bw-contact &copy; 1995-2009
+<a href="http://bhg.bw.org/">BHG LLC</a>
+</p>
+
+</body>
+</html>

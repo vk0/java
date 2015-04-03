@@ -1,0 +1,26 @@
+#!/usr/bin/perl
+# Declare your array's
+@Array1 = `cat ./ip_unban`;
+@Array2 = `cat ./ip_ban`;
+# compare array1 elements to array2 elements
+foreach $key1 ( @Array1) {
+print $key1;
+    chomp;
+ $flag=0; # set the flage value
+ foreach $key2 ( @Array2) {
+print $key2;
+    chomp;
+  if ($key1 =~ $key2) {
+   $flag=1;
+   next;
+  }
+ }
+ # that considered array 1 element doesn't match array2 elements
+ if ($flag == 0 ) {
+  print "\nValue '$key1' doesn't exist in \@Array2";
+  ## Do your actions here
+ }
+   
+}
+# use the above logic and compare array2 to array1
+# Your stuff's Here

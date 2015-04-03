@@ -1,0 +1,11 @@
+#!/usr/bin/perl
+#use feature 'say';
+use 5.010;
+use diagnostics;
+
+$word = <STDIN>;
+#$word = undef;
+if ( defined($word) )  {
+print "The word was $word";}
+ else {
+print "PERL eto Pizdech"; }

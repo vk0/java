@@ -1,0 +1,85 @@
+/*
+    main.css by Bill Weinman <http://bw.org/contact/>
+    for bw-contact demo files
+    Copyright (c) 2009 The BearHeart Group, LLC
+    created 2009-11-29
+*/
+
+body  {
+    font-family: "Trebuchet MS", sans-serif;    /* default page font */
+    background: #ccc;
+    margin: 0;          /* shorthand for all margins = 0 */
+    padding: 0;         /* no padding */
+}
+
+/* reasonable margin defaults */
+p, h1, h2, h3, h4, h5, h6, li {
+    margin: 0 0 12pt;
+}
+
+div#outer {
+    width: 800px;
+    margin: 10px auto;
+    padding: 5px;
+    border: 1px solid #999;
+    background-color: white;
+}
+
+div.note {
+    background-color: #ffc;
+    padding: 3px;
+    font-size: 80%;
+    border: 1px solid red;
+    margin-bottom: 12pt;
+}
+
+div.confirmationBox {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #999;
+    width: 80%;
+}
+
+.red {
+    color: red;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.fixed {
+    font-family: monospace;
+}
+
+.small {
+    font-size: 80%;
+}
+
+p.nomargin {
+    margin: 0;
+}
+
+p.copyright {
+    font-size: 80%;
+    text-align: center;
+}
+
+p.clear {
+    clear: both;
+}
+
+/***** form elements *****/
+
+input[type=text], textarea {
+    width: 80%;
+    padding: 2px;
+    border: 1px solid #999;
+    font-family: sans-serif;
+    font-size: 10pt;
+}
+
+textarea {
+    height: 10em;
+}
+

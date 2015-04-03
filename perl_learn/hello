@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+#use feature 'say';
+use 5.010;
+use diagnostics;
+
+#print 'Hello World \\n'; 
+#print "\n";
+#say "\U Hello \EWorld \n";
+#say "Hello World \n" x 3;
+#say "Hello World \n" x (1+1);
+
+$word = "HELLO ";
+$word .= "WORLD";
+print "$word\n";

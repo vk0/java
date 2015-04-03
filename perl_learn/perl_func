@@ -1,0 +1,11 @@
+#!/usr/bin/perl -w
+#use feature 'say';
+#use 5.010;
+#use diagnostics;
+
+#$word = 1;
+sub plus {
+$word +=2;
+print "Result:$word\n";
+}
+&plus;

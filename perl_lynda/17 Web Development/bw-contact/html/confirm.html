@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!--
+    confirm.html
+    Example files for bw-contact
+    
+    by Bill Weinman  http:bw.org/
+    Copyright (c) 2009 BHG LLC
+-->
+
+<head>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="stylesheet" type="text/css" href="html/main.css" />
+    <title>
+        Bill Weinman's bw-contact &middot; Confirm
+    </title>
+</head>
+
+<div id="outer">
+
+$CONFIRM_ERROR$
+
+<h1> Contact Form &middot; Confirm </h1>
+
+<p>Please confirm that you want to send this message: 
+</p>
+
+<div class="confirmationBox">
+<p class="fixed">
+From: $Efromname$ &lt;$Efromemail$&gt;
+<br />Subject: $Esubject$
+</p>
+<p class="fixed">$Emessage$</p>
+</div>
+
+<p>You may now Edit or Send the message:
+</p>
+
+<div style="float: left; margin: 0 5px">
+<form action="$SELF$" method="post">
+    <input type="submit" name="Eedit" value=" Edit ">
+    $HIDDENS$
+    <input type="hidden" name="cmd" value="firstpage">
+</form>
+</div>
+
+<div style="float: left">
+<form action="$SELF$" method="post">
+    <input type="submit" name="Esend" value=" Send "></p>
+    $HIDDENS$
+    <input type="hidden" name="cmd" value="send">
+</form>
+</div>
+
+<p class="clear" />
+
+</div> <!-- outer -->
+
+<hr noshade size="1">
+<p class="copyright"> bw-contact &copy; 1995-2009
+<a href="http://bhg.bw.org/">BHG LLC</a>
+</p>
+
+</body>
+</html>
+

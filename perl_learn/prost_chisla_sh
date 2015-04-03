@@ -1,0 +1,20 @@
+#!/bin/sh
+num1=1
+num2=100
+flag1=0
+while [ $num1 -lt $num2 ]
+do
+i=1
+#for (i=1; $i<$num1; $i++)
+for ((i=1 ; $i<$num1; i=(($i+1))))
+do
+echo $i
+#$flag=num1%i 
+#if [ $flag -eq 0 ] then
+#$flag = flag + 1
+#fi
+#done
+#if [ flag1 -gt 2 ] then 
+#echo $num1
+#fi
+#done

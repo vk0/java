@@ -1,0 +1,18 @@
+#!/usr/bin/perl
+#use feature 'say';
+#use 5.010;
+#use diagnostics;
+
+#print "Vvedite Znachenie ";
+#@one = <STDIN>;
+#@two = reverse @one;
+#print @two;
+
+$1 = "262230808";
+$2 = 282795510;
+$3 = 282795510;
+$4 = 282795510;
+$5 = 282795510;
+$6 = 282795510;
+$sum = $1 + $2 + $3 + $4 + $5 + $6;
+print $sum;

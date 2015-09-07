@@ -1,0 +1,11 @@
+A=int(input())
+B=int(input())
+C=int(input())
+list=[]
+list.append(A)
+list.append(B)
+list.append(C)
+list1=sorted(list)
+print(list1[-1])
+print(list1[0])
+print(list1[1])

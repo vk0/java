@@ -1,7 +1,30 @@
-
 import java.math.*;
-
+import java.util.Arrays;
 public class Main {
+    public static void main(String[] args) {
+        String text = "Madam, I'm Adam!";
+        System.out.println(text);
+        String textlower = text.toLowerCase();
+        System.out.println(textlower);
+    //     int n = str.length();
+    // for( int i = 0; i < n/2; i++ )
+    //     if (str.charAt(i) != str.charAt(n-i-1)) return false;
+    // return true;
+
+
+        // // int [] a = {1,2,3};
+        // // System.out.println(Arrays.toString(a));
+        // String a1 = "A" + ('\t' + '\u0003'); //A12
+        // String a2 = 'A' + '1' + "2"; // 1142
+        // String a3 = 'A' + "12"; //A12
+        // String a4 = "A" + 12; //12
+
+        // System.out.println(a1);
+        // // System.out.println(a2);
+        // System.out.println(a3);
+        // System.out.println(a4);
+    }
+}
 // public boolean doubleExpression(double a, double b, double c) {
 //     BigDecimal a1 = BigDecimal.valueOf(a);
 //     BigDecimal b1 = BigDecimal.valueOf(b);
@@ -13,35 +36,107 @@ public class Main {
 //     // return a1 + b1 == c1;
 //     }
 
-    public static void main(String[] args) {
+// /**
+//  * Checks if given <code>value</code> is a power of two.
+//  *
+//  * @param value any number
+//  * @return <code>true</code> when <code>value</code> is power of two, <code>false</code> otherwise
+//  */
+// public static boolean isPowerOfTwo(int value) {
+//     return ... // you implementation here
+// }
+
+    // public static void main(String[] args) {
+        // int a = 32;
+        // // char s = Character.toChars((char)a);
+        // // char s = Character.toChars(a);
+        // char s = (char) a;
+        // // char z;
+        // // char x = a;
+        // // char z = '\\';
+        // int slash = '\\';
+        // int sum = slash + a;
+        // char find = (char) sum;
+        // // int b = z1 + a;
+        // // char z2 = (char) b;
+        // System.out.println(find1);
+
+
+
+        // if (value == 0) {
+        //     return false;
+        // }
+        // else {
+        //     return (number & (number - 1)) == 0;
+        // }
+
+        // return (number & (number - 1)) == 0;
+        // int number = -2;
+        // int number1 = Math.abs(number);
+        // boolean x;
+        // x = (number1 & (number1 - 1)) == 0;
+        // System.out.println(x);
+        // if (value % 2 == 0){
+        //     return "true";
+        // }
+        // else {
+        //     return "false";
+        // }
+        // int value = Math.abs(a);
+        // System.out.println(value);
+        // boolean x;
+        // x = ((value & -value) == 0);
+        // System.out.println(x);
+        // float b = 123123123123L; //long -> float
+        // int e = 'a'; //char -> int
+        // Character g = 'a'; //char -> Character
+        // long h = 123; //int -> long
+
         // Main rc = new Main();
         // boolean res = rc.doubleExpression(0.1d, 0.2d, 0.3d);
-        double a = 0.1d;
-        double b = 0.2d;
-        double c = 0.3d;
-        BigDecimal a1 = new BigDecimal(a);
-        BigDecimal b1 = new BigDecimal(b);
-        BigDecimal c1 = new BigDecimal(c);
-        // System.out.println(res);
-        System.out.println(c1);
-        // BigDecimal a1 = BigDecimal.valueOf(a);
-        // BigDecimal b1 = BigDecimal.valueOf(b);
-        // BigDecimal c1 = BigDecimal.valueOf(c);
-        BigDecimal res = a1.add(b1);
-        // BigDecimal res1 = BigDecimal.valueOf(res);
-        System.out.println(res.compareTo(c1) == 0 ? "true": "false");
-        // if (res == c1){
-        //     System.out.println(res);
+        // double a = 0.1;
+        // double b = 0.2;
+        // double c = 0.3;
+        // double ep = 0.0001;
+        // boolean z;
+        // // z = (((a+b)-(a+b)%0.0000000000000001)==c);
+        // return ((a+b) - c < ep);
+
+        // System.out.println(z);
+        // System.out.println(ep);
+
+// }
+// }
+        // if ((a+b)-((a+b)%0.0000000000000001)==c)
+        // {
+        //     return "true";
         // }
-        System.out.println(res);
-        String bbb = "0";
-        String ccc = "1";
-        int H1 = 0;
-        int H2 = 1;
-        int H3 = H1 ^ H2;
-        int aaa = Integer.parseInt(bbb);
-        int ddd = Integer.parseInt(ccc);
-        System.out.println(H3);
+        // else {
+        //     return "false";
+        // }
+        // // BigDecimal a1 = new BigDecimal(a);
+        // // BigDecimal b1 = new BigDecimal(b);
+        // // BigDecimal c1 = new BigDecimal(c);
+        // // System.out.println(res);
+        // System.out.println(c1);
+        // // BigDecimal a1 = BigDecimal.valueOf(a);
+        // // BigDecimal b1 = BigDecimal.valueOf(b);
+        // // BigDecimal c1 = BigDecimal.valueOf(c);
+        // BigDecimal res = a1.add(b1);
+        // // BigDecimal res1 = BigDecimal.valueOf(res);
+        // System.out.println(res.compareTo(c1) == 0 ? "true": "false");
+        // // if (res == c1){
+        // //     System.out.println(res);
+        // // }
+        // System.out.println(res);
+        // String bbb = "0";
+        // String ccc = "1";
+        // int H1 = 0;
+        // int H2 = 1;
+        // int H3 = H1 ^ H2;
+        // int aaa = Integer.parseInt(bbb);
+        // int ddd = Integer.parseInt(ccc);
+        // System.out.println(H3);
         // System.out.println( "a XOR b " + Integer.toBinaryString( aaa ^ ddd ));
 
         // System.out.println(c1);
@@ -49,8 +144,8 @@ public class Main {
         // System.out.println(res); //0.30000000000000004
         // System.out.println("It's alive! It's alive!");
 
-}
-}
+// }
+// }
 
 // public boolean doubleExpression(double a, double b, double c) {
 //     BigDecimal a1 = BigDecimal.valueOf(a);

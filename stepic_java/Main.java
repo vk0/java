@@ -1,11 +1,53 @@
 import java.math.*;
 import java.util.Arrays;
 public class Main {
+
+// public static BigInteger Factorial(int n) {
+//     // BigInteger one = BigInteger.valueOf(1);
+//     // // BigInteger i = BigInteger.valueOf(n);
+//     if (n == 1) {
+//         return BigInteger.valueOf(1);
+//     }
+//     else {
+//         return BigInteger.valueOf(n).multiply(Factorial(n-1));
+//     }
+// }
+
     public static void main(String[] args) {
-        String text = "Madam, I'm Adam!";
-        System.out.println(text);
-        String textlower = text.toLowerCase();
-        System.out.println(textlower);
+
+        // int a[] = new int[] {0, 2};
+        // int b[] = new int[] {1, 3};
+        // int result[] = new int[a.length + b.length];
+        // System.arraycopy(a, 0, result, 0, a.length);
+        // System.arraycopy(b, 0, result, a.length, b.length);
+        // Arrays.sort(result);
+        // System.out.print(Arrays.toString(result));
+        // return result;
+        // for(int i=0; i<a.length; i++)
+        // System.out.print(c[i]+" ");
+
+        // BigInteger a = BigInteger.valueOf(100);
+        // System.out.println(a);
+        // BigInteger z = Factorial(3);
+        // System.out.println(z);
+
+        // String text = "Madam, I'm Adam!";
+        // // System.out.println(text);
+        // String textlower = text.toLowerCase();
+        // // System.out.println(textlower);
+        // String cleantext = text.toLowerCase().replaceAll("[^\\p{L}]","");
+        // // String rev = "madamimadam";
+        // StringBuilder rev = new StringBuilder(cleantext).reverse();
+        // System.out.println(rev.toString());
+        // System.out.println(cleantext);
+        // boolean z;
+        // z = rev.toString().equals(cleantext);
+        // System.out.println(z);
+        // // for (int i = 0; i < str.length(); i++) {
+        // //     // do something at index i
+        // // }
+
+
     //     int n = str.length();
     // for( int i = 0; i < n/2; i++ )
     //     if (str.charAt(i) != str.charAt(n-i-1)) return false;

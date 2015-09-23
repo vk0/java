@@ -13,5 +13,7 @@
  * @return <code>true</code> when <code>text</code> is a palindrome, <code>false</code> otherwise
  */
 public static boolean isPalindrome(String text) {
-    if (text.length() < 2) return true;
+    String cleantext = text.toLowerCase().replaceAll("[^\\p{L}]","");
+    StringBuilder rev = new StringBuilder(cleantext).reverse();
+    return rev.toString().equals(cleantext);
 }

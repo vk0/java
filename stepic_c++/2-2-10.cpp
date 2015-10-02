@@ -12,40 +12,17 @@
 // 42 1 26 15
 
 #include <iostream>
-#include <cstdio>
 using namespace std;
 
-void reverse(int number){
-    if(number == 0) //base/basic case i.e if number is zero the problem is already solved, nothing to do, so simply return
-        return;
-    else{
-        cout << number % 10; // print that last digit, e.g 103%10 == 3
-        reverse(number/10); //solve the same problem but with smaller number, i.e make the problem smaller by dividing it by 10,  initially we had 103, now 10
+void rev() {
+    int n;
+    cin >> n;
+    if (n) {
+        rev();
+        cout << n << ' ';}
     }
-}
 
 int main() {
-    int c = 0;
-    while(!(std::cin >> c ) || c != 0){
-        cout << reverse(c);
+    rev();
+    return 0;
 }
-}
-// int reverse(int n) {
-//     if (n = 0)
-//         return 1;
-//     return reverse(n);
-//         // return foo((n * 2) / 3,counter) + foo(n - 2,counter);
-// }
-
-// int main()
-// {
-//     int c = 0;
-//     while(!(std::cin >> c ) || c != 0){
-//         cout << reverse(c);
-//         // cout << c;
-//     // while (cin.get(c)) {
-//     //         cout << reverse(c);
-//     //         // cout << c;
-//         }
-//     return 0;
-// }

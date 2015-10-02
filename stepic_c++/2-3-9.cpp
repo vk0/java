@@ -5,34 +5,35 @@
 // Рекомендация: перед тем, как начать кодировать решение этой задачи, продумайте алгоритм, который вы будете использовать. В данной задаче не проверяется эффективность этого алгоритма (в разумных пределах, )
 // Подсказка: вам может потребоваться оператор % для вычисления остатка. Наиболее простая реализация этой функции несколько раз использует функцию, которая переставляет элементы массива в обратном порядке.
 
-
 #include <iostream>
-#include <cstdio>
-using namespace std;
 
 void rotate(int a[], unsigned size, int shift)
 {
-
+    int box = 0;
+    for (int i = 0; i < shift; ++i)
+        for (int i = 0; i < size-1; ++i)
+        {
+            box = a[i];
+            a[i] = a[i + 1];
+            a[i + 1] = box;
+        }
 }
 
-int main() {
-    int a[] = { 1, 2, 3, 4, 5 }; //3, 4, 5, 1, 2
-    int size = 5;
-    int shift = 2;
-    // int * p = &a[0]; //адрес начала массива
-    // int * q = &a[array_size - 1]; //адрес последнего элемент
-    // int *z = p - shift;
-    int temp = a[0];
-    for(int i = 1; i < size; i++) a[i-2] = a[i];
-    {
-        a[size-1] = temp;
-    }
-    // for (i = 0, size--; i < size; i++) a[i] = a[i+1];
-    // {
+// void show(int m[], int size)
+// {
+//     for (int i = 0; i < size; i++)
+//         std::cout << m[i] << " ";
+//     std::cout << std::endl;
+// }
 
-    // }
-    for ( int z = 0; z < size; z++ ) {
-        cout << a[z] << ' ';
-    }
-        // cout << a[0] << endl;
-}
+// int main()
+// {
+//     int m[] = { 1, 2, 3, 4, 5 };
+//     // int m[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+//     int size = 5;
+//     int shift = 2;
+//     show(m, size);
+//     rotate(m, size, shift);
+//     show(m, size);
+//     return 0;
+// }

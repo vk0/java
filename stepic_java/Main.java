@@ -1,5 +1,7 @@
 import java.math.*;
 import java.util.Arrays;
+
+
 public class Main {
 
 // public static BigInteger Factorial(int n) {
@@ -14,7 +16,53 @@ public class Main {
 // }
 
     public static void main(String[] args) {
+//         System.out.println(getCallerClassAndMethodName());
+//         anotherMethod();
+//     }
 
+//     private static void anotherMethod() {
+//         System.out.println(getCallerClassAndMethodName());
+//     }
+
+//     public static String getCallerClassAndMethodName() {
+// Throwable t = new Throwable();
+// StackTraceElement[] elements = t.getStackTrace();
+// String calleeMethod = elements[0].getMethodName();
+// String callerMethodName = elements[1].getMethodName();
+// String callerClassName = elements[1].getClassName();
+
+// if (callerMethodName.equals("main")){
+//     return null;
+// } else {
+//     return "org.stepic.java.example.Test#main";
+// }
+
+// return "CallerClassName=" + callerClassName + " , Caller method name: " + callerMethodName;
+// return "Callee method name: " + calleeMethod;
+        // StackTraceElement stack = Thread.currentThread().getStackTrace()[2];
+        // return "org.stepic.java.example.Test#" + stack.getMethodName();
+        // Throwable e = new Throwable();
+        // StackTraceElement[] elements = e.getStackTrace();
+        // String exception = "";
+        // for (StackTraceElement s : elements) {
+        //     exception = exception + s.toString() + "\n\t\t";
+        //     return exception;
+        // }
+        // return exception;
+        // System.out.println(exception);
+        // return exception;
+        // String text = "Madam, I'm Adam!";
+            // return Thread.currentThread().getStackTrace()[1].getMethodName();
+            // return Thread.currentThread().getStackTrace()[1].getMethodName();
+            // return Thread.currentThread().getStackTrace()[1].getFileName();
+
+            // StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
+            // System.out.println(text);
+            // StackTraceElement e = stacktrace[2];//maybe this number needs to be corrected
+        // System.out.println(e.getMethodName());
+        // return name;
+    }
+}
         // int a[] = new int[] {0, 2};
         // int b[] = new int[] {1, 3};
         // int result[] = new int[a.length + b.length];
@@ -32,7 +80,7 @@ public class Main {
         // System.out.println(z);
 
         // String text = "Madam, I'm Adam!";
-        // // System.out.println(text);
+        // System.out.println(text1);
         // String textlower = text.toLowerCase();
         // // System.out.println(textlower);
         // String cleantext = text.toLowerCase().replaceAll("[^\\p{L}]","");
@@ -65,8 +113,8 @@ public class Main {
         // // System.out.println(a2);
         // System.out.println(a3);
         // System.out.println(a4);
-    }
-}
+//     }
+// }
 // public boolean doubleExpression(double a, double b, double c) {
 //     BigDecimal a1 = BigDecimal.valueOf(a);
 //     BigDecimal b1 = BigDecimal.valueOf(b);

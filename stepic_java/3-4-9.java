@@ -19,11 +19,10 @@ public final class ComplexNumber {
     }
 
     @Override
-    public double hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + re;
-        result = prime * result + im;
+    public int hashCode() {
+        int result = 17;
+        long longBits = Double.doubleToLongBits(re);
+        result = 37 * result + (int)(longBits - (longBits >>> 32));
         return result;
     }
 

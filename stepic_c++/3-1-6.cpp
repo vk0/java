@@ -13,7 +13,6 @@ void scale(ivector3d *v, int k) {
         v->array[i] *= k;
 };
 
-
 int main() {
     ivector3d iv3d;
     //Заполняем единицами

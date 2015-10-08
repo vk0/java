@@ -23,6 +23,7 @@ public final class ComplexNumber {
         int result = 17;
         long longBits = Double.doubleToLongBits(re);
         result = 37 * result + (int)(longBits - (longBits >>> 32));
+        // return Double.hashCode(this.re)+Double.hashCode(this.im);
         return result;
     }
 

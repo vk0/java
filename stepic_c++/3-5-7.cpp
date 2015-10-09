@@ -94,3 +94,21 @@ int main() {
 
     return 0;
 }
+
+
+// Compilation error
+// main.cpp: In function ‘char& get_c(Cls&)’:
+// main.cpp:24:22: error: no matching function for call to ‘operator new(sizetype, void*&)’
+// main.cpp:24:22: note: candidate is:
+// :0:0: note: void* operator new(long unsigned int)
+// :0:0: note:   candidate expects 1 argument, 2 provided
+// main.cpp: In function ‘double& get_d(Cls&)’:
+// main.cpp:40:22: error: no matching function for call to ‘operator new(sizetype, void*&)’
+// main.cpp:40:22: note: candidate is:
+// :0:0: note: void* operator new(long unsigned int)
+// :0:0: note:   candidate expects 1 argument, 2 provided
+// main.cpp: In function ‘int& get_i(Cls&)’:
+// main.cpp:56:22: error: no matching function for call to ‘operator new(sizetype, void*&)’
+// main.cpp:56:22: note: candidate is:
+// :0:0: note: void* operator new(long unsigned int)
+// :0:0: note:   candidate expects 1 argument, 2 provided

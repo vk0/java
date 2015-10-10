@@ -51,11 +51,45 @@
 // P.S. Если вам понравилось это задание, то вам может прийтись по душе игра Robocode, в которой надо написать алгоритм управления танком. Алгоритмы, написанные разными людьми, соревнуются между собой.
 
 public static void moveRobot(Robot robot, int toX, int toY) {
-    int currentPositionX = robot.getX();
-    int currentPositionY = robot.getY();
-    robot.getDirection()
-    return currentPositionX;
-    // robot.stepForward(); // your implementation here
+    int x = robot.getX();
+    int y = robot.getY();
+
+    if (x > toX){
+        while(robot.getDirection() != Direction.LEFT){
+            robot.turnLeft();
+        }
+        while(x != toX){
+            robot.stepForward();
+            x--;
+        }
+    }
+    else if (x < toX){
+        while (robot.getDirection() != Direction.RIGHT){
+            robot.turnLeft();
+        }
+        while (x != toX){
+            robot.stepForward();
+            x++;
+        }
+    }
+    if (y > toY){
+        while (robot.getDirection() != Direction.DOWN){
+            robot.turnLeft();
+        }
+        while (y != toY){
+            robot.stepForward();
+            y--;
+        }
+    }
+    else if (y < toY) {
+        while (robot.getDirection() != Direction.UP){
+            robot.turnLeft();
+        }
+        while(y != toY){
+            robot.stepForward();
+            y++;
+        }
+    }
 }
 
 // 4 TEST класс Robot для проверки программки

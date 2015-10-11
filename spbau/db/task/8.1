@@ -1,0 +1,251 @@
+1.
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, LeagueNo
+   FROM     Players
+   WHERE    Town = 'Stratford'
+   ORDER BY LeagueNo asc;
+   ______________________
+
+__ STATISTICS _________________
+
+   Table Players
+         NPag = 3, NReg = 14
+      Index pk_Players
+         Attributes = [Players.PlayerNo asc]
+         NLeaf = 1, NKeys = 14, Clustered = false
+      Index PLAYER_Idx
+         Attributes = [Players.Name asc, Players.Initials asc]
+         NLeaf = 1, NKeys = 14, Clustered = false 
+
+
+__ GREEDY SEARCH __________ 
+
+   Time               = 25 ms (min: 0, sec: 0, ms: 25)
+   Result cardinality = 2.0 Records
+   Cost               = 9.0 Logical Reads
+   Order              = [Players.LeagueNo asc]
+
+
+   Sort(
+        Project(
+                Filter(
+                       TableScan(
+                                 Players
+                                )
+                       Town = 'Stratford'
+                      )
+                {PlayerNo,LeagueNo}
+               )
+        {LeagueNo asc}
+       )
+____________________
+
+
+	PlayerNo    LeagueNo  
+	____________________
+	7           null      
+	39          null      
+	83          1608      
+	2           2411      
+	57          6409      
+	100         6524      
+	6           8467      
+	____________________
+	No of records 7
+
+
+	Access Plan Generation Time = 68 ms (min: 0, sec: 0, ms: 68)
+	Access Plan Execution Time  = 40 ms (min: 0, sec: 0, ms: 40)
+	Total Execution Time        = 108 ms (min: 0, sec: 0, ms: 108)
+
+2.
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, LeagueNo
+   FROM     Players
+   WHERE    Town = 'Stratford'
+   ORDER BY LeagueNo asc;
+   ______________________
+
+__ STATISTICS _________________
+
+   Table Players
+         NPag = 3, NReg = 14
+      Index pk_Players
+         Attributes = [Players.PlayerNo asc]
+         NLeaf = 1, NKeys = 14, Clustered = false
+      Index PLAYER_Idx
+         Attributes = [Players.Name asc, Players.Initials asc]
+         NLeaf = 1, NKeys = 14, Clustered = false 
+
+
+__ GREEDY SEARCH __________ 
+
+   Time               = 20 ms (min: 0, sec: 0, ms: 20)
+   Result cardinality = 2.0 Records
+   Cost               = 9.0 Logical Reads
+   Order              = [Players.LeagueNo asc]
+
+
+   Sort(
+        Project(
+                Filter(
+                       TableScan(
+                                 Players
+                                )
+                       Town = 'Stratford'
+                      )
+                {PlayerNo,LeagueNo}
+               )
+        {LeagueNo asc}
+       )
+____________________
+
+
+	PlayerNo    LeagueNo  
+	____________________
+	7           null      
+	39          null      
+	83          1608      
+	2           2411      
+	57          6409      
+	100         6524      
+	6           8467      
+	____________________
+	No of records 7
+
+
+	Access Plan Generation Time = 37 ms (min: 0, sec: 0, ms: 37)
+	Access Plan Execution Time  = 46 ms (min: 0, sec: 0, ms: 46)
+	Total Execution Time        = 83 ms (min: 0, sec: 0, ms: 83)
+
+
+3.
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, LeagueNo
+   FROM     Players
+   WHERE    Town = 'Stratford'
+   ORDER BY LeagueNo asc;
+   ______________________
+
+__ STATISTICS _________________
+
+   Table Players
+         NPag = 3, NReg = 14
+      Index pk_Players
+         Attributes = [Players.PlayerNo asc]
+         NLeaf = 1, NKeys = 14, Clustered = false
+      Index PLAYER_Idx
+         Attributes = [Players.Name asc, Players.Initials asc]
+         NLeaf = 1, NKeys = 14, Clustered = false 
+
+
+__ GREEDY SEARCH __________ 
+
+   Time               = 20 ms (min: 0, sec: 0, ms: 20)
+   Result cardinality = 2.0 Records
+   Cost               = 9.0 Logical Reads
+   Order              = [Players.LeagueNo asc]
+
+
+   Sort(
+        Project(
+                Filter(
+                       TableScan(
+                                 Players
+                                )
+                       Town = 'Stratford'
+                      )
+                {PlayerNo,LeagueNo}
+               )
+        {LeagueNo asc}
+       )
+____________________
+
+
+	PlayerNo    LeagueNo  
+	____________________
+	7           null      
+	39          null      
+	83          1608      
+	2           2411      
+	57          6409      
+	100         6524      
+	6           8467      
+	____________________
+	No of records 7
+
+
+	Access Plan Generation Time = 55 ms (min: 0, sec: 0, ms: 55)
+	Access Plan Execution Time  = 321 ms (min: 0, sec: 0, ms: 321)
+	Total Execution Time        = 376 ms (min: 0, sec: 0, ms: 376)
+
+
+4.
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, LeagueNo
+   FROM     Players
+   WHERE    Town = 'Stratford'
+   ORDER BY LeagueNo asc;
+   ______________________
+
+__ STATISTICS _________________
+
+   Table Players
+         NPag = 3, NReg = 14
+      Index pk_Players
+         Attributes = [Players.PlayerNo asc]
+         NLeaf = 1, NKeys = 14, Clustered = false
+      Index PLAYER_Idx
+         Attributes = [Players.Name asc, Players.Initials asc]
+         NLeaf = 1, NKeys = 14, Clustered = false 
+
+
+__ GREEDY SEARCH __________ 
+
+   Time               = 21 ms (min: 0, sec: 0, ms: 21)
+   Result cardinality = 2.0 Records
+   Cost               = 9.0 Logical Reads
+   Order              = [Players.LeagueNo asc]
+
+
+   Sort(
+        Project(
+                Filter(
+                       TableScan(
+                                 Players
+                                )
+                       Town = 'Stratford'
+                      )
+                {PlayerNo,LeagueNo}
+               )
+        {LeagueNo asc}
+       )
+____________________
+
+
+	PlayerNo    LeagueNo  
+	____________________
+	7           null      
+	39          null      
+	83          1608      
+	2           2411      
+	57          6409      
+	100         6524      
+	6           8467      
+	____________________
+	No of records 7
+
+
+	Access Plan Generation Time = 57 ms (min: 0, sec: 0, ms: 57)
+	Access Plan Execution Time  = 1273 ms (min: 0, sec: 1, ms: 273)
+	Total Execution Time        = 1330 ms (min: 0, sec: 1, ms: 330)
+
+

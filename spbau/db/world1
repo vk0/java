@@ -1,0 +1,29 @@
+﻿select
+	city.name, country.name 
+from
+	city, country 
+where
+	city.countrycode=country.code
+	and city.population in (select max(population) from city);
+
+
+select
+	country.name, sum(city.population), (max(country.population)-sum(city.population)) as village
+from
+	country inner join city on country.code=city.countrycode
+group by
+	country.name;
+
+
+select langpop.lang, langpop.pop/sum(country.population) as percent
+from
+	(select
+		countrylanguage.language as lang, sum(countrylanguage.percentage*country.population) as pop
+	from
+		countrylanguage inner join country on countrylanguage.countrycode=country.code
+	group by
+		countrylanguage.language) as langpop, country
+group by
+	langpop.pop, langpop.lang
+order by
+	percent desc;

@@ -1,0 +1,7 @@
+INSERT INTO Players VALUES(2387,'Sharp','Lila X.',1968,'F',2004,'Ap #692-2270 Dignissim St.','153','98138','Laguna Hills','147-691430','NULL');
+
+INSERT INTO Teams VALUES (3,4846,'second');
+
+INSERT INTO Matches VALUES (85302,274,6731,3,2);
+
+INSERT INTO Penalties VALUES(9,4057,'07/18/2008',98);

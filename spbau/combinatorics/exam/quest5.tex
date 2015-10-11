@@ -1,0 +1,89 @@
+\chapter{Вопрос №5}
+
+Задача о подсчете количества отображений конечных множеств. Количество сюрьективных отображений. Формулы обращения.
+
+\section{Отображения}
+
+Пусть имеется два конечных множества $X$ и $Y$ и задано соответствие $f$ элементов из $X$ элементам из $Y$, тогда, если соответствие удовлетворяет условию:
+\[
+	\forall x \in X \exists! y \in Y \left[y = f\left(x\right)\right]
+\]
+то говорят, что $f$ - отображение множества $X$ на множество $Y$ и записывают:
+\[
+	f: X \rightarrow Y
+\]
+
+Выделяют несколько классов отображений:
+\begin{enumerate}
+\item $f$ - инъективное отображение, если выполнено условие:
+\[
+	\forall x,y \in X \left[f\left(x\right) = f\left(y\right) \Rightarrow x = z\right]
+\]
+
+\item $f$ - сюрьективное отображение, если выполнено условие:
+\[
+	\forall y \in Y \exists x \in X \left[f\left(x\right) = y\right]
+\]
+
+\item $f$ - биективное отображение, если оно одновременно инъективное и сюрьективное.
+
+\end{enumerate}
+
+Число всех отображений из $X$ в $Y$, где $\left|X\right| = n$, а $\left|Y\right| = k$ равно $$ k^n $$, а число биективных отображений равно $$ n! $$ (при этом необходимо, чтобы $n = k$).
+
+Число сюрьективных отображений описывают числа Моргана $\hat S\left(n,k\right)$, выражение для которых мы найдем далее.
+
+\section{Формулы обращения числовых последовательностей}
+
+Пусть имеются две числовые последовательности:
+\[
+	\begin{split}
+		& f = \left(f_0, f_1, f_2 ...\right) \\
+		& g = \left(g_0, g_1. g_2 ...\right)
+	\end{split}
+\]
+
+тогда:
+\begin{equation}
+	f_k = \sum_{i=0}^k\binom{k}{i}g_i \Leftrightarrow g_k = \sum_{i=0}^k \left(-1\right)^{k-i}\binom{k}{i}f_i
+\end{equation}
+\begin{Proof}
+Доказываем по индукции. База индукции очевидно выполняется. Пусть для всех $l < k$ справедливо:
+\[
+	g_l = \sum_{i=0}^l\left(-1\right)^{l-i}\binom{l}{i}f_i
+\]
+Тогда
+\[
+	\begin{split}
+		& f_k = \sum_{i=0}^k\binom{k}{i}g_i = g_k + \sum_{i=0}^{k-1} \binom{k}{i}g_i \Leftrightarrow g_k = f_k - \sum_{i=0}^{k-1}\binom{k}{i}g_i = \\
+		& = f_k - \sum_{i=0}^{k-1}\binom{k}{i}\left[\sum_{l=0}^i \left(-1\right)^{i-l}\binom{i}{l}f_l\right] = f_k - \sum_{i=0}^{k-1}\sum_{l=0}^i \left(-1\right)^{i-l} \binom{k}{i}\binom{i}{l} = \\
+		& = f_k - \sum_{l=0}^{k-1}f_l \left[\sum_{i=l}^{k-1}\left(-1\right)^{i-l}\binom{k}{i}\binom{i}{l}\right]
+	\end{split}
+\]
+теперь:
+\[
+	\begin{split}
+		& \sum_{i=l}^{k-1}\left(-1\right)^{i-l}\binom{k}{i}\binom{i}{l} = \sum_{i=l}^{k-1}\frac{\left(-1\right)^{i-l}k!}{\left(k-i\right)!\left(i-l\right)!l!} = \binom{k}{l}\sum_{i=0}^{k-1-l}\left(-1\right)^i\binom{k-l}{i} = \\
+		& = - \binom{k}{l}\left(-1\right)^{k-l}
+	\end{split}
+\]
+подставляем назад:
+\[
+	g_k = f_k + \sum_{l=0}^{k-1} \binom{k}{l}\left(-1\right)^{k-l}f_l = \sum_{l=0}^k \left(-1\right)^{k-l}\binom{k}{l}f_l
+\]
+\end{Proof}
+
+\section{Число сюрьективных отображений}
+
+Следует отметить, что любое отображение является сюрьективным отображением на свой образ. Разобьем все отображения на $n$ блоков $B_i$, таким образом, чтобы в $B_i$ попадали отображения, мощность образа которых равна $i$, тогда справделива формула:
+\begin{equation}
+\left|B_i\right| = \binom{k}{i}\hat S\left(n,i\right)
+\end{equation}
+а тогда просуммировав по всем $i$:
+\begin{equation}
+k^n = \sum_{i=1}^n\binom{k}{i}\hat S\left(n,i\right) = \sum_{i=0}^k\binom{k}{i} \hat S\left(n,i\right)
+\end{equation}
+по формуле обращения получаем:
+\begin{equation}
+	\hat S\left(n,k\right) = \sum_{i=0}^k\left(-1\right)^{k-i}\binom{k}{i}i^n = \sum_{i=0}^k\left(-1\right)^i\binom{k}{i}\left(k-i\right)^n
+\end{equation}

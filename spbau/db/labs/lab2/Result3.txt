@@ -1,0 +1,2623 @@
+
+
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, Address, LeagueNo
+   FROM     StratfordPlayers;
+   ______________________
+
+
+	PlayerNo    Address                                                                 LeagueNo  
+	____________________________________________________________________________________________
+	2           43                                                                      2411      
+	6           80                                                                      8467      
+	7           39                                                                      test      
+	39          78                                                                      test      
+	57          16                                                                      6409      
+	83          16                                                                      1608      
+	100         80                                                                      6524      
+	____________________________________________________________________________________________
+	No of records 7
+
+
+	Access Plan Generation Time = 45 ms (min: 0, sec: 0, ms: 45)
+	Access Plan Execution Time  = 15 ms (min: 0, sec: 0, ms: 15)
+	Total Execution Time        = 60 ms (min: 0, sec: 0, ms: 60)
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, LeagueNo
+   FROM     StratfordPlayers
+   ORDER BY LeagueNo asc;
+   ______________________
+
+
+	PlayerNo    LeagueNo  
+	____________________
+	83          1608      
+	2           2411      
+	57          6409      
+	100         6524      
+	6           8467      
+	7           test      
+	39          test      
+	____________________
+	No of records 7
+
+
+	Access Plan Generation Time = 74 ms (min: 0, sec: 0, ms: 74)
+	Access Plan Execution Time  = 86 ms (min: 0, sec: 0, ms: 86)
+	Total Execution Time        = 160 ms (min: 0, sec: 0, ms: 160)
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, BirthYear
+   FROM     PlayersBirthYearIN;
+   ______________________
+
+
+	PlayerNo    BirthYear   
+	______________________
+	7           1963        
+	8           1962        
+	28          1963        
+	44          1963        
+	100         1963        
+	104         1970        
+	112         1963        
+	1024        1970        
+	1025        1970        
+	1029        1962        
+	1032        1970        
+	1043        1962        
+	1050        1962        
+	1056        1962        
+	1075        1963        
+	1079        1970        
+	1096        1963        
+	1102        1963        
+	1105        1963        
+	1174        1962        
+	1210        1962        
+	1218        1963        
+	1225        1970        
+	1247        1962        
+	1258        1962        
+	1267        1970        
+	1274        1963        
+	1279        1963        
+	1301        1962        
+	1334        1970        
+	1341        1962        
+	1347        1970        
+	1364        1962        
+	1366        1970        
+	1373        1970        
+	1383        1962        
+	1384        1963        
+	1404        1962        
+	1416        1963        
+	1417        1962        
+	1457        1962        
+	1478        1962        
+	1521        1963        
+	1523        1962        
+	1530        1963        
+	1536        1970        
+	1542        1970        
+	1576        1962        
+	1610        1963        
+	1637        1963        
+	1638        1963        
+	1641        1962        
+	1698        1962        
+	1704        1963        
+	1713        1962        
+	1746        1970        
+	1756        1962        
+	1765        1970        
+	1768        1962        
+	1772        1963        
+	1804        1963        
+	1816        1963        
+	1818        1963        
+	1828        1962        
+	1832        1963        
+	1880        1963        
+	1881        1963        
+	1894        1962        
+	1914        1962        
+	1915        1963        
+	1949        1962        
+	1959        1970        
+	1960        1970        
+	1963        1963        
+	1969        1970        
+	1976        1962        
+	1997        1962        
+	1999        1962        
+	2016        1963        
+	2023        1970        
+	2048        1970        
+	2057        1962        
+	2064        1963        
+	2098        1963        
+	2130        1970        
+	2138        1963        
+	2174        1970        
+	2179        1963        
+	2192        1970        
+	2194        1963        
+	2199        1970        
+	2201        1970        
+	2222        1963        
+	2244        1962        
+	2260        1970        
+	2279        1963        
+	2305        1963        
+	2331        1970        
+	2360        1962        
+	2367        1962        
+	2369        1962        
+	______________________
+	No of records 101
+
+
+	Access Plan Generation Time = 56 ms (min: 0, sec: 0, ms: 56)
+	Access Plan Execution Time  = 34 ms (min: 0, sec: 0, ms: 34)
+	Total Execution Time        = 90 ms (min: 0, sec: 0, ms: 90)
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, Name
+   FROM     Team1Players;
+   ______________________
+
+
+	PlayerNo    Name                                           
+	_________________________________________________________
+	2           Everett                                        
+	6           Parmenter                                      
+	8           Newcastle                                      
+	44          Baker                                          
+	57          Brown                                          
+	83          Hope                                           
+	_________________________________________________________
+	No of records 6
+
+
+	Access Plan Generation Time = 18 ms (min: 0, sec: 0, ms: 18)
+	Access Plan Execution Time  = 53 ms (min: 0, sec: 0, ms: 53)
+	Total Execution Time        = 71 ms (min: 0, sec: 0, ms: 71)
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, Name, BirthYear
+   FROM     PlayersBirthYearANY;
+   ______________________
+
+
+	PlayerNo    Name                                           BirthYear   
+	_____________________________________________________________________
+	2           Everett                                        1948        
+	6           Parmenter                                      1964        
+	7           Wise                                           1963        
+	8           Newcastle                                      1962        
+	27          Collins                                        1964        
+	28          Collins                                        1963        
+	39          Bishop                                         1956        
+	44          Baker                                          1963        
+	57          Brown                                          1971        
+	83          Hope                                           1956        
+	100         Parmenter                                      1963        
+	104         Moorman                                        1970        
+	112         Bailey                                         1963        
+	1001        Dejesus                                        1991        
+	1002        Pearson                                        1960        
+	1003        Mathews                                        1950        
+	1004        Marsh                                          1948        
+	1005        Charles                                        1991        
+	1006        Moon                                           1967        
+	1007        Marsh                                          1993        
+	1008        Spencer                                        1996        
+	1009        Lopez                                          1974        
+	1010        Mcfarland                                      1992        
+	1011        Ashley                                         1988        
+	1012        Schmidt                                        1953        
+	1013        Zimmerman                                      1952        
+	1014        Lynn                                           1979        
+	1015        Mclaughlin                                     1948        
+	1016        York                                           1957        
+	1017        Eaton                                          1986        
+	1018        Potter                                         1967        
+	1019        Frost                                          1988        
+	1020        Holder                                         1991        
+	1021        Watkins                                        1967        
+	1022        Blankenship                                    1959        
+	1023        Mcclure                                        1947        
+	1024        Hutchinson                                     1970        
+	1025        Perkins                                        1970        
+	1026        Gomez                                          1957        
+	1027        Gay                                            1996        
+	1028        Dickson                                        1971        
+	1029        Atkins                                         1962        
+	1030        Obrien                                         1947        
+	1031        Craft                                          1981        
+	1032        Bradshaw                                       1970        
+	1033        Grant                                          1972        
+	1034        Yates                                          1986        
+	1035        Albert                                         1975        
+	1036        Hartman                                        1973        
+	1037        Castro                                         1969        
+	1038        Flowers                                        1993        
+	1039        Lamb                                           1967        
+	1040        Rios                                           1964        
+	1041        Stark                                          1969        
+	1042        Garner                                         1958        
+	1043        Chambers                                       1962        
+	1044        Guerra                                         1995        
+	1045        Weaver                                         1978        
+	1046        Turner                                         1959        
+	1047        Dixon                                          1957        
+	1048        Watts                                          1946        
+	1049        Ballard                                        1983        
+	1050        Kelley                                         1962        
+	1051        Gamble                                         1974        
+	1052        Newton                                         1957        
+	1053        Paul                                           1961        
+	1054        Weber                                          1949        
+	1055        Hickman                                        1949        
+	1056        Durham                                         1962        
+	1057        Jensen                                         1978        
+	1058        Berger                                         1951        
+	1059        Ball                                           1947        
+	1060        Harrington                                     1983        
+	1061        Valentine                                      1961        
+	1062        Fry                                            1989        
+	1063        Mcdaniel                                       1949        
+	1064        Pratt                                          1964        
+	1065        Rice                                           1953        
+	1066        Nelson                                         1959        
+	1067        Holt                                           1995        
+	1068        Bowen                                          1992        
+	1069        Mcpherson                                      1986        
+	1070        Frank                                          1976        
+	1071        Perry                                          1948        
+	1072        Klein                                          1965        
+	1073        Nichols                                        1956        
+	1074        Copeland                                       1950        
+	1075        Buckley                                        1963        
+	1076        Hayden                                         1973        
+	1077        Benjamin                                       1964        
+	1078        Long                                           1978        
+	1079        Mann                                           1970        
+	1080        Mcknight                                       1991        
+	1081        Hines                                          1971        
+	1082        Hutchinson                                     1989        
+	1083        Justice                                        1978        
+	1084        Gaines                                         1952        
+	1085        Moses                                          1993        
+	1086        Small                                          1966        
+	1087        Anthony                                        1948        
+	1088        Lambert                                        1981        
+	1089        Harding                                        1994        
+	1090        Montgomery                                     1974        
+	1091        Duke                                           1975        
+	1092        Dudley                                         1989        
+	1093        Middleton                                      1961        
+	1094        Suarez                                         1969        
+	1095        Oneill                                         1991        
+	1096        Guerrero                                       1963        
+	1097        Velasquez                                      1969        
+	1098        Bowers                                         1958        
+	1099        Roach                                          1994        
+	1100        Donovan                                        1954        
+	1101        Vance                                          1987        
+	1102        Gross                                          1963        
+	1103        Moses                                          1983        
+	1104        Wiley                                          1947        
+	1105        Chase                                          1963        
+	1106        Dickerson                                      1983        
+	1107        Coffey                                         1995        
+	1108        Aguirre                                        1990        
+	1109        Parker                                         1995        
+	1110        Estrada                                        1974        
+	1111        Sherman                                        1969        
+	1112        Greene                                         1992        
+	1113        Dunlap                                         1990        
+	1114        Leblanc                                        1966        
+	1115        Church                                         1964        
+	1116        Conley                                         1949        
+	1117        Mcdaniel                                       1980        
+	1118        Gray                                           1997        
+	1119        Klein                                          1971        
+	1120        Avila                                          1989        
+	1121        Vaughan                                        1991        
+	1122        Combs                                          1993        
+	1123        Obrien                                         1960        
+	1124        Hernandez                                      1950        
+	1125        Austin                                         1980        
+	1126        Le                                             1979        
+	1127        Fowler                                         1956        
+	1128        Hughes                                         1949        
+	1129        Wood                                           1979        
+	1130        Sweeney                                        1971        
+	1131        Charles                                        1994        
+	1132        Savage                                         1996        
+	1133        Sims                                           1947        
+	1134        Doyle                                          1990        
+	1135        Baker                                          1982        
+	1136        Cochran                                        1968        
+	1137        Paul                                           1975        
+	1138        Melton                                         1991        
+	1139        Tate                                           1961        
+	1140        Lowery                                         1981        
+	1141        Maynard                                        1961        
+	1142        Wilson                                         1961        
+	1143        Reese                                          1961        
+	1144        Tyler                                          1956        
+	1145        Hood                                           1961        
+	1146        Gilliam                                        1967        
+	1147        Mercer                                         1969        
+	1148        Estrada                                        1975        
+	1149        Foreman                                        1990        
+	1150        Parrish                                        1951        
+	1151        Burch                                          1961        
+	1152        Garrett                                        1982        
+	1153        Clemons                                        1994        
+	1154        Lee                                            1997        
+	1155        Doyle                                          1976        
+	1156        Gonzalez                                       1971        
+	1157        Schroeder                                      1977        
+	1158        Noel                                           1961        
+	1159        Hester                                         1958        
+	1160        Chavez                                         1986        
+	1161        Rosario                                        1947        
+	1162        Flowers                                        1990        
+	1163        Noble                                          1993        
+	1164        Vaughn                                         1980        
+	1165        Bates                                          1982        
+	1166        Battle                                         1992        
+	1167        Hicks                                          1987        
+	1168        Roach                                          1980        
+	1169        Knight                                         1953        
+	1170        Melendez                                       1985        
+	1171        Brady                                          1959        
+	1172        Webb                                           1979        
+	1173        Cochran                                        1973        
+	1174        Roman                                          1962        
+	1175        Riley                                          1978        
+	1176        Peterson                                       1973        
+	1177        Watts                                          1973        
+	1178        Beach                                          1955        
+	1179        Baker                                          1984        
+	1180        Stuart                                         1982        
+	1181        Mcpherson                                      1949        
+	1182        Cross                                          1985        
+	1183        Ortega                                         1997        
+	1184        Barrett                                        1987        
+	1185        Erickson                                       1966        
+	1186        Guzman                                         1967        
+	1187        Gonzalez                                       1992        
+	1188        Cortez                                         1972        
+	1189        Wade                                           1955        
+	1190        Bruce                                          1954        
+	1191        Alford                                         1996        
+	1192        Leach                                          1976        
+	1193        Vang                                           1979        
+	1194        Ferrell                                        1996        
+	1195        Dale                                           1958        
+	1196        Leblanc                                        1996        
+	1197        Cross                                          1993        
+	1198        Estes                                          1953        
+	1199        Pate                                           1976        
+	1200        Landry                                         1959        
+	1201        Palmer                                         1968        
+	1202        Durham                                         1952        
+	1203        Conner                                         1952        
+	1204        Kirkland                                       1986        
+	1205        Collins                                        1976        
+	1206        Dotson                                         1975        
+	1207        Oliver                                         1995        
+	1208        Kelly                                          1982        
+	1209        Nunez                                          1946        
+	1210        Dennis                                         1962        
+	1211        Reid                                           1969        
+	1212        Acevedo                                        1982        
+	1213        Burnett                                        1988        
+	1214        Buckley                                        1989        
+	1215        Witt                                           1991        
+	1216        Larsen                                         1965        
+	1217        Bass                                           1965        
+	1218        Conley                                         1963        
+	1219        Sexton                                         1948        
+	1220        Short                                          1961        
+	1221        Dejesus                                        1956        
+	1222        Yang                                           1993        
+	1223        Calderon                                       1995        
+	1224        Mitchell                                       1952        
+	1225        Mann                                           1970        
+	1226        Morgan                                         1996        
+	1227        Bridges                                        1986        
+	1228        Walker                                         1988        
+	1229        Booth                                          1986        
+	1230        Calhoun                                        1994        
+	1231        Beck                                           1985        
+	1232        Smith                                          1973        
+	1233        Dominguez                                      1949        
+	1234        Hunter                                         1997        
+	1235        Baxter                                         1978        
+	1236        Andrews                                        1994        
+	1237        Oneill                                         1982        
+	1238        Cross                                          1952        
+	1239        Stone                                          1958        
+	1240        Fisher                                         1952        
+	1241        Blair                                          1964        
+	1242        Edwards                                        1992        
+	1243        Simpson                                        1971        
+	1244        Andrews                                        1953        
+	1245        Mayer                                          1974        
+	1246        Dickson                                        1949        
+	1247        Roberts                                        1962        
+	1248        Conner                                         1992        
+	1249        Joyner                                         1956        
+	1250        Moses                                          1987        
+	1251        Orr                                            1989        
+	1252        Mclean                                         1959        
+	1253        Hartman                                        1950        
+	1254        Rodriguez                                      1946        
+	1255        Carson                                         1951        
+	1256        Petersen                                       1985        
+	1257        Norris                                         1985        
+	1258        Kirkland                                       1962        
+	1259        Craig                                          1991        
+	1260        Rogers                                         1996        
+	1261        Dillon                                         1989        
+	1262        Matthews                                       1972        
+	1263        Rivers                                         1997        
+	1264        Smith                                          1974        
+	1265        Salazar                                        1984        
+	1266        Mooney                                         1996        
+	1267        Gilliam                                        1970        
+	1268        Vasquez                                        1996        
+	1269        Hahn                                           1951        
+	1270        Parks                                          1991        
+	1271        Trujillo                                       1996        
+	1272        Woods                                          1977        
+	1273        Walton                                         1960        
+	1274        Riggs                                          1963        
+	1275        Mcgee                                          1981        
+	1276        Humphrey                                       1983        
+	1277        Morales                                        1974        
+	1278        Lawson                                         1983        
+	1279        Joyce                                          1963        
+	1280        Mays                                           1987        
+	1281        Lucas                                          1964        
+	1282        Copeland                                       1987        
+	1283        Rodriguez                                      1993        
+	1284        Poole                                          1980        
+	1285        Cannon                                         1946        
+	1286        Lewis                                          1985        
+	1287        Francis                                        1997        
+	1288        Le                                             1987        
+	1289        Reynolds                                       1966        
+	1290        Stein                                          1981        
+	1291        Snow                                           1975        
+	1292        Perez                                          1968        
+	1293        Huber                                          1983        
+	1294        Benson                                         1976        
+	1295        Rocha                                          1985        
+	1296        Marks                                          1974        
+	1297        Short                                          1961        
+	1298        Vinson                                         1965        
+	1299        Tanner                                         1992        
+	1300        Huff                                           1990        
+	1301        Madden                                         1962        
+	1302        Oconnor                                        1965        
+	1303        Odom                                           1946        
+	1304        Harvey                                         1958        
+	1305        Ray                                            1977        
+	1306        Joyner                                         1989        
+	1307        Mcdowell                                       1997        
+	1308        Black                                          1971        
+	1309        Albert                                         1989        
+	1310        Morgan                                         1975        
+	1311        Saunders                                       1965        
+	1312        Gutierrez                                      1978        
+	1313        Armstrong                                      1985        
+	1314        Hensley                                        1967        
+	1315        Norton                                         1955        
+	1316        Sargent                                        1951        
+	1317        Sharpe                                         1984        
+	1318        Sosa                                           1996        
+	1319        Vasquez                                        1981        
+	1320        Riggs                                          1949        
+	1321        Lamb                                           1968        
+	1322        Calderon                                       1987        
+	1323        Newman                                         1976        
+	1324        Giles                                          1954        
+	1325        Gutierrez                                      1986        
+	1326        Baxter                                         1984        
+	1327        Sanford                                        1960        
+	1328        Navarro                                        1952        
+	1329        Wong                                           1981        
+	1330        Osborn                                         1950        
+	1331        Rivers                                         1976        
+	1332        Delaney                                        1948        
+	1333        Harper                                         1991        
+	1334        Marquez                                        1970        
+	1335        Rosa                                           1984        
+	1336        Weeks                                          1994        
+	1337        Reid                                           1964        
+	1338        Love                                           1992        
+	1339        Parsons                                        1994        
+	1340        Dillon                                         1953        
+	1341        Carver                                         1962        
+	1342        Hood                                           1958        
+	1343        Brewer                                         1952        
+	1344        Cameron                                        1979        
+	1345        Buckley                                        1960        
+	1346        Foreman                                        1987        
+	1347        Burt                                           1970        
+	1348        Vance                                          1950        
+	1349        Howard                                         1960        
+	1350        Richard                                        1989        
+	1351        Raymond                                        1984        
+	1352        Burke                                          1950        
+	1353        Solis                                          1984        
+	1354        Wilkins                                        1991        
+	1355        Hurley                                         1965        
+	1356        Garcia                                         1993        
+	1357        Martin                                         1960        
+	1358        Clemons                                        1971        
+	1359        Chavez                                         1990        
+	1360        Levine                                         1990        
+	1361        Estes                                          1988        
+	1362        Harding                                        1976        
+	1363        Stevenson                                      1965        
+	1364        Preston                                        1962        
+	1365        Winters                                        1954        
+	1366        Mcfarland                                      1970        
+	1367        Mcclain                                        1951        
+	1368        Washington                                     1956        
+	1369        Mccarthy                                       1952        
+	1370        Lewis                                          1975        
+	1371        Gregory                                        1976        
+	1372        French                                         1959        
+	1373        Wallace                                        1970        
+	1374        Wagner                                         1966        
+	1375        Barnes                                         1982        
+	1376        Wilder                                         1992        
+	1377        Rivera                                         1981        
+	1378        Warren                                         1973        
+	1379        Alston                                         1986        
+	1380        Cotton                                         1978        
+	1381        Roy                                            1990        
+	1382        Erickson                                       1959        
+	1383        Jefferson                                      1962        
+	1384        Newton                                         1963        
+	1385        Hickman                                        1951        
+	1386        Walter                                         1969        
+	1387        Sharpe                                         1982        
+	1388        Brooks                                         1985        
+	1389        Rasmussen                                      1976        
+	1390        Riley                                          1992        
+	1391        Murphy                                         1949        
+	1392        Cardenas                                       1967        
+	1393        Kirby                                          1958        
+	1394        Powers                                         1987        
+	1395        Sims                                           1953        
+	1396        Shannon                                        1952        
+	1397        Osborne                                        1980        
+	1398        Hogan                                          1953        
+	1399        Barnett                                        1987        
+	1400        Day                                            1960        
+	1401        Aguirre                                        1995        
+	1402        Chambers                                       1982        
+	1403        Oneill                                         1980        
+	1404        Mcdowell                                       1962        
+	1405        Stark                                          1973        
+	1406        Wise                                           1954        
+	1407        Mason                                          1964        
+	1408        Baird                                          1991        
+	1409        Grimes                                         1994        
+	1410        Huffman                                        1993        
+	1411        Hogan                                          1983        
+	1412        Roberson                                       1950        
+	1413        Hernandez                                      1986        
+	1414        Newton                                         1958        
+	1415        Roman                                          1993        
+	1416        Romero                                         1963        
+	1417        Nicholson                                      1962        
+	1418        Norris                                         1957        
+	1419        Mann                                           1996        
+	1420        Nelson                                         1958        
+	1421        Morales                                        1978        
+	1422        Mooney                                         1994        
+	1423        Hooper                                         1992        
+	1424        Perry                                          1961        
+	1425        Greene                                         1994        
+	1426        Solomon                                        1947        
+	1427        Barry                                          1961        
+	1428        Mclaughlin                                     1995        
+	1429        Livingston                                     1950        
+	1430        Avila                                          1990        
+	1431        Oneal                                          1983        
+	1432        Underwood                                      1987        
+	1433        Rios                                           1954        
+	1434        Figueroa                                       1987        
+	1435        Christian                                      1979        
+	1436        Holman                                         1982        
+	1437        Blackburn                                      1960        
+	1438        Booth                                          1964        
+	1439        Kirby                                          1979        
+	1440        Workman                                        1948        
+	1441        Watkins                                        1983        
+	1442        Salas                                          1988        
+	1443        Jones                                          1994        
+	1444        Bailey                                         1979        
+	1445        Hubbard                                        1966        
+	1446        Ramsey                                         1949        
+	1447        Vaughan                                        1967        
+	1448        Wilder                                         1995        
+	1449        Tanner                                         1983        
+	1450        Lara                                           1994        
+	1451        Buckley                                        1946        
+	1452        Ratliff                                        1947        
+	1453        Hebert                                         1982        
+	1454        Dale                                           1981        
+	1455        Palmer                                         1979        
+	1456        Mason                                          1954        
+	1457        Browning                                       1962        
+	1458        Larson                                         1957        
+	1459        Gould                                          1966        
+	1460        Silva                                          1960        
+	1461        Patrick                                        1981        
+	1462        Waters                                         1991        
+	1463        Marquez                                        1986        
+	1464        Talley                                         1949        
+	1465        Flores                                         1967        
+	1466        Hess                                           1961        
+	1467        Valdez                                         1971        
+	1468        Rodriguez                                      1989        
+	1469        Ball                                           1996        
+	1470        Mullins                                        1959        
+	1471        Gardner                                        1964        
+	1472        Haney                                          1983        
+	1473        Heath                                          1976        
+	1474        Richard                                        1976        
+	1475        Potter                                         1977        
+	1476        Mccall                                         1956        
+	1477        Forbes                                         1951        
+	1478        Taylor                                         1962        
+	1479        Melton                                         1981        
+	1480        Ortega                                         1979        
+	1481        Cantu                                          1990        
+	1482        Whitney                                        1965        
+	1483        Charles                                        1974        
+	1484        Prince                                         1989        
+	1485        Ortiz                                          1984        
+	1486        Keith                                          1969        
+	1487        Frazier                                        1947        
+	1488        Cameron                                        1990        
+	1489        Trevino                                        1988        
+	1490        Branch                                         1959        
+	1491        Gates                                          1983        
+	1492        Hopkins                                        1947        
+	1493        Hodges                                         1953        
+	1494        Finley                                         1959        
+	1495        Atkinson                                       1996        
+	1496        Montgomery                                     1990        
+	1497        Waters                                         1973        
+	1498        Phillips                                       1974        
+	1499        Stone                                          1967        
+	1500        Sandoval                                       1953        
+	1501        Rivers                                         1949        
+	1502        Medina                                         1952        
+	1503        Gamble                                         1976        
+	1504        Tyson                                          1952        
+	1505        Guzman                                         1993        
+	1506        Garcia                                         1951        
+	1507        Adkins                                         1947        
+	1508        Estrada                                        1978        
+	1509        Hampton                                        1961        
+	1510        Soto                                           1965        
+	1511        Anderson                                       1988        
+	1512        Puckett                                        1982        
+	1513        Glover                                         1985        
+	1514        Daugherty                                      1966        
+	1515        Carroll                                        1995        
+	1516        Hubbard                                        1960        
+	1517        Byrd                                           1968        
+	1518        Clemons                                        1992        
+	1519        Mcleod                                         1972        
+	1520        Hendrix                                        1966        
+	1521        French                                         1963        
+	1522        Weeks                                          1980        
+	1523        Mcbride                                        1962        
+	1524        Rice                                           1989        
+	1525        Gallegos                                       1964        
+	1526        Dunlap                                         1994        
+	1527        Mason                                          1949        
+	1528        Doyle                                          1972        
+	1529        Jones                                          1967        
+	1530        Gomez                                          1963        
+	1531        Boyle                                          1956        
+	1532        Patterson                                      1953        
+	1533        Cortez                                         1992        
+	1534        Matthews                                       1958        
+	1535        Sanford                                        1966        
+	1536        Wagner                                         1970        
+	1537        Velasquez                                      1986        
+	1538        Rosales                                        1971        
+	1539        Little                                         1993        
+	1540        Whitehead                                      1955        
+	1541        Morgan                                         1946        
+	1542        Rowland                                        1970        
+	1543        Shaffer                                        1983        
+	1544        Preston                                        1949        
+	1545        Beck                                           1974        
+	1546        Bender                                         1956        
+	1547        Horn                                           1995        
+	1548        Park                                           1961        
+	1549        Sharpe                                         1975        
+	1550        Silva                                          1959        
+	1551        Pittman                                        1950        
+	1552        Kane                                           1965        
+	1553        Burnett                                        1982        
+	1554        Miranda                                        1982        
+	1555        Alvarado                                       1959        
+	1556        Estes                                          1955        
+	1557        Henderson                                      1959        
+	1558        Herrera                                        1949        
+	1559        Foley                                          1958        
+	1560        Becker                                         1960        
+	1561        Ortiz                                          1977        
+	1562        Cooke                                          1950        
+	1563        Mcclure                                        1994        
+	1564        Shields                                        1952        
+	1565        Williamson                                     1955        
+	1566        Wood                                           1980        
+	1567        Stanton                                        1952        
+	1568        Miller                                         1960        
+	1569        Dyer                                           1997        
+	1570        Riggs                                          1946        
+	1571        Casey                                          1993        
+	1572        Herman                                         1974        
+	1573        Lowery                                         1996        
+	1574        Madden                                         1958        
+	1575        Hooper                                         1958        
+	1576        Cook                                           1962        
+	1577        Sexton                                         1965        
+	1578        Gillespie                                      1967        
+	1579        Phelps                                         1978        
+	1580        Wolfe                                          1986        
+	1581        Burch                                          1982        
+	1582        Bush                                           1984        
+	1583        Alford                                         1991        
+	1584        Richmond                                       1978        
+	1585        Hays                                           1989        
+	1586        Tyler                                          1993        
+	1587        Flores                                         1968        
+	1588        Macias                                         1983        
+	1589        Oneil                                          1978        
+	1590        Pace                                           1986        
+	1591        Mccall                                         1949        
+	1592        Giles                                          1965        
+	1593        Wilkins                                        1993        
+	1594        Jordan                                         1975        
+	1595        Spencer                                        1954        
+	1596        Burt                                           1984        
+	1597        Dunlap                                         1995        
+	1598        Ellison                                        1969        
+	1599        Carson                                         1957        
+	1600        Tucker                                         1957        
+	1601        Lopez                                          1981        
+	1602        Baxter                                         1951        
+	1603        Holman                                         1964        
+	1604        Owen                                           1996        
+	1605        Scott                                          1991        
+	1606        Shaw                                           1951        
+	1607        Peters                                         1966        
+	1608        Johnston                                       1975        
+	1609        Buckley                                        1989        
+	1610        Merritt                                        1963        
+	1611        Aguilar                                        1976        
+	1612        Elliott                                        1955        
+	1613        Hawkins                                        1976        
+	1614        Hendricks                                      1976        
+	1615        Fitzgerald                                     1953        
+	1616        Battle                                         1994        
+	1617        Oliver                                         1951        
+	1618        Compton                                        1954        
+	1619        Maynard                                        1967        
+	1620        Sharp                                          1952        
+	1621        Wilcox                                         1960        
+	1622        Willis                                         1991        
+	1623        Soto                                           1987        
+	1624        Mercer                                         1950        
+	1625        Dudley                                         1955        
+	1626        Rhodes                                         1956        
+	1627        Carpenter                                      1950        
+	1628        Hebert                                         1995        
+	1629        Livingston                                     1961        
+	1630        Lucas                                          1960        
+	1631        Holden                                         1973        
+	1632        Colon                                          1984        
+	1633        Schroeder                                      1959        
+	1634        Gay                                            1953        
+	1635        Pennington                                     1968        
+	1636        Williams                                       1995        
+	1637        Bryan                                          1963        
+	1638        Burgess                                        1963        
+	1639        Acevedo                                        1959        
+	1640        Reyes                                          1946        
+	1641        Hart                                           1962        
+	1642        Townsend                                       1952        
+	1643        Finch                                          1980        
+	1644        Lowe                                           1950        
+	1645        Ochoa                                          1987        
+	1646        Oneill                                         1959        
+	1647        Maxwell                                        1973        
+	1648        Garza                                          1969        
+	1649        Whitfield                                      1978        
+	1650        Jenkins                                        1978        
+	1651        Snyder                                         1968        
+	1652        Bullock                                        1990        
+	1653        Douglas                                        1981        
+	1654        Dunn                                           1951        
+	1655        Cardenas                                       1955        
+	1656        Todd                                           1954        
+	1657        Lewis                                          1954        
+	1658        Barron                                         1964        
+	1659        Hodges                                         1986        
+	1660        Oneal                                          1947        
+	1661        Savage                                         1984        
+	1662        Sears                                          1967        
+	1663        Payne                                          1993        
+	1664        Jarvis                                         1973        
+	1665        Brooks                                         1994        
+	1666        Melendez                                       1957        
+	1667        Young                                          1947        
+	1668        Duncan                                         1979        
+	1669        Harrell                                        1989        
+	1670        Hayden                                         1964        
+	1671        Fernandez                                      1961        
+	1672        Barrera                                        1951        
+	1673        Norris                                         1958        
+	1674        Coffey                                         1959        
+	1675        Massey                                         1989        
+	1676        Schwartz                                       1981        
+	1677        Wheeler                                        1950        
+	1678        Wilder                                         1950        
+	1679        Small                                          1992        
+	1680        Medina                                         1960        
+	1681        Donaldson                                      1992        
+	1682        Raymond                                        1991        
+	1683        Campos                                         1983        
+	1684        Hatfield                                       1964        
+	1685        Lester                                         1983        
+	1686        Lloyd                                          1950        
+	1687        Figueroa                                       1980        
+	1688        Kemp                                           1968        
+	1689        Blake                                          1984        
+	1690        Haley                                          1973        
+	1691        Clark                                          1975        
+	1692        Simpson                                        1973        
+	1693        Hahn                                           1975        
+	1694        Whitley                                        1964        
+	1695        Noble                                          1947        
+	1696        Castillo                                       1976        
+	1697        Sargent                                        1969        
+	1698        Carey                                          1962        
+	1699        Cabrera                                        1952        
+	1700        Church                                         1946        
+	1701        Mccray                                         1953        
+	1702        Miller                                         1953        
+	1703        Guerrero                                       1946        
+	1704        Wong                                           1963        
+	1705        Stevenson                                      1969        
+	1706        Blevins                                        1961        
+	1707        Pearson                                        1950        
+	1708        Crawford                                       1985        
+	1709        Bonner                                         1954        
+	1710        Garrison                                       1977        
+	1711        Weaver                                         1985        
+	1712        Watkins                                        1991        
+	1713        Gaines                                         1962        
+	1714        Bernard                                        1973        
+	1715        Johns                                          1974        
+	1716        Castro                                         1974        
+	1717        Peck                                           1975        
+	1718        Brady                                          1971        
+	1719        Mills                                          1961        
+	1720        Brennan                                        1984        
+	1721        Hopper                                         1987        
+	1722        Coleman                                        1971        
+	1723        Bentley                                        1975        
+	1724        Hardin                                         1967        
+	1725        Pickett                                        1977        
+	1726        Lee                                            1960        
+	1727        Wagner                                         1974        
+	1728        Mccormick                                      1990        
+	1729        Melendez                                       1982        
+	1730        Sherman                                        1983        
+	1731        Clements                                       1997        
+	1732        Armstrong                                      1978        
+	1733        Wyatt                                          1956        
+	1734        Gillespie                                      1983        
+	1735        Benton                                         1988        
+	1736        Williamson                                     1971        
+	1737        Bright                                         1991        
+	1738        Hayden                                         1967        
+	1739        Hancock                                        1991        
+	1740        Powers                                         1965        
+	1741        Jacobs                                         1976        
+	1742        Maynard                                        1967        
+	1743        Beck                                           1956        
+	1744        Fox                                            1997        
+	1745        Ball                                           1959        
+	1746        Montoya                                        1970        
+	1747        Buck                                           1994        
+	1748        Hyde                                           1980        
+	1749        Osborn                                         1977        
+	1750        Rosario                                        1953        
+	1751        Rios                                           1953        
+	1752        Middleton                                      1997        
+	1753        Goodman                                        1954        
+	1754        Weeks                                          1991        
+	1755        Morris                                         1951        
+	1756        Matthews                                       1962        
+	1757        Stephenson                                     1957        
+	1758        Lynch                                          1982        
+	1759        Mckenzie                                       1960        
+	1760        Bailey                                         1969        
+	1761        Serrano                                        1991        
+	1762        Foley                                          1974        
+	1763        Walter                                         1956        
+	1764        Stevenson                                      1952        
+	1765        Benjamin                                       1970        
+	1766        Mercer                                         1982        
+	1767        Juarez                                         1984        
+	1768        Washington                                     1962        
+	1769        Gardner                                        1965        
+	1770        Bond                                           1959        
+	1771        Crosby                                         1979        
+	1772        Pennington                                     1963        
+	1773        Mcguire                                        1958        
+	1774        Slater                                         1986        
+	1775        Roach                                          1953        
+	1776        Good                                           1992        
+	1777        Preston                                        1956        
+	1778        Boyd                                           1996        
+	1779        Shepard                                        1960        
+	1780        Christensen                                    1957        
+	1781        Stout                                          1991        
+	1782        White                                          1987        
+	1783        Leon                                           1964        
+	1784        Scott                                          1948        
+	1785        Zimmerman                                      1968        
+	1786        Bass                                           1990        
+	1787        Wiley                                          1952        
+	1788        Richmond                                       1956        
+	1789        Hopkins                                        1983        
+	1790        Bradley                                        1978        
+	1791        Dillard                                        1976        
+	1792        Anderson                                       1974        
+	1793        Newton                                         1957        
+	1794        Collins                                        1964        
+	1795        Galloway                                       1961        
+	1796        Lynn                                           1994        
+	1797        Harris                                         1983        
+	1798        Sanchez                                        1956        
+	1799        Mclean                                         1976        
+	1800        Rivera                                         1959        
+	1801        Fuller                                         1960        
+	1802        Diaz                                           1995        
+	1803        Lester                                         1948        
+	1804        Cooke                                          1963        
+	1805        Dodson                                         1985        
+	1806        Nelson                                         1993        
+	1807        Hughes                                         1989        
+	1808        Middleton                                      1958        
+	1809        Chen                                           1972        
+	1810        Bowman                                         1990        
+	1811        Haney                                          1965        
+	1812        Baxter                                         1954        
+	1813        Brady                                          1973        
+	1814        Lambert                                        1995        
+	1815        Franklin                                       1952        
+	1816        Johns                                          1963        
+	1817        Atkins                                         1954        
+	1818        Walters                                        1963        
+	1819        Deleon                                         1966        
+	1820        Townsend                                       1987        
+	1821        Waters                                         1980        
+	1822        Griffith                                       1966        
+	1823        Cervantes                                      1977        
+	1824        Simpson                                        1985        
+	1825        Conrad                                         1969        
+	1826        Coffey                                         1960        
+	1827        Luna                                           1964        
+	1828        Carter                                         1962        
+	1829        Brooks                                         1989        
+	1830        Wall                                           1988        
+	1831        Moore                                          1959        
+	1832        Curtis                                         1963        
+	1833        Noble                                          1946        
+	1834        Abbott                                         1977        
+	1835        Cote                                           1988        
+	1836        Ferrell                                        1982        
+	1837        Dickerson                                      1961        
+	1838        Bernard                                        1957        
+	1839        Riley                                          1985        
+	1840        Gonzalez                                       1951        
+	1841        May                                            1984        
+	1842        Warren                                         1989        
+	1843        Osborn                                         1975        
+	1844        Mckinney                                       1997        
+	1845        Ferrell                                        1997        
+	1846        Shepherd                                       1954        
+	1847        English                                        1980        
+	1848        Livingston                                     1980        
+	1849        Pollard                                        1978        
+	1850        Flynn                                          1982        
+	1851        Rogers                                         1950        
+	1852        Moore                                          1993        
+	1853        Shepard                                        1975        
+	1854        Hernandez                                      1949        
+	1855        Robbins                                        1954        
+	1856        Petty                                          1996        
+	1857        Finley                                         1966        
+	1858        Oliver                                         1949        
+	1859        Hudson                                         1967        
+	1860        Mckay                                          1968        
+	1861        Walters                                        1979        
+	1862        Baxter                                         1991        
+	1863        Barker                                         1961        
+	1864        Terry                                          1975        
+	1865        Walls                                          1960        
+	1866        Palmer                                         1994        
+	1867        Chandler                                       1992        
+	1868        Kim                                            1982        
+	1869        Paul                                           1958        
+	1870        Trevino                                        1948        
+	1871        Duffy                                          1968        
+	1872        Wilson                                         1989        
+	1873        Blake                                          1972        
+	1874        Lynn                                           1995        
+	1875        Hayden                                         1971        
+	1876        Meyer                                          1960        
+	1877        Daniels                                        1959        
+	1878        Conrad                                         1958        
+	1879        Lott                                           1974        
+	1880        Emerson                                        1963        
+	1881        Grimes                                         1963        
+	1882        Shepherd                                       1992        
+	1883        Oneill                                         1968        
+	1884        Tyson                                          1959        
+	1885        Knox                                           1954        
+	1886        Joyner                                         1993        
+	1887        Shaffer                                        1959        
+	1888        Maddox                                         1956        
+	1889        Munoz                                          1950        
+	1890        Byrd                                           1955        
+	1891        Willis                                         1967        
+	1892        Cooley                                         1952        
+	1893        Rowland                                        1991        
+	1894        Rivas                                          1962        
+	1895        Burns                                          1946        
+	1896        Simmons                                        1989        
+	1897        Warner                                         1997        
+	1898        Hester                                         1966        
+	1899        Ellison                                        1966        
+	1900        Keller                                         1951        
+	1901        Bowman                                         1979        
+	1902        Benson                                         1994        
+	1903        Hensley                                        1981        
+	1904        Callahan                                       1997        
+	1905        Delaney                                        1990        
+	1906        Pate                                           1975        
+	1907        Madden                                         1981        
+	1908        Roberts                                        1974        
+	1909        Hall                                           1994        
+	1910        Good                                           1957        
+	1911        Palmer                                         1990        
+	1912        Hines                                          1991        
+	1913        Larson                                         1954        
+	1914        Yates                                          1962        
+	1915        Silva                                          1963        
+	1916        Berry                                          1993        
+	1917        Nichols                                        1953        
+	1918        Moran                                          1978        
+	1919        Wooten                                         1980        
+	1920        Payne                                          1974        
+	1921        Sanchez                                        1957        
+	1922        Fields                                         1993        
+	1923        Calhoun                                        1955        
+	1924        Grant                                          1948        
+	1925        Weeks                                          1991        
+	1926        Vincent                                        1957        
+	1927        Farmer                                         1952        
+	1928        Acevedo                                        1977        
+	1929        Bridges                                        1995        
+	1930        Fitzgerald                                     1966        
+	1931        Fitzpatrick                                    1988        
+	1932        Sargent                                        1979        
+	1933        Clarke                                         1976        
+	1934        Trevino                                        1968        
+	1935        Alston                                         1971        
+	1936        Kennedy                                        1968        
+	1937        Gonzalez                                       1969        
+	1938        Mcclain                                        1990        
+	1939        Collier                                        1996        
+	1940        Cherry                                         1994        
+	1941        Carver                                         1967        
+	1942        Hammond                                        1976        
+	1943        Joseph                                         1951        
+	1944        Hunt                                           1954        
+	1945        Freeman                                        1955        
+	1946        Barr                                           1954        
+	1947        Morgan                                         1996        
+	1948        Burnett                                        1959        
+	1949        Jefferson                                      1962        
+	1950        Palmer                                         1956        
+	1951        Rush                                           1949        
+	1952        Robertson                                      1982        
+	1953        Monroe                                         1996        
+	1954        Green                                          1996        
+	1955        White                                          1976        
+	1956        Kerr                                           1988        
+	1957        Hines                                          1969        
+	1958        Phelps                                         1951        
+	1959        Haynes                                         1970        
+	1960        Hudson                                         1970        
+	1961        Hunter                                         1973        
+	1962        Good                                           1983        
+	1963        Burke                                          1963        
+	1964        Reilly                                         1953        
+	1965        Fisher                                         1949        
+	1966        Jennings                                       1950        
+	1967        Ballard                                        1958        
+	1968        Mercado                                        1965        
+	1969        Soto                                           1970        
+	1970        Winters                                        1992        
+	1971        Wilkins                                        1947        
+	1972        Sheppard                                       1982        
+	1973        Mcclure                                        1947        
+	1974        Copeland                                       1967        
+	1975        Owens                                          1997        
+	1976        Bentley                                        1962        
+	1977        Franco                                         1992        
+	1978        Hinton                                         1987        
+	1979        Bray                                           1971        
+	1980        Dawson                                         1979        
+	1981        Monroe                                         1953        
+	1982        Barr                                           1951        
+	1983        Gilliam                                        1961        
+	1984        Winters                                        1961        
+	1985        Wyatt                                          1965        
+	1986        Hammond                                        1985        
+	1987        Vance                                          1965        
+	1988        Hodge                                          1953        
+	1989        Sampson                                        1992        
+	1990        Carney                                         1989        
+	1991        Day                                            1987        
+	1992        Oneal                                          1975        
+	1993        Langley                                        1994        
+	1994        Weber                                          1981        
+	1995        Guthrie                                        1984        
+	1996        Wilkerson                                      1955        
+	1997        Hurley                                         1962        
+	1998        Dorsey                                         1974        
+	1999        Young                                          1962        
+	2000        Waller                                         1975        
+	2001        Hunter                                         1980        
+	2002        Baxter                                         1992        
+	2003        Andrews                                        1950        
+	2004        Oneill                                         1989        
+	2005        Cross                                          1953        
+	2006        Stone                                          1966        
+	2007        Fisher                                         1956        
+	2008        Blair                                          1991        
+	2009        Edwards                                        1959        
+	2010        Simpson                                        1979        
+	2011        Andrews                                        1983        
+	2012        Mayer                                          1982        
+	2013        Dickson                                        1988        
+	2014        Roberts                                        1951        
+	2015        Conner                                         1996        
+	2016        Joyner                                         1963        
+	2017        Moses                                          1951        
+	2018        Orr                                            1989        
+	2019        Mclean                                         1955        
+	2020        Hartman                                        1961        
+	2021        Rodriguez                                      1981        
+	2022        Carson                                         1988        
+	2023        Petersen                                       1970        
+	2024        Norris                                         1951        
+	2025        Kirkland                                       1974        
+	2026        Craig                                          1966        
+	2027        Rogers                                         1951        
+	2028        Dillon                                         1995        
+	2029        Matthews                                       1957        
+	2030        Rivers                                         1950        
+	2031        Smith                                          1973        
+	2032        Salazar                                        1974        
+	2033        Mooney                                         1982        
+	2034        Gilliam                                        1989        
+	2035        Vasquez                                        1975        
+	2036        Hahn                                           1968        
+	2037        Parks                                          1989        
+	2038        Trujillo                                       1972        
+	2039        Woods                                          1988        
+	2040        Walton                                         1987        
+	2041        Riggs                                          1976        
+	2042        Mcgee                                          1993        
+	2043        Humphrey                                       1959        
+	2044        Morales                                        1961        
+	2045        Lawson                                         1983        
+	2046        Joyce                                          1980        
+	2047        Mays                                           1967        
+	2048        Lucas                                          1970        
+	2049        Copeland                                       1952        
+	2050        Rodriguez                                      1955        
+	2051        Poole                                          1954        
+	2052        Cannon                                         1953        
+	2053        Lewis                                          1984        
+	2054        Francis                                        1974        
+	2055        Le                                             1986        
+	2056        Reynolds                                       1968        
+	2057        Stein                                          1962        
+	2058        Snow                                           1979        
+	2059        Perez                                          1947        
+	2060        Huber                                          1950        
+	2061        Benson                                         1972        
+	2062        Rocha                                          1982        
+	2063        Marks                                          1952        
+	2064        Short                                          1963        
+	2065        Vinson                                         1975        
+	2066        Tanner                                         1983        
+	2067        Huff                                           1990        
+	2068        Madden                                         1966        
+	2069        Oconnor                                        1989        
+	2070        Odom                                           1951        
+	2071        Harvey                                         1951        
+	2072        Ray                                            1983        
+	2073        Joyner                                         1996        
+	2074        Mcdowell                                       1969        
+	2075        Black                                          1976        
+	2076        Albert                                         1965        
+	2077        Morgan                                         1946        
+	2078        Saunders                                       1967        
+	2079        Gutierrez                                      1971        
+	2080        Armstrong                                      1980        
+	2081        Hensley                                        1964        
+	2082        Norton                                         1995        
+	2083        Sargent                                        1984        
+	2084        Sharpe                                         1955        
+	2085        Sosa                                           1964        
+	2086        Vasquez                                        1986        
+	2087        Riggs                                          1951        
+	2088        Lamb                                           1955        
+	2089        Calderon                                       1949        
+	2090        Newman                                         1986        
+	2091        Giles                                          1991        
+	2092        Gutierrez                                      1976        
+	2093        Baxter                                         1974        
+	2094        Sanford                                        1951        
+	2095        Navarro                                        1964        
+	2096        Wong                                           1951        
+	2097        Osborn                                         1989        
+	2098        Rivers                                         1963        
+	2099        Delaney                                        1951        
+	2100        Harper                                         1960        
+	2101        Marquez                                        1987        
+	2102        Rosa                                           1953        
+	2103        Weeks                                          1954        
+	2104        Reid                                           1947        
+	2105        Love                                           1964        
+	2106        Parsons                                        1961        
+	2107        Dillon                                         1980        
+	2108        Carver                                         1973        
+	2109        Hood                                           1980        
+	2110        Brewer                                         1972        
+	2111        Cameron                                        1969        
+	2112        Buckley                                        1948        
+	2113        Foreman                                        1961        
+	2114        Burt                                           1984        
+	2115        Vance                                          1968        
+	2116        Howard                                         1988        
+	2117        Richard                                        1960        
+	2118        Raymond                                        1964        
+	2119        Burke                                          1988        
+	2120        Solis                                          1983        
+	2121        Wilkins                                        1985        
+	2122        Hurley                                         1982        
+	2123        Garcia                                         1982        
+	2124        Martin                                         1953        
+	2125        Clemons                                        1976        
+	2126        Chavez                                         1980        
+	2127        Levine                                         1989        
+	2128        Estes                                          1946        
+	2129        Harding                                        1979        
+	2130        Stevenson                                      1970        
+	2131        Preston                                        1972        
+	2132        Winters                                        1983        
+	2133        Mcfarland                                      1954        
+	2134        Mcclain                                        1974        
+	2135        Washington                                     1982        
+	2136        Mccarthy                                       1993        
+	2137        Lewis                                          1985        
+	2138        Gregory                                        1963        
+	2139        French                                         1990        
+	2140        Wallace                                        1975        
+	2141        Wagner                                         1951        
+	2142        Barnes                                         1979        
+	2143        Wilder                                         1949        
+	2144        Rivera                                         1976        
+	2145        Warren                                         1965        
+	2146        Alston                                         1958        
+	2147        Cotton                                         1968        
+	2148        Roy                                            1972        
+	2149        Erickson                                       1961        
+	2150        Jefferson                                      1974        
+	2151        Newton                                         1961        
+	2152        Hickman                                        1975        
+	2153        Walter                                         1989        
+	2154        Sharpe                                         1982        
+	2155        Brooks                                         1987        
+	2156        Rasmussen                                      1964        
+	2157        Riley                                          1966        
+	2158        Murphy                                         1969        
+	2159        Cardenas                                       1977        
+	2160        Kirby                                          1956        
+	2161        Powers                                         1964        
+	2162        Sims                                           1977        
+	2163        Shannon                                        1949        
+	2164        Osborne                                        1973        
+	2165        Hogan                                          1971        
+	2166        Barnett                                        1975        
+	2167        Day                                            1948        
+	2168        Aguirre                                        1953        
+	2169        Chambers                                       1995        
+	2170        Oneill                                         1981        
+	2171        Mcdowell                                       1950        
+	2172        Stark                                          1957        
+	2173        Wise                                           1957        
+	2174        Mason                                          1970        
+	2175        Baird                                          1955        
+	2176        Grimes                                         1964        
+	2177        Huffman                                        1995        
+	2178        Hogan                                          1988        
+	2179        Roberson                                       1963        
+	2180        Hernandez                                      1989        
+	2181        Newton                                         1988        
+	2182        Roman                                          1976        
+	2183        Romero                                         1975        
+	2184        Nicholson                                      1982        
+	2185        Norris                                         1992        
+	2186        Mann                                           1972        
+	2187        Nelson                                         1960        
+	2188        Morales                                        1968        
+	2189        Mooney                                         1955        
+	2190        Hooper                                         1984        
+	2191        Perry                                          1974        
+	2192        Greene                                         1970        
+	2193        Solomon                                        1992        
+	2194        Barry                                          1963        
+	2195        Mclaughlin                                     1995        
+	2196        Livingston                                     1968        
+	2197        Avila                                          1992        
+	2198        Oneal                                          1978        
+	2199        Underwood                                      1970        
+	2200        Rios                                           1985        
+	2201        Figueroa                                       1970        
+	2202        Christian                                      1986        
+	2203        Holman                                         1955        
+	2204        Blackburn                                      1960        
+	2205        Booth                                          1989        
+	2206        Kirby                                          1993        
+	2207        Workman                                        1971        
+	2208        Watkins                                        1984        
+	2209        Salas                                          1959        
+	2210        Jones                                          1947        
+	2211        Bailey                                         1977        
+	2212        Hubbard                                        1989        
+	2213        Ramsey                                         1948        
+	2214        Vaughan                                        1972        
+	2215        Wilder                                         1987        
+	2216        Tanner                                         1975        
+	2217        Lara                                           1948        
+	2218        Buckley                                        1955        
+	2219        Ratliff                                        1992        
+	2220        Hebert                                         1986        
+	2221        Dale                                           1996        
+	2222        Palmer                                         1963        
+	2223        Mason                                          1968        
+	2224        Browning                                       1988        
+	2225        Larson                                         1980        
+	2226        Gould                                          1981        
+	2227        Silva                                          1959        
+	2228        Patrick                                        1959        
+	2229        Waters                                         1973        
+	2230        Marquez                                        1949        
+	2231        Talley                                         1953        
+	2232        Flores                                         1968        
+	2233        Hess                                           1951        
+	2234        Valdez                                         1975        
+	2235        Rodriguez                                      1974        
+	2236        Ball                                           1989        
+	2237        Mullins                                        1958        
+	2238        Gardner                                        1955        
+	2239        Haney                                          1965        
+	2240        Heath                                          1951        
+	2241        Richard                                        1973        
+	2242        Potter                                         1991        
+	2243        Mccall                                         1968        
+	2244        Forbes                                         1962        
+	2245        Taylor                                         1966        
+	2246        Melton                                         1968        
+	2247        Ortega                                         1987        
+	2248        Cantu                                          1965        
+	2249        Whitney                                        1955        
+	2250        Charles                                        1968        
+	2251        Prince                                         1977        
+	2252        Ortiz                                          1964        
+	2253        Keith                                          1964        
+	2254        Frazier                                        1995        
+	2255        Cameron                                        1992        
+	2256        Trevino                                        1964        
+	2257        Branch                                         1978        
+	2258        Gates                                          1955        
+	2259        Hopkins                                        1985        
+	2260        Hodges                                         1970        
+	2261        Finley                                         1989        
+	2262        Atkinson                                       1958        
+	2263        Montgomery                                     1978        
+	2264        Waters                                         1989        
+	2265        Phillips                                       1983        
+	2266        Stone                                          1975        
+	2267        Sandoval                                       1961        
+	2268        Rivers                                         1967        
+	2269        Medina                                         1996        
+	2270        Gamble                                         1977        
+	2271        Tyson                                          1980        
+	2272        Guzman                                         1976        
+	2273        Garcia                                         1982        
+	2274        Adkins                                         1957        
+	2275        Estrada                                        1948        
+	2276        Hampton                                        1979        
+	2277        Soto                                           1966        
+	2278        Anderson                                       1961        
+	2279        Puckett                                        1963        
+	2280        Glover                                         1991        
+	2281        Daugherty                                      1959        
+	2282        Carroll                                        1976        
+	2283        Hubbard                                        1967        
+	2284        Byrd                                           1960        
+	2285        Clemons                                        1997        
+	2286        Mcleod                                         1983        
+	2287        Hendrix                                        1961        
+	2288        French                                         1972        
+	2289        Weeks                                          1984        
+	2290        Mcbride                                        1953        
+	2291        Rice                                           1961        
+	2292        Gallegos                                       1968        
+	2293        Dunlap                                         1949        
+	2294        Mason                                          1978        
+	2295        Doyle                                          1948        
+	2296        Jones                                          1975        
+	2297        Gomez                                          1948        
+	2298        Boyle                                          1950        
+	2299        Patterson                                      1988        
+	2300        Cortez                                         1949        
+	2301        Matthews                                       1971        
+	2302        Sanford                                        1996        
+	2303        Wagner                                         1949        
+	2304        Velasquez                                      1950        
+	2305        Rosales                                        1963        
+	2306        Little                                         1959        
+	2307        Whitehead                                      1958        
+	2308        Morgan                                         1957        
+	2309        Rowland                                        1986        
+	2310        Shaffer                                        1997        
+	2311        Preston                                        1966        
+	2312        Beck                                           1969        
+	2313        Bender                                         1965        
+	2314        Horn                                           1968        
+	2315        Park                                           1968        
+	2316        Sharpe                                         1985        
+	2317        Silva                                          1947        
+	2318        Pittman                                        1952        
+	2319        Kane                                           1988        
+	2320        Burnett                                        1996        
+	2321        Miranda                                        1973        
+	2322        Alvarado                                       1988        
+	2323        Estes                                          1947        
+	2324        Henderson                                      1995        
+	2325        Herrera                                        1966        
+	2326        Foley                                          1974        
+	2327        Becker                                         1960        
+	2328        Ortiz                                          1966        
+	2329        Cooke                                          1982        
+	2330        Mcclure                                        1994        
+	2331        Shields                                        1970        
+	2332        Williamson                                     1961        
+	2333        Wood                                           1957        
+	2334        Stanton                                        1972        
+	2335        Miller                                         1983        
+	2336        Dyer                                           1959        
+	2337        Riggs                                          1977        
+	2338        Casey                                          1989        
+	2339        Herman                                         1991        
+	2340        Lowery                                         1972        
+	2341        Madden                                         1979        
+	2342        Hooper                                         1996        
+	2343        Cook                                           1980        
+	2344        Sexton                                         1952        
+	2345        Gillespie                                      1972        
+	2346        Phelps                                         1996        
+	2347        Wolfe                                          1992        
+	2348        Burch                                          1950        
+	2349        Bush                                           1976        
+	2350        Alford                                         1949        
+	2351        Richmond                                       1994        
+	2352        Hays                                           1976        
+	2353        Tyler                                          1994        
+	2354        Flores                                         1976        
+	2355        Macias                                         1978        
+	2356        Oneil                                          1958        
+	2357        Pace                                           1994        
+	2358        Mccall                                         1987        
+	2359        Giles                                          1950        
+	2360        Wilkins                                        1962        
+	2361        Jordan                                         1985        
+	2362        Spencer                                        1964        
+	2363        Burt                                           1974        
+	2364        Dunlap                                         1954        
+	2365        Ellison                                        1978        
+	2366        Carson                                         1959        
+	2367        Tucker                                         1962        
+	2368        Lopez                                          1985        
+	2369        Baxter                                         1962        
+	2370        Holman                                         1950        
+	2371        Owen                                           1960        
+	2372        Scott                                          1960        
+	2373        Shaw                                           1947        
+	2374        Peters                                         1992        
+	2375        Johnston                                       1957        
+	2376        Buckley                                        1959        
+	2377        Merritt                                        1946        
+	2378        Aguilar                                        1957        
+	2379        Elliott                                        1948        
+	2380        Hawkins                                        1980        
+	2381        Hendricks                                      1972        
+	2382        Fitzgerald                                     1987        
+	2383        Battle                                         1986        
+	2384        Oliver                                         1968        
+	2385        Compton                                        1955        
+	2386        Maynard                                        1956        
+	_____________________________________________________________________
+	No of records 1399
+
+
+	Access Plan Generation Time = 32 ms (min: 0, sec: 0, ms: 32)
+	Access Plan Execution Time  = 421 ms (min: 0, sec: 0, ms: 421)
+	Total Execution Time        = 453 ms (min: 0, sec: 0, ms: 453)
+
+__ SQL command _________________
+
+   SELECT   PlayerNo
+   FROM     PlayersPenalties;
+   ______________________
+
+
+	PlayerNo    
+	__________
+	27          
+	44          
+	1001        
+	1002        
+	1004        
+	1005        
+	1006        
+	1007        
+	1010        
+	1011        
+	1013        
+	1016        
+	1017        
+	1018        
+	1019        
+	1021        
+	1022        
+	1023        
+	1024        
+	1025        
+	1026        
+	1027        
+	1030        
+	1033        
+	1034        
+	1035        
+	1036        
+	1037        
+	1042        
+	1043        
+	1044        
+	1045        
+	1047        
+	1048        
+	1050        
+	1051        
+	1052        
+	1053        
+	1054        
+	1055        
+	1056        
+	1057        
+	1058        
+	1059        
+	1061        
+	1062        
+	1063        
+	1064        
+	1065        
+	1066        
+	1067        
+	1068        
+	1069        
+	1070        
+	1071        
+	1072        
+	1073        
+	1075        
+	1076        
+	1077        
+	1081        
+	1082        
+	1083        
+	1084        
+	1085        
+	1087        
+	1092        
+	1094        
+	1095        
+	1096        
+	1097        
+	1099        
+	1100        
+	1101        
+	1105        
+	1106        
+	1107        
+	1109        
+	1111        
+	1112        
+	1113        
+	1115        
+	1117        
+	1118        
+	1119        
+	1120        
+	1121        
+	1122        
+	1124        
+	1125        
+	1126        
+	1128        
+	1130        
+	1131        
+	1133        
+	1136        
+	1137        
+	1138        
+	1139        
+	1140        
+	1144        
+	1145        
+	1146        
+	1147        
+	1148        
+	1149        
+	1150        
+	1151        
+	1152        
+	1155        
+	1158        
+	1159        
+	1160        
+	1161        
+	1162        
+	1164        
+	1168        
+	1170        
+	1172        
+	1174        
+	1175        
+	1176        
+	1178        
+	1179        
+	1180        
+	1181        
+	1182        
+	1183        
+	1184        
+	1185        
+	1186        
+	1188        
+	1191        
+	1192        
+	1194        
+	1195        
+	1196        
+	1197        
+	1198        
+	1199        
+	1200        
+	1202        
+	1204        
+	1205        
+	1207        
+	1208        
+	1209        
+	1210        
+	1211        
+	1213        
+	1215        
+	1216        
+	1217        
+	1218        
+	1219        
+	1221        
+	1224        
+	1225        
+	1226        
+	1227        
+	1228        
+	1229        
+	1231        
+	1232        
+	1233        
+	1234        
+	1235        
+	1236        
+	1237        
+	1238        
+	1240        
+	1241        
+	1244        
+	1245        
+	1248        
+	1250        
+	1251        
+	1252        
+	1253        
+	1254        
+	1255        
+	1256        
+	1257        
+	1258        
+	1259        
+	1261        
+	1262        
+	1263        
+	1264        
+	1265        
+	1266        
+	1267        
+	1269        
+	1270        
+	1271        
+	1273        
+	1274        
+	1275        
+	1276        
+	1278        
+	1281        
+	1282        
+	1283        
+	1284        
+	1285        
+	1287        
+	1288        
+	1289        
+	1292        
+	1293        
+	1294        
+	1295        
+	1296        
+	1298        
+	1299        
+	1300        
+	1301        
+	1302        
+	1303        
+	1304        
+	1307        
+	1310        
+	1313        
+	1314        
+	1315        
+	1318        
+	1319        
+	1320        
+	1321        
+	1322        
+	1323        
+	1324        
+	1325        
+	1326        
+	1329        
+	1330        
+	1331        
+	1332        
+	1334        
+	1335        
+	1336        
+	1337        
+	1338        
+	1341        
+	1342        
+	1343        
+	1344        
+	1345        
+	1346        
+	1347        
+	1349        
+	1350        
+	1352        
+	1354        
+	1355        
+	1357        
+	1358        
+	1360        
+	1361        
+	1362        
+	1364        
+	1365        
+	1369        
+	1370        
+	1371        
+	1372        
+	1373        
+	1374        
+	1378        
+	1379        
+	1380        
+	1382        
+	1384        
+	1385        
+	1387        
+	1388        
+	1389        
+	1390        
+	1391        
+	1392        
+	1393        
+	1394        
+	1395        
+	1397        
+	1400        
+	1401        
+	1403        
+	1404        
+	1406        
+	1409        
+	1410        
+	1411        
+	1412        
+	1413        
+	1414        
+	1417        
+	1423        
+	1424        
+	1425        
+	1426        
+	1427        
+	1428        
+	1430        
+	1432        
+	1433        
+	1434        
+	1436        
+	1437        
+	1438        
+	1439        
+	1441        
+	1443        
+	1446        
+	1448        
+	1449        
+	1450        
+	1452        
+	1454        
+	1455        
+	1457        
+	1463        
+	1464        
+	1465        
+	1468        
+	1469        
+	1472        
+	1473        
+	1474        
+	1475        
+	1476        
+	1477        
+	1478        
+	1481        
+	1482        
+	1484        
+	1485        
+	1486        
+	1488        
+	1490        
+	1495        
+	1497        
+	1498        
+	1499        
+	1500        
+	1504        
+	1505        
+	1506        
+	1507        
+	1508        
+	1510        
+	1511        
+	1512        
+	1513        
+	1514        
+	1515        
+	1517        
+	1518        
+	1519        
+	1520        
+	1521        
+	1522        
+	1523        
+	1524        
+	1526        
+	1527        
+	1529        
+	1530        
+	1531        
+	1533        
+	1535        
+	1537        
+	1538        
+	1539        
+	1540        
+	1541        
+	1543        
+	1544        
+	1547        
+	1548        
+	1549        
+	1550        
+	1551        
+	1552        
+	1553        
+	1555        
+	1557        
+	1559        
+	1560        
+	1561        
+	1562        
+	1563        
+	1564        
+	1565        
+	1566        
+	1567        
+	1568        
+	1569        
+	1571        
+	1572        
+	1573        
+	1574        
+	1575        
+	1576        
+	1577        
+	1579        
+	1580        
+	1581        
+	1582        
+	1584        
+	1587        
+	1588        
+	1591        
+	1592        
+	1593        
+	1594        
+	1596        
+	1598        
+	1599        
+	1600        
+	1601        
+	1603        
+	1604        
+	1606        
+	1607        
+	1608        
+	1609        
+	1610        
+	1611        
+	1612        
+	1613        
+	1614        
+	1615        
+	1616        
+	1617        
+	1618        
+	1619        
+	1622        
+	1623        
+	1624        
+	1625        
+	1626        
+	1627        
+	1628        
+	1629        
+	1630        
+	1631        
+	1634        
+	1635        
+	1636        
+	1637        
+	1640        
+	1642        
+	1643        
+	1645        
+	1646        
+	1647        
+	1648        
+	1649        
+	1651        
+	1653        
+	1654        
+	1655        
+	1656        
+	1657        
+	1659        
+	1661        
+	1662        
+	1663        
+	1664        
+	1666        
+	1667        
+	1668        
+	1669        
+	1670        
+	1673        
+	1674        
+	1675        
+	1676        
+	1678        
+	1679        
+	1682        
+	1683        
+	1684        
+	1685        
+	1691        
+	1692        
+	1693        
+	1694        
+	1695        
+	1696        
+	1698        
+	1700        
+	1702        
+	1703        
+	1705        
+	1706        
+	1707        
+	1709        
+	1710        
+	1712        
+	1713        
+	1714        
+	1717        
+	1718        
+	1722        
+	1723        
+	1724        
+	1725        
+	1726        
+	1729        
+	1730        
+	1731        
+	1732        
+	1733        
+	1734        
+	1735        
+	1736        
+	1737        
+	1739        
+	1740        
+	1741        
+	1742        
+	1743        
+	1744        
+	1745        
+	1746        
+	1747        
+	1749        
+	1750        
+	1752        
+	1753        
+	1754        
+	1759        
+	1760        
+	1762        
+	1763        
+	1764        
+	1765        
+	1766        
+	1769        
+	1770        
+	1772        
+	1773        
+	1774        
+	1775        
+	1776        
+	1779        
+	1781        
+	1783        
+	1784        
+	1785        
+	1786        
+	1787        
+	1789        
+	1790        
+	1791        
+	1793        
+	1794        
+	1796        
+	1798        
+	1800        
+	1801        
+	1802        
+	1803        
+	1804        
+	1805        
+	1806        
+	1808        
+	1809        
+	1811        
+	1812        
+	1813        
+	1814        
+	1815        
+	1819        
+	1820        
+	1821        
+	1824        
+	1826        
+	1827        
+	1828        
+	1829        
+	1831        
+	1833        
+	1837        
+	1838        
+	1839        
+	1840        
+	1843        
+	1844        
+	1845        
+	1846        
+	1847        
+	1848        
+	1849        
+	1850        
+	1851        
+	1852        
+	1853        
+	1855        
+	1856        
+	1857        
+	1858        
+	1859        
+	1862        
+	1863        
+	1864        
+	1867        
+	1868        
+	1870        
+	1873        
+	1875        
+	1876        
+	1878        
+	1879        
+	1880        
+	1881        
+	1882        
+	1884        
+	1885        
+	1886        
+	1887        
+	1888        
+	1890        
+	1891        
+	1893        
+	1894        
+	1895        
+	1898        
+	1899        
+	1901        
+	1902        
+	1903        
+	1904        
+	1905        
+	1907        
+	1908        
+	1909        
+	1910        
+	1911        
+	1912        
+	1913        
+	1914        
+	1915        
+	1916        
+	1919        
+	1920        
+	1922        
+	1923        
+	1925        
+	1926        
+	1927        
+	1930        
+	1931        
+	1932        
+	1934        
+	1936        
+	1937        
+	1938        
+	1939        
+	1940        
+	1941        
+	1942        
+	1943        
+	1944        
+	1945        
+	1947        
+	1948        
+	1949        
+	1950        
+	1952        
+	1953        
+	1954        
+	1955        
+	1956        
+	1958        
+	1959        
+	1960        
+	1961        
+	1962        
+	1964        
+	1965        
+	1966        
+	1967        
+	1968        
+	1970        
+	1972        
+	1973        
+	1974        
+	1975        
+	1976        
+	1977        
+	1978        
+	1979        
+	1980        
+	1981        
+	1982        
+	1983        
+	1985        
+	1986        
+	1988        
+	1989        
+	1992        
+	1993        
+	1995        
+	1996        
+	1997        
+	1998        
+	2000        
+	2001        
+	2002        
+	2004        
+	2006        
+	2010        
+	2014        
+	2015        
+	2016        
+	2017        
+	2018        
+	2019        
+	2021        
+	2022        
+	2023        
+	2024        
+	2027        
+	2029        
+	2031        
+	2032        
+	2033        
+	2035        
+	2036        
+	2037        
+	2040        
+	2042        
+	2043        
+	2046        
+	2047        
+	2048        
+	2049        
+	2050        
+	2051        
+	2052        
+	2053        
+	2054        
+	2055        
+	2056        
+	2057        
+	2058        
+	2061        
+	2062        
+	2064        
+	2065        
+	2066        
+	2067        
+	2068        
+	2069        
+	2070        
+	2071        
+	2073        
+	2076        
+	2078        
+	2079        
+	2080        
+	2083        
+	2085        
+	2087        
+	2088        
+	2089        
+	2090        
+	2093        
+	2095        
+	2096        
+	2097        
+	2099        
+	2100        
+	2101        
+	2102        
+	2103        
+	2104        
+	2105        
+	2106        
+	2110        
+	2111        
+	2112        
+	2113        
+	2114        
+	2115        
+	2116        
+	2117        
+	2121        
+	2123        
+	2125        
+	2126        
+	2128        
+	2131        
+	2132        
+	2133        
+	2134        
+	2135        
+	2137        
+	2138        
+	2139        
+	2142        
+	2143        
+	2144        
+	2145        
+	2146        
+	2147        
+	2148        
+	2149        
+	2150        
+	2152        
+	2153        
+	2154        
+	2155        
+	2156        
+	2157        
+	2158        
+	2159        
+	2160        
+	2163        
+	2165        
+	2168        
+	2169        
+	2171        
+	2172        
+	2173        
+	2174        
+	2175        
+	2176        
+	2179        
+	2180        
+	2181        
+	2182        
+	2183        
+	2184        
+	2185        
+	2186        
+	2188        
+	2189        
+	2190        
+	2191        
+	2192        
+	2194        
+	2195        
+	2196        
+	2197        
+	2198        
+	2199        
+	2200        
+	2202        
+	2203        
+	2204        
+	2206        
+	2208        
+	2210        
+	2214        
+	2215        
+	2217        
+	2219        
+	2221        
+	2222        
+	2223        
+	2224        
+	2225        
+	2226        
+	2227        
+	2228        
+	2229        
+	2230        
+	2233        
+	2234        
+	2235        
+	2236        
+	2237        
+	2238        
+	2239        
+	2240        
+	2242        
+	2244        
+	2245        
+	2246        
+	2247        
+	2248        
+	2249        
+	2250        
+	2251        
+	2252        
+	2253        
+	2254        
+	2256        
+	2258        
+	2259        
+	2260        
+	2262        
+	2263        
+	2265        
+	2266        
+	2268        
+	2273        
+	2275        
+	2277        
+	2278        
+	2282        
+	2287        
+	2289        
+	2290        
+	2291        
+	2292        
+	2294        
+	2295        
+	2296        
+	2297        
+	2298        
+	2299        
+	2301        
+	2302        
+	2303        
+	2304        
+	2305        
+	2306        
+	2308        
+	2309        
+	2311        
+	2312        
+	2313        
+	2314        
+	2315        
+	2316        
+	2317        
+	2318        
+	2319        
+	2320        
+	2321        
+	2323        
+	2325        
+	2326        
+	2327        
+	2328        
+	2329        
+	2330        
+	2331        
+	2333        
+	2334        
+	2335        
+	2336        
+	2337        
+	2338        
+	2339        
+	2341        
+	2342        
+	2343        
+	2346        
+	2348        
+	2350        
+	2351        
+	2354        
+	2355        
+	2358        
+	2360        
+	2361        
+	2363        
+	2365        
+	2367        
+	2368        
+	2369        
+	2370        
+	2372        
+	2373        
+	2375        
+	2376        
+	2379        
+	2382        
+	2385        
+	2386        
+	__________
+	No of records 975
+
+
+	Access Plan Generation Time = 37 ms (min: 0, sec: 0, ms: 37)
+	Access Plan Execution Time  = 125 ms (min: 0, sec: 0, ms: 125)
+	Total Execution Time        = 162 ms (min: 0, sec: 0, ms: 162)
+
+__ SQL command _________________
+
+   SELECT   PlayerNo
+   FROM     Player57TeamMate;
+   ______________________
+
+
+	PlayerNo    
+	__________
+	2           
+	6           
+	44          
+	57          
+	83          
+	__________
+	No of records 5
+
+
+	Access Plan Generation Time = 41 ms (min: 0, sec: 0, ms: 41)
+	Access Plan Execution Time  = 49 ms (min: 0, sec: 0, ms: 49)
+	Total Execution Time        = 90 ms (min: 0, sec: 0, ms: 90)
+

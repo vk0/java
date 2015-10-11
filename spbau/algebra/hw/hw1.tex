@@ -1,0 +1,162 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[T2A]{fontenc} 
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{listings}
+\usepackage[dvips]{graphicx}
+\usepackage{indentfirst}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{left=2cm}
+\geometry{right=2cm}
+\geometry{top=2cm}
+\geometry{bottom=2cm}
+
+\graphicspath{{images/}}
+
+\begin{document}
+\sloppy
+
+\lstset{
+	basicstyle=\small,
+	stringstyle=\ttfamily,
+	showstringspaces=false,
+	columns=fixed,
+	breaklines=true,
+	numbers=right,
+	numberstyle=\tiny
+}
+
+\newtheorem{Def}{Определение}[section]
+\newtheorem{Th}{Теорема}
+\newtheorem{Lem}[Th]{Лемма}
+\newenvironment{Proof}
+	{\par\noindent{\bf Доказательство.}}
+	{\hfill$\scriptstyle\blacksquare$}
+\newenvironment{Solution}
+	{\par\noindent{\bf Решение.}}
+	{\hfill$\scriptstyle\blacksquare$}
+
+
+\begin{flushright}
+	Кринкин М. Ю. группа 504 (SE)
+\end{flushright}
+
+\section{Домашнее задание 1}
+
+\paragraph{Задача 1.} Докажите, что таблица Кэли любой группы является латинским квадратом, т. е. в каждой строке и каждом столбце все элементы группы встречаются ровно по одному разу.
+\begin{Solution}
+Докажем, что все элементы строки различны, для этого нужно доказать, что $ab \not= ac$, при $b \not= c$, для этого домножим обе части слева на $a^{-1}$ и тогда получаем $a^{-1}ab = a^{-1}c \Leftrightarrow b = c$, что противоречит изначальному утверждению, что $b \not= b$, аналогичное доказательство и для столбца, но домножение произодим справа.
+\end{Solution}
+
+\paragraph{Задача 2.} Опишите все с точностью до изоморфизма группы порядков 2 и 3.
+\begin{Solution}
+have no idea
+\end{Solution}
+
+\paragraph{Задача 3.} Изоморфны ли следующие группы порядка 4: группа комплексных чисел $\{i, i, -1, -i\}$ и группа автоморфизмоф графа из 4 вершин и одного ребра.
+\begin{Solution}
+Нет они не изоморфны, так как все элементы группы автоморфизмов обратны сами себе, в то время как элементы группы комплексных чисел по умножению нет.
+\end{Solution}
+
+\paragraph{Задача 4.} Пусть $G$-группа, $g \in G$. Определим опрецию $\circ$ следующим образом $a \circ b = a \cdot g\cdot b$. Доказать, что группы изоморфны.
+
+\begin{Solution}
+Пусть $f\left(x\right) = g\cdot x$, докажем, что это гомоморфизм:
+\begin{itemize}
+\item $g \cdot x \cdot g \cdot y = f\left(x\cdot g\cdot y\right) = f(x \circ y) = f\left(x\right) \cdot f\left(y\right) = g \cdot x \cdot g \cdot y$
+
+\item $x^{-1} g^{-1} = g \cdot g^{-1} \cdot x^{-1} \cdot g^{-1}  = f\left(g^{-1} \cdot x^{-1} \cdot g^{-1}\right) = f\left(x^{-1}_{\circ} \right) = {\left(g \cdot x\right)}^{-1} = x^{-1} \cdot g^{-1}$
+
+\item $f\left(g^{-1}_{\circ}\right) = g \cdot g^{-1} = e$
+\end{itemize}
+Теперь осталось показать, что гомоморфизм взаимооднозначный, т. е является одновременно мономорфизмом и эпиморфизмом. Покажем сначала, что различные элементы переводятся в различные, пусть это не так и $f\left(a\right) = f\left(b\right)$ и при этом $a \not= b$:
+\[
+	f\left(a\right) = g \cdot a = f(\left(b\right) = g \cdot b \Leftrightarrow g^{-1} \cdot g \cdot a = g^{-1} \cdot g \cdot b \Leftrightarrow a = b
+\]
+получили противоречие, следовательно различные элементы переводятся в различные.
+
+Покажем, что для каждого элемента исходной группы существует прообраз. Для конечных групп это очевидно исходя из того, что разные элементы переводятся в разные и мощности групп сопадают, более общее доказательство, заключается в нахождении $f^{-1}$, а это легко сделать следующим образом:
+\[
+	\begin{split}
+		& f\left(x\right) = g \cdot x \Rightarrow f^{-1}\left(g \cdot x\right) = x \Leftrightarrow \\
+		& \Leftrightarrow f^{-1}\left(x\right) = g^{-1} \cdot x
+	\end{split}
+\]
+\end{Solution}
+
+\paragraph{Задача 5.} Определим на множестве $\mathbb{R} \ {-1}$ операцию $\circ$ по формуле $x \circ y = xy + x + y$ для всех $x,y \in \mathbb{R} \ {-1}$. Докажите, что была получена группа. Какой из известных групп изоморфна эта группа?
+\begin{Solution}
+Замкнутость осуществляется, так как выражение $xy+x+y$ всегда вещественное число для вещественных $x$ и $y$, и не равно $-1$, если $x \not= -1$ и $y \not= -1$. Теперь проверим свойства группы:
+\begin{itemize}
+\item Ассоциативность:
+\[
+	\begin{split}
+		& \left(x \circ y\right) \circ z = \left(xy + x + y\right)z + xy + x + y + z = xyz + xy + xz + yz + x + y + z \\
+		& x \circ \left(y \circ z \right) = x \left(yz + y + z\right) x + yz + y + z = xyz + xy + xz + yz + x + y + z
+	\end{split}
+\]
+
+\item Существование нейтрального элемента:
+\[
+	0 \circ x = 0x + 0 + x = x = x \circ 0 = x0 + x + 0
+\]
+
+\item Существование обратного элемента:
+\[
+	0 = x \circ x^{-1}_{\circ} = xx^{-1}_{\circ} + x + x^{-1}_{\circ} \Rightarrow \frac{-x}{x+1} = x^{-1}
+\]
+\end{itemize}
+\end{Solution}
+
+\paragraph{Задача 6.} Докажите, что $\mathbb{R}$ по сложению изоморфна $\mathbb{R}_{>0}$ по умножению.
+
+\begin{Solution}
+Предлагаю следующий гомоморфизм $f\left(a\right) = \log_c a$, покажем, что это дейстительно гомоморфизм:
+\begin{itemize}
+\item $\log_c a + \log_c b = \log_c \left(ab\right) = f\left(ab\right)$
+
+\item $0 = \log_c 1 = f\left(1\right)$
+
+\item $-\log_c a = \log_c a^{-1} = f\left(a^{-1}\right)$
+\end{itemize}
+
+Доказательство того, что он переводит различные элементы в различные тривиально, доказательсто того, что для каждого элемента $\mathbb{R}$ существует прообраз из $\mathbb{R}_{>0}$ также очевидно, для любого $x \in \mathbb{R}$ его прообразом будет $c^x \in \mathbb{R}_{>0}$, т. к. $\log_c c^x = x$. 
+\end{Solution}
+
+\paragraph{Задача 7.} Пусть $A$ - абелева группа. Докажите, что отображение, определенное по формуле $x \mapsto x^n$, где $n \in \mathbb{Z}$ является эндоморфизмом, а для $n=-1$ автоморфизмом.
+\begin{Solution}
+Докажем, что при отображении опять получаем группу из тех же элементов. То что элементы те же, что и в исходной группе вытекает из замкнутости групповой операции исходной группы, теперь проверим аксиомы группы:
+\begin{itemize}
+\item Ассоциативность: $\left(a^nb^n\right)c^n = {\left(ab\right)}^nc^n = {\left(abc\right)}^n = a^n \left(bc\right)^n = a^n \left(b^nc^n\right)$
+
+\item Нейтральный элемент: $a^n1^n=1^na^n=a^n$
+
+\item Обратный элемент: $a^n {\left(a^n\right)}^{-1} = a^{n-n} = 1$
+\end{itemize}
+Покажем теперь, что это гомоморфизм:
+\begin{itemize}
+\item ${\left(ab\right)}^n = \underbrace{ab}_n = a^nb^n$, для $n=-1$ ${\left(ab\right)}^{-1} = b^{-1}a^{-1} = a^{-1}b^{-1}$
+
+\item $a^n1^n=1^na^n=a^n$
+
+\item ${\left(a^{-1}\right)}^n = a^{-n}$
+\end{itemize}
+Покажем, что при $n=-1$ это автоморфизм, но это очевидно из того, что для любого элемента исходной группы $A$ существует обратный и для различных элементов обратные различны, а обратный к обратному есть исходный элемент.
+\end{Solution}
+
+\paragraph{Задача 8.} Пусть $G$ - группа. Докажите, что если отображение определенное по формуле $g \mapsto g^n$ при $n=-1$ или $n=2$ эндоморфизм, то группа абелева.
+
+\begin{Solution}
+Смотри доказательство выше
+\end{Solution}
+
+\paragraph{Задача 9.} Опишите все автоморфизмы графа "n-угольник" (его вершины - ершины $n$-угольника, ребрая - стороны $n$-угольника)
+\begin{Solution}
+Автоморфизмамит будут все повороты вокруг центра, т. е. если мы занмуеруем все вершины от 1 до n, то повороты это переходы вида $i \rightarrow i+j$. Кроме того в автоморфизмах будут оссевые симметрии, которые нельзя получить поворотом.
+\end{Solution}
+\end{document}

@@ -1,0 +1,129 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[T2A]{fontenc} 
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{listings}
+\usepackage[dvips]{graphicx}
+\usepackage{indentfirst}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{left=2cm}
+\geometry{right=2cm}
+\geometry{top=2cm}
+\geometry{bottom=2cm}
+
+\graphicspath{{images/}}
+
+\begin{document}
+\sloppy
+
+\lstset{
+	basicstyle=\small,
+	stringstyle=\ttfamily,
+	showstringspaces=false,
+	columns=fixed,
+	breaklines=true,
+	numbers=right,
+	numberstyle=\tiny
+}
+
+\newtheorem{Def}{Определение}[section]
+\newtheorem{Th}{Теорема}
+\newtheorem{Lem}[Th]{Лемма}
+\newenvironment{Proof}
+	{\par\noindent{\bf Доказательство.}}
+	{\hfill$\scriptstyle\blacksquare$}
+\newenvironment{Solution}
+	{\par\noindent{\bf Решение.}}
+	{\hfill$\scriptstyle\blacksquare$}
+
+
+\begin{flushright}
+	Кринкин М. Ю. группа 504 (SE)
+\end{flushright}
+
+\section{Домашнее задание 3}
+
+\paragraph{2.1} Пусть $\left|G\right| < \infty$, $H \trianglelefteq G$, $gcd\left(\left|H\right|,\left|G:H\right|\right) = 1$, $F \le G$ и $\left|F\right| = \left|H\right|$. Докажите, что $F = H$.
+
+\begin{Solution}
+Если $F \not= H$, тогда $\exists x \in F \setminus H$ и $ord\left(x\right) = d < \infty$. Рассмотрим факторгруппу $G/H$, и построим гомоморфизм $\phi : G \rightarrow G/H$, такой что $g \mapsto gH$
+
+Порядок образа должен делить порядок прообраза, т. е. $ord\left(x\right) = d \vdots ord\left(xH\right) = k$, а кроме того $<xH>$ - циклическая подгруппа в $G/H$ порядка $k$. Таким образом $k$ общий делитель чисел $d$ и $\left|G : H\right|$, при этом, так как $x \not\in H$, то $xH \not= H$ и $\left|<xH>\right| = k > 1$, что невозможно, получили противоречие.
+\end{Solution}
+
+\paragraph{2.2} Докажите, что любая собственная подгруппа группы $\mathbb{Q}$ имеет бесконечный индекс.
+
+\begin{Solution}
+Положим обратное, $H \le \mathbb{Q}$ и $\left|Q : H\right| < \infty$. Тогда $\exists x \in \mathbb{Q} \setminus H$, такой что $xd \in H$, где $d$ - положительное целое число.
+
+Действительно, в противном случае мы бы получили, что для любых положительных целых чисел $d_1 > d_2$ $xd_1$ и $xd_2$ лежат в разных классах смежности по $H$, так как $x\left(d_1 - d_2\right) \not\in H$, а это бы означало, что $\left|G : H\right| = \infty$.
+
+Теперь пусть, мы нашли такие числа $x, d$, что $x \not\in H$, а $xd \in H$. Тогда рассмотрим множество чисел вида:
+\[
+	x, \frac{1}{d} x, \frac{1}{d^2} x, \frac{1}{d^3} x, ...
+\]
+
+Все эти числа попарно лежат в различных классах смежности по $H$, так как в противном случае для пары $k_1 > k_2$ получаем:
+\[
+	\frac{1}{d^{k_1}} x - \frac{1}{d^{k_2}} x = h \in H \Leftrightarrow x = d^{k_1 - k_2} x + h
+\]
+
+т. е. так как $d x \in H$, то $d^{k_1 - k_2 > 0} x \in H$, а кроме того $h \in H$, то есть вся правая часть лежит в $H$, а значит и $x \in H$, что противорчеит исходному утверждению.
+\end{Solution}
+
+\paragraph{2.3} Опишите множество таких чисел $n \in \mathbb{N} \cup \lbrace0\rbrace$, что существует группа, в которой количество подгрупп индекса 2 равно $n$
+
+\begin{Solution}
+Для любого наперд заданного $n$ можно построить такую группу, что количество подгрупп индекса 2 в ней будет равно $n$.
+
+Для $n = 0$ достаточно будет вязть подгруппу простого (или нечетного) порядка, в такой группе не может существовать подгрупп индекса 2, так как подгруппа индекса 2 должна быть ровно в два раза меньше порядка группы.
+
+Для $n \not= 0$ будем рассмтривать прямое произведение групп $C_2$ - циклических групп порядка 2 (например, группа чисел $\lbrace 0,1\rbrace$ с операцией сложения по модулю 2, или группа чисел $\lbrace -1, 1\rbrace$ по умножению).
+
+Пусть нам задано конекретное значение $n$, тогда построим группу:
+\[
+	G = \underbrace{C_2 \times C_2 \times ... \times C_2 \times C_2}_{n \text{ раз }}
+\]
+
+для удобства будем работать с $G$, как с группой двоичных векторов размерности $n$ по сложению по модулю 2. Тогда множество векторов содержащих 0 в определенной позиции $i$ образуют подгруппу группы $G$, а кроме того, мощность такой подгруппы равна ${\left|G\right|}/2$, т. е. такая подгруппа имеет индекс 2. По всем возможным значениям $i$ получаем ровно $n$ подгрупп, и других подгрупп индекса 2, в этой группе нет.
+\end{Solution}
+
+\paragraph{2.4} Обозначим через $T$ множество $\lbrace x^2 + 2 y^2 | x,y \in \mathbb{Z}$. Докажите, что $3T = T \cap 3\mathbb{Z}$.
+
+\begin{Solution}
+Так как $T$ состоит только из целых чисел, то очеидно, что $3T \subset 3\mathbb{Z}$.
+
+Теперь покажем, что $T$ замкнуто относительно умножения:
+\[
+	\begin{split}
+		&\left(x^2_1 + 2y^2_1\right)\left(x^2_2 + 2y^2_2\right) = x_1^2x_2^2 + 2y_2^2x_1^2 + 2y_1^2x_2^2 + 4 y_1^2y_2^2 = \\
+		& = \left(x_1^2x_2^2 + 2^2y_1^2y_2^2 + 4y_1y_2x_1x_2\right) - 4y_1y_2x_1x_2 + 2 \left(y_1^2x_2^2 + y_2^2x_1^2\right) = \left(x_1x_2 + 2y_1y_2\right)^2 + 2\left(y_2x_1 - y_1x_2\right)^2 \\
+	\end{split}
+\]
+, тогда из того что $3 \in T$, то $3 T \subset T$, а как результат $3T \subset T \cap 3\mathbb{Z}$.
+
+Теперь в обратную сторону. Если $x^2 + 2y^2 \in 3\mathbb{Z}$, то $x^2 + 2y^2 = \left(3\hat x\right)^2 + 2\left(3\hat y\right)^2$, но тогда:
+\[
+	\left(3\hat x\right)^2 + 2\left(3\hat y\right)^2 = 9\left(x^2 + 2 y^2\right) \in 3 T
+\]
+\end{Solution}
+
+\paragraph{2.5} Пусть $X$ и $Y$ - множества. Докажите, что отображение, действующее из $S\left(x\right)\times Y^X$ в $Y^X$ по правилу $\left(u, f\right) \mapsto f \circ u^{-1}$ для любых $u \in S\left(X\right)$ и $f \in Y^X$, задает действие группы $S\left(X\right)$ на множестве $Y^X$; опишите орбиты данного действия, группы $St_{S\left(X\right)}\left(f\right)$ для любых $f \in Y^X$ и множества $Fix_{Y^X}\left(u\right)$ для любых $u \in S\left(X\right)$
+
+\begin{Solution}
+Так как $S\left(X\right)$ - группа, то $u^{-1}$ всегда существует, так как $f \in Y^X$ - отображение $f : X \rightarrow Y$, а $u \in S\left(X\right)$ множество перестановок на множестве $X$, то $u\left(x\right) \in X$, для любого $x \in X$, а значит, что $f\left(u^{-1}\left(x\right)\right)$ - корректно для любых $x, u$ и $f$, т. е. описанное выше отображение задет корректное действие.
+
+Орбита отображения $f$ - множество отображений с тем же образом, что и у $f$.
+
+Стабилизатором некоторого отображения $f$ будут являться все перестановки, в которых одному и тому же циклу не принадлежат элементы из $X$, образы которых не совпадают, или по другому, все перестановки, в которых существует цикл содержащий элементы из $X$ с различными значениями $f\left(x\right)$, то такая перестановка не принадлежит стабилизатору. В частности, если все значения $f\left(x\right)$ для $x \in X$ попарно различны, то стабилизатор - тождественная перестановка.
+
+Для некоторой перестановки $\hat u = u^{-1}$ имеющей цикловую запись $\underbrace{\left(x_{d^1_1}x_{d^1_2}...x_{d^1_{s_1}}\right)}_{c_1}\underbrace{\left(x_{d^2_1}x_{d^2_2}...x_{d^2_{s_2}}\right)}_{c_2}...\underbrace{\left(x_{d^m_1}x_{d^m_2}...x_{d^m_{s_m}}\right)}_{c_m}$, множеством неподвижных точек являются все отображения $f$, которые элементам одного цикла $c_i$ из $\hat u$ сопоставляют одно и тоже значение, например, для цикла $i$, значения $f\left(x_{d^i_k}\right)$ для всех $k \in {1..s_i}$ совпадают, т. е. это отображания постоянные на циклах заданной перестановки $\hat u$, так элементы циклов перестановок$\hat u$ и $u$ совпадают, но записаны в разном порядке, множества неподвижных точек $\hat u$ и $u$ также совпадают.
+
+Для некоторой перестановки $u \in S\left(X\right)$ множеством неподвижных точек (отображений) будут являться те отображения.
+\end{Solution}
+\end{document}

@@ -1,0 +1,232 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[T2A]{fontenc} 
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{listings}
+\usepackage[dvips]{graphicx}
+\usepackage{indentfirst}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{left=1.5cm}
+\geometry{right=1.5cm}
+\geometry{top=1cm}
+\geometry{bottom=2cm}
+
+\graphicspath{{images/}}
+
+\begin{document}
+\sloppy
+
+\lstset{
+	basicstyle=\small,
+	stringstyle=\ttfamily,
+	showstringspaces=false,
+	columns=fixed,
+	breaklines=true,
+	numbers=right,
+	numberstyle=\tiny
+}
+
+\newtheorem{Def}{Определение}[section]
+\newtheorem{Th}{Теорема}
+\newtheorem{Lem}[Th]{Лемма}
+\newenvironment{Proof}
+	{\par\noindent{\bf Доказательство.}}
+	{\hfill$\scriptstyle\blacksquare$}
+\newenvironment{Solution}
+	{\par\noindent{\bf Решение.}}
+	{\hfill$\scriptstyle\blacksquare$}
+
+
+\begin{flushright}
+	Кринкин М. Ю. группа 504 (SE)
+\end{flushright}
+
+\section{Домашнее задание 2}
+
+\paragraph{Задание 2.} Проверить насколько материализация влияет на время выполнения запросов.
+
+Необходимо выполнить запросы с использованием представлений и без них и на основе практических наблюдений за серией запросов ответить на следующие вопросы:
+\begin{itemize}
+\item Использование каких представлений позволяет улучшить время выполнения каких запросов (составить таблицу)?
+
+\item При какой наполнености базы целесообразно использовать представления в запросах?
+\end{itemize}
+
+В качестве представлений предложено выбрать следующие:
+\begin{lstlisting}
+CREATE VIEW Towns AS
+SELECT DISTINCT Town
+FROM Players;
+\end{lstlisting}
+
+\begin{lstlisting}
+CREATE VIEW CPlayers AS
+SELECT PlayerNo, LeagueNo
+FROM Players
+WHERE LeagueNo IS NOT NULL;
+\end{lstlisting}
+
+\begin{lstlisting}
+CREATE VIEW RESIDENT (Town, Number) AS
+SELECT Town, COUNT(*)
+FROM Players
+GROUP BY Town;
+\end{lstlisting}
+
+\begin{lstlisting}
+CREATE VIEW SFD_FOLK (PlyNo, Name, Initials, Born) AS
+select PlayerNo, Name, Initials, BirthYear
+from Players
+where Town = 'Stratford';
+\end{lstlisting}
+
+В качестве запросов не имеет сымсла выбирать запросы которые никак не связаны с представлениями, поэтому из приведенных представлений будем пользоваться только представлением SFD\_FOLK (причем реализованное имеено в виде таблицы) и следующие запросы:
+
+\paragraph{Запрос 1. (Без представления)}
+\begin{lstlisting}
+SELECT PlayerNo, Street + ' ' + HouseNo AS Address
+FROM Players
+WHERE Town = 'Stratford';
+\end{lstlisting}
+
+Этот запрос с использованием представления:
+
+\paragraph{Запрос 2. (С представлением)}
+\begin{lstlisting}
+SELECT PlyNo, Street + ' ' + HouseNo AS Address
+FROM SFD_FOLK, Players
+WHERE PlyNo = PlayerNo;
+\end{lstlisting}
+
+и ради эксперемента перепишем его еще так:
+
+\paragraph{Запрос 3. (С представлением)}
+\begin{lstlisting}
+SELECT PlayerNo, Street + ' ' + HouseNo AS Address
+FROM Players, SFD_FOLK
+WHERE PlyNo = PlayerNo;
+\end{lstlisting}
+
+Рассмотрим сводную таблицу для этих запросов:
+
+\begin{tabular}[t]{|c|c|c|c|c|}
+\hline
+Наполнение базы &    1 &    2 &    3 &    4 \\
+\hline
+Запрос 1 (без представления)        &   45 &   40 &  338 & 1340 \\
+\hline
+Запрос 2 (с представлением)        &   77 &  240 &   88 &  104 \\ 
+\hline
+Запрос 3 (с представлением)        &   77 &  240 &   91 &  100 \\
+\hline
+\caption{Сводная таблица 1.}
+\end{tabular}
+
+В таблице, при большом наполнении таблицы (колона 3 и 4), запросы с представлением значительно выигрывают по скорости у запросов без представлений.
+
+Следующими рассмотрим следующий запрос без использования представлений:
+
+\paragraph{Запрос 1. (Без представлений)}
+\begin{lstlisting}
+SELECT PlayerNo, LeagueNo
+FROM Players
+WHERE Town = 'Stratford'
+ORDER BY LeagueNo;
+\end{lstlisting}
+
+и запросы с использование представлений:
+
+\paragraph{Запрос 2. (С представлением)}
+\begin{lstlisting}
+SELECT PlyNo, LeagueNo
+FROM SFD_FOLK, Players
+WHERE PlyNo = PlayerNo
+ORDER BY LeagueNo;
+\end{lstlisting}
+
+\paragraph{Запрос 3. (С представлением)}
+\begin{lstlisting}
+SELECT PlayerNo, LeagueNo
+FROM Players, SFD_FOLK
+WHERE PlyNo = PlyerNo
+ORDER BY LeagueNo;
+\end{lstlisting}
+
+Сводная таблица результатов:
+
+\begin{tabular}[t]{|c|c|c|c|c|}
+\hline
+Наполнение базы  &    1 &    2 &    3 &    4 \\
+\hline
+Запрос 1 (Без представления)         &   55 &   54 &  340 & 1384 \\
+\hline
+Запрос 2 (С представлением)         &  135 &  290 &  130 &  136 \\
+\hline
+Запрос 3 (С представлением)         &  140 &  290 &  127 &  139 \\
+\hline
+\caption{Сводная таблица 2.}
+\end{tabular}
+
+Согласно таблице видно, что время исполнения запросов с представлениями на порядок меньше времени исполнения запроса без представлений на большом (колонки 3 и 4) наполнении базы. 
+
+Теперь рассмотрим следующий запрос:
+
+\paragraph{Запрос 1. (Без представления)}
+\begin{lstlisting}
+SELECT PlayerNo, Town, BirthYear
+FROM Players
+WHERE (Town = 'Stratford' OR BirthYear = 1963)
+AND NOT (Town = 'Stratford' AND BirthYear = 1963);
+\end{lstlisting}
+
+теперь заменим исходный запрос парой запросов, один будет использовать представление, а второй не будет:
+
+\paragraph{Запрос 2. (С представлением)}
+\begin{lstlisting}
+SELECT PlyNo, 'Stratford', Born
+FROM SFD_FOLK
+WHERE Born <> 1963;
+\end{lstlisting}
+
+\paragraph{Запрос 3. (Без представления)}
+\begin{lstlisting}
+SELECT PlayerNo, Town, BirthYear
+FROM Players
+WHERE BirthYear = 1963 AND Town <> 'Stratford';
+\end{lstlisting}
+
+Сводная таблица результатов:
+
+\begin{tabular}[t]{|c|c|c|c|c|}
+\hline
+Наполнение базы &    1 &    2 &    3 &    4 \\
+\hline
+Запрос 1 (Без представления)        &   45 &   55 &  337 & 1394 \\
+\hline
+Запрос 2 (С представлением)        &   40 &   35 &   34 &   43 \\
+\hline
+Запрос 3 (Без представления)        &   32 &   34 &  330 & 1360 \\
+\hline
+\caption{Сводная таблица 3}
+\end{tabular}
+
+В данном примере, исходный запрос был заменен паой запросов, один с использованием представления, второй без использования, суммарное время исполнения пары запросов при этом сравнимо со временем исполнения исходного запроса.
+
+\paragraph{Вывод:} В данной работе мы попробовали выполнять запросы с использованием представлений и без них, при этом заметен выигрыш
+по скорости выполнения при использовании представлений. По итогам работы можно сделать следующие выводы:
+
+\begin{itemize}
+\item Представления позволяют сократить время выполнения запросов (см сводные таблицы 1 и 2), так как представления позволяют совершить предварительную обработку данных и материализовать ее результаты, что приводит к сокращению времени исполнения последующих запросов к выранным данным, за счет сокращения вычислений.
+
+\item В качестве представления удобно оформлять запросы, к которым часто происходит обращение, за счет чего можно сильно улучшить скорость исполнения запросов.
+
+\item Представления позволяют структурировать запросы, за счет чего они становятся проще и понятнее.
+
+\item Представления дают большой выигрыш только при больших объемах данных (см сводные таблицы 1 и 2), при малых объемах данных, смысла в использовании представлений нет, вероятно, это связано с тем, что при малых объемах данных подовляющую часть времени исполнения занимает чтение данных с диска.
+\end{itemize}
+\end{document}

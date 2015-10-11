@@ -1,0 +1,76 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[T2A]{fontenc} 
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{listings}
+\usepackage[dvips]{graphicx}
+\usepackage{indentfirst}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{left=1.5cm}
+\geometry{right=1.5cm}
+\geometry{top=1cm}
+\geometry{bottom=2cm}
+
+\graphicspath{{images/}}
+
+\begin{document}
+\sloppy
+
+\lstset{
+	basicstyle=\small,
+	stringstyle=\ttfamily,
+	showstringspaces=false,
+	columns=fixed,
+	breaklines=true,
+	numbers=right,
+	numberstyle=\tiny
+}
+
+\newtheorem{Def}{Определение}[section]
+\newtheorem{Th}{Теорема}
+\newtheorem{Lem}[Th]{Лемма}
+\newenvironment{Proof}
+	{\par\noindent{\bf Доказательство.}}
+	{\hfill$\scriptstyle\blacksquare$}
+\newenvironment{Solution}
+	{\par\noindent{\bf Решение.}}
+	{\hfill$\scriptstyle\blacksquare$}
+
+
+\begin{flushright}
+	Кринкин М. Ю. группа 504 (SE)
+\end{flushright}
+
+\section{Домашнее задание 1. Исправление}
+Доказать следующее реккурентное соотношение для сочетаний с повторениями формально:
+\begin{equation}
+	\begin{split}
+		& \left( \binom{n}{k} \right) = \left( \binom{n-1}{k} \right) + \left( \binom{n}{k-1} \right) \\
+		& \left( \binom{n}{1} \right) = \binom{n}{1} = n \\
+		& \left( \binom{n}{k} \right) = \binom{1 + k - 1}{k} = 1
+	\end{split}
+\end{equation}
+
+\begin{Proof}
+При доказательстве понадобятся следующие формулы:
+\begin{equation}
+	\left( \binom{n}{k} \right) = \binom{n+k-1}{k}
+	\label{math::relation}
+\end{equation}
+\begin{equation}
+	\binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}
+	\label{math::bin_rec}
+\end{equation}
+Применим сначала формулу \ref{math::relation}, а затем \ref{math::bin_rec}, после чего произведем свертывание по \ref{math::relation} снова, но в обратном порядке:
+\[
+	\left( \binom{n}{k} \right) = \binom{n+k-1}{k} = \binom{n+\left(k-1\right)-1}{k-1} + \binom{\left(n-1\right) + \left(k-1\right)}{k} = \left(\binom{n}{k-1}\right) + \left(\binom{n-1}{k}\right)
+\]
+Остается только проверить граничные условия.
+\end{Proof}
+
+\end{document}

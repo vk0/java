@@ -1,0 +1,385 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[T2A]{fontenc} 
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{listings}
+\usepackage[dvips]{graphicx}
+\usepackage{indentfirst}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{left=1.5cm}
+\geometry{right=1.5cm}
+\geometry{top=1cm}
+\geometry{bottom=2cm}
+
+\graphicspath{{images/}}
+
+\begin{document}
+\sloppy
+
+\lstset{
+	basicstyle=\small,
+	stringstyle=\ttfamily,
+	showstringspaces=false,
+	columns=fixed,
+	breaklines=true,
+	numbers=right,
+	numberstyle=\tiny
+}
+
+\newtheorem{Def}{Определение}[section]
+\newtheorem{Th}{Теорема}
+\newtheorem{Lem}[Th]{Лемма}
+\newenvironment{Proof}
+	{\par\noindent{\bf Доказательство.}}
+	{\hfill$\scriptstyle\blacksquare$}
+\newenvironment{Solution}
+	{\par\noindent{\bf Решение.}}
+	{\hfill$\scriptstyle\blacksquare$}
+
+
+\begin{flushright}
+	Кринкин М. Ю. группа 504 (SE)
+\end{flushright}
+
+\section{Домашнее задание 7}
+
+\paragraph{Задание 1.} Решить с помощью экспоненциальных производящих функций следующие рекуррентные соотношения:
+
+\begin{itemize}
+\item $a_{n+1} = \left(n+1\right) \left(a_n - n + 1\right), n \ge 0; a_0 = 1$
+
+\item $a_{n+1} = 2 \left(n+1\right)a_n + \left(n+1\right)!, n \ge 0; a_0 = 0$
+\end{itemize}
+
+\begin{Solution}
+Рассмотрим первое уравнение:
+\[
+	a_{n+1} = \left(n + 1\right) \left(a_n - n + 1\right)
+\]
+Сопоставим последовательности $\{a_n\}$ экспоненциальную производящую функцию:
+\[
+	F\left(x\right) = a_0 + a_1 x + a_2 \frac{x^2}{2} + a_3 \frac{x^3}{3!} + ...
+\]
+Домножим соотноешние на $\frac{x^{n+1}}{\left(n+1\right)!}$ и просуммируем:
+\[
+	\begin{split}
+		& \sum_{n=0}^{\infty} a_{n+1} \frac{x^{n+1}}{\left(n+1\right)!} = x \sum_{n=0}^{\infty}\left(n+1\right)\left(a_n-n+1\right) \frac{x^n}{\left(n+1\right)!} = x \sum_{n=0}^{\infty} \left(a_n-n+1\right) \frac{x^n}{n!} = \\
+		& = x\sum_{n=0}^{\infty} a_n \frac{x^n}{n!} - x \sum_{n=0}^{\infty} n \frac{x^n}{n!} + x \sum_{n=0} \frac{x^n}{n!} \Leftrightarrow \\
+		& \Leftrightarrow F\left(x\right) - a_0 = x F\left(x\right) - x \sum_{n=0}^{\infty} n \frac{x^n}{n!} + x \sum_{n=0}^{\infty} \frac{x^n}{n!}
+	\end{split}
+\]
+Теперь найдем краткую запись для рядов справа:
+\[
+	\begin{split}
+		& x \sum_{n=0}^{\infty} \frac{x^n}{n!} = x e^x \\
+		& x \sum_{n=0}^{\infty} n \frac{x^n}{n!} = x \sum_{n=0}^{\infty} \frac{n}{n!} x^n = x \sum_{n=1}^{\infty} \frac{n}{n!} x^n = \\
+		& = x^2 \sum_{n=1}^{\infty} \frac{1}{\left(n-1\right)!} x^{n-1} = x^2 \sum_{n=0}^{\infty} \frac{x^n}{n!} = x^2 e^x
+	\end{split}
+\]
+подставляем полученные выражение назад:
+\[
+	\begin{split}
+		& F \left(x\right) - a_0 = x F \left(x\right) - x^2 \cdot e^x + x \cdot e^x \Leftrightarrow \\
+		& \Leftrightarrow F \left(x\right) \left(1 - x\right) = a_0 + x \cdot e^x \left(1 - x\right) \Leftrightarrow \\
+		& \Leftrightarrow F \left(x\right) = \frac{a_0}{1-x} + x \cdot e^x
+	\end{split}
+\]
+Рассмотрим теперь разложение правой части равенства в формальный экспоненциальный ряд:
+\[
+	\begin{split}
+		& x \cdot e^x = x \sum_{n=0}^{\infty} \frac{x^n}{n!} = \sum_{n=0}^{\infty} \left(n+1\right)!\frac{x^{n+1}}{n!\left(n+1\right)!} = \sum_{n=0}^{\infty} n \frac{x^n}{n!} \\
+		& \frac{a_0}{1-x} = a_0 \sum_{n=0}^{\infty} x^n = a_0 \sum_{n=0}^{\infty} \frac{n! x^n}{n!}
+	\end{split}
+\]
+собираем все вместе и получаем выражение для решения в замкнутой форме:
+\[
+	a_n = n! + n
+\]
+Очевидно, что для $n=0$ в этом решении $a_n = 1$, проверим наше решение по индукции:
+\[
+	\begin{split}
+		& \left(n+1\right)! + n + 1 = \left(n + 1\right)\left(n! + n - n + 1\right) = \left(n+1\right)! + n + 1
+	\end{split}
+\]
+
+Теперь рассмотрим второе уравнение:
+\[
+	a_{n+1} = 2 \left(n+1\right) a_n + \left(n+1\right)!, n \ge 0, a_0 = 0
+\]
+Сопоставим последовательности $\{a_n\}$ экспоненциальную производящую функцию:
+\[
+	F\left(n\right) = a_0 + a_1 x + a_2 \frac{x^2}{2} + a_3 \frac{x^3}{3!} + ...
+\]
+Домножим наше рекуррентное соотношение на $\frac{x^{n+1}}{\left(n+1\right)!}$, а затем просуммируем:
+\[
+	\begin{split}
+		& \sum_{n=0}^{\infty} a_{n+1} \frac{x^{n+1}}{\left(n+1\right)!} = \sum_{n=0}^{\infty} 2 \left(n+1\right) a_n \frac{x^{n+1}}{\left(n+1\right)!} + \sum_{n=0}^{\infty} \left(n+1\right)!\frac{x^{n+1}}{\left(n+1\right)!} \Leftrightarrow \\
+		& \Leftrightarrow F\left(x\right) - a_0 = 2 x F\left(x\right) + \frac{x}{1 - x} \Leftrightarrow F\left(x\right) \left(1 - 2x\right) = \frac{x}{1 - x} \Leftrightarrow \\
+		& \Leftrightarrow F \left(x\right) = \frac{x}{\left(1 - x\right)\left(1 - 2 x\right)} = \frac{1}{1 - 2 x} - \frac{1}{1 - x}
+	\end{split}
+\]
+Раскладываем правую часть в формальный степенной ряд:
+\[
+	\begin{split}
+		& \frac{1}{1 - 2 x} = \sum_{n=0}^{\infty} 2^n x^n = \sum_{n=0}^{\infty} 2^n n! \frac{x^n}{n!} \\
+		& \frac{1}{1 - x} = \sum_{n=0}^{\infty} n! \frac{x^n}{n!}
+	\end{split}
+\]
+собираем вместе и получаем решение:
+\[
+	a_n = \left( 2^n - 1 \right) n!
+\]
+для $n=0$ полученная формула очевидно дает 0, проверим правильность формулы по индукции:
+\[
+	\begin{split}
+		& \left(2^{n+1}-1\right)\left(n+1\right)! = 2 \left(n+1\right)\left(2^n-1\right)n! + \left(n+1\right)! = \\ 
+		& = \left(n+1\right)\left(2^{n+1}-2\right)n! + \left(n+1\right)! = \left(2^{n+1}-1\right)\left(n+1\right)! - \left(n+1\right)! + \left(n+1\right)!
+	\end{split}
+\]
+\end{Solution}
+
+\paragraph{Задание 2.} Многие известные в комбинаторике числа, такие, например, как биномиальные коэффициенты $\binom{n}{k}$, зависят от двух индексов - $n$ и $k$. Для этих чисел можно ввести производящие функции $f\left(t,x\right)$, зависящие от двух аргументов и имеющие вид:
+\[
+	f\left(t,x\right) = \sum_{n=0}^{+\infty}\sum_{k=0}^{n} a_{n,k} x^k \frac{t^n}{n!}
+\]
+Используя рекуррентные соотношения для биномиальных коэффициентов
+\[
+	\begin{split}
+		& \binom{n+1}{k} = \binom{n}{k} + \binom{n}{k-1}, n,k \ge 0 \\
+		& \binom{n}{0} = 1, n \ge 0 \\
+		& \binom{n}{k} = 0, k > n
+	\end{split}
+\]
+и для чисел Стирлинга
+\[
+	\begin{split}
+		& S\left(n+1,k\right) = S\left(n,k-1\right) + k S \left(n,k\right), n,k > 0 \\
+		& S\left(n,1\right) = 1, n \ge 1 \\
+		& S\left(n,k\right) = 0, k > n
+	\end{split}
+\]
+построить для них производящие функции вышеуказанного вида.
+
+\begin{Solution}
+Для начала рассмотрим простой способ построения двумерной производящей функции для биномиальных коэффициентов:
+\[
+	\begin{split}
+		&\sum_{n=0}^{\infty}\left(\sum_{k=0}^n f\left(t,x\right) x^k\right) \frac{t^n}{n!} = \sum_{n=0}^{\infty}\left(\sum_{k=0}^n \binom{n}{k} \right) \frac{t^n}{n!} \\
+		&\sum_{n=0}^{\infty}\left(1+x\right)^n \frac{t^n}{n!} = e^{\left(1+x\right)t}
+	\end{split}
+\]
+
+Теперь когда мы нашли простое решение, попробуем его повторить через рекуррентное соотношение. Для начала рассмотрим процесс интегрирования и дифференцирования экспоненциальных степенных рядов:
+\[
+	\begin{split}
+		& \int{\left(a_0 + a_1 x + a_2 \frac{x^2}{2} + a_3 \frac{x^3}{3!} + ... \right)} = a_0 x + a_1 \frac{x^2}{2} + a_2 \frac{x^3}{2 \cdot 3} + a_3 \frac{x^4}{3! \cdot 4} + ... = \\
+		& = a_0 x + a_1 \frac{x^2}{2} + a_2 \frac{x^3}{3!} + a_3 \frac{x^4}{4!} + ... \\
+		& \left(a_0 + a_1 x + a_2 \frac{x^2}{2} + a_3 \frac{x^3}{3!} + ... \right)' = a_1 + a_2 x + a_3 \frac{x^2}{2} + ...
+	\end{split}
+\]
+таким образом интегрирование и дифференцирования для экспоненциальных функций есть просто <<сдвиг>>.
+
+Введем обозначение:
+\[
+	f_{n} \left(x\right) = \sum_{k=0}^n \binom{n}{k} x^k
+\]
+
+\[
+	\begin{split}
+		& \binom{n+1}{k+1} = \binom{n}{k+1} + \binom{n}{k} \Leftrightarrow \\
+		& \Leftrightarrow x^{k+1} \binom{n+1}{k+1} = x^{k+1} \binom{n}{k+1} + x^{k+1} \binom{n}{k} \Leftrightarrow \\
+		& \Leftrightarrow \sum_{k=0}^{n} \binom{n+1}{k+1} x^{k+1} = \sum_{k=0}^{n} \binom{n}{k+1} x^{k+1} + \sum_{k=0}^{n} \binom{n}{k} x^{k+1} \Leftrightarrow \\
+		& \Leftrightarrow f_{n+1} \left(x\right) - 1 = f_{n}\left(x\right) - 1 + x f_{n} \left(x\right) \Leftrightarrow \\
+		& \Leftrightarrow f_{n+1}\left(x\right) = f_{n}\left(1+x\right) \Leftrightarrow \left(\sum_{n=0}^{\infty} f_{n+1}\left(x\right) \frac{t^{n+1}}{\left(n+1\right)!}\right)' = \left(\left(1+x\right) \sum_{n=0}^{\infty} \frac{t^{n+1}}{\left(n+1\right)!}\right)' \Leftrightarrow \\
+		& \Leftrightarrow F\left(t, x\right) = \left(1+x\right) F\left(t, x\right) \Leftrightarrow \frac{\partial F \left(t,x\right)}{\partial t} = \left(1+x\right) F\left(t,x\right) \Leftrightarrow \\
+		& \Leftrightarrow \frac{\partial F\left(t,x\right)}{F\left(t,x\right)} = \left(1+x\right) \partial t \Leftrightarrow \partial \ln{F\left(t, x\right)} = \partial \left(1+x\right)t \Leftrightarrow \\
+		& \Leftrightarrow F\left(t,x\right) = e^{\left(1+x\right)t}
+	\end{split}
+\]
+
+Теперь рассмотрим числа Стирлинга:
+\[
+	\sum_{n=0}^{\infty} \left(\sum_{k=0}^n S\left(n,k\right) x^k\right) \frac{t^n}{n!} = \sum_{n=0}^{\infty} \left(\sum_{k=0}^{\infty} S\left(n,k\right) x^k\right) \frac{t^n}{n!} = \sum_{k=0}^{\infty} \left(\sum_{n=0}^{\infty} S\left(n,k\right) \frac{t^n}{n!}\right) x^k
+\]
+Обозначим:
+\[
+	f_k \left(t\right) = \sum_{n=0}^{\infty} S\left(n,k\right) \frac{t^n}{n!}
+\]
+Теперь рассмотрим рекуррентное соотношение:
+\[
+	\begin{split}
+		& S\left(n,k\right) = S\left(n-1,k-1\right) + k S\left(n-1,k\right) \Leftrightarrow S\left(n,k\right)\frac{t^n}{n!} = S\left(n-1,k-1\right)\frac{t^n}{n!} + k S\left(n-1,k\right) \frac{t^n}{n!} \Leftrightarrow \\
+		& \Leftrightarrow \sum_{n=0}^{\infty} S\left(n,k\right) \frac{t^n}{n!} = \sum_{n=0}^{\infty} S\left(n-1,k-1\right) \frac{t^n}{n!} + k \sum_{n=0}^{\infty} S\left(n-1,k\right) \frac{t^n}{n!} \Leftrightarrow \\
+		& \Leftrightarrow f_{k}'\left(t\right) = f_{k-1}'\left(t\right) + k f_k\left(t\right)
+	\end{split}
+\]
+
+Чтобы решить это уравнение рассмотрим частный случай $k=1$:
+\[
+	f_1'\left(t\right) = 1 + f_1\left(t\right)
+\]
+решение очевидно:
+\[
+	f_1\left(t\right) = e^t - 1
+\]
+Очевидно, что это решение не подходит для больших $k$, но можно немного его подправить:
+\[
+	f_k\left(t\right) = \frac{1}{k!} \left(e^t - 1\right)^k
+\]
+проверим, что оно является решение нашего уравнения:
+\[
+	\frac{1}{\left(k-1\right)!}\left(e^t - 1\right)^{k-1} e^t = \frac{1}{\left(k-1\right)!} \left(e^t - 1\right)^{k-1} + k \frac{1}{k!}\left(e^t - 1\right)^k = \frac{1}{\left(k-1\right)!} \left(e^t - 1\right)^{k-1} e^t
+\]
+Далее суммируем по всем $k$:
+\[
+	\sum_{k=0}^{\infty} \frac{1}{k!}\left(e^t - 1\right)k x^k = e^{\left(e^t-1\right)x}
+\]
+\end{Solution}
+
+\paragraph{Здание 3.} В осеннем семестре у преподавателя $n$ рабочих дней, и он хочет поделить его на три части. В первой части (первые $k_1$ дней) он хочет какое-то число $i_1$ дней ($0 \le i_1 \le k_1$) провести в командировках, во второй части (следующие $k_2$ дней) он хочет четное число дней $2 i_2$, $0 \le i_2 \le \lfloor \frac{k_2}{2} \rfloor$, посвятить лабораторным работам, а втретьей части он хочет произвольное нечетное число дней $2 i_3 + 1$ отдать на самостоятельную работу студентов. В остальные дни он собирается читать лекции. Сколькими способами пеаодаватель может спланировать свой осенний семестр? А если вместо линейного разбиения множества $n$ рабочих дней проподаватель использует произвольное разбиение этого множества на три попарно непересекающихся подмножества?
+
+\begin{Solution}
+Выбрать произвольное количество дней из доступных $k_1$ возможно $2^{k_1}$ способами (любой день может быть выбран или нет).
+
+Рассмотрим два равенства:
+\[
+	\begin{split}
+		& \sum_{n=0}^{k_2} \binom{k_2}{n} = 2^{k_2} \\
+		& \sum_{n=0}^{k_2} \left(-1\right)^n \binom{k_2}{n} = 0
+	\end{split}
+\]
+Из них следует, что:
+\[
+	\begin{split}
+		& \sum_{n \in 2 \mathbb{Z}}^{k_2} \binom{k_2}{n} = \sum_{n \in 2 \mathbb{Z} + 1}^{k_2} \binom{k_2}{n} = 2^{k_2 - 1}
+	\end{split}
+\]
+таким образом получаем, что количество способов выбрать четное число дней из $k_2$ возможных равно $2^{k_2 - 1}$ (при $k_2 = 0$ существует всего 1 способ), а выбрать нечетное число дней из $k_3$ возможных можно $2^{k_3 - 1}$ (при $k_3 = 0$ существует 0 способов) способами.
+
+Так как исходное множество разбивается двумя разделителями, то решением будет произведение трех обыкновенных производящих функций, найдем их.
+\[
+	\begin{split}
+		& f\left(x\right) = 2^0 + 2^1 x + 2^2 x^2 + ... = \frac{1}{1 - 2 x} \\
+		& g\left(x\right) = 1 + 2^0 x + 2^1 x^2 + 2^2 x^3 + ... = \frac{x}{1 - 2 x} + 1 \\
+		& h\left(x\right) = 0 + 2^0 x + 2^1 x^2 + 2^2 x^3 + ... = \frac{x}{1 - 2 x}
+	\end{split}
+\]
+Перемножая все вместе:
+\[
+	\begin{split}
+		& f\left(x\right) g\left(x\right) h\left(x\right) = \frac{x^2}{\left(1 - 2 x\right)^3} = \\
+		& = \frac{A}{1 - 2 x} + \frac{B}{\left(1 - 2 x\right)^2} + \frac{C}{\left(1 - 2 x\right)^3} = \\
+		& = \frac{1/4}{1 - 2 x} - \frac{1/2}{\left(1 - 2 x\right)^2} + \frac{1/4}{\left(1 - 2 x\right)^3}
+	\end{split}
+\]
+Найдем последовательности определяемые производящими функциями справа:
+\[
+	\begin{split}
+		& \frac{1}{1 - 2 x} = \sum_{n=0}^{\infty} 2^n x^n \\
+		& \frac{1}{\left(1 - 2 x\right)^2} = \sum_{n=0}^{\infty} \binom{-2}{n} x^n \left(-2\right)^n = \sum_{n=0}^{\infty} \frac{\left(-2\right)\left(-2 - 1\right)\left(-2-2\right) ... \left(-2 - n + 1\right)}{n!} x^n \left(-2\right)^n = \\
+		& = \sum_{n=0}^{\infty} \frac{2\left(2+1\right)\left(2+2\right) ... \left(n+1\right)}{n!} 2^n x^n = \sum_{n=0}^{\infty} \frac{\left(n+1\right)!}{n!} 2^n x^n = \sum_{n=0}^{\infty} \left(n+1\right) 2^n x^n \\
+		& \frac{1}{\left(1 - 2 x\right)^3} = \sum_{n=0}^{\infty} \frac{\left(-3\right)\left(-3-1\right)\left(-3-2\right) ... \left(-3-n+1\right)}{n!} x^n \left(-2\right)^n = \\
+		& = \sum_{n=0}^{\infty} \frac{3\left(3+1\right)\left(3+2\right) ... \left(n+2\right)}{n!} 2^n x^n = \sum_{n=0}^{\infty} \frac{\left(n+2\right)!}{n! 2} x^n 2^n = \sum_{n=0}^{\infty} \left(n+1\right)\left(n+2\right) 2^{n-1} x^n
+	\end{split}
+\]
+Собираем все вместе:
+\[
+	T\left(n\right) = \frac{2^n}{4} \left(1 - 2 \left(n+1\right) + \frac{\left(n+1\right)\left(n+2\right)}{2}\right) = 2^{n-3} \left(n^2 - n + 4\right)
+\]
+
+Теперь, если семестр разбивается на три части не последовательно (то есть каждая часть не  обязательно непрерывная последовательность дней), то необходимо использовать экспоненциальные производящие функции.
+
+Количество способов выбрать необходимое количество дней в каждой части у нас уже посчитано, теперь найдем экспоненциальные производящие функции для них:
+\[
+	\begin{split}
+		& F\left(x\right) = 2^0 + 2 x + 2^2 \frac{x^2}{2!} + 2^3 \frac{x^3}{3!} + ... = e^{2x} \\
+		& G\left(x\right) = 1 + 2^0 x + 2 \frac{x^2}{2!} + 2^2 \frac{x^3}{3!} + ...  = x e^{2x} + 1 \\
+		& H\left(x\right) = 0 + 2^0 x + 2 \frac{x^2}{2!} + 2^2 \frac{x^3}{3!} + ... = x e^{2x}
+	\end{split}
+\]
+перемножаем все вместе:
+\[
+	\begin{split}
+		& F\left(x\right) G\left(x\right) H\left(x\right) = e^{2x} \cdot \frac{x e^{2x}}{2} \cdot \left(\frac{x e^{2x}}{2} + 1\right) = \\
+		& = \frac{x^2 e^{6x}}{4} + \frac{x e^{4x}}{2} = \\
+		& = \frac{x^2}{4} \sum_{n=0}^{\infty} \frac{6^n x^n}{n!} + \frac{x}{2} \sum_{n=0}^{\infty} \frac{4^n x^n}{n!} = \\
+		& = \frac{1}{4} \sum_{n=0}^{\infty} \frac{6^n x^{n+2}}{n!} + \frac{1}{2} \sum_{n=0}^{\infty} \frac{4^n x^{n+1}}{n!}
+	\end{split}
+\]
+получаем ответ:
+\[
+	T\left(n\right) = \frac{6^{n-2}}{4} + \frac{4^{n-1}}{2}
+\]
+\end{Solution}
+
+\paragraph{Задание 4.} На платцу стоят в одну линию $n$ солдат. Дежурный офицер разбивает эту линию на произвольное число $k$ Непустых отрядов (например, так: первые три солдата, следующие за ними четыре солдата, оставшиеся $n-7>0$ солдат). Затем он в каждом отряде назначает командира. Найти число $h_n$ способов сделать эту операцию.
+
+\begin{Solution}
+Назначить командира в отряде из $m$ солдат можно ровно $m$ - способами, с учетом недопустимости пустых отрядов получаем последовательность:
+\[
+	1, 2, 3, 4, 5 ...
+\]
+производящая функция следующая:
+\[
+	\frac{1}{\left(1-x\right)^2}
+\]
+обращаем внимание на то, что требуемый коэффициент стоит при $x^{m-1}$
+Перемножаем $k$ таких производящих функций:
+\[
+	\frac{1}{\left(1-x\right)^{2k}} = \left(1-x\right)^{-2k} = \sum_{i=0}^{\infty} \left(\binom{2k}{i}\right) x^i
+\]
+таким образом число способов сформировать $k$ отрядов из $n$ человек равно коэффициенту при $x^{n-1}$:
+\[
+		\left(\binom{2k}{n-1}\right)
+\]
+\end{Solution}
+
+\paragraph{Задание 5.} Найти ответ в предыдущей задаче в случае, если солдаты не стоят в одну линию. Иными словами, если у фомцера имеется возможность выбирать $k$ произвольных неустых подмножеств из $n$-элементного множества солдат.
+
+\begin{Solution}
+Решение задачи отличается использованием экспоненциальных производящих функций. Количество способов выбрать одного командира из $m$ солдат равно $m$, таким образом нужно построить экспоненциальную производящую функцию для последовательности:
+\[
+	1, 2, 3, 4, 5, ...
+\]
+\[
+	\sum_{i=0}^{\infty} \left(i+1\right) \frac{x^i}{i!} = \left(\sum_{i=0}^{\infty} \left(i+1\right)\frac{x^{i+1}}{\left(i+1\right)!}\right)' = \left(x \sum_{i=0}^{\infty}\frac{x^i}{i!}\right)' = \left(x e^x\right)'
+\]
+откуда получаем:
+\[
+	F\left(x\right) = e^x \left(x+1\right)
+\]
+При разбиении на $k$ отрядов получаем:
+\[
+	e^{kx} \left(x+1\right)^k = H\left(x\right) G\left(x\right)
+\]
+распишем суммы:
+\[
+	\begin{split}
+		& H\left(x\right) = \sum_{i=0}^{\infty} \frac{k^i x^i}{i!} \\
+		& G\left(x\right) = \sum_{i=0}^{\infty} \binom{k}{i} x^i = \sum_{i=0}^{\infty} \frac{\left(k\right)_i}{i!} x^i
+	\end{split}
+\]
+по правилу перемножения экспоненциальных функций получаем при $x^{n-1}$:
+\[
+	\sum_{i=0}^{n-1} \binom{n-1}{i} k^i \left(k\right)_i
+\]
+\end{Solution}
+
+\paragraph{Задание 6.} На плацу стоят в одну линию $n$ солдат. Дежурный офицер разбивает эту линию на произвольное число $k$ непустых отрядов (например, так: первые три солдата, следующие четыре, оставшиеся $n-7>0$ солдат). Затем он выбирает некоторое подмножество (возможно, пустое) вновь сформированных отрядов и отправляет их на дежурство. Сколькими способами он может это сделать.
+
+\begin{Solution}
+В одном из предыдущих заданий я постарался получить количество способов сформировать $k$ отрядов из $n$ солдат:
+\[
+	\left(\binom{2k}{n-1}\right)
+\]
+каждый из полученных $k$ отрядов может быть отправлен на дежурство, или нет, т. е. всего $2^k$ вариантов:
+\[
+	2^k \left(\binom{2k}{n-1}\right)
+\]
+\end{Solution}
+\end{document}

@@ -1,0 +1,389 @@
+1.
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, Name
+   FROM     Players
+   WHERE    PlayerNo IN 
+           (
+            SELECT   PlayerNo
+            FROM     Matches
+            WHERE    TeamNo = 1
+           );
+   ______________________
+
+__ STATISTICS _________________
+
+   Table Matches
+         NPag = 1, NReg = 13
+      Index pk_Matches
+         Attributes = [Matches.MatchNo asc]
+         NLeaf = 1, NKeys = 13, Clustered = false
+      Index fks_0_Matches
+         Attributes = [Matches.TeamNo asc]
+         NLeaf = 1, NKeys = 2, Clustered = false
+      Index fks_1_Matches
+         Attributes = [Matches.PlayerNo asc]
+         NLeaf = 1, NKeys = 9, Clustered = false 
+
+
+__ GREEDY SEARCH __________ 
+
+   Time               = 12 ms (min: 0, sec: 0, ms: 12)
+   Result cardinality = 7.0 Records
+   Cost               = 1.0 Logical Reads
+
+   Project(
+           Filter(
+                  TableScan(
+                            Matches
+                           )
+                  TeamNo = 1
+                 )
+           {PlayerNo}
+          )
+____________________
+
+__ STATISTICS _________________
+
+   Table Players
+         NPag = 3, NReg = 14
+      Index pk_Players
+         Attributes = [Players.PlayerNo asc]
+         NLeaf = 1, NKeys = 14, Clustered = false
+      Index PLAYER_Idx
+         Attributes = [Players.Name asc, Players.Initials asc]
+         NLeaf = 1, NKeys = 14, Clustered = false 
+
+
+__ GREEDY SEARCH __________ 
+
+   Time               = 18 ms (min: 0, sec: 0, ms: 18)
+   Result cardinality = 14.0 Records
+   Cost               = 3.0 Logical Reads
+
+   Project(
+           Filter(
+                  TableScan(
+                            Players
+                           )
+                  PlayerNo IN 
+                          ( 
+                           SELECT   PlayerNo
+                           FROM     Matches
+                           WHERE    TeamNo = 1
+                          )
+                 )
+           {PlayerNo,Name}
+          )
+____________________
+
+
+	PlayerNo    Name                                           
+	_________________________________________________________
+	6           Parmenter                                      
+	44          Baker                                          
+	83          Hope                                           
+	2           Everett                                        
+	57          Brown                                          
+	8           Newcastle                                      
+	_________________________________________________________
+	No of records 6
+
+
+	Access Plan Generation Time = 90 ms (min: 0, sec: 0, ms: 90)
+	Access Plan Execution Time  = 104 ms (min: 0, sec: 0, ms: 104)
+	Total Execution Time        = 194 ms (min: 0, sec: 0, ms: 194)
+
+2.
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, Name
+   FROM     Players
+   WHERE    PlayerNo IN 
+           (
+            SELECT   PlayerNo
+            FROM     Matches
+            WHERE    TeamNo = 1
+           );
+   ______________________
+
+__ STATISTICS _________________
+
+   Table Matches
+         NPag = 1, NReg = 13
+      Index pk_Matches
+         Attributes = [Matches.MatchNo asc]
+         NLeaf = 1, NKeys = 13, Clustered = false
+      Index fks_0_Matches
+         Attributes = [Matches.TeamNo asc]
+         NLeaf = 1, NKeys = 2, Clustered = false
+      Index fks_1_Matches
+         Attributes = [Matches.PlayerNo asc]
+         NLeaf = 1, NKeys = 9, Clustered = false 
+
+
+__ GREEDY SEARCH __________ 
+
+   Time               = 14 ms (min: 0, sec: 0, ms: 14)
+   Result cardinality = 7.0 Records
+   Cost               = 1.0 Logical Reads
+
+   Project(
+           Filter(
+                  TableScan(
+                            Matches
+                           )
+                  TeamNo = 1
+                 )
+           {PlayerNo}
+          )
+____________________
+
+__ STATISTICS _________________
+
+   Table Players
+         NPag = 3, NReg = 14
+      Index pk_Players
+         Attributes = [Players.PlayerNo asc]
+         NLeaf = 1, NKeys = 14, Clustered = false
+      Index PLAYER_Idx
+         Attributes = [Players.Name asc, Players.Initials asc]
+         NLeaf = 1, NKeys = 14, Clustered = false 
+
+
+__ GREEDY SEARCH __________ 
+
+   Time               = 16 ms (min: 0, sec: 0, ms: 16)
+   Result cardinality = 14.0 Records
+   Cost               = 3.0 Logical Reads
+
+   Project(
+           Filter(
+                  TableScan(
+                            Players
+                           )
+                  PlayerNo IN 
+                          ( 
+                           SELECT   PlayerNo
+                           FROM     Matches
+                           WHERE    TeamNo = 1
+                          )
+                 )
+           {PlayerNo,Name}
+          )
+____________________
+
+
+	PlayerNo    Name                                           
+	_________________________________________________________
+	6           Parmenter                                      
+	44          Baker                                          
+	83          Hope                                           
+	2           Everett                                        
+	57          Brown                                          
+	8           Newcastle                                      
+	_________________________________________________________
+	No of records 6
+
+
+	Access Plan Generation Time = 135 ms (min: 0, sec: 0, ms: 135)
+	Access Plan Execution Time  = 93 ms (min: 0, sec: 0, ms: 93)
+	Total Execution Time        = 228 ms (min: 0, sec: 0, ms: 228)
+
+
+3.
+
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, Name
+   FROM     Players
+   WHERE    PlayerNo IN 
+           (
+            SELECT   PlayerNo
+            FROM     Matches
+            WHERE    TeamNo = 1
+           );
+   ______________________
+
+__ STATISTICS _________________
+
+   Table Matches
+         NPag = 1, NReg = 13
+      Index pk_Matches
+         Attributes = [Matches.MatchNo asc]
+         NLeaf = 1, NKeys = 13, Clustered = false
+      Index fks_0_Matches
+         Attributes = [Matches.TeamNo asc]
+         NLeaf = 1, NKeys = 2, Clustered = false
+      Index fks_1_Matches
+         Attributes = [Matches.PlayerNo asc]
+         NLeaf = 1, NKeys = 9, Clustered = false 
+
+
+__ GREEDY SEARCH __________ 
+
+   Time               = 15 ms (min: 0, sec: 0, ms: 15)
+   Result cardinality = 7.0 Records
+   Cost               = 1.0 Logical Reads
+
+   Project(
+           Filter(
+                  TableScan(
+                            Matches
+                           )
+                  TeamNo = 1
+                 )
+           {PlayerNo}
+          )
+____________________
+
+__ STATISTICS _________________
+
+   Table Players
+         NPag = 3, NReg = 14
+      Index pk_Players
+         Attributes = [Players.PlayerNo asc]
+         NLeaf = 1, NKeys = 14, Clustered = false
+      Index PLAYER_Idx
+         Attributes = [Players.Name asc, Players.Initials asc]
+         NLeaf = 1, NKeys = 14, Clustered = false 
+
+
+__ GREEDY SEARCH __________ 
+
+   Time               = 13 ms (min: 0, sec: 0, ms: 13)
+   Result cardinality = 14.0 Records
+   Cost               = 3.0 Logical Reads
+
+   Project(
+           Filter(
+                  TableScan(
+                            Players
+                           )
+                  PlayerNo IN 
+                          ( 
+                           SELECT   PlayerNo
+                           FROM     Matches
+                           WHERE    TeamNo = 1
+                          )
+                 )
+           {PlayerNo,Name}
+          )
+____________________
+
+
+	PlayerNo    Name                                           
+	_________________________________________________________
+	6           Parmenter                                      
+	44          Baker                                          
+	83          Hope                                           
+	2           Everett                                        
+	57          Brown                                          
+	8           Newcastle                                      
+	_________________________________________________________
+	No of records 6
+
+
+	Access Plan Generation Time = 100 ms (min: 0, sec: 0, ms: 100)
+	Access Plan Execution Time  = 14593 ms (min: 0, sec: 14, ms: 593)
+	Total Execution Time        = 14693 ms (min: 0, sec: 14, ms: 693)
+
+4.
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, Name
+   FROM     Players
+   WHERE    PlayerNo IN 
+           (
+            SELECT   PlayerNo
+            FROM     Matches
+            WHERE    TeamNo = 1
+           );
+   ______________________
+
+__ STATISTICS _________________
+
+   Table Matches
+         NPag = 1, NReg = 13
+      Index pk_Matches
+         Attributes = [Matches.MatchNo asc]
+         NLeaf = 1, NKeys = 13, Clustered = false
+      Index fks_0_Matches
+         Attributes = [Matches.TeamNo asc]
+         NLeaf = 1, NKeys = 2, Clustered = false
+      Index fks_1_Matches
+         Attributes = [Matches.PlayerNo asc]
+         NLeaf = 1, NKeys = 9, Clustered = false 
+
+
+__ GREEDY SEARCH __________ 
+
+   Time               = 14 ms (min: 0, sec: 0, ms: 14)
+   Result cardinality = 7.0 Records
+   Cost               = 1.0 Logical Reads
+
+   Project(
+           Filter(
+                  TableScan(
+                            Matches
+                           )
+                  TeamNo = 1
+                 )
+           {PlayerNo}
+          )
+____________________
+
+__ STATISTICS _________________
+
+   Table Players
+         NPag = 3, NReg = 14
+      Index pk_Players
+         Attributes = [Players.PlayerNo asc]
+         NLeaf = 1, NKeys = 14, Clustered = false
+      Index PLAYER_Idx
+         Attributes = [Players.Name asc, Players.Initials asc]
+         NLeaf = 1, NKeys = 14, Clustered = false 
+
+
+__ GREEDY SEARCH __________ 
+
+   Time               = 15 ms (min: 0, sec: 0, ms: 15)
+   Result cardinality = 14.0 Records
+   Cost               = 3.0 Logical Reads
+
+   Project(
+           Filter(
+                  TableScan(
+                            Players
+                           )
+                  PlayerNo IN 
+                          ( 
+                           SELECT   PlayerNo
+                           FROM     Matches
+                           WHERE    TeamNo = 1
+                          )
+                 )
+           {PlayerNo,Name}
+          )
+____________________
+
+
+	PlayerNo    Name                                           
+	_________________________________________________________
+	6           Parmenter                                      
+	44          Baker                                          
+	83          Hope                                           
+	2           Everett                                        
+	57          Brown                                          
+	8           Newcastle                                      
+	_________________________________________________________
+	No of records 6
+
+
+	Access Plan Generation Time = 102 ms (min: 0, sec: 0, ms: 102)
+	Access Plan Execution Time  = 6297852 ms (min: 44, sec: 57, ms: 852)
+	Total Execution Time        = 6297954 ms (min: 44, sec: 57, ms: 954)

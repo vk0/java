@@ -1,0 +1,110 @@
+\chapter{Вопрос № 19}
+
+Количество $p_k\left(n\right)$ разбиений целого положительного числа $n$ ровно на $k$ слагаемых - определение, простейшие свойства, рекуррентные соотношения. Количество $P_k\left(n\right)$ разбиений целого положительного числа $n$ на не более чем $k$ частей - определение, простейшие свойства, рекуррентные соотношения, связь с числами $p_k\left(n\right)$.
+
+\section{Разбиение числа $n$ ровно на $k$ слогаемых}
+
+Разбиением целого положительного числа $n$ ровно на $k$ слагаемых называется неупорядоченный набор из $k$ целых положительных чисел, сумма которых равна $n$.
+
+Любое такое разбиение дает нам некоторое решение уравнения:
+\begin{equation}
+	\begin{split}
+		&x_1 + x_2 + ... + x_k = n \\
+		&x_1\ge x_2\ge ... \ge x_k \ge 1
+	\end{split}
+\end{equation}
+в терминах раскладки по ящикам - раскладка $n$ неразличимых предметов по $k$ неразличимым ящикам, так чтобы в каждом ящике был хотя бы один предмет.
+
+Количество способов такого разбиения числа обозначается через $p_k\left(n\right)$, очевидно, что:
+\begin{enumerate}
+\item $p_1\left(n\right) = 1$
+
+\item $p_n\left(n\right) = 1$
+
+\item $p_k\left(n\right) = 0, k > n$
+
+\item $p\left(n\right) = \sum_{k=1}^n p_k\left(n\right)$
+\end{enumerate}
+
+Для чисел $p_k\left(n\right)$ справедлива следующая формула:
+\begin{equation}
+	\begin{split}
+		& p_k\left(n\right) = \sum_{r=1}^m p_r\left(n-k\right)\\
+		& m = min\left\{k, n-k\right\}
+	\end{split}
+\end{equation}
+\begin{Proof}
+Исходная задача - посчитать количество целочисленных решений уравнения:
+\[
+	\begin{split}
+		& x_1 + x_2 + ... + x_k = n \\
+		& x_1 \ge x_2 \ge ... \ge x_k \ge 1
+	\end{split}
+\]
+сделаем замену переменных: $x_i \mapsto z_i + 1$:
+\[
+	\begin{split}
+		& z_1 + z_2 + ... + z_k = n-k \\
+		& z_1 \ge z_2 \ge ... \ge z_k \ge 0
+	\end{split}
+\]
+рассматриваем случаи:
+\begin{enumerate}
+\item Первый случай, когда $n-k \le k$, тогда очевидно $z_{n-k+1} = z_{n-k+2} = ... = z_k = 0 $, откуда получаем:
+\[
+	p\left(n-k\right) = p_k\left(n\right) = \sum_{r=1}^{n-k} p_r\left(n-k\right)
+\]
+
+\item Случай второй, когда $n-k > k$, тогда просто разбиваем все решения на $k$ блоков $X_r$, где блок $X_r$ содержит только решения, в которых $r$ ненулевых слагаемых, тогда:
+\[
+	p_k\left(n\right) = \sum_{r=1}^k p_r\left(n-k\right)
+\]
+\end{enumerate}
+\end{Proof}
+
+Наконец для чисел $p_k\left(n\right)$ справедлива еще одна рекуррентная формула:
+\begin{equation}
+	p_k\left(n\right) = p_{k-1}\left(n-1\right) + p_k\left(n-k\right)
+\end{equation}
+\begin{Proof}
+Пусть $k \le n - k$, тогда мы можем записать следующее:
+\[
+	p_k\left(n\right) = \sum_{r=1}^{k-1}p_r\left(n-k\right) + p_k\left(n-k\right) = p_k\left(n\right) = p_{k-1}\left(n-1\right) + p_k\left(n-k\right)
+\]
+теперь пусть $k > n - k$, тогда $p_k\left(n-k\right) = 0$, и формула опять же оказывается справедливой.
+
+Комбинаторно его можно доказать следующим образом. Разбиваем все разделения $n$ на $k$ слогаемых на блоки, в первом блоке присутсвует слогаемое равное 1, а во втором такое логаемое отсутствует. Очевидно что каждому разбиению из первого блока соответсвует некоторое разбиение числа $n-1$ на $k-1$ блоков, а отняв из каждого слогаемого второго блока по 1, опять получим разбиение числа на $k$ слогаемых, но само число, очевидно, уже $n-k$.
+\end{Proof}
+
+\section{Разделение числа $n$ на не более чем $k$ частей}
+
+Количество разбиений числа $n$ на не более чем $k$ слагаемых обозначаеися числом $P_k\left(n\right)$, очевидно, что оно связано с числами $p_k\left(n\right)$ следующим образом:
+\begin{equation}
+	P_k\left(n\right) = \sum_{r=1}^k p_r\left(n\right)
+\end{equation}
+кроме того очевидны следующие свойства:
+\begin{enumerate}
+\item $P_n\left(n\right) = p\left(n\right)$
+
+\item $P_1\left(n\right) = 1$
+
+\item $\forall k \ge 1 : P_k\left(0\right) = 1$
+
+\item $P_k\left(n\right) = p\left(n\right), k \ge n$
+\end{enumerate}
+кроме того справедлива следующая формула:
+\begin{equation}
+	p_k\left(n\right) = P_k\left(n\right) - P_{k-1}\left(n\right)
+\end{equation}
+Выведем рекуррентное соотношение для чисел $P_k\left(n\right)$:
+\[
+	\begin{split}
+		&P_k\left(n\right) = \sum_{r=1}^k p_r\left(n\right) = \sum_{r=1}^{k-1}p_r\left(n\right) + p_k\left(n\right) = \\
+		& = P_{k-1}\left(n\right) + p_k\left(n\right) = P_{k-1}\left(n\right) + P_k\left(n-k\right)
+	\end{split}
+\]
+т. е. справедлива формула:
+\begin{equation}
+	P_k\left(n\right) = P_{k-1}\left(n\right) + P_k\left(n-k\right)
+\end{equation}
+Докажем эту формулу комбинаторно, для этого разобьем все разбиения числа $n$ на блоки, первый блок содержит разбиения в которых как минимум 1 слогаемое равно 0, второй блок таких слагаемых не содержит, очевидно, что в первом блоке $P_{k-1}\left(n\right)$ разбиений, а во втором $P_k\left(n-k\right)$ разбиений.

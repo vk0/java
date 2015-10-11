@@ -1,0 +1,139 @@
+CREATE DATABASE SportDB IN SPORT; 
+
+CREATE   TABLE Players
+        (PlayerNo        INTEGER      NOT NULL,
+         Name            VARCHAR(45)  NOT NULL,
+         Initials        VARCHAR(30)   NOT NULL,
+         BirthYear       INTEGER              ,
+         Sex             VARCHAR(1)   NOT NULL,
+         Joined          INTEGER      NOT NULL,
+         Street          VARCHAR(55)  NOT NULL,
+         HouseNo         VARCHAR(10)           ,
+         PostCode        VARCHAR(6)           ,
+         Town            VARCHAR(50)  NOT NULL,
+         PhoneNo         VARCHAR(10)          ,
+         LeagueNo        VARCHAR(4)           ,
+         PRIMARY KEY    (PlayerNo)            );
+ 
+CREATE   TABLE Teams
+        (TeamNo          INTEGER     NOT NULL,
+         PlayerNo        INTEGER     NOT NULL,
+         Division        VARCHAR(6)  NOT NULL,
+         PRIMARY KEY     (TeamNo)            ,       
+		  FOREIGN KEY     (PlayerNo)
+			REFERENCES     Players      
+           ON DELETE     CASCADE             );
+ 
+CREATE   TABLE Matches
+        (MatchNo         INTEGER     NOT NULL,
+         TeamNo          INTEGER     NOT NULL,
+         PlayerNo        INTEGER     NOT NULL,
+         Won             INTEGER     NOT NULL,
+         Lost            INTEGER     NOT NULL,
+
+         PRIMARY KEY     (MatchNo)           , 
+		  FOREIGN KEY     (TeamNo)
+			REFERENCES     Teams     
+			 ON DELETE     CASCADE             ,
+		  FOREIGN KEY     (PlayerNo)
+			REFERENCES     Players   
+			 ON DELETE     CASCADE             );
+ 
+CREATE   TABLE Penalties
+        (PaymentNo       INTEGER      NOT NULL,
+         PlayerNo        INTEGER      NOT NULL,
+         PenaltyDate     VARCHAR(10)  NOT NULL,
+         Amount          INTEGER      NOT NULL,
+
+         PRIMARY KEY     (PaymentNo)          ,  
+ 	  FOREIGN KEY     (PlayerNo) 
+ 			REFERENCES     Players   
+ 			 ON DELETE     NO ACTION          );
+ 
+CREATE   UNIQUE INDEX PLAYER_Idx ON
+         Players (Name ASC, Initials ASC);
+
+ 
+INSERT INTO Players VALUES (
+  6, 'Parmenter', 'R', 1964, 'M', 1977, 'Haseltine Lane',
+    '80', '1234KK', 'Stratford', '070-476537', '8467');
+
+INSERT INTO Players VALUES (
+ 44, 'Baker', 'E', 1963, 'M', 1980, 'Lewis Street',
+    '23', '4444LJ', 'Inglewood', '070-368753', '1124');
+
+INSERT INTO Players VALUES (
+ 83, 'Hope', 'PK', 1956, 'M', 1982, 'Magdalene Road',
+    '16A', '1812UP', 'Stratford', '070-353548', '1608');
+
+INSERT INTO Players VALUES (
+  2, 'Everett', 'R', 1948, 'M', 1975, 'Stoney Road',
+    '43', '3575NH', 'Stratford', '070-237893', '2411');
+
+INSERT INTO Players VALUES (
+ 27, 'Collins', 'DD', 1964, 'F', 1983, 'Long Drive',
+    '804', '8457DK', 'Eltham', '079-234857', '2513');
+
+INSERT INTO Players VALUES (
+104, 'Moorman', 'D', 1970, 'F', 1984, 'Stout Street',
+    '65', '9437AO', 'Eltham', '079-987571', '7060');
+
+INSERT INTO Players VALUES (
+  7, 'Wise', 'GWS', 1963, 'M', 1981, 'Edgecombe Way',
+    '39', '9758VB', 'Stratford', '070-347689', NULL);
+
+INSERT INTO Players VALUES (
+ 57, 'Brown', 'M', 1971, 'M', 1985, 'Edgecombe Way',
+    '16', '4377CB', 'Stratford', '070-473458', '6409');
+
+INSERT INTO Players VALUES (
+ 39, 'Bishop', 'D', 1956, 'M', 1980, 'Eaton Square',
+    '78', '9629CD', 'Stratford', '070-393435', NULL);
+
+INSERT INTO Players VALUES (
+112, 'Bailey', 'IP', 1963, 'F', 1984, 'Vixen Road',
+    '8', '6392LK', 'Plymouth', '010-548745', '1319');
+
+INSERT INTO Players VALUES (
+  8, 'Newcastle', 'B', 1962, 'F', 1980, 'Station Road',
+    '4', '6584WO', 'Inglewood', '070-458458', '2983');
+
+INSERT INTO Players VALUES (
+100, 'Parmenter', 'P', 1963, 'M', 1979, 'Haseltine Lane',
+    '80', '6494SG', 'Stratford', '070-494593', '6524');
+
+INSERT INTO Players VALUES (
+ 28, 'Collins', 'C', 1963, 'F', 1983, 'Old Main Road',
+    '10', '1294QK', 'Midhurst', '010-659599', NULL);
+
+INSERT INTO Players VALUES (
+ 95, 'Miller', 'P', 1934, 'M', 1972, 'High Street',
+    '33A', '5746OP', 'Douglas', '070-867564', NULL);
+
+INSERT INTO Teams VALUES (1,  6, 'first');
+INSERT INTO Teams VALUES (2, 27, 'second');
+
+INSERT INTO Matches VALUES ( 1, 1,   6, 3, 1);
+INSERT INTO Matches VALUES ( 2, 1,   6, 2, 3);
+INSERT INTO Matches VALUES ( 3, 1,   6, 3, 0);
+INSERT INTO Matches VALUES ( 4, 1,  44, 3, 2);
+INSERT INTO Matches VALUES ( 5, 1,  83, 0, 3);
+INSERT INTO Matches VALUES ( 6, 1,   2, 1, 3);
+INSERT INTO Matches VALUES ( 7, 1,  57, 3, 0);
+INSERT INTO Matches VALUES ( 8, 1,   8, 0, 3);
+INSERT INTO Matches VALUES ( 9, 2,  27, 3, 2);
+INSERT INTO Matches VALUES (10, 2, 104, 3, 2);
+INSERT INTO Matches VALUES (11, 2, 112, 2, 3);
+INSERT INTO Matches VALUES (12, 2, 112, 1, 3);
+INSERT INTO Matches VALUES (13, 2,   8, 0, 3);
+
+INSERT INTO Penalties VALUES (1,  6, '12/08/1980',100);
+INSERT INTO Penalties VALUES (2, 44, '05/05/1981', 75);
+INSERT INTO Penalties VALUES (3, 27, '09/10/1983',100);
+INSERT INTO Penalties VALUES (4,104, '12/08/1984', 50);
+INSERT INTO Penalties VALUES (5, 44, '12/08/1980', 25);
+INSERT INTO Penalties VALUES (6,  8, '12/08/1980', 25);
+INSERT INTO Penalties VALUES (7, 44, '12/30/1982', 30);
+INSERT INTO Penalties VALUES (8, 27, '11/12/1984', 75);
+
+update statistics;

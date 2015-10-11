@@ -1,0 +1,304 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[T2A]{fontenc} 
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{listings}
+\usepackage[dvips]{graphicx}
+\usepackage{indentfirst}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{left=1.5cm}
+\geometry{right=1.5cm}
+\geometry{top=1cm}
+\geometry{bottom=2cm}
+
+\graphicspath{{images/}}
+
+\begin{document}
+\sloppy
+
+\lstset{
+	basicstyle=\small,
+	stringstyle=\ttfamily,
+	showstringspaces=false,
+	columns=fixed,
+	breaklines=true,
+	numbers=right,
+	numberstyle=\tiny
+}
+
+\newtheorem{Def}{Определение}[section]
+\newtheorem{Th}{Теорема}
+\newtheorem{Lem}[Th]{Лемма}
+\newenvironment{Proof}
+	{\par\noindent{\bf Доказательство.}}
+	{\hfill$\scriptstyle\blacksquare$}
+\newenvironment{Solution}
+	{\par\noindent{\bf Решение.}}
+	{\hfill$\scriptstyle\blacksquare$}
+
+
+\begin{flushright}
+	Кринкин М. Ю. группа 504 (SE)
+\end{flushright}
+
+\section{Домашнее задание 1}
+
+\paragraph{Задание 1.} Выполните подстановку:
+\[
+	\begin{split}
+		&xy\left(\lambda zy . zx\left(wx\right)y\right) \left[x := w\left(\lambda x . wx\right)\right]\\
+		&xy\left(\lambda zy . zx\left(wx\right)y\right) \left[y := w\left(\lambda x . wx\right)\right]\\
+		&xy\left(\lambda zy . zx\left(wx\right)y\right) \left[z := w\left(\lambda x . wx\right)\right]\\
+		&xy\left(\lambda zy . zx\left(wx\right)y\right) \left[x := w\left(\lambda x . yx\right)\right]\\
+	\end{split}
+\]
+\begin{Solution}
+
+$xy\left(\lambda zy . zx\left(wx\right)y\right) \rightarrow w\left(\lambda x . wx\right)y\lambda zy . zw\left(\lambda x . wx\right)\left(ww\lambda x . wx\right)y$
+
+$xy\left(\lambda zy . zx\left(wx\right)y\right) \rightarrow xw\left(\lambda x . wx\right)\lambda zy' . zx\left(wx\right)y'$
+
+$xy\left(\lambda zy . zx\left(wx\right)y\right) \rightarrow xy\lambda z'y . z'x\left(wx\right)y$
+
+$xy\left(\lambda zy . zx\left(wx\right)y\right) \rightarrow w\left(\lambda x . yx\right)y\lambda zy' . zw\left(\lambda x . yx\right)\left(ww\lambda x . yx\right)y'$
+
+\end{Solution}
+
+\paragraph{Задание 2.} Уберите лишние скобки и при возможности выполните $\beta$-преобразование:
+\[
+	\left(\left(\lambda z . \left(z\left(yz\right)\right)\right)\left(zx\right)z\right)
+\]
+
+\begin{Solution}
+
+$\left(\left(\lambda z . \left(z\left(yz\right)\right)\right)\left(zx\right)z\right) \rightarrow \left(\lambda z . \left(z\left(yz\right)\right)\right)\left(zx\right)z \rightarrow \left(\lambda z . z\left(yz\right)\right)\left(zx\right)z$
+
+Произведем $\beta$-преобразование:
+
+$\left(\lambda z . z\left(yz\right)\right)\left(zx\right)z \equiv_{\beta} \left(zx\left(yzx\right)\right)z \rightarrow zx\left(yzx\right)z$
+
+\end{Solution}
+
+\paragraph{Задание 3.} Определить логическую связку $or$, если известно:
+\[
+	\begin{split}
+		&tru \equiv \lambda tf . t\\
+		&fls \equiv \lambda tf . f\\
+	\end{split}
+\]
+
+\begin{Solution}
+
+$or \equiv \lambda xy . x ~tru~ y$
+
+Для проверки достаточно рассмотреть два случая:
+
+\begin{enumerate}
+\item Применим $or$ к $tru$, в результате должны получить $tru$ независимо от второго аругмента, т. е. $\lambda y . tru$:
+
+$or \lambda tf . t \rightarrow \lambda y . \left(\lambda tf . t\right) ~tru~ y \rightarrow \lambda y . tru$
+
+\item Применим $or$ к $tru$, в результате должны получить второй аргумент, т. е. $\lambda y . y$:
+
+$or \lambda tf . f \rightarrow \lambda y . \left(\lambda tf . f\right) ~tru~ y \rightarrow \lambda y . y$
+\end{enumerate}
+
+\end{Solution}
+
+\paragraph{Задание 4.} Проверить ожидаемые свойства условного выражения $iif \equiv \lambda b x y . b x y$:
+
+\[
+	\begin{split}
+		&iif ~tru~ v w = v\\
+		&iif ~fls~ v w = w\\
+	\end{split}
+\]
+
+\begin{Solution}
+
+$iif ~tru~ v w \rightarrow iif \left(\lambda tf . t\right) v w \rightarrow \left(\lambda b x y . b x y\right) \left(\lambda tf . t\right) v w \rightarrow \left(\lambda tf . t\right) v w \rightarrow v$
+
+$iif ~fls~ v w \rightarrow iif \left(\lambda tf . f\right) v w \rightarrow \left(\lambda b x y . b x y\right) \left(\lambda tf . f\right) v w \rightarrow \left(\lambda tf . f\right) v w \rightarrow w$
+
+\end{Solution}
+
+\paragraph{Задание 5.} Проверить свйоства логического оператора "и" $and \equiv \lambda x y . x y ~fls$:
+
+\[
+	\begin{split}
+		&and ~tru~ w = w\\
+		&and ~fls~ w = fls\\
+	\end{split}
+\]
+
+\begin{Solution}
+
+$and ~tru~ w \rightarrow \left(\lambda x y . x y ~fls\right) \left(\lambda tf . t\right) w \rightarrow \left(\lambda tf . t\right) w ~fls \rightarrow w$
+
+$and ~fls~ w \rightarrow \left(\lambda x y . x y ~fls\right)\left(\lambda tf . f\right) w \rightarrow \left(\lambda tf . f\right) w ~fls \rightarrow fls$
+
+\end{Solution}
+
+\paragraph{Задание 6.} Проверить свойства операторов
+
+\[
+	\begin{split}
+		&fst \equiv \lambda p . p ~tru\\
+		&snd \equiv \lambda p . p ~fls\\
+	\end{split}
+\]
+
+над парой $pair \equiv \lambda xyf . fxy$
+
+\begin{Solution}
+
+$fst\left(pair ~a ~b\right) \rightarrow fst\left(\lambda f . f ~a ~b\right) \rightarrow \left(\lambda p . p ~tru\right)\left(\lambda f . f ~a ~b\right) \rightarrow \left(\lambda f . f ~a ~b\right)tru \rightarrow a$
+
+$snd\left(pair ~a ~b\right) \rightarrow snd\left(\lambda f . f ~a ~b\right) \rightarrow \left(\lambda p . p ~fls\right)\left(\lambda f . f ~a ~b\right) \rightarrow \left(\lambda f . f ~a ~b\right)fls \rightarrow b$
+
+\end{Solution}
+
+\paragraph{Задание 7.} Проверить свойства $iszro \equiv \lambda n . n\left(\lambda x . fls\right)tru$
+
+\begin{Solution}
+
+$iszro \left(\lambda sz . z\right) \rightarrow \left(\lambda n . n\left(\lambda x . fls\right)tru\right)\left(\lambda sz . z\right) \rightarrow \left(\lambda sz . z\right)\left(\lambda x . fls\right)tru \rightarrow tru$
+
+$iszro \left(\lambda sz . s^n\left(z\right)\right) \rightarrow \left(\lambda n . n\left(\lambda x . fls\right)tru\right)\left(\lambda sz . s^n\left(z\right)\right) \rightarrow \left(\lambda sz . s^n\left(z\right)\right)\left(\lambda x . fls\right)tru \rightarrow fls$, при $n > 0$
+
+\end{Solution}
+
+\paragraph{Задание 8.} Проверить ожидаемые свойства функции следования $succ \equiv \lambda nsz . s \left(nsz\right)$
+
+\begin{Solution}
+
+$succ \left(\lambda sz . s^n\left(z\right)\right) \rightarrow \left(\lambda nsz . s \left(nsz\right)\right)\left(\lambda sz . s^n\left(z\right)\right) \rightarrow \lambda sz . s\left(\left(\lambda sz . s^n\left(z\right)\right)sz\right) \rightarrow \lambda sz . s\left(s^n\left(z\right)\right) \rightarrow \lambda sz . s^{n+1}\left(z\right)$
+
+\end{Solution}
+
+\paragraph{Задание 9.} Проверить свойства операции сложения $plus \equiv \lambda mnsz . ms \left(nsz\right)$
+
+\begin{Solution}
+
+$plus \left(\left(\lambda sz . s^{n_1}\left(z\right)\right)\left(\lambda sz . s^{n_2}\left(z\right)\right)\right) \rightarrow \left(\lambda mnsz . ms \left(nsz\right)\right) \left(\left(\lambda sz . s^{n_1}\left(z\right)\right)\left(\lambda sz . s^{n_2}\left(z\right)\right)\right) \rightarrow \lambda sz . \left(\lambda sz . s^{n_1}\left(z\right)\right)s \left(\left(\lambda sz . s^{n_2}\left(z\right)\right)sz\right) \rightarrow \lambda sz . \left(\lambda z . s^{n_1}\left(z\right)\right) \left(s^{n_2}\left(z\right)\right) \rightarrow \lambda sz . s^{n_1 + n_2} \left(z\right)$
+
+\end{Solution}
+
+\paragraph{Задание 10.} Проверить свойства операций умножения:
+
+\[
+	\begin{split}
+		&mult1 = \lambda mn . m\left(plus ~n\right) 0\\
+		&mult2 = \lambda mnsz . m \left(ns\right) z\\
+	\end{split}
+\]
+
+\begin{Solution}
+
+$mult1 \left(\lambda sz . s^{n_1}\left(z\right)\right)\left(\lambda sz . s^{n_2}\left(z\right)\right) \rightarrow \left(\lambda mn . m\left(plus ~n\right) 0\right) \left(\lambda sz . s^{n_1}\left(z\right)\right)\left(\lambda sz . s^{n_2}\left(z\right)\right) \rightarrow \left(\lambda sz . s^{n_1}\left(z\right)\right)\left(plus \left(\lambda sz . s^{n_2}\left(z\right)\right)\right) 0 \rightarrow \left(plus \left(\lambda sz . s^{n_2}\left(z\right)\right)\right)^{n_1}\left(0\right) \rightarrow \lambda sz . s^{n_1 \times n_2}\left(z\right)$
+
+$mult2 \left(\lambda sz . s^{n_1}\left(z\right)\right)\left(\lambda sz . s^{n_2}\left(z\right)\right) \rightarrow \left(\lambda mnsz . m \left(ns\right) z\right) \left(\lambda sz . s^{n_1}\left(z\right)\right)\left(\lambda sz . s^{n_2}\left(z\right)\right) \rightarrow \lambda sz . \left(\lambda sz . s^{n_1}\left(z\right)\right) \left(\left(\lambda sz . s^{n_2}\left(z\right)\right)s\right) z \rightarrow \lambda sz . \left(\lambda sz . s^{n_1}\left(z\right)\right) \left(\lambda z . s^{n_2}\left(z\right)\right) z \rightarrow \lambda sz . \left(\left(\lambda z . s^{n_2}\left(z\right)\right)^{n_1}\left(z\right)\right)\rightarrow \lambda sz . s^{n_1 \times n_2}\left(z\right)$
+
+\end{Solution}
+
+\paragraph{Задание 11.} Выполните подстановку:
+
+\[
+	\begin{split}
+		&\lambda yz . xyw\left(zx\right) \left[x := \lambda y . yw\right]\\
+		&\lambda xy . xy \left(\lambda x . xy\right)x \left[x := \lambda z . z\right]\\
+		&xy \left(\lambda xz . xyz\right) y \left[y := xz\right]\\
+	\end{split}
+\]
+
+\begin{Solution}
+
+$\lambda yz . xyw\left(zx\right) \rightarrow \lambda y'z . \left(\lambda y . yw\right)y'w\left(z\left(\lambda y . yw\right)\right) \rightarrow \lambda y'z . y'ww\left(z\lambda y . yw\right)$
+
+$\lambda xy . xy \left(\lambda x . xy\right)x \rightarrow \lambda x'y . x'y \left(\lambda x . xy\right)x'$ - нет свободных вхождений $x$
+
+$xy \left(\lambda xz . xyz\right) y \rightarrow xy \left(\lambda x'z' . x'yz'\right) y \rightarrow x\left(xz\right) \left(\lambda x'z' . x'\left(xz\right)z'\right) \left(xz\right)$
+
+\end{Solution}
+
+\paragraph{Задание 12.} Уберите лишние скобки и при возможности выполните $\beta$-преобразование:
+
+\[
+	\begin{split}
+		&\left(x\left(\lambda x . \left(\left(xy\right)x\right)\right)y\right)\\
+		&\left(\left(\lambda p.\left(\lambda q .\left(\left(q\left(pr\right)\right)s\right)\right)\right)\left(\left(q\left(pr\right)\right)s\right)\right)
+	\end{split}
+\]
+
+\begin{Solution}
+
+$\left(x\left(\lambda x . \left(\left(xy\right)x\right)\right)y\right) \rightarrow x\left(\lambda x . \left(\left(xy\right)x\right)\right)y \rightarrow x\left(\lambda x' . x'yx'\right)y$
+
+$\left(\left(\lambda p.\left(\lambda q .\left(\left(q\left(pr\right)\right)s\right)\right)\right)\left(\left(q\left(pr\right)\right)s\right)\right) \rightarrow \left(\lambda p.\left(\lambda q .\left(\left(q\left(pr\right)\right)s\right)\right)\right)\left(\left(q\left(pr\right)\right)s\right) \rightarrow \left(\lambda p.\left(\lambda q .\left(\left(q\left(pr\right)\right)s\right)\right)\right)\left(q\left(pr\right)s\right) \rightarrow \left(\lambda p.\left(\lambda q .\left(q\left(pr\right)s\right)\right)\right)\left(q\left(pr\right)s\right) \rightarrow \left(\lambda pq.q\left(pr\right)s\right)\left(q\left(pr\right)s\right) \rightarrow \left(\lambda p'q'.q'\left(p'r\right)s\right)\left(q\left(pr\right)s\right) \rightarrow \lambda q'.q'\left(q\left(pr\right)sr\right)s$
+
+\end{Solution}
+
+\paragraph{Задание 13.} Покажите, что для любых $M$ и $N$ выполняется $$ \lambda x . M N = S\left(\lambda x . M\right)\left(\lambda x . N\right) $$
+
+\begin{Solution}
+
+$S\left(\lambda x . M\right)\left(\lambda x . N\right) \rightarrow \left(\lambda fgy . fy \left(gy\right)\right)\left(\lambda x . M\right)\left(\lambda x . N\right) \rightarrow \lambda y . \left(\lambda x . M\right)y \left(\left(\lambda x . N\right)y\right) \rightarrow \lambda y . \left(\lambda x . M\right)y \left(N\right) \rightarrow \lambda y . MN$
+
+\end{Solution}
+
+\paragraph{Задание 14.} Покажите, что:
+
+\[
+	\begin{split}
+		&SKK = I\\
+		&B = S\left(KS\right)K\\
+	\end{split}
+\]
+
+\begin{Solution}
+
+$SKK \rightarrow \left(\lambda fgx . fx\left(gx\right)\right)\left(\lambda xy . x\right)\left(\lambda xy . x\right) \rightarrow \left(\lambda fgx' . fx'\left(gx'\right)\right)\left(\lambda xy . x\right)\left(\lambda xy . x\right) \rightarrow \lambda x' . \left(\lambda xy . x\right)x'\left(\left(\lambda xy . x\right)x'\right) \rightarrow \lambda x' . \left(\lambda xy . x\right)x'\left(\lambda y . x'\right) \rightarrow \lambda x' . x' = I$
+
+$S\left(KS\right)K \rightarrow \left(\lambda fgx . fx\left(gx\right)\right)\left(\left(\lambda xy . x\right)\left(\lambda fgx . fx\left(gx\right)\right)\right)\left(\lambda xy . x\right) \rightarrow \left(\lambda fgx . fx\left(gx\right)\right)\left(\lambda yfgx . fx\left(gx\right)\right)\left(\lambda xy . x\right) \rightarrow \left(\lambda f'g'x' . f'x'\left(g'x'\right)\right)\left(\lambda yfgx . fx\left(gx\right)\right)\left(\lambda xy . x\right) \rightarrow \lambda x' . \left(\lambda yfgx . fx\left(gx\right)\right)x'\left(\left(\lambda xy . x\right)x'\right) \rightarrow \lambda x' . \left(\lambda yfgx . fx\left(gx\right)\right)x'\left(\lambda y . x'\right) \rightarrow \lambda x' . \left(\lambda fgx . fx\left(gx\right)\right)\left(\lambda y . x'\right) \rightarrow \lambda x' . \left(\lambda gx . \left(\lambda y . x'\right)x\left(gx\right)\right) \rightarrow \lambda x' . \left(\lambda gx . x'\left(gx\right)\right) \rightarrow \lambda x'gx . x'\left(gx\right) = B$
+
+\end{Solution}
+
+\paragraph{Задание 15.} Реализовать функцию возведения в степень для чисел Чёрча.
+
+\begin{Solution}
+
+$exp \equiv \lambda x y . y x$, проверим это:
+
+$exp ~x ~y \rightarrow exp \left(\lambda sz . s^{n_2}\left(z\right)\right)\left(\lambda sz . s^{n_1}\left(z\right)\right) \rightarrow \left(\lambda sz . s^{n_1}\left(z\right)\right)\left(\lambda sz . s^{n_2}\left(z\right)\right) \rightarrow \lambda z' . \left(\lambda sz . s^{n_2}\left(z\right)\right)^{n_1}\left(z'\right) \rightarrow \lambda z' . \left(\lambda z . {z'}^{n_2}\left(z\right)\right)^{n_1} \rightarrow \lambda z'z . \left({z'}^{n_2}\left(z\right)\right)^{n_1} \rightarrow \lambda z'z . {z'}^{{n_2}^{n_1}}\left(z\right)$
+
+Другой способ, если мы определим функцию предшествования (или уменьшения на единицу):
+
+для этого определим вспомогательные функции:
+
+\[
+	\begin{split}
+		&zp \equiv pair ~0 ~0\\
+		&sp \equiv \lambda pair \left( snd ~p\right) \left(succ \left(snd ~p\right)\right)
+	\end{split}
+\]
+$prev \equiv \lambda m. fst \left(m ~sp ~zp\right)$, то основываясь на императивной записи возведения числа в степень:
+
+\begin{lstlisting}
+int exp(int n, int pow) {
+	if (iszero(pow)) return 1;
+	else return n*exp(n,pow-1);
+}
+\end{lstlisting}
+
+Можно записать:
+
+$exp \equiv \lambda xy. iif \left(iszro ~x\right) \left(\lambda sz . sz\right) \left(mult ~x \left(exp ~x \left(prev ~y\right)\right)\right) $
+
+\end{Solution}
+
+\end{document}

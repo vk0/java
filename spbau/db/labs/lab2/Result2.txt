@@ -1,0 +1,395 @@
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, Address, LeagueNo
+   FROM     StratfordPlayers;
+   ______________________
+
+
+	PlayerNo    Address                                                                 LeagueNo  
+	____________________________________________________________________________________________
+	2           43                                                                      2411      
+	6           80                                                                      8467      
+	7           39                                                                      test      
+	39          78                                                                      test      
+	57          16                                                                      6409      
+	83          16                                                                      1608      
+	100         80                                                                      6524      
+	____________________________________________________________________________________________
+	No of records 7
+
+
+	Access Plan Generation Time = 22 ms (min: 0, sec: 0, ms: 22)
+	Access Plan Execution Time  = 10 ms (min: 0, sec: 0, ms: 10)
+	Total Execution Time        = 32 ms (min: 0, sec: 0, ms: 32)
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, LeagueNo
+   FROM     StratfordPlayers
+   ORDER BY LeagueNo asc;
+   ______________________
+
+
+	PlayerNo    LeagueNo  
+	____________________
+	83          1608      
+	2           2411      
+	57          6409      
+	100         6524      
+	6           8467      
+	7           test      
+	39          test      
+	____________________
+	No of records 7
+
+
+	Access Plan Generation Time = 57 ms (min: 0, sec: 0, ms: 57)
+	Access Plan Execution Time  = 57 ms (min: 0, sec: 0, ms: 57)
+	Total Execution Time        = 114 ms (min: 0, sec: 0, ms: 114)
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, BirthYear
+   FROM     PlayersBirthYearIN;
+   ______________________
+
+
+	PlayerNo    BirthYear   
+	______________________
+	7           1963        
+	8           1962        
+	28          1963        
+	44          1963        
+	100         1963        
+	104         1970        
+	112         1963        
+	1024        1970        
+	1025        1970        
+	1029        1962        
+	1032        1970        
+	1043        1962        
+	1050        1962        
+	1056        1962        
+	1075        1963        
+	1079        1970        
+	1096        1963        
+	1102        1963        
+	1105        1963        
+	______________________
+	No of records 19
+
+
+	Access Plan Generation Time = 26 ms (min: 0, sec: 0, ms: 26)
+	Access Plan Execution Time  = 25 ms (min: 0, sec: 0, ms: 25)
+	Total Execution Time        = 51 ms (min: 0, sec: 0, ms: 51)
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, Name
+   FROM     Team1Players;
+   ______________________
+
+
+	PlayerNo    Name                                           
+	_________________________________________________________
+	2           Everett                                        
+	6           Parmenter                                      
+	8           Newcastle                                      
+	44          Baker                                          
+	57          Brown                                          
+	83          Hope                                           
+	_________________________________________________________
+	No of records 6
+
+
+	Access Plan Generation Time = 26 ms (min: 0, sec: 0, ms: 26)
+	Access Plan Execution Time  = 39 ms (min: 0, sec: 0, ms: 39)
+	Total Execution Time        = 65 ms (min: 0, sec: 0, ms: 65)
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, Name, BirthYear
+   FROM     PlayersBirthYearANY;
+   ______________________
+
+
+	PlayerNo    Name                                           BirthYear   
+	_____________________________________________________________________
+	2           Everett                                        1948        
+	6           Parmenter                                      1964        
+	7           Wise                                           1963        
+	8           Newcastle                                      1962        
+	27          Collins                                        1964        
+	28          Collins                                        1963        
+	39          Bishop                                         1956        
+	44          Baker                                          1963        
+	57          Brown                                          1971        
+	83          Hope                                           1956        
+	100         Parmenter                                      1963        
+	104         Moorman                                        1970        
+	112         Bailey                                         1963        
+	1001        Dejesus                                        1991        
+	1002        Pearson                                        1960        
+	1003        Mathews                                        1950        
+	1004        Marsh                                          1948        
+	1005        Charles                                        1991        
+	1006        Moon                                           1967        
+	1007        Marsh                                          1993        
+	1008        Spencer                                        1996        
+	1009        Lopez                                          1974        
+	1010        Mcfarland                                      1992        
+	1011        Ashley                                         1988        
+	1012        Schmidt                                        1953        
+	1013        Zimmerman                                      1952        
+	1014        Lynn                                           1979        
+	1015        Mclaughlin                                     1948        
+	1016        York                                           1957        
+	1017        Eaton                                          1986        
+	1018        Potter                                         1967        
+	1019        Frost                                          1988        
+	1020        Holder                                         1991        
+	1021        Watkins                                        1967        
+	1022        Blankenship                                    1959        
+	1023        Mcclure                                        1947        
+	1024        Hutchinson                                     1970        
+	1025        Perkins                                        1970        
+	1026        Gomez                                          1957        
+	1027        Gay                                            1996        
+	1028        Dickson                                        1971        
+	1029        Atkins                                         1962        
+	1030        Obrien                                         1947        
+	1031        Craft                                          1981        
+	1032        Bradshaw                                       1970        
+	1033        Grant                                          1972        
+	1034        Yates                                          1986        
+	1035        Albert                                         1975        
+	1036        Hartman                                        1973        
+	1037        Castro                                         1969        
+	1038        Flowers                                        1993        
+	1039        Lamb                                           1967        
+	1040        Rios                                           1964        
+	1041        Stark                                          1969        
+	1042        Garner                                         1958        
+	1043        Chambers                                       1962        
+	1044        Guerra                                         1995        
+	1045        Weaver                                         1978        
+	1046        Turner                                         1959        
+	1047        Dixon                                          1957        
+	1048        Watts                                          1946        
+	1049        Ballard                                        1983        
+	1050        Kelley                                         1962        
+	1051        Gamble                                         1974        
+	1052        Newton                                         1957        
+	1053        Paul                                           1961        
+	1054        Weber                                          1949        
+	1055        Hickman                                        1949        
+	1056        Durham                                         1962        
+	1057        Jensen                                         1978        
+	1058        Berger                                         1951        
+	1059        Ball                                           1947        
+	1060        Harrington                                     1983        
+	1061        Valentine                                      1961        
+	1062        Fry                                            1989        
+	1063        Mcdaniel                                       1949        
+	1064        Pratt                                          1964        
+	1065        Rice                                           1953        
+	1066        Nelson                                         1959        
+	1067        Holt                                           1995        
+	1068        Bowen                                          1992        
+	1069        Mcpherson                                      1986        
+	1070        Frank                                          1976        
+	1071        Perry                                          1948        
+	1072        Klein                                          1965        
+	1073        Nichols                                        1956        
+	1074        Copeland                                       1950        
+	1075        Buckley                                        1963        
+	1076        Hayden                                         1973        
+	1077        Benjamin                                       1964        
+	1078        Long                                           1978        
+	1079        Mann                                           1970        
+	1080        Mcknight                                       1991        
+	1081        Hines                                          1971        
+	1082        Hutchinson                                     1989        
+	1083        Justice                                        1978        
+	1084        Gaines                                         1952        
+	1085        Moses                                          1993        
+	1086        Small                                          1966        
+	1087        Anthony                                        1948        
+	1088        Lambert                                        1981        
+	1089        Harding                                        1994        
+	1090        Montgomery                                     1974        
+	1091        Duke                                           1975        
+	1092        Dudley                                         1989        
+	1093        Middleton                                      1961        
+	1094        Suarez                                         1969        
+	1095        Oneill                                         1991        
+	1096        Guerrero                                       1963        
+	1097        Velasquez                                      1969        
+	1098        Bowers                                         1958        
+	1099        Roach                                          1994        
+	1100        Donovan                                        1954        
+	1101        Vance                                          1987        
+	1102        Gross                                          1963        
+	1103        Moses                                          1983        
+	1104        Wiley                                          1947        
+	1105        Chase                                          1963        
+	1106        Dickerson                                      1983        
+	1107        Coffey                                         1995        
+	1108        Aguirre                                        1990        
+	1109        Parker                                         1995        
+	1110        Estrada                                        1974        
+	1111        Sherman                                        1969        
+	1112        Greene                                         1992        
+	1113        Dunlap                                         1990        
+	1114        Leblanc                                        1966        
+	1115        Church                                         1964        
+	1116        Conley                                         1949        
+	1117        Mcdaniel                                       1980        
+	1118        Gray                                           1997        
+	1119        Klein                                          1971        
+	1120        Avila                                          1989        
+	1121        Vaughan                                        1991        
+	1122        Combs                                          1993        
+	1123        Obrien                                         1960        
+	1124        Hernandez                                      1950        
+	1125        Austin                                         1980        
+	1126        Le                                             1979        
+	_____________________________________________________________________
+	No of records 139
+
+
+	Access Plan Generation Time = 30 ms (min: 0, sec: 0, ms: 30)
+	Access Plan Execution Time  = 109 ms (min: 0, sec: 0, ms: 109)
+	Total Execution Time        = 139 ms (min: 0, sec: 0, ms: 139)
+
+__ SQL command _________________
+
+   SELECT   PlayerNo
+   FROM     PlayersPenalties;
+   ______________________
+
+
+	PlayerNo    
+	__________
+	27          
+	44          
+	1001        
+	1002        
+	1004        
+	1005        
+	1006        
+	1007        
+	1010        
+	1011        
+	1013        
+	1016        
+	1017        
+	1018        
+	1019        
+	1021        
+	1022        
+	1023        
+	1024        
+	1025        
+	1026        
+	1027        
+	1030        
+	1033        
+	1034        
+	1035        
+	1036        
+	1037        
+	1042        
+	1043        
+	1044        
+	1045        
+	1047        
+	1048        
+	1050        
+	1051        
+	1052        
+	1053        
+	1054        
+	1055        
+	1056        
+	1057        
+	1058        
+	1059        
+	1061        
+	1062        
+	1063        
+	1064        
+	1065        
+	1066        
+	1067        
+	1068        
+	1069        
+	1070        
+	1071        
+	1072        
+	1073        
+	1075        
+	1076        
+	1077        
+	1081        
+	1082        
+	1083        
+	1084        
+	1085        
+	1087        
+	1092        
+	1094        
+	1095        
+	1096        
+	1097        
+	1099        
+	1100        
+	1101        
+	1105        
+	1106        
+	1107        
+	1109        
+	1111        
+	1112        
+	1113        
+	1115        
+	1117        
+	1118        
+	1119        
+	1120        
+	1121        
+	1122        
+	1124        
+	1125        
+	1126        
+	__________
+	No of records 91
+
+
+	Access Plan Generation Time = 105 ms (min: 0, sec: 0, ms: 105)
+	Access Plan Execution Time  = 29 ms (min: 0, sec: 0, ms: 29)
+	Total Execution Time        = 134 ms (min: 0, sec: 0, ms: 134)
+
+__ SQL command _________________
+
+   SELECT   PlayerNo
+   FROM     Player57TeamMate;
+   ______________________
+
+
+	PlayerNo    
+	__________
+	2           
+	6           
+	44          
+	57          
+	83          
+	__________
+	No of records 5
+
+
+	Access Plan Generation Time = 37 ms (min: 0, sec: 0, ms: 37)
+	Access Plan Execution Time  = 34 ms (min: 0, sec: 0, ms: 34)
+	Total Execution Time        = 71 ms (min: 0, sec: 0, ms: 71)
+

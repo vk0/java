@@ -1,0 +1,43 @@
+1.
+
+Длинный запрос:
+	Access Plan Generation Time = 156 ms (min: 0, sec: 0, ms: 156)
+	Access Plan Execution Time  = 128 ms (min: 0, sec: 0, ms: 128)
+	Total Execution Time        = 284 ms (min: 0, sec: 0, ms: 284)
+
+Короткий запрос:
+	Access Plan Generation Time = 95 ms (min: 0, sec: 0, ms: 95)
+	Access Plan Execution Time  = 37 ms (min: 0, sec: 0, ms: 37)
+	Total Execution Time        = 132 ms (min: 0, sec: 0, ms: 132)
+
+
+2.
+
+Длинный запрос:
+	Access Plan Generation Time = 39 ms (min: 0, sec: 0, ms: 39)
+	Access Plan Execution Time  = 154 ms (min: 0, sec: 0, ms: 154)
+	Total Execution Time        = 193 ms (min: 0, sec: 0, ms: 193)
+
+Короткий запрос:
+	Access Plan Generation Time = 58 ms (min: 0, sec: 0, ms: 58)
+	Access Plan Execution Time  = 32 ms (min: 0, sec: 0, ms: 32)
+	Total Execution Time        = 90 ms (min: 0, sec: 0, ms: 90)
+
+3.
+
+Длинный запрос:
+	Access Plan Generation Time = 43 ms (min: 0, sec: 0, ms: 43)
+	Access Plan Execution Time  = 17887 ms (min: 0, sec: 17, ms: 887)
+	Total Execution Time        = 17930 ms (min: 0, sec: 17, ms: 930)
+
+Короткий запрос:
+	Access Plan Generation Time = 103 ms (min: 0, sec: 0, ms: 103)
+	Access Plan Execution Time  = 39 ms (min: 0, sec: 0, ms: 39)
+	Total Execution Time        = 142 ms (min: 0, sec: 0, ms: 142)
+
+4.
+
+Короткий запрос:
+	Access Plan Generation Time = 62 ms (min: 0, sec: 0, ms: 62)
+	Access Plan Execution Time  = 1539 ms (min: 0, sec: 1, ms: 539)
+	Total Execution Time        = 1601 ms (min: 0, sec: 1, ms: 601)

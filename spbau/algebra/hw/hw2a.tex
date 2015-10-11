@@ -1,0 +1,69 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[T2A]{fontenc} 
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{listings}
+\usepackage[dvips]{graphicx}
+\usepackage{indentfirst}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{left=2cm}
+\geometry{right=2cm}
+\geometry{top=2cm}
+\geometry{bottom=2cm}
+
+\graphicspath{{images/}}
+
+\begin{document}
+\sloppy
+
+\lstset{
+	basicstyle=\small,
+	stringstyle=\ttfamily,
+	showstringspaces=false,
+	columns=fixed,
+	breaklines=true,
+	numbers=right,
+	numberstyle=\tiny
+}
+
+\newtheorem{Def}{Определение}[section]
+\newtheorem{Th}{Теорема}
+\newtheorem{Lem}[Th]{Лемма}
+\newenvironment{Proof}
+	{\par\noindent{\bf Доказательство.}}
+	{\hfill$\scriptstyle\blacksquare$}
+\newenvironment{Solution}
+	{\par\noindent{\bf Решение.}}
+	{\hfill$\scriptstyle\blacksquare$}
+
+
+\begin{flushright}
+	Кринкин М. Ю. группа 504 (SE)
+\end{flushright}
+
+\section{Домашнее задание 2}
+
+\paragraph{3.6} Докажите, что $G$ - циклическая подгруппа порядка $p^n$, где $p$ - простое число и $n \in \mathbb{N}$, если и только если существует собственная подгруппа группы $G$, содержащая все собственные подгруппы группы $G$.
+
+\begin{Proof}
+Как я понимаю полагается все-таки, что $n \in \mathbb{N} \setminus \{1\}$, так как при $n = 1$ получаем просто группу простого порядка, но она не имеет собственных подгрупп.
+
+Теперь докажем, что из того, что циклическая группа имеет примарный порядок, то в ней содержится собственная подгруппа содержащая в себе все собственные подгруппы.
+
+Если $G$ циклическая, то существует $x : <x> = G$, собственную циклическую подгруппу в $G$ могут образовывать только элементы с порядком $p^k$, где $k \in \overline{2,n-1}$, так как кроме них в группе существует лишь элементы порядка 0 или порядка $p^n$, которые образуют несобственные подгруппы.
+
+Рассмотрим элемент $y = x^p$ образующий максимальную собственную подгруппу $H$. Действительно, если расписать:
+\[
+	\underbrace{\overbrace{x ... x}^p ... \overbrace{x ... x}^p}_{p^n} = \underbrace{y ... y}_{p^{n-1}}
+\]
+но $p^{n-1}$ максимальный возможный порядок собственной подгруппы. Более того любой элемент группы $G$ представим как $x^m$, но чтобы он порождал подгруппу необходимо, чтобы $p^n \vdots m$, т. к. $p$ - простое, то $m = p^k$, а любой $x^{\left(p^k\right)} = \left(x^p\right)^{\left(p^{k-1}\right)}$ т. е. любой элемент порождающий собственную подгруппу входит в подгруппу $H$.
+
+Теперь покажем, что из существования собственной подгруппы $H < G$, такой, что все собственные подгруппы содержаться в $H$. Возьмем элемент $z \in G \setminus H$, пусть он имеет порядок отличный от порядка группы, тогда он порождает собственную подгруппу в $G$, но по условию эта подгруппа содержится в $H$, следовательно и $z \in H$, что противоречит условию $z \in G \setminus H$, следовательно, порядок $z$ совпадает с порядком $G$, а значит $G$ - циклическая.
+\end{Proof}
+
+\end{document}

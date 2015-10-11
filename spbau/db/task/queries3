@@ -1,0 +1,15 @@
+7.4
+SELECT PlayerNo, Street + ' ' + HouseNo AS Address
+FROM Players
+WHERE Town = 'Stratford';
+
+8.1
+SELECT PlayerNo, LeagueNo
+FROM Players
+WHERE Town = 'Stratford'
+ORDER BY LeagueNo;
+
+10.18
+SELECT DISTINCT Players.PlayerNo, Name
+FROM Players, Matches
+WHERE Players.PlayerNo = Matches.PlayerNo AND TeamNo = 1;

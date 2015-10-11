@@ -1,0 +1,13 @@
+SND        = {x -> {y -> y}};
+FST        = {x -> {y -> x}};
+SQRADDONE  = {x -> {y -> x * x + 1}};
+CONS       = {Head -> {Tail -> {Pair -> Pair Head Tail}}};
+NIL        = {x -> 0};
+HEAD       = {List -> List FST};
+TAIL       = {List -> List SND};
+NOTEMPTY   = {List -> List SQRADDONE};
+EMPTY      = {List -> (NOTEMPTY List) ? 0 : 1};
+LENGTH     = {List -> (EMPTY List) ? 0 : (1 + (LENGTH (TAIL List)))};
+PASSMAX    = {List -> (EMPTY List) ? (NIL) : ((EMPTY (TAIL List)) ? (List) : ((HEAD List) > (HEAD (TAIL List))) ? (CONS (HEAD (TAIL List) ) (PASSMAX (CONS (HEAD List) (TAIL (TAIL List) )))) : (CONS (HEAD List) (PASSMAX (TAIL List))))};
+BUBBLE     = {List -> {N -> N ? PASSMAX (BUBBLE List (N - 1)) : List}};
+BUBBLESORT = {List -> BUBBLE List (LENGTH List)};

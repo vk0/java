@@ -1,0 +1,419 @@
+\chapter{Орбиты, стабилизаторы и Ко}
+
+После долгого перерыва, наш неформальный конспект наконец-то возобновляется.
+И блин прикольно, он начинается с комбинаторики...
+
+\section{В предыдущих сериях}
+
+\begin{Def}
+$G$-группа, $X$-множество, тогда $X$ - $G$-множество, если задана операция:
+\[
+	\begin{split}
+		& \cdot : G \times X \rightarrow X \\
+		& \left(g, x\right) \mapsto gx
+	\end{split}
+\]
+или что тоже самое
+\[
+	\begin{split}
+		& \phi : G \rightarrow S\left(X\right) \\
+		& g \mapsto \left(\phi_g : x \mapsto gx\right)
+	\end{split}
+\]
+\end{Def}
+
+\begin{Def}
+$G$-группа, $X$ - $G$-множество, тогда орбитой элемента $x \in X$ называется множество $Gx = \lbrace gx | g \in G\rbrace \subseteq X$.
+\end{Def}
+
+Теперь вброс, отношение $x,y \in X, x \equiv_G y \Leftrightarrow \exists g \in G \left[y = gx\right]$ - отношение эквивалентности, т. е. два элемента эквивалентны, если принадлежат одной орбите.
+
+Докажем это:
+
+\begin{enumerate}
+\item Симметричность: $x \equiv y \Rightarrow y = gx \Rightarrow x = g^{-1}y \Rightarrow y \equiv y$
+
+\item Транзитивность: $x \equiv y \equiv z \Rightarrow x = gy = h\left(gy\right) \Rightarrow x = \left(hg\right)z \Rightarrow x \equiv z$
+
+\item Рефлексивность: $x = 1 x \Rightarrow x \equiv x$.
+\end{enumerate}
+
+\begin{Def}
+$X / G$ - множество орбит в $X$ под действием группы $G$, или $\lbrace Gx | x \in X\rbrace$
+
+или
+
+$X = \sqcup_{o \in X / G} o$ - множество $X$ - дизъюнктивное объединение орбит.
+\end{Def}
+
+\begin{Def}
+Пусть $G$ - группа, $X$ - $G$-множество, $x \in X$
+
+$St_G\left(x\right) = \lbrace g \in G | gx = x\rbrace \le G$ - стабилизатор точки $x \in X$ - множество элементов группы, оставляющих ее на месте.
+\end{Def}
+
+\begin{Def}
+$G$ - группа, $X$ - $G$-множество, тогда
+
+$Fix_X\left(g\right) = \lbrace x \in X | gx = x\rbrace \subseteq X$ - множество неподвижных точек элемента $g \in G$.
+\end{Def}
+
+\paragraph{Пример: }
+Пусть $X$ и $Y$ - множества. Рассмотрим отображение $S\left(X\right) \times Y^X \rightarrow Y^X$, действующее по правилу $\left(u, f\right) \mapsto f \circ u^{-1}$, где $u \in S\left(X\right)$ и $f \in Y^X$, оно задает действие группы $S\left(X\right)$ на множестве всех отображений из $X$ в $Y$.
+
+Рассмотрим как выглядит орбита элемента множества $Y^X$. Пусть есть некоторая функция $f \in Y^X$, которая отображает элементы из $X$ в элементы из $Y$, тогда $f \circ u^{-1}$ функция, которая сопоставляет элементу $x \in X$ элемент $f\left(u^{-1}\left(x\right)\right)$. Так как $u \in S\left(X\right)$ - задает все биекции, то действие на $f$ элементом $u$ меняет прообраз функции, но не меняет ее образ, так как не добавляет новых элементов и не удаляет старых из $X$, однако рассмотрения обаза как множества не достаточно, необходимо еще учесть кратности элементов образа, т. е. орбита - все отображения образы, которых, если рассматривать их как мультимножества, совпажают.
+
+Теперь рассмотрим стабилизатор некоторого отображения $f$. Чтобы элемент $u^{-1}$ не изменил отображение $f$ необходимо, чтобы $f\left(x \in X\right) = f\left(u^{-1}\left(x\right)\right)$. Т. е. стабилизатор образуют все биекции для которых $f\left(x\right) = f\left(u^{-1}\left(x\right)\right)$, в конечномерном случае, это будут все перестановки такие, что внутри одного цикла находятся только элементы с одинаковым образом. А для бесконечного случая все элементы вида $f\left(u^i\left(x\right)\right)$ где $i \in \mathbb{Z}$ должны совпадать для каждого конкретного $x$.
+
+А множеством неподвижных точек для некоторой перестановки $u$, будет содержать все отображения $f$ такие, что $f\left(x\right) = f\left(u^{-1}\left(x\right)\right)$, в конечномерном случае, это будут все отображения, постоянные внутри цикла перестановки, для бесконечного случая среди элемнтов вида $f\left(u^{i}\left(x\right)\right)$ где $i \in \mathbb{Z}$ не должно быть различных.
+
+Теперь возьмем следующее $G$-множество и операцию:
+
+\begin{enumerate}
+\item $G\times G \rightarrow G$
+
+\item $\left(g_1, g_2\right) \mapsto g_1g_2$
+\end{enumerate}
+
+или что тоже самое
+
+\begin{enumerate}
+\item $G \rightarrow S\left(G\right)$
+
+\item $g_1 \mapsto \left(g_2 \mapsto g_1g_2\right)$
+\end{enumerate}
+
+действие - умножение слева.
+
+\begin{Th}[Кэли]
+Отображение $\rho : G \rightarrow S\left(G\right)$ - мономорфизм
+\end{Th}
+
+\begin{Proof}
+Требуется доказать справедливость $\rho_{g_1} = \rho_{g_2} \Rightarrow g_1 = g_2$. Для этого воспользуемся тем, что $\rho_{g_1} \left(1\right) = g_1$ и $\rho_{g_2} \left(1\right) = g_2$, откуда вместе с $\rho_{g_1} = \rho_{g_2}$ необходимо получаем $g_1 = g_2$.
+\end{Proof}
+
+\begin{Def}
+$G$-группа, $X,Y$ - $G$-множества, тогда $f : X \rightarrow Y$ - морфизм, если
+\[
+	\forall g \in G, x \in X \left[f\left(g x\right) = g f\left(x\right)\right]
+\]
+\end{Def}
+
+\begin{Def}
+$f$ - изоморфизм, если он является биективным морфизмом.
+\end{Def}
+
+\begin{Def}
+$X \cong Y$ - равносильно тому, что существует изоморфизм $f : X \rightarrow Y$
+\end{Def}
+
+\begin{Def}
+$X$ - однородное $G$-множество, если оно покрывается всего одной орбитой, т. е.
+\[
+	\exists x \in X \left[X = Gx\right]
+\]
+\end{Def}
+
+\begin{Th}
+\begin{enumerate}
+\item если $H \le G$, то $G / H$ - однородное $G$-множество при действии сдвигами
+
+\item если $X$ - однородное, то $\forall x \in X \left[X \cong G / St_G\left(x\right)\right]$
+\end{enumerate}
+\end{Th}
+
+\begin{Proof}
+Первое очевидно.
+
+Второе, пусть $X = Gx$ для некоторого $x \in X$, построим отображение:
+\[
+	\begin{split}
+		& G / St_G\left(x\right) \rightarrow X \\
+		& g St_G\left(x\right) \mapsto gx
+	\end{split}
+\]
+проверим инъективность: $g_1 x = g_2 x \Leftrightarrow g_2^{-1} g_1 x = x \Leftrightarrow g_2^{-1} g_1 \in St_G\left(x\right) \Leftrightarrow g_1 St_G\left(x\right) = g_2 St_G\left(x\right)$
+
+Сюрекция же вытекает просто из определения однородности.
+
+Осталось показать, что отображение является морфизмом:
+
+$f\left(g'\left(gSt_G\left(x\right)\right)\right) = f\left(g'gSt_G\left(x\right)\right) = \left(g'g\right)x = g'\left(gx\right) = g'f\left(gSt_G\left(x\right)\right)$
+\end{Proof}
+
+\begin{Th}[Лемма Бернсайда]
+$\left|G\right| < \infty$, $X$ - $G$-множество, тогда
+\[
+	\frac{1}{\left|G\right|}\sum_{g \in G} \left|Fix_X\left(g\right)\right| = \left|X/G\right|
+\]
+Или средний размер множества неподвижных точек равен число орбит $G$-множества.
+\end{Th}
+
+\begin{Proof}
+\[
+	\begin{split}
+		& \frac{1}{\left|G\right|} \sum_{g \in G} \left|\lbrace x | gx = x\rbrace\right| = \frac{1}{\left|G\right|} \left|\lbrace \left(g,x\right) | gx = x \rbrace\right| = \\
+		& = \frac{1}{\left|G\right|} \sum_{x \in X} \left|\lbrace g | gx = x\rbrace\right|
+	\end{split}
+\]
+а так как $Gx \cong G / St_G\left(x\right)$, то отношение мощности группы к мощности орбиты некоторого элемента $x$ равно мощности его стабилизатора, следовательно:
+\[
+	\begin{split}
+		& \frac{1}{\left|G\right|} \sum_{x \in X} \left|\lbrace g | gx = x\rbrace\right| = \frac{1}{\left|G\right|} \sum_{x \in X} \frac{\left|G\right|}{\left|Gx\right|} = \\
+		& = \sum_{x \in X} \frac{1}{\left|Gx\right|} = \sum_{o \in X/G} \sum_{x \in o} \frac{1}{\left|o\right|} = \left|X/G\right|
+	\end{split}
+\]
+\end{Proof}
+
+Тут бы уместно привести приер задачки, которая решается этой леммой, ну вот вам пример:
+
+Пусть есть квадрат, требуется нати все существенно различные окраски вершин квадрата в два цвета. Существенно различными окрасками называем окраски, не получающиеся друг из друга поворотами на 90, 180 или 270 градусов, или симметриями относительно вертикальной или горизонтальной оси, а также относительно диагоналей квадрата.
+
+Пффууух... Итак рассмотрим сначала действие симметричного отражение относительно вертикали, очевидно, что чтобы окраска перешла сама в себя, то необходимо, чтобы верхние углы квадрата имели один цвет, и нижные углы квадрата имели один цвет, очевидно способов такой раскраски ровно 4, аналогично и относительно горизонтальной симметрии.
+
+Теперь рассмотрим диагональную симметрию, очевидно, что неважно как раскрашени вершины диагонали, относительно которой проивзодится симметрия, в то время как оставшиеся две вершины должны быть покрашены в один цвет, число способов покрасить так квадрат 8 на каждую диагональ.
+
+Наконец мои любимые повороты. Сначала поворот на 90, тут все нетрудно, чтобы при повороте раксраска не изменилась необходимо, чтобы все вершины были покрашены в один цвет, аналогино и для поворота на 270, т. е. по 2 окраски на каждый поврот. Поворот на 180 уже менее привередлив, необходимо, чтобы вершины одной диагонали были окрашены в один цвет, а это 4 окраски.
+
+Все? А вот и нет, чтобы преобразования образовывали группу, необходимо иметь единичное преобразование - непреобразование, которое оставляет на месте любую раскраску, т. е. относительно нее инвариантны все раскраски, а таковых $2^4 = 16$
+
+Теперь забиваем в нашу формулу:
+\[
+	\frac{8}{4 + 4 + 8 + 8 + 2 + 2 + 4 + 16} = 6
+\]
+
+упс ошибочка вышла... старею... Надо к Д. Кнут сделать... если после моей смерти в этом конспекте будут найдены ошибки, считать их фичами)
+\[
+	\frac{1}{8} \cdot \left(4+4+8+8+2+2+4+16\right) = 6
+\]
+
+Решить такую задачу можно и без леммы Бернсайда, достаточно заметить, что в неразличимых относительно поворотов и симметрий способах раскраски количество вершин одного цвета совпадает, это замечание упрощает решение, но работает такой метод как правило только на задачах небольшой размерности, как в нашем случае.
+
+\begin{Def}
+$p \in \mathbb{P}$, $G$ - конечная $p$-группа, если $\left|G\right| = p^n$
+\end{Def}
+
+Теперь непонятная теоремка, но может пригодится
+
+\begin{Th}
+Пусть $G$ - конечная $p$-группа и действет на конечном множестве $X$, тогда
+\[
+	\left|X\right| = \text{кол-во одноэлементых орбит} \mod p
+\]
+\end{Th}
+
+\begin{Proof}
+Известно, что $X$ покрывается непересекающимися орбитами. Кроме того, так как $X_i \cong G / St_G\left(x_i\right)$, где $X_i$ - орбита элемента $x_i$, получаем (очевидное следствие теоремы об однородных $G$-множествах), что из $\left|G\right| \vdots \left|X_i\right|$ при $\left|X_i\right| \ge 2$ $\left|X_i\right| \vdots p$, это значит, что:
+\[
+	\left|X\right| = \sum 1 + \sum p k
+\]
+где $k \in \mathbb{N}$, а $\sum 1$ - вклад одноэлементых орбит в мощность множества.
+
+Отсюда очевидно получаем требуемое:
+\[
+	\left|X\right| = \sum 1 \mod p
+\]
+\end{Proof}
+
+\chapter{Полу прямое произведение групп и все, что с ним связано}
+
+Продолжаем наверстывать упущенное, и теперь о всяких сложностях связанных с прямым произведением групп.
+
+\section{Вводные определения}
+
+\begin{Def}
+$G$ - группа, $Aut\left(G\right)$ - группа автоморфизмов группы $G$. $Aut\left(G\right) \le S\left(G\right)$ и является группой относительно композиции.
+\end{Def}
+
+\begin{Def}
+$Z\left(G\right) = \lbrace g \in G | \forall x \in G \left(gx = xg\right)\rbrace$ - центр группы $G$, т. е. множество ее коммутирующих элементов.
+
+$Z\left(G\right) \trianglelefteq G$
+\end{Def}
+
+\begin{Def}
+$\left[a, b\right] = aba^{-1}b^{-1}$ - коммутатор элементов $a,b \in G$
+\end{Def}
+
+\begin{Def}
+$\left[G, G\right] = <\left[a, b\right] | a,b \in G>$ - подгруппа порожденная коммутаторами называется коммутантом.
+\end{Def}
+
+Внутренними автоморфизамами называют автоморфизмы действующие на группу сопряжением, т. е. $Inn\left(G\right) = \lbrace \gamma_g | \gamma_g \left(x\right) = g x g^{-1} \rbrace \trianglelefteq Aut\left(G\right)$.
+
+Отображение $\gamma : G \rightarrow Inn\left(G\right)$ по правилу $g \mapsto \gamma_g$ является гомоморфизмом, его ядром очевидно являются элементы $G$ перестановочные со всеми, т. е. $Ker \left( \gamma \right) = Z\left(G\right)$
+
+Отсюда, в частности, получаем, что $G/Z\left(G\right) \cong Inn\left(G\right)$
+
+\paragraph{Пример.} 
+\[
+	Aut\left(\mathbb{Z} / {n \mathbb{Z}}\right) \cong \left(\mathbb{Z}/{n \mathbb{Z}}\right)^*
+\]
+
+т. к. группа $\mathbb{Z} / {n \mathbb{Z}}$ - абелева, то она совпадает со своим центром, а тогда $\mathbb{Z} / {n \mathbb{Z}}$ состоит всего из одного элемента, следовательно все автоморфизмы являются внешними.
+
+\begin{Th}
+$Aut\left(S_n\right) = Inn\left(S_n\right)$ если $n \ge 3$ и $n \not= 6$, при $n = 6$ $Out\left(S_6\right) \cong C_2$
+\end{Th}
+
+Для случая $n=3$: $g x g^{-1} \rightarrow^{\phi} \phi\left(g\right)\phi\left(x\right)\phi\left(g^{-1}\right) = \phi\left(g\right)\phi\left(x\right)\phi^{-1}\left(g\right)$  - класс сопряженности переходит в класс сопряженности, в случае $S_n$ классы сопряженности - перестановки с одинаковым цикловым индексом.
+
+$S_3$ состоит из следующих классов сопряженности $\lbrace id \rbrace$, $\lbrace \left(1 2\right), \left(1 3\right), \left(2 3\right) \rbrace$, $\lbrace \left(1 2 3\right), \left(1 3 2\right)\rbrace$, для этих классов все достаточно легко проверяется.
+
+\begin{Th}
+$G$ - группа, а $H \trianglelefteq G$, тогда $G/H$ - абелева тогда и только тогда, когда $\left[G, G\right] \le H$
+\end{Th}
+
+\begin{Proof}
+\[
+	\forall g_1, g_2 \in G \left[g_1 H g_2 H = g_2 H g_1 H\right] \Leftrightarrow \forall g_1^{-1}g_2^{-1}g_1g_2 \in H \Leftrightarrow g_1 g_2 H = g_2 g_1 H
+\]
+откуда получаем требуемое.
+\end{Proof}
+
+\section{Группы диэдра и полупрямое произведение}
+
+Начнем с просто примера, рассмотрим так называемые группы диэдра - группа автоморфизмов правильного многоугольника (обозначается как $D_n$).
+
+Пусть $\phi \in \left[\left. 0; 2\pi\right)\right.$, а через $\alpha_\phi$ обозначим действие - поворот на угол $\phi$, через $\epsilon$ обозначим отражение относительно вещественной оси (или сопряжение, если вы смотрите на это как на комплексные числа).
+
+Теперь через $F$ обозначим следующую группу поворотов $\lbrace \alpha_o, \alpha_{\frac{2\pi}{n}}, \alpha_{\frac{4\pi}{n}}, ... , \alpha_{\frac{2\pi\left(n-1\right)}{n}}\rbrace$.
+
+Через $F\epsilon$ обозначим группу симметрий вида $z \mapsto \alpha_{\phi} \epsilon\left(z\right)$
+
+Через $H$ обозначим простую группу $\lbrace id, \epsilon \rbrace$.
+
+Группа преобразований правильного многоугольника $D_n = F \sqcup F\epsilon = <F \cup H>$ - группа образованная произведениями элементов из $F$ и $H$.
+
+Видно, что $F\cap H = \lbrace 1 \rbrace$ - вот такая вот забавная группа.
+
+\begin{Def}
+Пусть $F,H$ - группа и задано действие группы $H$ на группу $F$:
+\[
+	\phi : H \rightarrow Aut\left(F\right)
+\]
+тогда полупряммым произведением групп $F$ и $H$ называется группа $F \leftthreetimes_\phi H$, множество которой $F \times H$, а операция задана как:
+\[
+	\left(f_1, h_1\right)\left(f_2, h_2\right) = \left(f_1 \circ \phi\left(h_1\right)\left(f_2\right), h_1h_2\right)
+\]
+\end{Def}
+
+Единицей в полупрямом произведении так и остается $1_{F \leftthreetimes H} = \left(1_F,1_H\right)$, а обратным элементом является $\left(f,h\right)^{-1} = \left(\phi\left(h^{-1}\right)\left(f^{-1}\right), h^{-1}\right)$, действиетльно $\left(f,h\right)\left(\phi\left(h^{-1}\right)\left(f^{-1}\right),h^{-1}\right) = \left(f\circ\phi\left(h\right)\left(\phi\left(h^{-1}\right)\right)\left(f^{-1}\right),1\right) = \left(1, 1\right)$
+
+Теперь рассмотрим следующие подгруппы:
+
+\[
+\begin{split}
+	& \tilde F = \lbrace\left(f, 1\right) | f \in F\rbrace \cong F\\
+	& \tilde H = \lbrace\left(1, h\right) | h \in H\rbrace \cong H\\
+\end{split}
+\]
+
+\[
+	\left(1, h\right)\left(f, 1\right)\left(1, h\right)^{-1} = \left(\phi\left(h\right)\left(f\right)\right)\left(1,h\right)^{-1} = \left(\phi\left(h\right)\left(f\right),1\right)
+\]
+
+\[
+	\begin{split}
+		& G = <\tilde F \cup \tilde H> \\
+		& \tilde F \cap \tilde H = \lbrace\left(1,1\right)\rbrace \\
+		& \tilde F \trianglelefteq G \\
+		& \tilde H \le G 
+	\end{split}
+\]
+
+\begin{Th}
+$G$-группа, $F,H \le G$,
+\begin{enumerate}
+\item $G = <F \cup H>$ 
+
+\item $F \cap H = \lbrace 1_G \rbrace$
+
+\item $\forall f \in F, h \in H \left[hfh^{-1}\in F\right]$
+\end{enumerate}
+
+$H$ действует на $F$ сопряжением и $G \cong F \leftthreetimes H$ относительно этого действия.
+\end{Th}
+
+\begin{Proof}
+Из 1 и 3 следует, что $\forall g \in G \exists h \in H, f \in F \left[g = fh\right]$. Кроме того такое представление единственно. Действительно, если предположить обратное, то:
+\[
+	fh = f'h' \Leftrightarrow f'^{-1}f = h'h^{-1} \in F \cap H
+\]
+но по совйству 2 означает, что $f'^{-1}f = 1_G = h'h^{-1}$, откуда получается, что $f = f'$ и $h = h'$.
+
+Далее строим отображение $\phi : G \rightarrow F \leftthreetimes H$, которое действует по правилу $g \mapsto \left(f,h\right)$, причем $g = fh$. Это отображение является биекцией, покажем, что оно является гомоморфизмом:
+\[
+	\begin{split}
+		& g_1 = f_1 h_1, g_2 = f_2 h_2\\
+		& g_1 g_2 = f_1 h_1 f_2 h_2 = f_1 \underbrace{h_1 f_2 h_1^{-1}}_{\gamma \in F} h_1 h_2 = f_1 \gamma h_1 h_2
+	\end{split}
+\]
+Тогда
+\[
+	\phi\left(f_1 \gamma h_1 h_2\right) = \left(f_1 \gamma \left(h_1\right)\left(f_2\right), h_1 h_2\right)
+\]
+ 
+для единичного и обратного элемента все очевидно. Таким образом построенное отображение является изоморфизмом.
+\end{Proof}
+
+\paragraph{Пример.} Рассмотренный пример с группой диэдра теперь представляется следующим образом:
+
+\[
+	\begin{split}
+		& F = <\alpha_{\frac{2\pi}{n}}> \cong C_n \\
+		& H = <\epsilon> \cong C_2
+	\end{split}
+\]
+
+кроме того как уже было сказано $D_n = <F \cup H>$, а также $F \cap H = \lbrace 1 \rbrace$, далее $\epsilon \alpha_\phi \epsilon^{-1} = \alpha_{-\phi}$, следовательно $D_n \cong C_n \leftthreetimes C_2$, где рассматриваются следующее отображение:
+
+\[
+	\begin{split}
+		& C_2 \rightarrow Aut\left(C_n\right)\\
+		& \epsilon \mapsto \left(\phi \mapsto -\phi\right)
+	\end{split}
+\]
+
+\begin{Def}
+Пусть $H,E$ - группы, $X$ - $H$-множество. $E^X = \lbrace f : X \rightarrow E\rbrace$ - группа относительно операции $\left(f_1f_2\right)\left(x\right) = f_1\left(x\right)f_2\left(x\right)$, тогда сплетением $E \wr H$ называется полупрямое произведение $E^X \leftthreetimes H$, при действии:
+\[
+	\begin{split}
+		& \phi : H \rightarrow Aut\left(E^X\right)\\
+		& h \mapsto \left(f \mapsto \left(\phi\left(h\right)\left(f\right) : x \mapsto f\left(h^{-1}x\right)\right)\right)
+	\end{split}
+\]
+
+Кроме того $\left(E^X\right)_{fin} = \lbrace f : X \rightarrow E | \left|\lbrace x\in X | f\left(x\right)\not=1\rbrace\right|<\infty\rbrace$, а соответствующее сплетение называется финитным $E \wr_{fin} H = \left(E^X\right)_{fin} \leftthreetimes H$
+\end{Def}
+
+\paragraph{Пример.} Рассмотрим перестановку $u = \left(0 ... m-1\right)\left(m ... 2m-1\right)...\left(\left(l-1\right)m ... lm-1\right)$
+
+Требуется найти централизатор для перстановок такого вида, т. е. $Z_G\left(u\right) = \lbrace h\in G | uh = hu \rbrace$.
+
+Понятно, что нужно найти все такие $v$, что $v^{-1}uv = u$. Преобразуем нашу перестановку следующим образом:
+\[
+	v\left(0 ... m-1\right)v^{-1}v\left(m ... 2m-1\right)v^{-1} ... v\left(\left(l-1\right)m ... lm-1\right)v^{-1}
+\]
+откуда получаем, что исходная перестановка должна совпадать с
+\[
+	\left(v\left(0\right) ... v\left(m-1\right)\right)\left(v\left(m\right) ... v\left(2m-1\right)\right) ... \left(v\left(\left(l-1\right)m\right) ... v\left(lm-1\right)\right)
+\]
+с точностю до порядка следования независимых циклов, т. е. $v$ можно разделить на два действие, первое переводит все элементы $i$ из цикла $k$ в цикл $t$, а второе сдвигает каждый элемент одного цикла на равное число шагов внутри цикла.
+
+Введем следующие отображения:
+\[
+	\begin{split}
+		& \alpha : u \mapsto \left(ma + b \mapsto mu\left(a\right) + b\right); \left(b < m\right) \\
+		& \beta : \left(\epsilon_0, ..., \epsilon_{l-1}\right) \mapsto \left(ma + b \mapsto ma + \left(b + \epsilon_a\right)\right)
+	\end{split}
+\]
+Первое отображение описывает переход элемента между циклами перестановки (с сохранением места в цикле), второе отображение описывает сдвиг внутри одного цикла, т. е. сопоставляет элементу из $C_m^l$ перестановку, тогда:
+\[
+	Z_G\left(u\right) \cong C_m \wr S_l
+\]
+
+Другой пример, группа фонарщика. Пусть имеется последовательность фонарей $..., l_{-2}, l_{-1}, l_0, l_1, l_2, ...$ (бесконечная в обе стороны). Каждый из фонарей может быть включен или выключен. В каждый конкретный момент фонарщик находится рядом с некоторой лампой, и может изменить ее состояние (с включенного на выключенное и наоборот).
+
+Таким образом имеется две группы $C_2$ и $\mathbb{Z}$, а группа фонарщика $C_2^{\mathbb{Z}} \leftthreetimes \mathbb{Z} = C_2 \wr \mathbb{Z}$.

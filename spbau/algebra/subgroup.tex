@@ -1,0 +1,340 @@
+\chapter{Подгруппы и факторгруппы}
+
+Лекции от 21 и 28 сентября 2011 года.
+
+\subsection{Ближе к делу}
+
+\begin{Def}
+$G$ - группа, $H \subseteq G$, тогда $H \le G$ (подгруппа группы $G$), тогда и только тогда, когда выполнены следующие условия:
+\begin{enumerate}
+\item $\forall h_1, h_2 \in H \left[h_1h_2 \in H\right]$
+
+\item $1 \in H$
+
+\item $\forall h \in H \left[h^{-1} \in H\right]$
+\end{enumerate}
+\end{Def}
+
+\begin{Th}
+$G$-группа, $\mathscr{H}$ - множество подгрупп группы $G$, тогда:
+\[
+	\cap_{H \in \mathscr{H}} H \le G
+\]
+\end{Th}
+
+\begin{Def}
+$G$-группа, $X \subseteq G$ - произвольное подмножество группы, тогда:
+
+$<X> = \cap_{\substack{H \le G \\ X \subseteq H}} H$ - подгруппа порожденная множеством $X$ (минимальня подгруппа группы $G$ содержащая подмножество $X$)
+\end{Def}
+
+\begin{Def}
+$G$ - группа, $X \subseteq G$, $g_1,g_2 \in G$, тогда введем обозначение:
+\[
+	g_1 X g_2 = \{g_1 x g_2 | x \in X\}
+\]
+т. е. множество элементов полученных умноженийм слева и справа на $g_1,g_2$ элементов из $X$
+\end{Def}
+
+\begin{Def}
+$G$ - группа, $H \le G$, $g \in G$. Левый класс смежности по элементу $g$ - $gH$, а правый класс смежности $Hg$. Причем, если $g \in H$, то $gH = H = Hg$. (смотрите обозначение выше)
+\end{Def}
+
+\begin{Def}
+\[
+	G / H = \{gH | g \in G\}
+\]
+\[
+	H \backslash G = \{Hg | g \in G\}
+\]
+\end{Def}
+
+\begin{Th}
+\begin{enumerate}
+\item $G / H$ - разбиение группы $G$
+
+\item $\forall g \in G \left[H \rightarrow gH\right]$ - биекция ($x \mapsto gx$)
+
+\item $G / H \rightarrow H \backslash G$ - биекция ($gH \mapsto Hg^{-1}$)
+\end{enumerate}
+\end{Th}
+
+\begin{Proof}
+\begin{enumerate}
+\item Пусть два класса пересекаются, тогда:
+\[
+\begin{split}
+	& g_1H \cap g_2H \ni x \Leftrightarrow g_1h_1 = x = g_2h_2 \Leftrightarrow \\
+	& \Leftrightarrow g_1h_1 = g_2h_2 \Leftrightarrow g_1 = g_2 h_2 h_1^{-1} = g_2 \tilde h \Leftarrow \\
+	& \Leftarrow g_1H = \{g_2 \left(\tilde h h\right) | h \in H\} 
+\end{split}
+\]
+А $\tilde h h \in H$, следовтельно два множества совпадают.
+
+Покрытие вытекает хотябы из $\{gh_1\} = \{g_1\} = G$ (т. е. $h_1 = 1$)
+
+\item Биекция в целом очевидна, покажем только наличие обратного отображения:
+\[
+\begin{split}
+	& \phi : H \rightarrow gH \\
+	& x \mapsto gx
+\end{split}
+\]
+\[
+\begin{split}
+	& \phi^{-1} : gH \rightarrow H \\
+	& y \mapsto g^{-1}y
+\end{split}
+\]
+
+\item Покажем сначала корректность отображения, для начала покажем $g_1, g_2 \in gH \Rightarrow Hg_1^{-1} = Hg_2^{-1}$. $g_1H = g_2H \Leftrightarrow g_1 = g_2h \Leftrightarrow g_1^{-1} = h^{-1}g_2^{-1} \Leftrightarrow Hg_1^{-1} = Hg_2^{-1}$. Отсюда сразу вытекает и биекция отображения $gH \mapsto Hg^{-1}$
+\end{enumerate}
+\end{Proof}
+
+$G = \sqcup_{C \in G / H} C$ - дизюнктивное объединение, аналогично
+$G = \sqcup_{C \in H \backslash G} C$
+
+\begin{Def}
+Индекс подгруппы ($\left|G : H \right| = \left| G / H \right| = \left| H \backslash G \right|$)
+\end{Def}
+
+\begin{Th}[Теорема Лагранжа]
+\label{math::lagrange}
+$G$ - группа, $H \le G$, если $\left|G\right| < \infty \Rightarrow \left|G:H\right| = \frac{\left|G\right|}{\left|H\right|}$
+\end{Th}
+
+\begin{Proof}
+Из биекции $H \rightarrow gH$ следует в частности, что $\left|H\right| = \left|gH\right|$, далее $G = \sqcup_{C \in G / H} C \Rightarrow \left|G\right| = \sum_{C \in G / H} \left|C\right| = \left|H\right| \left|G:H\right|$
+\end{Proof}
+
+\begin{Def}
+$G$ - группа, $g \in G$, тогда 
+\[
+	ord \left(g\right) =
+	\begin{cases}
+		min \{n \in \mathbb{N} | g^{n} = 1 \} \\
+		\infty, \forall n \left(g^n \not= 1\right)
+	\end{cases}
+\]
+\end{Def}
+
+\begin{Th}
+Пусть $n = or \left( g \right)$, тогда:
+\begin{enumerate}
+\item $n < \infty \Rightarrow \left[g^a = g^b \Leftrightarrow a \equiv b \mod{n}\right]$
+
+\item $n = \infty \Rightarrow \left[g^a = g^b \Leftrightarrow a = b\right]$
+\end{enumerate}
+\end{Th}
+
+\begin{Proof}
+Докажем необходимость для случая конечного $n$:
+\[
+	a-b = tn \Rightarrow g^{a-b} = {\left(g^n\right)}^t = 1
+\]
+Докажем достаточность для случая конечного $n$:
+\[
+	g^{a-b} = 1, a > b \Rightarrow a-b = xn+y, y < n \Rightarrow {\left(g^n\right)}^x g^y = 1 \Rightarrow y = 0
+\]
+Для второго случая все совсем очевидно.
+\end{Proof}
+
+\subsection{Продолжение банкета}
+
+Сделаем пару замечаний по пройденному материалу. Для начала скажем, что группа поражденная элементом имеет следующий вид:
+\[
+	<g> = \{1, g, g^1, g^2, ...\}
+\]
+далее оперируя этим
+\[
+	\left| <g \in G> \right| = ord \left(g\right)
+\]
+Если $\left|G\right| < \infty$, $H \le G$, тогда по теореме Лагранжа \ref{math::lagrange} $\left|G : H\right| = \frac{\left|G\right|}{\left|H\right|}$ и в частности, если $H = <g>$, то $\left|G\right| \equiv 0 \mod{ord \left( g \right)}$, или по русски, порядок группы делится на порядок любого из ее элементов.
+
+\begin{Def}
+Группа $G$ - циклическая, если $\exists g \in G$, такой что $G = <g>$
+\end{Def}
+
+\paragraph{Примеры:}
+
+Группа корней из единицы, степени каждого элемента группы (кроме единичного) образуют все элементы группы:
+\[
+	\mu_n = \{z \in \mathbb{C^{*}} | z^n = 1\}
+\]
+
+Другая примечательная группа - группа классов эквивалентности по отношению сравнения по модулю (групповая операция - сложение по модулю):
+\[
+	\mathbb{Z} / {n\mathbb{Z}} = \{0, ..., n-1\} = <1>
+\]
+Далее рассмотрим еще один пример:
+\[
+	\mathbb{Z} = <1> = <-1>
+\]
+и еще один маленький:
+\[
+	n\mathbb{Z} = <n>
+\]
+
+\begin{Th}
+$G$-циклическая группа, $n=\left|G\right|$, тогда:
+\begin{enumerate}
+\item $n < \infty \Rightarrow G \cong \mathbb{Z} / {n \mathbb{Z}}$
+
+\item $n = \infty \Rightarrow G \cong \mathbb{Z}$
+\end{enumerate}
+\end{Th}
+
+\begin{Proof}
+Начнем с простого $G = <g>, n = \left|G\right| = \left|<g>\right| = ord \left(g\right)$
+\begin{enumerate}
+\item $G = \{1, g, g^2, ..., g^{n-1}\} \xrightarrow{\cong} \mathbb{Z}/{n\mathbb{Z}}$ ($g^k \mapsto k$) (Умножение степенй может происходит по модулю, так как $g^a = g^{na}$)
+
+\item $G = \{1, g, g^2, ... \} \xrightarrow{\cong} \mathbb{Z}$ ($g^i \mapsto i$) (Все степени числа $g$ различны, вот вам и изоморфизм)
+\end{enumerate}
+\end{Proof}
+
+\paragraph{Следствие}. Проследуем следствие...
+
+Если $p = \left|G\right|$ - простое число $\Rightarrow G \cong \mathbb{Z}/{p\mathbb{Z}}$
+
+\begin{Proof}
+Пусть $g \in G \ \{1\}$, рассматриваем $<g>$, т. к. $\left|G\right|$ - простое число, то по теореме Лагрнажа \ref{math::lagrange}, группа $G$ может содержать только подгруппы мощностей $\{1, p\}$ (т. е. единица и сама группа), т. к. $<g> \not= \{1\} \Rightarrow <g> = G \Rightarrow G \cong \mathbb{Z}/{n\mathbb{Z}}$, так как получается, что $G$ - циклическая группа.
+\end{Proof}
+
+\paragraph{Минутка от капитана.} Все циклические группы абелевы.
+
+\begin{Th}
+$G$ - циклическая группа, тогда:
+\begin{enumerate}
+\item при $\left|G\right| = \infty$, тогда
+\[
+\begin{cases}
+	H < G = {1} \\
+	H < G \cong \mathbb{Z}
+\end{cases}
+\]
+
+\item при $\left|G\right| = n < \infty$, тогда $\forall m \exists ! H \le G \left( \left|H\right|=m\right) \land H \cong \mathbb{Z}/{m\mathbb{Z}}$ (обратите внимание, что $m$ - делитель $n$)
+\end{enumerate}
+\end{Th}
+
+\begin{Proof}
+Сию пакость оставим для молодых и здоровых
+\end{Proof}
+
+\paragraph{Что все это значит?} По-русски это означет, что каждая подгруппа циклической группы опять же циклическая группа (ну блин это тупо доказывать).
+
+\subsection{Нормальные подгруппы}
+
+Теперь о вечном (да, именно здесь мы встретимся с той самой теоремой, которую знают все, прада никто не знает зачем она нужна и что она значит).
+
+\begin{Def}
+$G$-группа, $H$-подгруппа, тогда $H$ называется нормальной подгруппой ($H \trianglelefteq G$), если для $\forall g \in G \forall h \in H \left[g h g^{-1} \in H \right]$
+\end{Def}
+
+\paragraph{Минутка капитана.} Для абелевых групп все выполняется автоматически.
+
+\begin{Th}
+$H \trianglelefteq G \Leftrightarrow \forall g \in g \left[gH = Hg\right]$
+\end{Th}
+\begin{Proof}
+Пусть $H \trianglelefteq G, \forall h \in H \left[ghg^{-1}\in H\right] \Leftrightarrow gHg^{-1} \subseteq H \Leftrightarrow gH \subseteq Hg, Hg^{-1} \subseteq g^{-1}H$ (ну понятно, что $g, g^{-1} \in G$)
+\end{Proof}
+
+\begin{Def}
+$G$ - группа, $g \in G$, тогда введем обозначение:
+\[
+\begin{split}
+	& \gamma_g : G \rightarrow G \\
+	& x \mapsto gxg^{-1}
+\end{split}
+\]
+$\gamma_g$ - автоморфизм сопяржения, соответствующий элементу $g$
+\end{Def}
+
+\paragraph{Примечание.} $\gamma_g$ - серьезно гомоморфизм...
+
+\begin{Def}
+$x,y \in G$, $x$ сопряжен с $y$ - $\exists g \in G \left[x = gyg^{-1}\right]$
+\end{Def}
+
+\paragraph{Примечание.} Отношение сопряжения элементов - отношение эквивалентности, а значит группа по этому отношению распадается на классы экивалентности.
+
+\paragraph{Еще одно примечание.} Нормальная подгруппа содержит с любым элементом и все его сопряженные (ну это тупо по определению)
+
+\begin{Th}
+Пусть $H \le G$, тогда $\left|G : H\right| = 2 \Rightarrow H \trianglelefteq G$
+\end{Th}
+
+\begin{Proof}
+\[
+	\begin{split}
+		& G / H = \{H, G \setminus H\} \\
+		& H \backslash G = \{H, G \setminus H\}
+	\end{split}
+\]
+Ну теперь совсем очеидно, что классы свпадают:
+\[
+	\begin{split}
+		& g \in H: gH = H = Hg\\
+		& g \not\in H : gH = G \setminus H = Hg
+	\end{split}
+\]
+\end{Proof}
+
+\begin{Def}
+$f : G \rightarrow K$ - гоморфизм, тогда:
+\[
+	\begin{split}
+	& Ker f = \{g \in G | f\left(g \right) = 1\} \\
+	& Im f = \{f\left( g \right) | g \in G \}
+	\end{split}
+\]
+(Тут только что вы увидели, что такое ядро и образ гоморфизма)
+\end{Def}
+
+\begin{Th}
+$Ker f \trianglelefteq G$, a $Im f \le K$
+\end{Th}
+
+\begin{Proof}
+Пусть $x,y \in Ker f$, $f\left(xy\right) = f\left(x\right) f\left(y\right) = 1$, далее пусть $x \in Ker f$, $g \in G$, $f\left(gxg^{-1}\right) = f\left(g\right) f\left(x\right) f\left(g^{-1}\right) = 1$ (В середине единица, по определению ядра, ну остальное понятно)
+\end{Proof}
+
+\begin{Def}
+$G$ - группа, $H \trianglelefteq G$ определим группу на множестве $G / H$ следующим образом:
+\[
+	\begin{split}
+		& g_1 H g_2 H = g_1 g_2 H \\
+		& 1_{G/H} = H \\
+		& {\left(gH\right)}^{-1} = g^{-1}H
+	\end{split}
+\]
+и все это достояние называется факторгруппа
+\end{Def}
+
+\paragraph{Примечание.} Нормальность тут необходима иначе все плохо.
+
+\[
+	\begin{split}
+		& g_1 H = g_1' H \\
+		& g_2 H = g_2' H
+	\end{split}
+\]
+Тут следует отметить, почему мы можем брать любого представителя из группы, т. е. почему $g_1 g_2 H = g_1' g_2' H$, показать это нетрудно:
+
+$g_1 = g_1' h_1$ и $g_2 = g_2' h_2$ для $h_1, h_2 \in H$, следовательно
+\[
+	\begin{split}
+		g_1 g_2 = g_1'h_1 g_2'h_2 = g_1' \left(g_2'{g_2'}^{-1}\right) h_1 g_2' h_2 = g_1'g_2' \left({g_2'}^{-1}h_1g_2'\right) h_2 = g_1'g_2'h_1'h_2 = g_1'g_2' \tilde h
+	\end{split}
+\]
+(Ну ${g_2'}^{-1}h_1g_2' \in H$, т. к. $H \trianglelefteq G$)
+
+\begin{Th}[Теорема о гомоморфизме, или та самая теорема]
+$G,K$ - группы, $f: G \rightarrow K$ - гомоморфизм, тогда:
+\[
+	G / {Ker f} \cong Im f
+\]
+(Гомоморфный образ группы изоморфен факторгруппе по ядру гомоморфизма)
+\end{Th}

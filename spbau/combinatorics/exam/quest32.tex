@@ -1,0 +1,131 @@
+\chapter{Вопрос № 32}
+
+Количество $D_n$ перестановок без единичных циклов, а также количество $d(n, k)$ перестановок, не содержащих циклов единичной длины и содержащих ровно k циклов: производящие функции, рекуррентные соотношения, связь с числами Стирлинга первого рода. Примеры: задачи о смещении, о беспорядках и пр.
+
+\section{Числа $D_n$ и $d\left(n,k\right)$}
+
+Рассмотрим задачу о беспорядках, т. е. о подсчете числа перестановок без единицных циклов, это число обозначается как $D_n$. Для решения задачи рассмотрим задачу о подсчете числа перестановок без единичных циклов, содержащих ровно $k$ циклов $d\left(n,k\right)$. Очевидно, что возвращаяесь к цикловым индексам этот сулчай отвечает подстановке вместо $x_1 = 0$, а вместо остальных $x_i = 1$, т. е. $C_{n,k}\left(0,1,...,1\right) = d\left(n,k\right)$, а соответсвующая производящая функция выглядит:
+\[
+	\begin{split}
+		&d\left(x,t\right) = \sum_{n=0}^{\infty}\left(\sum_{k=0}^n d\left(n,k\right)t^k\right)\frac{x^n}{n!} = exp\left(t\left(\frac{x^2}{2} + \frac{x^3}{3} + ...\right)\right) = \\
+		& = exp\left(t\left(ln\left(\frac{1}{1-x}\right) - x\right)\right)
+	\end{split}
+\]
+откуда получаем связь с производящей функцией для всех перестановок:
+\[
+	d\left(x,t\right) = \frac{exp\left(-tx\right)}{\left(1-x\right)^t} = exp\left(-tx\right)\hat c\left(x,t\right)
+\]
+
+Суть функции $exp\left(tx\right)$ - э. п. ф. для количества перестановок из циклов единичной длинны, а тогда интерпритация равенства:
+\[
+	\hat c\left(x,t\right) = exp\left(tx\right)d\left(x,t\right)
+\]
+может быть следующей, по определнию произведения э. п. ф. получаем, что
+\[
+	\left[{{n} \atop {k}}\right] = \sum_{i = 0}^n \binom{n}{i} d\left(n-i,k-i\right)
+\]
+т. е. разбиваем $n$-множества на два блока, в первом $i$ элементов, во втором $n-i$, при этом во втором блоке производим разбиение на неединичные циклы, а в первом наоборот на единичные.
+
+По формуле обращения получаем следующее соотношение:
+\[
+	d\left(n,k\right) = \sum_{i=0}^n \left(-1\right)^i \binom{n}{i} \left[{{n-i}\atop{k-i}}\right]
+\]
+Числа $d\left(n,k\right)$ называются присоединенными числами Стирлинга первого рода.
+
+Теперь представим э. п. ф. $d\left(x,t\right)$ следующим образом:
+\[
+	d\left(x,t\right) = \sum_{n=0}^{\infty} d_n\left(t\right)\frac{x^n}{n!}
+\]
+откуда можно получить:
+\[
+	\hat c\left(x,t\right) = \sum_{n=0}^{\infty} c_n\left(t\right)\frac{x^n}{n!} = exp\left(xt\right)d\left(x,t\right)
+\]
+откуда приравнивая соответствующие коэффициенты получаем:
+\[
+	c_n\left(t\right) = \sum_{k=0}^n \binom{n}{k} t^k d_{n-k}\left(t\right)
+\]
+а по формуле обращения получаем:
+\[
+	d_n\left(t\right) = \sum_{k=0}^n \left(-1\right)^kt^kc_{n-k}\left(t\right)
+\]
+
+Теперь получим рекуррентные соотношения для $d_n\left(t\right)$ и $d\left(n,k\right)$:
+\[
+	\begin{split}
+		&d\left(x,t\right) = \frac{exp\left(-xt\right)}{\left(1-x\right)^t} \Rightarrow \\
+		&\Rightarrow \frac{\partial d}{\partial x} = -td + \frac{t}{1-x}d = \frac{tx}{1-x}d\left(x,t\right) \Leftrightarrow \\
+		&\Leftrightarrow \sum_{n=0}^{\infty}d_{n+1}\left(t\right) \frac{x^n}{n!} = \sum_{n=0}^{\infty}d_{n+1}\left(t\right)\frac{x^{n+1}}{n!} + \sum_{n=0}^{\infty} td_n\left(t\right) \frac{x^{n+1}}{n!} \Leftrightarrow\\
+		&\Leftrightarrow \sum_{n=0}^{\infty}d_{n+1}\left(t\right)\frac{x^n}{n!} = \sum_{n=0}^{\infty}nd_n\left(t\right)\frac{x^n}{n!} + \sum_{n=0}^{\infty}ntd_{n-1}\left(t\right)\frac{x^n}{n!} \Leftrightarrow\\
+		&\Leftrightarrow d_{n+1} \left(t\right) = n\cdot d_n\left(t\right) + nt d_{n-1}\left(t\right)
+	\end{split}
+\]
+при этом начальные условия:
+\[
+	d_0 = 1; d_1 = 0
+\]
+отсюда и из соотношения:
+\[
+	d_n\left(t\right) = \sum_{k=0}^n d\left(n,k\right) t^k
+\]
+следует, что:
+\[
+	d\left(n+1,k\right) = nd\left(n,k\right) + nd\left(n-1,k-1\right)
+\]
+
+Задача о беспорядках теперь решается очень просто:
+\[
+	D_n = d_n\left(1\right) = \sum_{k=0}^nd\left(n,k\right)
+\]
+Рекуррентное соотношение для $D_n$ вытекает из рекуррентного соотношения для $d_n$:
+\[
+	D_{n+1} = n\left[D_n + D_{n-1}\right]
+\]
+при начальных условиях:
+\[
+	D_0 = 1; D_1 = 0
+\]
+производящая функция для $D_n$:
+\[
+	D\left(x\right) = d\left(x,1\right) = \frac{exp\left(-x\right)}{1-x}
+\]
+Из связи производящих функций:
+\[
+	D\left(x\right) exp\left(x\right) = \frac{1}{1-x} = c\left(x\right)
+\]
+следует, что:
+\[
+	n! = \sum_{k=0}^n \binom{n}{k}D_{n-k} \Leftrightarrow D_n = \sum_{k=0}^n \left(-1\right)^k \binom{n}{k} \left(n-l\right)!
+\]
+вынесем $n!$ и получаем:
+\[
+	D_n = n! \left[1 - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} + ...\right] \approx \frac{n!}{e}
+\]
+это число называется субфакториалом.
+
+Пример, пусть студент сдает экзамен, в процессе он должен ответить на 10 различных вопросов, но вот блин все шпоры перепутаны, и какая из них к какому вопросу относится неизвестно, сколькими способами можно ответить на все вопросы неправильно?
+Ответ очевидно будет $D_{10}$, а каково количество способов ответить правильно ровно на $k$ вопросов из $n$. Ответ опять же очевиден:
+\[
+	D\left(n,k\right) = \binom{n}{k} D_{n-k}
+\]
+Учитывая, что $D_{n-k} = \left(n-k\right)! \left(1 - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} + ... + \frac{\left(-1\right)^{n-k}}{\left(n-k\right)!}\right)$ получаем явную формулу:
+\[
+	D\left(n,k\right) = \frac{n!}{k!} \sum_{i=0}^{n-k} \frac{\left(-1\right)^i}{i!}
+\]
+Производящую функцию для этих чисел можно получить из соотношения:
+\[
+	\begin{split}
+		& D\left(n,k\right) = \binom{n}{k} D_{n-k} \Rightarrow\\
+		& \Rightarrow \sum_{k=0}^n D\left(n,k\right) t^k = D_n\left(t\right) = \sum_{k=0}^n \binom{n}{k}t^k D_{n-k}
+	\end{split}
+\]
+в правой части стоит произведение пары э. п. ф.:
+\[
+	\begin{split}
+		& D\left(x\right) = \sum_{n=0}^{\infty} D_n \frac{x^n}{n!} = \frac{exp\left(-x\right)}{1-x}\\
+		& C_1\left(x,t\right) = \sum_{n=0}^{\infty} t^n \frac{x^n}{n!} = exp\left(tx\right)
+	\end{split}
+\]
+следовательно:
+\[
+	D\left(x,t\right) = D\left(x\right) exp\left(tx\right) = \frac{exp\left(-x\right)}{1-x} exp\left(tx\right)
+\]

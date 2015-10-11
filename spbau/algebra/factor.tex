@@ -1,0 +1,247 @@
+\chapter{Структуры групп}
+
+В этом разделе мы рассмотрим целую кучу страаааашно полезных теорем о разложении групп в прямое произведение
+
+\section{Прямое произведение групп}
+
+\begin{Def}
+Пусть $G_1$ и $G_2$ - группы, тогда зададим на множестве пар:
+\[
+	G_1 \times G_2 = \{\left(g_1,g_2\right) : g_1 \in G_1, g_2 \in G_2\}
+\]
+струкутру группы, в которой:
+\begin{itemize}
+\item $\left(g_1, g_2\right) \left(g_1', g_2'\right) = \left(g_1g_1', g_2g_2'\right)$
+
+\item $1_{G_1 \times G_2} = \left(1_{G_1}, 1_{G_2}\right)$
+
+\item $\left(g_1, g_2\right)^{-1} = \left(g_1^{-1}, g_2^{-1}\right)$
+\end{itemize}
+\end{Def}
+
+И сразу же опишем ряд его свойств.
+
+\begin{Th}[о свойствах прямого произведения]
+Пусть $H_1$ и $H_2$ - группы, $G = H_1 \times H_2$, тогда справедливы следующие утверждения:
+\begin{itemize}
+\item $\tilde H_1 = \{\left(h_1, 1\right) : h_1 \in H_1\} \le G$, и кроме того $\tilde H_1 \cong H_1$
+
+\item $\tilde H_2 = \{\left(1, h_2\right) : h_2 \in H_2\} \le G$, и кроме того $\tilde H_2 \cong H_2$
+
+\item $\forall \tilde h_1 \in \tilde H_1, \tilde h_2 \in \tilde H_2 \left[\tilde h_1 \tilde h_2 = \tilde h_2 \tilde h_1\right]$
+
+\item $\tilde H_1 \cap \tilde H_2 = \{1_G\}$
+\end{itemize}
+\end{Th}
+
+Ну в целом теорема эта вполне очевидна и доказывать ее мы не будем (потому что не интересно, когда доказательство совпадает с теоремой), а вот обратную теорему мы уже рассмотрим подробнее:
+
+\begin{Th}
+Пусть $G$ - группа и $H_1, H_2 \le G$ такие, что выполняются следующие свойства:
+\begin{enumerate}
+\item $\forall g \in G \exists h_1 \in H_1, h_2 \in H_2 \left[g = h_1h_2\right]$
+
+\item $\forall h_1 \in H_1, h_2 \in H_2 \left[h_1h_2 = h_2h_1\right]$
+
+\item $H_1 \cap H_2 = \{1\}$
+\end{enumerate}
+тогда $G \cong H_1 \times H_2$
+\end{Th}
+
+\begin{Proof}
+Возьмем следующее отображение $\phi : H_1 \times H_2 \rightarrow G$ такое, что $\phi : \left(h_1, h_2\right) \mapsto h_1h_2$. Утверждается, что отображение биективно.
+
+Сюръекция следует из первого утверждения теоремы (т. е. каждый элемент из $G$ разложим как произведение).
+
+Теперь пусть $g = h_1h_2 = h_1'h_2'$, тогда справедливо:
+\[
+	\begin{split}
+		& h_1h_2 = h'_1h'_2 \Rightarrow {h'_1}^{-1}h_1 = h'_2{h_2}^{-1} \\
+		& {h'_1}^{-1}h_1 \in H_1, h'_2{h_2}^{-1} \in H_2 \Rightarrow {h'_1}^{-1}h_1 = h'_2{h_2}^{-1} = 1
+	\end{split}
+\]
+таким образом $h_1$ и ${h'_1}^{-1}$ - взаимообратны, ${h_2}^{-1}$ и $h'_2$ - взаимообратны, но так как обратный элемент едиснтвенный, то $h_1 = h'_1$ и $h_2 = h'_2$, т. е. в каждый элемент из $G$ переходит ровно одна пара из $H_1$ и $H_2$, т. е. ровно один элемент из $H_1 \times H_2$, следовательно отображение инъективно, а значит и биективно.
+
+Проверка того, что отображение сохраняет групповую оперецию и переводит нейтральный элемент в нейтральный не составлет труда и мы это опускаем.
+\end{Proof}
+
+Глубинный смысл этой теоремы заключается в том, чтобы понять как устроена некоторая группа, в данном случае теорема позволяет представить группу как прямое произведение своих подгрупп. На самом деле все чем занимаются специалисты в области теории групп это описывают всякие разные группы, пытаются определить их структуру и тд и тп, ну в общем не жизнь, а сказка.
+
+\section{Прямая сумма абелевых групп}
+Если $H_1$ и $H_2$ - абелевы, и операция записывается аддитивно, то прямое произведение называют прмяой суммой и обозначают как $H_1 \oplus H_2$, все остальное сохраняется с той лишь разницей, что в абелевой группе существует коммутативность, значит в определении предыдущей теоремы она лишняя.
+
+\begin{Th}[о разложении абелевых групп]
+Пусть $A$ - абелева группа и $B_1, B_2 \le A$, такие что справедливы утверждения:
+\begin{itemize}
+\item $\forall a \in A \exists b_1 \in B_1, b_2 \in B_2 \left[a = b_1 + b_2\right]$
+
+\item $B_1 \cap B_2 = \{0\}$
+\end{itemize}
+тогда справедливо $A \cong B_1 \oplus B_2$
+\end{Th}
+
+Теперь вспоминаем какие хорошие абелевы группы мы знаем - все циклические группы абелевы, но и без этого у них все хорошо, но то что они абелевы позволяет сформулировать следующую теорему
+
+\begin{Th}[о разложении циклической группы в прямую сумму]
+Пусть $m,n \in \mathbb{N}$ и $gcd\left(m,n\right) = 1$, тогда это равносильно утверждению:
+\[
+	\mathbb{Z}/{mn \mathbb{Z}} \cong \mathbb{Z} / {m \mathbb{Z}} \oplus  \mathbb{Z}/{n \mathbb{Z}}
+\]
+(обратие внимание, что утверждения именно равносильны, т. е. теорема справедлива в обе стороны, что в прочем не очень пока полезно)
+\end{Th}
+
+\begin{Proof}
+Докажем для начала необходимость, для этого придется воспользоваться предыдущей теоремой, в терминах предыдущей теоремы $A = \mathbb{Z} / {mn\mathbb{Z}}$, $B_1 = <n + mn \mathbb{Z}> \cong \mathbb{Z}/{m \mathbb{Z}}$ - группа чисел порожденная остатком $n$ и, наконец $B_2 = <m + mn \mathbb{Z}> \cong \mathbb{Z} / {n \mathbb{Z}}$ - группа чисел п остатком $m$
+
+Теперь проверим утверждения предыдущей теоремы, для начала покажем, что $B_1 \cap B_2 = \{0\}$, это следует из того, что $gcd\left(m,n\right) = 1 \Rightarrow lcm\left(m,n\right) = mn$, но так как изначально все числа беруться по модулю $mn$, то единственный возможный вариант пересечения $\{0\}$.
+
+Далее из $gcd\left(m,n\right) = 1$ следует, что $\exists \alpha, \beta \in \mathbb{Z} \left[\alpha m + \beta n = 1\right]$ - линейное представление наибольшего общего делителя, тогда если $a \in \mathbb{Z} / {mn \mathbb{Z}}$, то допускается следующее разложение:
+\[
+	\begin{split}
+		& a = a \cdot 1 = \left(a \alpha m + a \beta n\right) \\
+		& a \alpha \in B_1, a \beta \in B_2
+	\end{split}
+\]
+т. е. оба условия теоремы выполняются, значит группа разложима.
+
+Теперь докажем достаточность, возьмем в группе $\mathbb{Z} / {mn \mathbb{Z}}$ элемент 1 (не нейтральный элемент, а именно единицу) и отобразим ее:
+\[
+	1 \mapsto \left(x, y\right)
+\]
+порядок элемента $1$ циклической горуппы совпадает с порядком всей группы и равнен $mn$. Пусть теперь $gcd\left(m,n\right) = k$, тогда $\exists t = \frac{mn}{k} \le mn$, но это значит, что $\left(x,y\right) \times t = \left(0,0\right)$, но это возможно только в случае если $t = mn \left[ ord\left(\left(x,y\right)\right) = mn \right]$, так как при изоморфизме порядок всех эелемнтов должен совпадать, следовательно $k=1$.
+\end{Proof}
+
+\begin{Th}[О строении конечнопорожденных абелевых групп]
+Пусть $A$ - конечнопорожденная абелева группа, тогда справедливо <<разложение>>:
+\[
+	A \cong \underbrace{\mathbb{Z} \oplus ... \oplus \mathbb{Z}}_{t} \oplus \mathbb{Z} / {p_1^{d_1} \mathbb{Z}} \oplus ... \oplus \mathbb{Z} / {p_s^{d_s} \mathbb{Z}}
+\]
+где $t,s \in \mathbb{N} \cup \{0\}$, $d_i \in \mathbb{N}$, $p_i \in \mathbb{P}$ и $\{t, p_1^{d_1}, ... ,p_s^{d_s}\}$ - единственно.
+\end{Th}
+
+Теорема приводится без доказательства, но вещь полезная)
+
+\section{Группа обратимых остатков и функция Эйлера}
+
+\begin{Def}
+$\left(\mathbb{Z} / {n \mathbb{Z}}\right)^{\times}$ - множество обратимых остатков $ = \{x \in \mathbb{Z} / {n \mathbb{Z}} : \exists y \in \mathbb{Z}/{n \mathbb{Z}} \left[xy = 1\right]\}$ - группа относительно умножения по модулю $n$
+\end{Def}
+
+Идейно это определение значит следующее, мы берем группу остатков по модулю $n$, которая очевидно является группой по сложению (по модулю $n$) и выкидываем из нее все, что мешает ей быть группой по умножению (опять же по тому самому модулю $n$), в частности мы выкидываем 0, так как в группе по умножению нуля быть не может, но зато там всегда останется единица.
+
+\begin{Th}
+Следующие утверждения равносильны:
+\begin{enumerate}
+\item $x \in \left(\mathbb{Z} / {n \mathbb{Z}}\right)^{\times}$
+
+\item $<x> = \mathbb{Z} / {n \mathbb{Z}}$
+
+\item $gcd\left(x,n\right) = 1$
+\end{enumerate}
+\end{Th}
+
+\begin{Proof}
+Доказывать все будем по кругу, как настоящие математики. Докажем $1 \Rightarrow 2$. Это равносильно утверждению $\forall t \in \mathbb{Z} / {n \mathbb{Z}} \exists u \in \mathbb{Z} \left[t = \underbrace{x + ... + x}_{u}\right]$, возьмем в качестве $u = ty$, такой что $yx = 1$, покажем, что он действительно подходит:
+\[
+	t = t \cdot 1 = t x y = \left(t y\right) x
+\]
+
+Докажем $2 \Rightarrow  3$. $<x> = \mathbb{Z} / {n \mathbb{Z}}$, это значит, что $x$ должен порождать $1$, следовательно $\exists y \in mathbb{Z} \left[1 = xy\right]$, т. е. $xy = 1 \mod n$ или что допускается разложение $1 = x y + z n$, $z \in \mathbb{Z}$ откуда вытекает $gcd\left(m,n\right) = 1$
+
+Наконец докажем $3 \Rightarrow 1$. $\exists z \in \mathbb{Z} \left[1 = xy + zn = xy \mod n\right]$
+\end{Proof}
+
+\paragraph{Следствие 1.} если $p$ - простое число, то:
+\[
+	\left(\mathbb{Z} / {p \mathbb{Z}}\right)^{\times} = \mathbb{Z} / {p \mathbb{Z}} \setminus \{0\}
+\]
+
+\paragraph{Примеры:}
+\[
+	\begin{split}
+		& \left(\mathbb{Z} / {4 \mathbb{Z}}\right)^{\times} = \{1, 3\} \cong C_2 \cong \mathbb{Z} / {2 \mathbb{Z}} \\
+		& \left(\mathbb{Z} / {8 \mathbb{Z}}\right)^{\times} = \{1, 5\} \cong C_2 \cong \mathbb{Z} / {2 \mathbb{Z}}
+	\end{split}
+\]
+
+\begin{Th}[Китайская теорема об остатках]
+Пусть $gcd\left(m,n\right) = 1$, тогда отображение:
+\[
+	\phi : \mathbb{Z} / {mn \mathbb{Z}} \rightarrow \mathbb{Z}/ {m \mathbb{Z}} \oplus \mathbb{Z} / {n \mathbb{Z}}
+\]
+сопоставляющий элементы следующим образом:
+\[
+	x + mn \mathbb{Z} \mapsto \left(x + m \mathbb{Z}, x + n \mathbb{Z}\right)
+\]
+является изоморфизмом, причем как по сложению так и по умножению (для моноидов), при этом отображение:
+\[
+	\psi: \left(u + m\mathbb{Z}, v + n\mathbb{Z}\right) \mapsto \beta n u + \alpha m v + mn \mathbb{Z}
+\]
+, где $\alpha m + \beta n = 1$ - линейное представление $gcd$, является обратным отображением
+\end{Th}
+
+\begin{Proof}
+То что группы изоморфны очевидно, изоморфизмов между двумя группами может быть несколько. В данном случае свойства гомоморфизма оять же легко проверяются, проверим, обратность отображений:
+\[
+	\begin{split}
+		& \phi \circ \psi \left(u,v\right) = \phi \left(\beta n u + \alpha m v\right) = \left(u, v\right) \\
+		& \psi \circ \phi \left(x\right) = \psi \left(x + m \mathbb{Z}, x + n \mathbb{Z}\right) = \beta n x + \alpha m x = \left(\beta n + \alpha m\right) x = x
+	\end{split}
+\]
+\end{Proof}
+
+\begin{Def}
+Пусть $n \in \mathbb{Z}$, тогда функция:
+\[
+	\phi \left(n\right) = \left|\{x \in \mathbb{Z}/{n \mathbb{Z}} : gcd\left(x, n\right) = 1\}\right|
+\]
+называется функцией Эйлера.
+\end{Def}
+(* или просто число взаимопростых с $n$ чисел меньше самого $n$)
+
+\begin{Th}[Теорема Эйлера]
+\[
+	\forall n,a \in \mathbb{Z}, gcd\left(n,a\right) = 1 \left[a^{\phi\left(n\right)} = 1 \mod n\right]
+\]
+\end{Th}
+
+\begin{Proof}
+\[
+	\begin{split}
+		& gcd\left(a,n\right) = 1 \Leftrightarrow a \in \left(\mathbb{Z} / {n \mathbb{Z}}\right)^{\times} \\
+		& \left|\left(\mathbb{Z}/{n \mathbb{Z}}\right)^{\times}\right| = \phi\left(n\right) \Rightarrow \\
+		& \Rightarrow \phi\left(n\right) = k \cdot ord\left(a\right) \Rightarrow a^{\phi\left(n\right)} = 1 \mod n
+	\end{split}
+\]
+\end{Proof}
+
+Кроме того для функции Эйлера справедливы следующие свойства.
+
+\begin{Th}[о свойствах функции Эйлера]
+Функция Эйлера обладает следующими свойствами:
+\begin{enumerate}
+\item $gcd\left(m,n\right) = 1 \Rightarrow \phi\left(mn\right) = \phi\left(m\right)\phi\left(n\right)$
+
+\item $n = p_1^{d_1} \cdot ... \cdot p_s^{d_s}$ - разложение $n$ на простые сомножители, то $\phi\left(n\right) = n \cdot \prod_{i = 1}^{s} \left(1 - \frac{1}{p_i}\right)$
+
+\item $\sum_{d \in \overline{1,n} : n \vdots d}\phi\left(d\right) = n$
+\end{enumerate}
+\end{Th}
+
+Ну и наконец последняя теорема на пока, которая открывает страшную тайну строения группы обратимых остатков.
+
+\begin{Th}[О строениие группы обратимых остатков]
+Пусть $n = p_1^{d_1} \cdot ... \cdot p_s^{d_s}$ - разложение числа на простые сомножители, тогда:
+\[
+	\left(\mathbb{Z} / {n \mathbb{Z}}\right)^{\times} = \prod_{i=1}^{s} \left(\mathbb{Z} / {p_i^{d_i} \mathbb{Z}}\right)^{\times}
+\]
+а в свою очередь:
+\[
+	\begin{split}
+		& \left(\mathbb{Z}/{p_i^{d_i} \mathbb{Z}}\right)^{\times} \cong C_{p_i^{d_i} - p_i^{d_i - 1}}, \text{ при } p_i \not= 2^k \\
+		& \left(\mathbb{Z}/{2\mathbb{Z}}\right)^{\times} \cong \{1\} \\
+		& \left(\mathbb{Z}/{4\mathbb{Z}}\right)^{\times} \cong C_2 \\
+		& \left(\mathbb{Z}/{2^d\mathbb{Z}}\right)^{\times} \cong C_2 \times C_{2^{d-2}}, \text{ где } d > 2
+	\end{split}
+\]
+\end{Th}

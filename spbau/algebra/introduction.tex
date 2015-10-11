@@ -1,0 +1,180 @@
+\chapter{Банально, введение}
+
+По лекции от 9 сентября 2011 года.
+
+\section{Лектор}
+
+Горячко Е. Е. email: eguene@pdmi.ras.ru
+
+\section{Литература}
+
+\begin{enumerate}
+\item Каргополов Мерзляков Теория групп
+
+\item Александров Введение в теорию групп
+
+\item Винберг Курс алгебры
+
+\item ван дер Варден Алгебра
+
+\item Холл Теория групп
+
+\item Босс Лекции по математике. Теория групп
+
+\item Rotman An introduction to the theory of groups
+\end{enumerate}
+
+\section{Кое-какие сведения из детства}
+
+\begin{Def}
+	Отображение - тройка $(G, X, Y)$, где $G \subseteq X \times Y$ - грфик (отношение $G = \{ x \times f(x) | x \in X \}$, где $f : X \rightarrow Y$, так как-то привычнее, но в общем без разницы)
+\end{Def}
+
+\begin{Def}
+	Множество всех отображений из A в B $\left(\{ f: A \rightarrow B\}\right)$ обозначается как $B^A$, а $\left|B^A\right| = {\left|B\right|}^{\left|A\right|}$
+\end{Def}
+
+\section{Полугруппы, моноиды, группы}
+
+\begin{Def}
+	X-множество, $n \in {\mathbb{N}}_0 = \mathbb{N}\cup\{0\}$, n-арной операцией на множестве X называется отображение $\left(G \subseteq X^{n+1}, X^n, X\right)$ (или по-русски $X^n \rightarrow X$)
+\end{Def}
+
+\begin{Def}
+	Алгебраическая структура - тройка $(X, \Phi, \Psi)$, где X-множество элементов, $\Phi \subseteq \cup_{n=0}^{\infty} X^{\left(X^n\right)}$ - множество операций на множестве X, $\Psi$ - множество тождеств (кто-то, кажется, называл это предикатами)
+\end{Def}
+
+\begin{Def}
+	Бинарная операция $\cdot$ на множестве X называется ассоциативной, если: \[ \forall(x,y,z \in X) \left[ \left( x \cdot y \right) \cdot z =  x \cdot \left( y \cdot z \right) \right] \]
+\end{Def}
+
+\begin{Def}
+	Левонормированная расстоновка скобок в выражении - это такая расстановка скобок, при которой операции выполняются в том же порядке как и без скобок вовсе:
+	\[
+		\left(\left( ... \left( \left( x_1 \cdot x_2 \right) \cdot x_3 \right) ... \cdot x_{n-1} \right) \cdot x_n \right)
+	\]
+	Существует также правонормированная расстановка скобок, при которой операции выполняются в обратном порядке:
+	\[
+		\left(x_1 \cdot \left( x_2 \cdot \left( ... \cdot \left( x_{n-1} \cdot x_n \right) ... \right) \right) \right)
+	\]
+\end{Def}
+
+\begin{Th}[Об обобщенной ассоциативности]
+	Пусть X - множество, $\cdot$ - определенная на множестве бинарная операция, условно назовем ее умножением, тогда значение произведения любого числа элементов из X не зависит от порядка расстановки скобок в нем (не важен порядок произведения действий)
+\end{Th}
+
+\begin{Proof}
+	Воспользуемся индукцией по числу элементов в выражении (n). База индукции - свойство ассоциативности, которое выполняется по определению для 3-х элементов.
+
+	Теперь предположим, что свойство выполняется для всех выражений с длинной меньше n, докажем, что тогда и для выражения длинны n оно всегда выполняется. Пусть имеется выражение длинные n, его всегда можно разбить на две части - две скобки (в крайнем случае в одной из них будет всего один элемент, а во второй n-1)
+	\[
+		\left(x_1 \cdot \cdot \cdot x_k \right) \cdot \left(x_{k+1} \cdot \cdot \cdot x_n \right)
+	\]
+	В обоих частях мы можем расставить скобки как хотим, т. к. в каждой из них меньше n элементов, расставим в левой части скобки левонормированно, а в правой правонормированно:
+	\[
+		\left(\left( ... \left( \left( x_1 \cdot x_2 \right) \cdot x_3 \right) ... \cdot x_{n-1} \right) \cdot x_k \right) \cdot \left(x_{k+1} \cdot \left( x_{k+2} \cdot \left( ... \cdot \left( x_{n-1} \cdot x_n \right) ... \right) \right) \right)
+	\]
+	Пользуясь обычной ассоциативностью "переведем" один элемент в левую часть:
+	\[
+		\begin{split}
+			& \left(\left( ... \left( \left( x_1 \cdot x_2 \right) \cdot x_3 \right) ... \cdot x_{n-1} \right) \cdot x_k \right) \cdot \left(x_{k+1} \cdot \left( x_{k+2} \cdot \left( ... \cdot \left( x_{n-1} \cdot x_n \right) ... \right) \right) \right) = \\
+			= & \left(\left( ... \left( \left( x_1 \cdot x_2 \right) \cdot x_3 \right) ... \cdot x_{n-1} \right) \cdot x_k \right) \cdot x_{k+1} \cdot \left( x_{k+2} \cdot \left( ... \cdot \left( x_{n-1} \cdot x_n \right) ... \right) \right)  = \\
+			& = \left(\left(\left( ... \left( \left( x_1 \cdot x_2 \right) \cdot x_3 \right) ... \cdot x_{n-1} \right) \cdot x_k \right) \cdot x_{k+1} \right) \cdot \left( x_{k+2} \cdot \left( ... \cdot \left( x_{n-1} \cdot x_n \right) ... \right) \right)
+		\end{split}
+	\]
+	Проделав эту операцию последовательно много раз, мы "переведем" все элементы правой части в левую, таким образом мы можем привести любую расстановку скобок к левонормированному виду, а значит от расстановок скобок выражение не зависит
+\end{Proof}
+
+\begin{Def}
+	Полугруппа - алгебраическая структура, с ассоциативной бинарной операцией
+\end{Def}
+
+\begin{Def}
+	Пусть $\cdot$ - бинарная операция на множестве X, тогда элемент $e \in X$ называется нейтральным относительно операции $\cdot$, если
+	\[
+		\left(\forall x \in X \right) \left[x \cdot e = e \cdot x = x \right] 
+	\]
+\end{Def}
+
+\begin{Th}
+	Если нейтральный элемент относительно некоторой операции $\cdot$ сущестует, то он единственный
+\end{Th}
+
+\begin{Proof}
+	Пусть существуют два нейтральных элемента $e$ и $e'$, тогда:
+	\[ e = e \cdot e' = e' \Leftrightarrow e = e' \]
+\end{Proof}
+
+\begin{Def}
+	Моноид - полугруппа с нейтральным элементом, по отношению к заданной ассоциативной бинарной операции
+\end{Def}
+
+\begin{Def}
+	Обратным элементом к элементу $x$ относительно бинарной операции $\cdot$ наызвается элемент, для которого:
+	\[
+		x \cdot x^{-1} = x^{-1} \cdot x = e
+	\]
+\end{Def}
+
+\begin{Def}
+	Группа - моноид, для каждого элемента которого существует обратный.
+\end{Def}
+
+\begin{Th}
+	Для каждого элемента группы существует всего один обратный элемент
+\end{Th}
+
+\begin{Proof}
+	Пусть $x_0^{-1}$ и $x_1^{-1}$ - элементы обратные к $x$, тогда:
+	\[
+		\left[x \cdot x_o^{-1} = e\right] \Leftrightarrow \left[x_1^{-1} \cdot x \cdot x_o^{-1} = x_1^{-1}\right] \Leftrightarrow \left[e \cdot x_o^{-1} = x_1^{-1}\right] \Leftrightarrow \left[x_o^{-1} = x_1^{-1}\right]
+	\]
+\end{Proof}
+
+\begin{Def}
+	Бинарная операция $\cdot$ называется коммутативной, если
+	\[
+		\left(\forall a, b\right)\left[a \cdot b = b \cdot a\right]
+	\]
+\end{Def}
+
+\begin{Def}
+	Диаграмма Келли - удобный способ представления результатов произведения любых элементов конечной группы. Например, пусть $G$ - группа, $g_1, ... , g_n$ - элементы группы $G$. Тогда можем составить прямоугольную таблицу (ну в общем таблица Пифагора) отметив i-ый столбец элементом $g_i$, а j-ую строку элементом $g_j$, а на их пересечений поставить результат операции $g_j \cdot g_i$.
+	\[
+		\begin{matrix}
+			      && g_1             & g_2             & \dots & g_n             \\ \\
+			g_1   && g_1 \cdot g_1   & g_1 \cdot g_2   & \dots & g_1 \cdot g_n   \\
+			g_2   && g_2 \cdot g_1   & g_2 \cdot g_2   & \dots & g_2 \cdot g_n   \\
+			\dots && \dots           & \dots           & \dots & \dots           \\
+			g_n   && g_n \cdot g_1   & g_n \cdot g_2   & \dots & g_n \cdot g_n			
+		\end{matrix}
+	\]
+\end{Def}
+
+С этими диаграммами связан ряд простых задач, например, пусть на диаграмме выделена квадратная область:
+\[
+	\begin{matrix}
+		\dots && g_i   & \dots & g_j      & \dots \\ \\
+		g_k   && \lceil a     & \dots & \text{?} \rceil & \dots \\
+		\dots && \dots & \dots & \dots    & \dots \\
+		g_m   && \lfloor e     & \dots & b \rfloor        & \dots \\
+		\dots && \dots & \dots & \dots    & \dots
+	\end{matrix}
+\]
+Итак, викторина, что же скрывается за знаком вопроса? 
+
+\begin{Solution}
+Задача решается просто, распишем элеметы таблицы
+\[
+	\begin{split}
+		& g_k \cdot g_i = a \\
+		& g_m \cdot g_j = b \\
+		& g_m \cdot g_i = e \\
+		& g_k \cdot g_j = ?
+	\end{split}
+\]
+Далее ряд простых манипуляций:
+\[
+	g_m \cdot g_i = e = g_i \cdot g_m \Rightarrow a \cdot b = g_k \cdot \left( g_i \cdot g_m \right) \cdot g_j = g_k \cdot g_j
+\]
+\end{Solution}

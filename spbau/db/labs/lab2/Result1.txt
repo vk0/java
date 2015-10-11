@@ -1,0 +1,168 @@
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, Address, LeagueNo
+   FROM     StratfordPlayers;
+   ______________________
+
+
+	PlayerNo    Address                                                                 LeagueNo  
+	____________________________________________________________________________________________
+	2           43                                                                      2411      
+	6           80                                                                      8467      
+	7           39                                                                      test      
+	39          78                                                                      test      
+	57          16                                                                      6409      
+	83          16                                                                      1608      
+	100         80                                                                      6524      
+	____________________________________________________________________________________________
+	No of records 7
+
+
+	Access Plan Generation Time = 37 ms (min: 0, sec: 0, ms: 37)
+	Access Plan Execution Time  = 24 ms (min: 0, sec: 0, ms: 24)
+	Total Execution Time        = 61 ms (min: 0, sec: 0, ms: 61)
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, LeagueNo
+   FROM     StratfordPlayers
+   ORDER BY LeagueNo asc;
+   ______________________
+
+
+	PlayerNo    LeagueNo  
+	____________________
+	83          1608      
+	2           2411      
+	57          6409      
+	100         6524      
+	6           8467      
+	7           test      
+	39          test      
+	____________________
+	No of records 7
+
+
+	Access Plan Generation Time = 82 ms (min: 0, sec: 0, ms: 82)
+	Access Plan Execution Time  = 41 ms (min: 0, sec: 0, ms: 41)
+	Total Execution Time        = 123 ms (min: 0, sec: 0, ms: 123)
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, BirthYear
+   FROM     PlayersBirthYearIN;
+   ______________________
+
+
+	PlayerNo    BirthYear   
+	______________________
+	7           1963        
+	8           1962        
+	28          1963        
+	44          1963        
+	100         1963        
+	104         1970        
+	112         1963        
+	______________________
+	No of records 7
+
+
+	Access Plan Generation Time = 39 ms (min: 0, sec: 0, ms: 39)
+	Access Plan Execution Time  = 51 ms (min: 0, sec: 0, ms: 51)
+	Total Execution Time        = 90 ms (min: 0, sec: 0, ms: 90)
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, Name
+   FROM     Team1Players;
+   ______________________
+
+
+	PlayerNo    Name                                           
+	_________________________________________________________
+	2           Everett                                        
+	6           Parmenter                                      
+	8           Newcastle                                      
+	44          Baker                                          
+	57          Brown                                          
+	83          Hope                                           
+	_________________________________________________________
+	No of records 6
+
+
+	Access Plan Generation Time = 95 ms (min: 0, sec: 0, ms: 95)
+	Access Plan Execution Time  = 125 ms (min: 0, sec: 0, ms: 125)
+	Total Execution Time        = 220 ms (min: 0, sec: 0, ms: 220)
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, Name, BirthYear
+   FROM     PlayersBirthYearANY;
+   ______________________
+
+
+	PlayerNo    Name                                           BirthYear   
+	_____________________________________________________________________
+	2           Everett                                        1948        
+	6           Parmenter                                      1964        
+	7           Wise                                           1963        
+	8           Newcastle                                      1962        
+	27          Collins                                        1964        
+	28          Collins                                        1963        
+	39          Bishop                                         1956        
+	44          Baker                                          1963        
+	57          Brown                                          1971        
+	83          Hope                                           1956        
+	100         Parmenter                                      1963        
+	104         Moorman                                        1970        
+	112         Bailey                                         1963        
+	_____________________________________________________________________
+	No of records 13
+
+
+	Access Plan Generation Time = 106 ms (min: 0, sec: 0, ms: 106)
+	Access Plan Execution Time  = 15 ms (min: 0, sec: 0, ms: 15)
+	Total Execution Time        = 121 ms (min: 0, sec: 0, ms: 121)
+
+__ SQL command _________________
+
+   SELECT   PlayerNo
+   FROM     PlayersPenalties;
+   ______________________
+
+
+	PlayerNo    
+	__________
+	27          
+	44          
+	__________
+	No of records 2
+
+
+	Access Plan Generation Time = 86 ms (min: 0, sec: 0, ms: 86)
+	Access Plan Execution Time  = 22 ms (min: 0, sec: 0, ms: 22)
+	Total Execution Time        = 108 ms (min: 0, sec: 0, ms: 108)
+
+__ SQL command _________________
+
+   SELECT   PlayerNo
+   FROM     Player57TeamMate;
+   ______________________
+
+
+	PlayerNo    
+	__________
+	2           
+	6           
+	44          
+	57          
+	83          
+	__________
+	No of records 5
+
+
+	Access Plan Generation Time = 61 ms (min: 0, sec: 0, ms: 61)
+	Access Plan Execution Time  = 67 ms (min: 0, sec: 0, ms: 67)
+	Total Execution Time        = 128 ms (min: 0, sec: 0, ms: 128)
+

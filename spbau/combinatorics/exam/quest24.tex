@@ -1,0 +1,88 @@
+\chapter{Вопрос № 24}
+
+Формула Фаа ди Бруно в комбинаторике и математическом анализе. Полиномы Белла, комбинаторный смысл полиномов, в также их коэффициентов. Рекуррентные соотношения для полиномов Белла. Числа Стирлинга второго рода как частный случай полиномов Белла.
+
+\section{Формула Фаа ди Бруно}
+
+Пусть в аудитории находится $n$ людей, нужно посчитать количество способов разбить $n$ людей на пятерки и/или двойки, и совершить в двойке некоторое действие $a_2$ способами, а в пятерке $a_5$ способами, тогда имеем производящую функцию:
+\[
+	F\left(x\right) = a_2 \frac{x^2}{2!} + a_5 \frac{x^5}{5!}
+\]
+затем нужно совершить над полученными двойками и пятерками совершить некоторое уомбинаторное дествие опсываемое коэффициентами $b_n$ эпф:
+\[
+	G\left(x\right) = b_0 + b_1 x + b_2 \frac{x^2}{2} + b_3 \frac{x^3}{3!} + ...
+\]
+а композиция выглядит следующим образом:
+\[
+	H\left(x\right) = b_0 + b_1\left(a_2 \frac{x^2}{2!} + a_5\frac{x^5}{5!}\right) + ... \frac{b_k}{k!}\left(a_2\frac{x^2}{2!} + a_5\frac{x^5}{5!}\right)^k+...
+\]
+по биному Ньютона получаем, что:
+\[
+	\begin{split}
+		& \frac{b_k}{k!}\left(a_2\frac{x^2}{2!}+a_5\frac{x^5}{5!}\right)^k = \frac{b_k}{k!} \sum_{i=0}^k \binom{k}{i} \left(a_2\frac{x^2}{2!}\right)^i\left(a_5\frac{x^5}{5!}\right)^{k-i} = \\
+		& \frac{b_k}{k!}\sum_{{k_2+k_5=k}\atop{k_2,k_5\ge 0}} \frac{k!}{k_2!k_5!} a_2^{k_2}\cdot a_5^{k_5} \cdot \frac{1}{\left(2!\right)^{k_2}} \cdot \frac{1}{\left(5!\right)^{k_5}}x^{2k_2+5k_5} \Rightarrow \\
+		& c_n = \sum_{{2k_2+5k_5=n}\atop{k_2,k_5\ge0}} \frac{n!}{k_2!k_5!} b_{k_2+k_5} \left(\frac{a_2}{2!}\right)^{k_2}\left(\frac{a_5}{5!}\right)^{k_5}
+	\end{split}
+\]
+Обобщением полученной формулы для коэффициентов композиции эпф является формула Фаа ди Бруно:
+\begin{equation}
+	c_n \sum_{{k_1 + 2k_2 + ... + nk_n}\atop{k_i\ge0}} \frac{n!}{k_1!...k_n!} b_{k_1+...+k_n}\left(\frac{a_1}{1!}\right)^{k_1}...\left(\frac{a_n}{n!}\right)^{k_n}
+\end{equation}
+Изначально эта формула была получена в математическом анализе, любая функция раскладывается в ряд Маклорена:
+\[
+	\begin{split}
+		& F\left(x\right) = F\left(0\right) + F'\left(0\right) \frac{x}{1!} + F''\left(0\right) \frac{x^2}{2!} + ... + F^{\left(n\right)}\left(0\right)\frac{x^n}{n!} + ...\\
+		& G\left(x\right) = G\left(0\right) + G'\left(0\right) \frac{x}{1!} + G''\left(x\right) \frac{x^2}{2!} + ...
+	\end{split}
+\]
+тогда если мы будем раскладывать в ряд композицию этих функций:
+\[
+	H\left(x\right) = G\left(F\left(x\right)\right) = c_0 + c_1 x + c_2 \frac{x^2}{2!} + ...
+\]
+где $c_n = H^{\left(n\right)}\left(0\right)$ откуда получается ровно та же самая формула.
+
+\section{Полиномы Белла}
+
+Теперь перегруппируем формулу Фаа ди Бруно собрав все слагаемые при коэффициенте $b_k$:
+\[
+	\begin{split}
+		& c_n = \sum_{k=1}^n b_k B_{n,k}\left(a_1, ..., a_{n-k+1}\right) \\
+		& B_{n,k}\left(a_1,...,a_{n-k+1}\right) = \sum_{{k_1+..k_{n-k+1} = k}\atop{k+1 + ... \left(n-k+1\right)k = n}} \frac{n!}{k_1!...k_{n-k+1}!}\left(\frac{a_1}{1!}\right)^{k_1}...\left(\frac{a_{n-k+1}}{\left(n-k+1\right)!}\right)^{k_{n-k+1}}
+	\end{split}
+\]
+где $B_{n,k}\left(a_1,...,a_{n-k+1}\right) = c\left(n,k\right)$ - коэффициенты, которые получаются из композиционной формулы при подстановке в нее в качестве $b_k = t^k$, их комбинаторный смысл - количество разбиений $n$-множества ровно на $k$ блоков, причем в этом разбиении $k_1$ одноэлементный блок, $k_2$ двуэлементых и тд, затем в каждом блоке совершается некоторое комбинаторное действие.
+
+Видно, что $B_{n,k}$ - не зависят от выбранной производящей функции $G\left(x\right)$ (коэффициент $b_k$ в формуле не участвет), поэтому выберем в качестве:
+\[
+	G\left(x\right) = 1 + tx + \frac{\left(tx\right)^2}{2} + \frac{\left(tx\right)^3}{3!} + ... = e^{tx}
+\]
+тогда композиционная формула примет вид:
+\[
+	H\left(x,t\right) = e^{tF\left(x\right)} = c_0\left(t\right) + c_1\left(t\right)x + c_2\left(t\right)\frac{x^2}{2!} + ...
+\]
+тогда
+\[
+	\begin{split}
+		& \frac{\partial H}{\partial x} = c_1\left(t\right) + c_2\left(t\right)x + c_3\left(t\right)\frac{x^2}{2!} + ... = te^{tF\left(x\right)}F'\left(x\right) = \\
+		& = t F'\left(x\right) H\left(x,t\right) = t\left[a_1 + a_2x + a_3\frac{x^2}{2!} + ... \right]\left[c_0\left(t\right) + c_1\left(t\right)x + c_2\left(t\right)\frac{x^2}{2!} + ...\right]
+	\end{split}
+\]
+откуда по правилу произведение эпф:
+\begin{equation}
+	c_{n+1}\left(t\right) = t\sum_{k=0}^n \binom{n}{k} a_{n+1-k}c_k\left(t\right)
+\end{equation}
+в этих полиномах $B_{n,k}$ является коэффициентом при $t^k$
+
+\section{Числа Стирлинга второго рода}
+
+Если положить коэффициенты $a_i = 1$ при $i\ge1$, а $a_0 = 0$. Получаем случай разбиения $n$-множества на блоки, и если мы используем $b_k = t^k$ получаем:
+\begin{equation}
+	H\left(x,t\right) = \sum_{n=0}^\infty \left(\sum_{k=0}^n \Stirsecond{n}{k} t^k\right) \frac{x^n}{n!}
+\end{equation}
+т. е.:
+\begin{equation}
+	\begin{split}
+		& \Stirsecond{n}{k} = B_{n,k}\left(1,...,1\right) = \\
+		& = \sum_{{k_1+...+k_{n-k+1}=k}\atop{k_1+...+\left(n-k+1\right)k_{n-k+1}=n}} \frac{n!}{k_1!...k_{n-k+1}!\left(1!\right)^{k_1}...\left(\left(n-k+1\right)!\right)^{k_{n-k+1}}}
+	\end{split}
+\end{equation}

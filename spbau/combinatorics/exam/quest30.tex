@@ -1,0 +1,149 @@
+\chapter{Вопрос № 30}
+
+Числа Стирлинга первого рода - производящая функция, рекуррентное соотношение, связь с возрастающими факториальными числами. Связь чисел Стирлинга первого и второго рода.
+
+\section{Числа Стирлинга первого рода}
+
+Рассмотрим производящую функцию $B\left(x\right)$ с коэффициентами:
+\[
+	1, t, t^2, t^3, ...
+\]
+и производящую функцию $A\left(x\right)$ с коэффициентами:
+\[
+	0, 1, 1, 2!, 3!, ...
+\]
+
+Тогда композиция функций $B\left(A\left(x\right)\right)$ будет представляться как:
+\[
+	\hat c\left(x,t\right) = \sum_{n=0}^{\infty}\left(\sum_{k=0}^n c\left(n,k\right) t^k\right) \frac{x^n}{n!}
+\]
+где коэффициенты $c\left(n,k\right)$ - количество разбиений $n$-элементного множества ровно на $k$ циклов. Эти числа называются числами Стирлинга первого рода (часто обозначаются как $\left[n \atop k\right]$).
+
+Очевидно, что производящая функция для них в свернутом виде представляется как:
+\[
+	\hat c\left(x,t\right) = exp\left(t\cdot ln\left(\frac{1}{1-x}\right)\right) = \frac{1}{\left(1-x\right)^t}
+\]
+
+Теперь повыводим из этого всякие разные свойства чисел Стирлинга первого рода, но для начала выпишем несколько очевидных соотношений для них:
+\[
+	\begin{split}
+		& \left[0\atop 0\right] = 1\\
+		& \left[n\atop 0\right] = 0, n > 0\\
+		& \left[n\atop k\right] = 0, k > n
+	\end{split}
+\]
+
+\section{Связь с возрастающим факториалом}
+
+Далее обозначим через $c_n\left(t\right)$ следующую сумму:
+\[
+	c_n\left(t\right) = \sum_{k=0}^{n} \left[n\atop k\right] t^k
+\]
+тогда вся производящая функция записывается как:
+\[
+	\hat c\left(x,t\right) = \sum_{n=0}^{\infty} c_n\left(t\right) \frac{x^n}{n!}
+\]
+Продиффиренцируем $\hat c\left(x,t\right)$ по $x$ и получаем следующее:
+\[
+	\frac{\partial \hat c \left(x,t\right)}{\partial x} = \sum_{n=1}^{\infty} c_n\left(t\right) \frac{x^{n-1}}{\left(n-1\right)!} = \sum_{n=0}^{\infty} c_{n+1}\left(t\right) \frac{x^n}{n!}
+\]
+Теперь продиффиринцируем $\frac{1}{\left(1-x\right)^t}$ по $x$:
+\[
+	\frac{\partial \frac{1}{\left(1-x\right)^t}}{\partial x} = \frac{t}{\left(1-x\right)^{t+1}} = \frac{t}{1-x} \hat c\left(x,t\right)
+\]
+Откуда подставив предыдущее равенство для частной проивзодной получаем соотношение:
+\[
+	\begin{split}
+		& \left(1-x\right) \frac{\partial \hat c\left(x,t\right)}{\partial x} = t\hat c\left(x,t\right) \Leftrightarrow\\
+		& \Leftrightarrow \left(1-x\right)\sum_{n=0}^{\infty} c_{n+1}\left(t\right) \frac{x^n}{n!} = t\sum_{n=0}^{\infty}c_n\left(t\right)\frac{x^n}{n!} \Leftrightarrow\\
+		& \Leftrightarrow \sum_{n=0}^{\infty}c_{n+1}\left(t\right) \frac{x^n}{n!} = x\sum_{n=0}^{\infty} c_{n+1}\left(t\right)\frac{x^n}{n!} + t \sum_{n=0}^{\infty}c_n\left(t\right)\frac{x^n}{n!} \Leftrightarrow\\
+		& \Leftrightarrow \sum_{n=0}^{\infty}c_{n+1}\left(t\right) \frac{x^n}{n!} = \sum_{n=0}^{\infty} \left(n+1\right) c_{n+1}\left(t\right) \frac{x^{n+1}}{\left(n+1\right)!} + t \sum_{n=0}^{\infty} c_n\left(t\right) \frac{x^n}{n!} \Leftrightarrow\\
+		& \Leftrightarrow \sum_{n=0}^{\infty}c_{n+1}\left(t\right) \frac{x^n}{n!} = \sum_{n=0}^{\infty} n c_n\left(t\right)\frac{x^n}{n!} + t\sum_{n=0}^{\infty} c_n\left(t\right) \frac{x^n}{n!}
+	\end{split}
+\]
+откуда получаем рекуррентное соотношение для полиномов $c_n\left(t\right)$:
+\[
+	c_{n+1}\left(t\right) = n c_n\left(t\right) + t c_n\left(t\right)
+\]
+Исходя из того, что $c_0\left(t\right) = 1$ можно построить последующие полиномы:
+\[
+	\begin{split}
+		& c_0\left(t\right) = 1\\
+		& c_1\left(t\right) = t c_0\left(t\right) = t\\
+		& c_2\left(t\right) = 1 c_1\left(t\right) + t c_1\left(t\right) = t + t^2\\
+		& c_3\left(t\right) = 2 c_2\left(t\right) + t c_2\left(t\right) = 2 t + 3 t^2 + t^3
+	\end{split}
+\]
+
+\section{Рекуррентное соотношение для чисел Стирлинга первого рода}
+
+Теперь совсем не трудно получить рекуррентное соотношение для чисел Стирлинга:
+\[
+	\begin{split}
+		& \sum_{k=0}^{n+1} \left[n+1 \atop k\right] t^k = n \sum_{k=0}^n \left[n\atop k\right] t^k + \sum_{k=0}^n \left[n\atop k\right] t^{k+1} \Rightarrow\\
+		& \Rightarrow \sum_{k=1}^{n+1} \left[n+1 \atop k\right] t^k = n \sum_{k=1}^{n+1} \left[n \atop k\right] t^k + \sum_{k=1}^{n+1} \left[n \atop k-1\right] t^k
+	\end{split}
+\]
+т. к. мы знаем, что числа Стирлинга $\left[n \atop k\right] = 0$ при $k = 0 \land n > 0$, а также при $k > n$, в итоге имеем следующее:
+\[
+	\left[n+1 \atop k\right] = n \left[n \atop k\right] + \left[n \atop k-1\right]
+\]
+
+Комбинаторное доказательство этого же факта гораздо проще и понятнее. Разобьем все перестановки $\left(n+1\right)$-множества состоящие ровно из $k$ циклов на 2 блока:
+\begin{enumerate}
+\item В первый блок войдут только те перестановки, в которых элемент $n+1$ входит в единицный цикл
+
+\item Во второй блок войдут только те перестановки, в которых элемент $n+1$ входит в цикл длинны $\ge 2$.
+\end{enumerate}
+
+Очевидно, что если из всех перестановок первого блока удалить цикл из $n+1$ элемента, полуичм все перестановки из $n$ элементов с $k-1$ циклом.
+
+Все перестановки второго блока можно полутить из перестановок $n$-элементного множества с $k$ циклами добавив в любой цикл $n+1$ элемент, количество способов сделать это равно $n$, откуда получаем требуемое рекуррентное соотношение.
+
+Теперь с помощью производящей функции для чисел Стирлинга первого рода получим еще одно выражение для полиномов $c_n\left(t\right)$. Используя формулу бинома Ньютона получаем следующее:
+\[
+	\begin{split}
+		& \hat c\left(x,t\right) = \frac{1}{\left(1-x\right)^t} = \left(1 + \left(-x\right)\right)^{-t} = \\
+		& = \sum_{n=0}^{\infty} \frac{\left(-t\right)\left(-t-1\right) ... \left(-t - n + 1\right)}{n!} \left(-1\right)^n x^n = \sum_{n=0}^{\infty} \frac{t\left(t+1\right)...\left(t+n-1\right)}{n!} x^n
+	\end{split}
+\]
+откуда получаем, что:
+\[
+	c_n\left(t\right) = \sum_{k=0}^n \left[n\atop k\right] t^k = t\left(t+1\right)\cdot ... \cdot\left(t+n-1\right) = \left(t\right)^{n}
+\]
+эти числа называются возрастающим факториалом (а известные нам $\left(t\right)_n$, соответственно, убывающим).
+
+\section{Чила Стрилинга со знаком}
+
+Теперь введем некоторое обобщение чисел Стирлинга первого рода - числа стирлинга первого рода со знаком:
+\[
+	s\left(n,k\right) = \left(-1\right)^{n-k} \left[n\atop k\right] = \left(-1\right)^{k-n} \left[n\atop k\right]
+\]
+
+Известно, что $c_n\left(t\right)$ - возрастающий факториал, сделаем подстановку $t \mapsto -t$, тогда получаем:
+\[
+	c_n\left(-t\right) = \sum_{k=0}^n \left[n\atop k\right] \left(-1\right)^k t^k = \left(-1\right)^n t \left(t-1\right)\cdot ... \cdot\left(t-n+1\right)
+\]
+Теперь домножим каждый член суммы на $\left(-1\right)^{n-2k}$ (очевидно знак будет зависеть только от четности $n$, но не от значения $k$), и получаем соотношение:
+\[
+	\left(-1\right)^n c_n\left(-t\right) = \sum_{k=0}^{n} \left[n\atop k\right] \left(-1\right)^{n-k} t^k = t\left(t-1\right)\cdot ... \cdot\left(t-n+1\right) = \left(t\right)_n
+\]
+или получаем:
+\[
+	\sum_{k=0}^n s\left(n,k\right) t^k = \left(t\right)_n
+\]
+
+\section{Связь чисел Стирлинга первого и второго рода}
+
+Теперь вспомним, что были у нас еще и числа Стирлинга второго рода, рассмотрим как эти числовые последовательности связаны между собой, для этого вспомним соотношение:
+\[
+	t^n = \sum_{k=0}^n \left(t\right)_k \Stirsecond{n}{k}
+\]
+Видно, что одна числовая последовательность получается из другой "обращением":
+\[
+	\begin{split}
+		& \left(t\right)_n = \sum_{i=0}^n s\left(n,i\right)t^i = \sum_{i=0}^ns\left(n,i\right) \sum_{k=0}^i\left(t\right)_k\Stirsecond{i}{k} =\\
+		& = \sum_{k=0}^n \left[\sum_{i=k}^n s\left(n,i\right)\Stirsecond{i}{k} \right] \left(t\right)_k
+	\end{split}
+\]
+откуда получаем, что $\sum_{i=k}^n s\left(n,i\right)\Stirsecond{i}{k} = 1$ при $k=n$, и равно 0 в противном случае. Далее можно поговорить про базисы в гильбертовом пространстве, про то что матрицы из чисел Стирлинга взаимообратны, и каждая из них является матрицей перехода от степенного базиса к факториальному и наоборот, но в общем в этом уже нет особого смысла.

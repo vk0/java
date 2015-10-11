@@ -1,0 +1,411 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[T2A]{fontenc} 
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{listings}
+\usepackage[dvips]{graphicx}
+\usepackage{indentfirst}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{left=1.5cm}
+\geometry{right=1.5cm}
+\geometry{top=1cm}
+\geometry{bottom=2cm}
+
+\graphicspath{{images/}}
+
+\begin{document}
+\sloppy
+
+\lstset{
+	basicstyle=\small,
+	stringstyle=\ttfamily,
+	showstringspaces=false,
+	columns=fixed,
+	breaklines=true,
+	numbers=right,
+	numberstyle=\tiny
+}
+
+\newtheorem{Def}{Определение}[section]
+\newtheorem{Th}{Теорема}
+\newtheorem{Lem}[Th]{Лемма}
+\newenvironment{Proof}
+	{\par\noindent{\bf Доказательство.}}
+	{\hfill$\scriptstyle\blacksquare$}
+\newenvironment{Solution}
+	{\par\noindent{\bf Решение.}}
+	{\hfill$\scriptstyle\blacksquare$}
+
+
+\begin{flushright}
+	Кринкин М. Ю. группа 504 (SE)
+\end{flushright}
+
+\section{Домашнее задание 6}
+
+\paragraph{Задание 1.} Мы положили тысячу рублей в банк под пять процентов годовых. В начале каждого года мы докладываем пятьсот рублей на счет. В домашнем задании требовалось составить и решить рекуррентное соотношение для количества $a_n$ денег на счете через $n$ лет без использования производящих функций. Теперь требуется найти $a_n$ с использованием обыкновенных производящих функций.
+
+\begin{Solution}
+Рекуррентное соотношение:
+\[
+	\begin{split}
+		& a_{n+1} = 1.05 a_{n} + 500 \\
+		& a_0 = 1000
+	\end{split}
+\]
+Пусть $f\left(x\right) = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + ...$, тогда:
+\[
+	\begin{split}
+		& \sum_{n=0}^{\infty} x^{n+1} a_{n+1} = \sum_{n=0}^{\infty} x^{n+1} \left(1.05 a_{n} + 500\right) \Leftrightarrow \\
+		& \Leftrightarrow f\left(x\right) - a_0 = 1.05 x f\left(x\right) + 500 x \frac{1}{1-x} \Leftrightarrow f\left(x\right) \left(1 - 1.05x\right) = a_0 + \frac{500x}{1-x} \Leftrightarrow \\
+		& \Leftrightarrow f\left(x\right) = \frac{a_0}{1 - 1.05 x} + \frac{500x}{\left(1-1.05 x\right)\left(1-x\right)}
+	\end{split}
+\]
+Раскладываем второе слогаемое на простейшие:
+\[
+	\begin{split}
+		& \frac{500x}{\left(1-1.05 x\right)\left(1-x\right)} = \frac{A}{1 - 1.05x} + \frac{B}{1 - x} \Leftrightarrow \\
+		& \Leftrightarrow 500x = A \left(1-x\right) + B \left(1-1.05x\right) = x \left(-A - 1.05 B\right) + A + B
+	\end{split}
+\]
+Далее из:
+\[
+	\begin{split}
+		& A = -B \\
+		& 500 = -A - 1.05 B
+	\end{split}
+\]
+получаем, что:
+\[
+	\begin{split}
+		& B = -10000 \\
+		& A = 10000
+	\end{split}
+\]
+собираем все вместе:
+\[
+	\begin{split}
+		& f\left(x\right) = 1000 \sum_{i=0}^{\infty} 1.05^i x^i + 10000 \sum_{j=0}^{\infty} 1.05^j x^j - 10000 \sum_{k=0}^{\infty} x^k \Leftrightarrow \\
+		& a_n = 1000 \cdot 1.05^n + 10000 \left(1.05^n - 1\right)
+	\end{split}
+\]
+\end{Solution}
+
+\paragraph{Задание 2.} Решить рекуррентное соотношение
+\[
+	\begin{split}
+		& a_{n+1} = 3 a_n + 4^n , n \ge 0 \\
+		& a_0 = 1
+	\end{split}
+\]
+
+\begin{Solution}
+Пусть
+\[
+	f\left(x\right) = a_0 + a_1 x + a_2 x^2 + ...
+\]
+тогда:
+\[
+	\begin{split}
+		& \sum_{n=0}^{\infty} x^{n+1} a_{n+1} = 3 x \sum_{n=0}^{\infty} x^n a_n + x\sum_{n=0}^{\infty} 4^n x^n  \Leftrightarrow \\
+		& \Leftrightarrow f \left(x\right) - a_0 = 3x f\left(x\right) + \frac{x}{1 - 4x} \Leftrightarrow \\
+		& \Leftrightarrow f\left(x\right) = \frac{a_0}{1 - 3x} + \frac{x}{\left(1-3x\right)\left(1-4x\right)}
+	\end{split}
+\]
+раскладываем второе слогаемое на простейшие:
+\[
+	\frac{x}{\left(1-3x\right)\left(1-4x\right)} = \frac{A}{1-3x} \frac{B}{1-4x} = \frac{A+B + x\left(-4A - 3B\right)}{\left(1-3x\right)\left(1-4x\right)}
+\]
+\[
+	\begin{split}
+		& A = -B \\
+		& -4A - 3B = 1
+	\end{split}
+\]
+откуда получаем:
+\[
+	\begin{split}
+		& B = 1 \\
+		& A = -1
+	\end{split}
+\]
+собираем все вместе:
+\[
+	\begin{split}
+		& f\left(x\right) = \frac{1}{1-3x} - \frac{1}{1-3x} + \frac{1}{1-4x} \Leftrightarrow \\
+		& \Leftrightarrow f \left(x\right) = \sum_{n=0}^{\infty} 4^n x^n \Leftrightarrow \\
+		& a_n = 4^n
+	\end{split}
+\]
+\end{Solution}
+
+\paragraph{Задание 3.} Решить рекуррентное соотношение
+\[
+	\begin{split}
+		& a_{n+1} = 2 a_n + n, n \ge 0 \\
+		& a_0 = 3
+	\end{split}
+\]
+используя аппарат произодящих функций.
+
+\begin{Solution}
+Определим производящую функцию последовательности натуральных чисел:
+\[
+	1, 2, 3, 4 ...
+\]
+Пусть $f\left(x\right)$ - нектороая производящая функция, тогда $f\left(x\right) \frac{1}{1-x}$ - последоательность частичных сумм коэффициентов, если $f\left(x\right) = \frac{1}{1-x}$, то получаем требуемое.
+Пусть
+\[
+	f\left(x\right) = a_0 + a_1 x + a_2 x^2 + ...
+\]
+тогда
+\[
+	\begin{split}
+		& \sum_{n=0}x^{n+1} a_{n+1} = 2 x\sum_{n=0}x^n a_n + x\frac{1}{{\left(1-x\right)}^2} \Leftrightarrow f\left(x\right) - a_0 = 2x f\left(x\right) + x\frac{1}{{\left(1-x\right)}^2} \Leftrightarrow \\
+		& \Leftrightarrow f\left(x\right) = \frac{a_0}{1-2x} + \frac{x}{{\left(1-2x\right)\left(1-x\right)}^2}
+	\end{split}
+\]
+разложим второе слогаемое на простейшие:
+\[
+	\begin{split}
+		& \frac{1}{\left(1-2x\right){\left(1-x\right)}^2} = \frac{A}{1-2x} + \frac{B}{1-x} + \frac{C}{{\left(1-x\right)}^2} = \frac{\left(A+B+C\right) + x\left(-2A-3B-2C\right) + x^2 \left(A + 2B\right)}{\left(1-2x\right){\left(1-x\right)}^2} \Leftrightarrow \\
+		& \Leftrightarrow A = 2, B = -1, C = -1
+	\end{split}
+\]
+собираем все вместе:
+\[
+	\begin{split}
+		& f \left(x\right) = \frac{3}{1-2x} + \frac{2}{1-2x} - \frac{1}{1-x} - \frac{1}{{\left(1-x\right)}^2} = \\
+		& = 3\sum_{n=0}^{\infty} 2^n x^n + 2\sum_{n=0}^{\infty} 2^n x^n - \sum_{n=0}^{\infty} x^n - \sum_{n=0}^{\infty} n x^n \Leftrightarrow \\
+		& \Leftrightarrow a_n = 5 \cdot 2^n - n - 1
+	\end{split}
+\]
+\end{Solution}
+
+\paragraph{Задание 4.} Космический зонд обнаружил, что органическое вещество на Марсе имеет ДНК, состоящее из пяти симолов ($a,b,c,d,e$); четыре пары симолов - $ce, cd, ed, ee$ - никогда не встречаются в марсианских ДНК, однако любая цепочка, не содержащая этих пар, возможна. Порядок букв  цепочке важен, поэтому, например, цепочка $bbdca$ возможна, а $bbcda$ - нет. В домашнем задании №5 требовалось составить рекуррентные соотношения, которым удолеторяют эти цепочки слов. Теперь требуется решить эти соотношения с использоанием производящих функций.
+
+\begin{Solution}
+
+Рекуррентное соотношение полученное  предыдущем домашнем задании:
+\[
+	\begin{split}
+		& I_{n+2} = 4I_{n+1} + I_n \\
+		& I_0 = 1 \\
+		& I_1 = 5
+	\end{split}
+\]
+Пусть
+\[
+	f\left(x\right) = I_0 + I_1 x + I_2 x^2 + ...
+\]
+тогда
+\[
+	\begin{split}
+		& \sum_{n=0}^{\infty} x^{n+2} I_{n+2} = 4\sum_{n=0}^{\infty} x^{n+2} I_{n+1} + \sum_{n=0}^{\infty} x^{n+2} I_n \Leftrightarrow f\left(n\right) - I_0 - x I_1 = 4 x \left(f\left(x\right) - I_0\right) + x^2 f\left(x\right) \Leftrightarrow \\
+		& \Leftrightarrow f\left(x\right) = \frac{I_0 + x I_1 - 4x I_0}{1 - 4x - x^2} = \frac{1 + x}{1-4x-x^2} = \frac{1+x}{\left(1-x\alpha\right)\left(1-x\beta\right)} \\
+		& \alpha = \frac{1}{-2-\sqrt{5}} \\
+		& \beta = \frac{1}{-2+\sqrt{5}}
+	\end{split}
+\]
+раскладываем на пройстейшие:
+\[
+	\frac{1+x}{\left(1-x\alpha\right)\left(1-x\beta\right)} = \frac{A}{1 - x\alpha} + \frac{B}{1 - x\beta}
+\]
+\[
+	\begin{split}
+		& A+B= \\1
+		& -A\alpha-B\beta=1
+	\end{split}
+\]
+получаем, что 
+\[
+	\begin{split}
+		& A = - \frac{\alpha+1}{\beta-\alpha} = \frac{\sqrt{5}+1}{-10-4\sqrt{5}} \\
+		& B = \frac{\beta+1}{\beta-\alpha} = \frac{\sqrt{5}-1}{10-4\sqrt{5}}
+	\end{split}
+\]
+Собираем все вместе:
+\[
+	a_n = \frac{\sqrt{5}+1}{-10-4\sqrt{5}} {\left(\frac{1}{-2-\sqrt{5}}\right)}^n + \frac{\sqrt{5}-1}{10-4\sqrt{5}} {\left(\frac{1}{-2+\sqrt{5}}\right)}^n
+\]
+Тут я очень удивился, так как в предыдущем домашнем задании формула получилась другой, но численные значения обоих формул сопадают.
+\end{Solution}
+
+\paragraph{Задание 5.} Числами Люка называются числа $L_n$, удолеторяющие следующему рекуррентному соотношению:
+\[
+	\begin{split}
+		& L_{n+2} = L_{n+1} + L_n, n \ge 0 \\
+		& L_0 = 2 \\
+		& L_1 = 1
+	\end{split}
+\]
+Построить для них произодящую функцию и найти явное выражение для $L_n$
+\begin{Solution}
+
+Пусть
+\[
+	f\left(x\right) = L_0 + L_1 x + L_2 x^2 + L_3 x^3 + ...
+\]
+Тогда получаем:
+\[
+	\begin{split}
+		& \sum_{n=0}^{\infty} x^{n+2} L_{n+2} = x\sum_{n=0}^{\infty} x^{n+1} L_{n+1} + x^2\sum_{n=0}^{\infty} x^n L_n \Leftrightarrow f\left(x\right) - L_0 - x L_1 = x\left(f\left(x\right) - L_0\right) + x^2 f\left(x\right) \Leftrightarrow \\
+		& \Leftrightarrow f\left(x\right) \left(1-x-x^2\right) = L_0 + x L_1 - x L_0 \Leftrightarrow f\left(x\right) = \frac{L_0 + x L_1 - x L_0}{1-x-x^2} = \frac{2-x}{1-x-x^2} = \\
+		& = \frac{2-x}{\left(1-x\alpha\right)\left(1-x\beta\right)} \\
+		& \alpha = \frac{1-\sqrt{5}}{2} \\
+		& \beta = \frac{1+\sqrt{5}}{2}
+	\end{split}
+\]
+Раскладываем на простейшие:
+\[
+	\begin{split}
+		& \frac{2-x}{\left(1-x\alpha\right)\left(1-x\beta\right)} = \frac{A}{1-x\alpha} + \frac{B}{1-x\beta} = \frac{\left(A+B\right) + x\left(-A\beta - B\alpha\right)}{\left(1-x\alpha\right)\left(1-x\beta\right)} \\
+		& A = \frac{1-2\alpha}{\beta-\alpha} = 1 \\
+		& B = 1
+	\end{split}
+\]
+собираем все вместе:
+\[
+	a_n = {\alpha}^n + {\beta}^n = {\left(\frac{1-\sqrt{5}}{2}\right)}^n + {\left(\frac{1+\sqrt{5}}{2}\right)}^n
+\]
+\end{Solution}
+
+\paragraph{Задание 6.} Обобщением чисел Фибоначчи $F_n$ и чисел Люка $L_n$ являются так называемые последоательности Люка $U_n \left(p,q\right)$ и $V_n \left(p,q\right)$, удовлетворяющие следующим рекуррентным соотношениям:
+\[
+	\begin{split}
+		& U_{n+2} = p U_{n+1} - q U_n, n \ge 0 \\
+		& U_0 = 0, U_1 = 1;
+	\end{split}
+\]
+\[
+	\begin{split}
+		& V_{n+2} = p V_{n+1} - q V_n, n \ge 0 \\
+		& V_0 = 2, V_1 = p
+	\end{split}
+\]
+Построить для них произодящие функции и получить явные выражения.
+
+\begin{Solution}
+Пусть
+\[
+	f\left(x\right) = a_0 + a_1 x + a_2 x^2 + ...
+\]
+где
+\[
+	a_{n+2} = p a_{n+1} - q a_n
+\]
+тогда
+\[
+	\begin{split}
+		& \sum_{n=0}^{\infty}x^{n+2} a_{n+2} = p x \sum_{n=0}^{\infty} x^{n+1} a_{n+1} - q x^2 \sum_{n=0}^{\infty} x^n a_n \Leftrightarrow f\left(x\right) - a_0 -a_1 x = p x \left(f\left(x\right) - a_0\right) - q x^2 f\left(x\right) \Leftrightarrow \\
+		& \Leftrightarrow f\left(x\right) = \frac{a_0 + x a_1 + p x a_0}{1 - p x + q x^2}
+	\end{split}
+\]
+далее, наверно можно было бы продолжить решение в общем виде, но в этом нет особого смысла, поэтому, сначала рассматриаем следующие условия:
+\[
+	\begin{split}
+		& f\left(x\right) = \frac{x}{1 - p x + q x^2} = \frac{x}{\left(1-x\alpha\right)\left(1-x\beta\right)} \\
+		& \alpha = \frac{p-D}{2} \\
+		& \beta = \frac{p+D}{2} \\
+		& D = \sqrt{p^2-4q}
+	\end{split}
+\]
+раскладываем на простейшие:
+\[
+	\begin{split}
+		& f\left(x\right) = \frac{A}{1-x\alpha} + \frac{B}{1-x\beta} = \frac{\frac{1}{\alpha-\beta}}{1-x\alpha} + \frac{\frac{1}{\beta-\alpha}}{1-x\beta} \Leftrightarrow \\
+		& \Leftrightarrow a_n = \frac{1}{\alpha-\beta}{\alpha}^n + \frac{1}{\beta-\alpha}{\beta}^n 
+	\end{split}
+\]
+Далее рассматриваем случай:
+\[
+	\begin{split}
+		& f\left(x\right) = \frac{4 + 2 p x}{1 - p x + q x^2} = \frac{4 + 2 + p + x}{\left(1-x\alpha\right)\left(1-x\beta\right)} = \\
+		& = \frac{A}{1-x\alpha} + \frac{B}{1-x\beta} \Leftrightarrow \\
+		& \Leftrightarrow A = \frac{4\alpha + 2 p}{\alpha - \beta}, B = \frac{4\beta + 2 p}{\beta - \alpha} \Leftrightarrow \\
+		& \Leftrightarrow a_n = \frac{4\alpha + 2 p}{\alpha - \beta} {\alpha}^n + \frac{4\beta + 2 p}{\beta - \alpha} {\beta}^n
+	\end{split}
+\]
+\end{Solution}
+
+\paragraph{Задание 7.} В случае $p=2$, $q=-1$ числа $U_n \left(2,-1\right)$ называются числами Пелла $P_n$. Доказать для чисел Фибоначии $F_n$ и для чисел Пелла $P_n$ так называемую формулу Кассини:
+\[
+	\begin{split}
+		& F_{n+1} F_{n-1} - F_n^2 = \left(-1\right)^n \\
+		& P_{n+1} P_{n-1} - P_n^2 = \left(-1\right)^n
+	\end{split}
+\]
+
+\begin{Solution}
+Нетрудно увидеть, что для чисел Фибоначии справедливо соотношение:
+\[
+	\begin{pmatrix} F_{n+1} \\ F_{n} \end{pmatrix} = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} F_n \\ F_{n-1} \end{pmatrix}
+\]
+и нетрудно проверить, что
+\[
+	{\begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}}^n = \begin{pmatrix} F_{n+1} & F_n \\ F_n & F_{n-1} \end{pmatrix}
+\]
+Считаем определитель левой и правой части:
+\[
+	{\left(-1\right)}^n = F_{n+1}F_{n-1} - F_n^2
+\]
+Аналогичное соотношение можно сформировать для чисел Пелла:
+\[
+	{\begin{pmatrix} 2 & 1 \\ 1 & 0 \end{pmatrix}}^n = \begin{pmatrix} P_{n+1} & P_n \\ P_n & P_{n-1} \end{pmatrix}
+\]
+(*Примечание: верхняя строка есть числа $p$ и $-q$)
+Считаем определеитель:
+\[
+	{\left(-1\right)}^n = P_{n+1}P_{n-1} - P_n^2
+\]
+\end{Solution}
+
+\paragraph{Задание 7.} В случае $p=1$, $q=-2$ числа $U_n \left(1,-2\right)$ называются числами Якобшталля. Справедлива ли для них формула Кассини? Если нет, то как ее подправить? Можно ли получить эту формулу для общего случая $U_n \left(p,q\right)$
+
+\begin{Solution}
+Поступим аналогичным образом:
+\[
+	{\begin{pmatrix} p & -q \\ 1 & 0 \end{pmatrix}}^n = \begin{pmatrix} U_{n+1} & U_n \\ U_n & U_{n-1} \end{pmatrix}
+\]
+Считаем определитель:
+\[
+	{\left(q\right)}^n = U_{n+1}U_{n-1} - U_n^2 \Leftrightarrow {\left(-2\right)}^n = U_{n+1}U_{n-1} - U_n^2
+\]
+Это и есть вывод общего случая "формулы Кассини" для чисел $U_n\left(p,q\right)$
+\end{Solution}
+
+\paragraph{Задание 9.} Случай $p=3$, $q=2$ для чисел $U_n\left(p,q\right)$ ночит название чисел Мерсена $M_n$. Доказать, что они являются решением задачи Люка о ханойской башне.
+
+\begin{Solution}
+Решение задачи о ханойской башне описывается рекуррентным соотношением:
+\[
+	T_{n+1} = 2 T_n + 1
+\]
+Попробуем показать, что это то же самое, что и числа Мерсена:
+\[
+	\begin{split}
+		& T_{n+2} = 2 T_{n+1} + 1 = T_{n+1} + T_{n+1} + 1 = T_{n+1} + 2 T_n + 2 = \\
+		& = 3 T_{n+1} - 2 T_{n+1} + 2 T_n + 2 = 3 T_{n+1} - 2 \left(2 T_n + 1\right) + 2 T_n + 2 = \\
+		& = 3 T_{n+1} - 4 T_n - 2 + 2 T_n + 2 = 3 T_{n+1} - 2 T_n
+	\end{split}
+\]
+а это ровно то же самое, что и
+\[
+	M_{n+2} = 3 M_{n+1} - 2 M_n
+\]
+Остается проверить лишь начальные условия, а именно, что
+\[
+	\begin{split}
+		& T_0 = 0 \\
+		& T_1 = 1
+	\end{split}
+\]
+исходя из задачи о ханойской башне эти условия выполняются.
+\end{Solution}
+
+\end{document}

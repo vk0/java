@@ -1,0 +1,91 @@
+Total Execution Time        = 172 ms (min: 0, sec: 0, ms: 172)
+Total Execution Time        = 63 ms (min: 0, sec: 0, ms: 63)
+Total Execution Time        = 62 ms (min: 0, sec: 0, ms: 62)
+
+
+
+Total Execution Time        = 64 ms (min: 0, sec: 0, ms: 64)
+Total Execution Time        = 54 ms (min: 0, sec: 0, ms: 54)
+Total Execution Time        = 62 ms (min: 0, sec: 0, ms: 62)
+
+
+
+Total Execution Time        = 338 ms (min: 0, sec: 0, ms: 338)
+Total Execution Time        = 356 ms (min: 0, sec: 0, ms: 356)
+Total Execution Time        = 343 ms (min: 0, sec: 0, ms: 343)
+
+
+
+Total Execution Time        = 1263 ms (min: 0, sec: 1, ms: 263)
+Total Execution Time        = 1277 ms (min: 0, sec: 1, ms: 277)
+Total Execution Time        = 1265 ms (min: 0, sec: 1, ms: 265)
+
+Запросы с представлениями:
+Total Execution Time        = 77 ms (min: 0, sec: 0, ms: 77)
+Total Execution Time        = 118 ms (min: 0, sec: 0, ms: 118)
+
+Total Execution Time        = 148 ms (min: 0, sec: 0, ms: 148)
+Total Execution Time        = 129 ms (min: 0, sec: 0, ms: 129)
+
+Total Execution Time        = 56 ms (min: 0, sec: 0, ms: 56)
+Total Execution Time        = 32 ms (min: 0, sec: 0, ms: 32)
+
+
+
+Total Execution Time        = 132 ms (min: 0, sec: 0, ms: 132)
+Total Execution Time        = 118 ms (min: 0, sec: 0, ms: 118)
+
+Total Execution Time        = 163 ms (min: 0, sec: 0, ms: 163)
+Total Execution Time        = 126 ms (min: 0, sec: 0, ms: 126)
+
+Total Execution Time        = 54 ms (min: 0, sec: 0, ms: 54)
+Total Execution Time        = 32 ms (min: 0, sec: 0, ms: 32)
+
+
+
+Total Execution Time        = 396 ms (min: 0, sec: 0, ms: 396)
+Total Execution Time        = 387 ms (min: 0, sec: 0, ms: 387)
+
+Total Execution Time        = 463 ms (min: 0, sec: 0, ms: 463)
+Total Execution Time        = 434 ms (min: 0, sec: 0, ms: 434)
+
+Total Execution Time        = 345 ms (min: 0, sec: 0, ms: 345)
+Total Execution Time        = 363 ms (min: 0, sec: 0, ms: 363)
+
+
+
+Total Execution Time        = 1307 ms (min: 0, sec: 1, ms: 307)
+Total Execution Time        = 1275 ms (min: 0, sec: 1, ms: 275)
+
+Total Execution Time        = 1562 ms (min: 0, sec: 1, ms: 562)
+Total Execution Time        = 1382 ms (min: 0, sec: 1, ms: 382)
+
+Total Execution Time        = 1290 ms (min: 0, sec: 1, ms: 290)
+Total Execution Time        = 1299 ms (min: 0, sec: 1, ms: 299)
+
+
+Совсем другое
+
+CREATE VIEW SFD_FOLK2(PlyNo, Stt, HsNo) AS
+SELECT PlayerNo, Street, HouseNo
+FROM Players
+WHERE Town = 'Stratford';
+
+
+SELECT PlyNo, Stt + ' ' + HsNo
+FROM SFD_FOLK2;
+
+Total Execution Time        = 1277 ms (min: 0, sec: 1, ms: 277)
+
+
+
+CREATE VIEW SFD_FOLK4(PlyNo, Addr) AS
+SELECT PlayerNo, Street + ' ' + HouseNo AS Addr
+FROM Players
+WHERE Town = 'Stratford';
+
+
+SELECT PlyNo, Addr
+FROM SFD_FOLK4;
+
+Total Execution Time        = 1293 ms (min: 0, sec: 1, ms: 293)

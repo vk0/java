@@ -1,0 +1,161 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[T2A]{fontenc} 
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{listings}
+\usepackage[dvips]{graphicx}
+\usepackage{indentfirst}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{left=1.5cm}
+\geometry{right=1.5cm}
+\geometry{top=1cm}
+\geometry{bottom=2cm}
+
+\graphicspath{{images/}}
+
+\begin{document}
+\sloppy
+
+\lstset{
+	basicstyle=\small,
+	stringstyle=\ttfamily,
+	showstringspaces=false,
+	columns=fixed,
+	breaklines=true,
+	numbers=right,
+	numberstyle=\tiny
+}
+
+\newtheorem{Def}{Определение}[section]
+\newtheorem{Th}{Теорема}
+\newtheorem{Lem}[Th]{Лемма}
+\newenvironment{Proof}
+	{\par\noindent{\bf Доказательство.}}
+	{\hfill$\scriptstyle\blacksquare$}
+\newenvironment{Solution}
+	{\par\noindent{\bf Решение.}}
+	{\hfill$\scriptstyle\blacksquare$}
+
+
+\begin{flushright}
+	Кринкин М. Ю. группа 504 (SE)
+\end{flushright}
+
+\section{Домашнее задание 6}
+
+\paragraph{Задание 3.} Решить рекуррентное соотношение
+\[
+	\begin{split}
+		& a_{n+1} = 2 a_n + n, n \ge 0 \\
+		& a_0 = 3
+	\end{split}
+\]
+используя аппарат произодящих функций.
+
+\begin{Solution}
+Определим производящую функцию последовательности натуральных чисел:
+\[
+	0, 1, 2, 3, 4 ...
+\]
+Пусть $f\left(x\right)$ - нектороая производящая функция, тогда $f\left(x\right) \frac{1}{1-x}$ - последовательность частичных сумм коэффициентов, если $f\left(x\right) = \frac{x}{1-x}$, то получаем требуемое.
+Пусть
+\[
+	f\left(x\right) = a_0 + a_1 x + a_2 x^2 + ...
+\]
+тогда
+\[
+	\begin{split}
+		& \sum_{n=0}x^{n+1} a_{n+1} = 2 x\sum_{n=0}x^n a_n + x^2 \frac{1}{{\left(1-x\right)}^2} \Leftrightarrow f\left(x\right) - a_0 = 2x f\left(x\right) + x^2\frac{1}{{\left(1-x\right)}^2} \Leftrightarrow \\
+		& \Leftrightarrow f\left(x\right) = \frac{a_0}{1-2x} + \frac{x^2}{{\left(1-2x\right)\left(1-x\right)}^2}
+	\end{split}
+\]
+разложим второе слогаемое на простейшие:
+\[
+	\begin{split}
+		& \frac{x^2}{\left(1-2x\right){\left(1-x\right)}^2} = \frac{A}{1-2x} + \frac{B}{1-x} + \frac{C}{{\left(1-x\right)}^2} = \frac{\left(A+B+C\right) + x\left(-2A-3B-2C\right) + x^2 \left(A + 2B\right)}{\left(1-2x\right){\left(1-x\right)}^2} \Leftrightarrow \\
+		& \Leftrightarrow A = 1, B = 0, C = -1
+	\end{split}
+\]
+собираем все вместе:
+\[
+	\begin{split}
+		& f \left(x\right) = \frac{3}{1-2x} + \frac{1}{1-2x} + \frac{0}{1-x} - \frac{1}{{\left(1-x\right)}^2} = \\
+		& = 3\sum_{n=0}^{\infty} 2^n x^n - \sum_{n=0}^{\infty} \left(n+1\right) x^n \Leftrightarrow \\
+		& \Leftrightarrow a_n = 4 \cdot 2^n - n - 1
+	\end{split}
+\]
+На этот раз проверяем решение:
+\[
+	\begin{split}
+		& a_0 = 4 \cdot 2^0 - 0 - 1 = 3 \\
+		& a_{n+1} = 4 \cdot 2^{n+1} - n - 1 - 1 = 2 \left(4 \cdot 2^n - n - 1\right) + n = 4 \cdot 2^{n+1} - 2n - 2 + n = 4 \cdot 2^{n+1} - n - 2
+	\end{split}
+\]
+\end{Solution}
+
+\paragraph{Задание 8.} В случае $p=1$, $q=-2$ числа $U_n \left(1,-2\right)$ называются числами Якобшталля. Справедлива ли для них формула Кассини? Если нет, то как ее подправить? Можно ли получить эту формулу для общего случая $U_n \left(p,q\right)$
+
+\begin{Solution}
+Построим первые несколько чисел Якобшталля:
+\[
+	0, 1, 1, 3, 5, 11, 21, 43, ...
+\]
+Проверяем, какое выражение получается для 0, 1, 2 чисел:
+\[
+	0 \cdot 1 - 1^2 = -1
+\]
+далее для 1, 2, 3:
+\[
+	1 \cdot 3 - 1^2 = 2
+\]
+далее для 2, 3, 4:
+\[
+	1 \cdot 5 - 3^2 = -4
+\]
+Решение опять же через матрицы, но только связанные следующим соотношением:
+\[
+	\begin{pmatrix}
+		1 & 2 \\
+		1 & 0
+	\end{pmatrix}
+	\times
+	\begin{pmatrix}
+		J_{n+1} & J_n \\
+		J_n & J_{n-1}
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		J_{n+2} & J_{n+1} \\
+		J_{n+1} & J_n
+	\end{pmatrix}
+\]
+из которого получаем:
+\[
+	\begin{pmatrix}
+		1 & 2 \\
+		1 & 0
+	\end{pmatrix}^n
+	\times
+	\begin{pmatrix}
+		1 & 1 \\
+		1 & 0
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		J_{n+2} & J_{n+1} \\
+		J_{n+1} & J_{n}
+	\end{pmatrix}
+\]
+Считаем определители справа и слева:
+\[
+	- \left(-2\right)^n = J_{n+2} J_n - J_{n+1}^2
+\]
+Это и есть вывод общего случая "формулы Кассини" для чисел $U_n\left(p,q\right)$
+\end{Solution}
+
+\end{document}

@@ -1,0 +1,177 @@
+\chapter{Симметрически группы и Ко}
+
+Вспомним, что нам о них известно:
+
+Пусть $n \in \mathbb{N}\cup\{0\}$, тогда $S_n$ - группа биекций:
+\[
+	\begin{split}
+		&\{1,...,n\} \rightarrow \{1,...,n\}
+		&\left|S_n\right| = n!
+	\end{split}
+\]
+
+\begin{Def}
+Транспозиция - перестановка вида $\left(i,j\right)$, где $1\le i<j\le n$ (перестановка двух элементов короче).
+
+Транспозиция $\left(i,i+1\right)$ называется фундаментальной и обозначается как $\delta_i$
+\end{Def}
+
+\begin{Def}
+Пусть $u \in S_n$, тогда множеством инверсий будем называть множество $inv\left(u\right) = \{\left(i,j\right) \in \{1, ..., n\}^2 | \left(i<j\right)\land\left(u\left(i\right)>u\left(j\right)\right)\}$
+\end{Def}
+
+\paragraph{Примеры.} 
+\[
+	inv\left(\delta_i\right) = \{\left(i,i+1\right)\}
+\]
+для произвольной перестановки:
+\[
+	inv\left(\left(i,j\right)\right) = \{\left(i,x\right) | i < x \le j\}\cup\{\left(x,j\right) | i < x < j\}
+\]
+Далее про инверсии можно сказать следующее:
+\[
+	\left|inv\left(u\right)\right| = j-i+j-i-1 = 2\left(j-i\right)-1
+\]
+
+\begin{Th}
+Пусть $u \in S_n$ и $l = \left|inv\left(u\right)\right|$, тогда:
+\begin{enumerate}
+\item $\exists \delta_{i_1}, ... , \delta_{i_l} : \left[u = \delta_{i_1} \cdot ... \cdot \delta_{i_l}\right]$
+
+\item Если существует разложение $u = \delta_{i_1}\cdot ... \cdot\delta_{i_t}$, тогда $t \ge \left|inv\left(u\right)\right| \land t \equiv l \mod 2$
+\end{enumerate}
+\end{Th}
+
+В общих словах суть теоремы в том, что любая перестановка раскладывается в произведение фундаментальных транспозиций, а кроме того все они отличаются от кратчайшего разложение на четное число произведений.
+
+Я даже докаывать не хочу эту теорему, потому как она блин очевидна (чего не скажешь о предложенном Горячко доказательстве), вот кстати чтоб все совсем утряслось вам хорошая мысль (спасибо Е. Краско, сам бы и не вспомнил), соритровка пузырьком есть ни что иное как последовательно применение фундаментальных транспозиций.
+
+При доказательстве использовалась лемма, не могу оценить степень ее полезности, поэтому всеравно ее приведу:
+
+\begin{Lem}
+Пусть $u \in S_n$, и $i \in \{1, ..., n-1\}$, тогда справедливо одно из следующих утверждений:
+\begin{enumerate}
+\item $inv\left(u \delta_i\right) = \delta_i \left(inv\left(u\right)\right) \setminus \{\left(i, i-1\right)\}$, если $\left(i,i+1\right) \in inv\left(u\right)$
+
+\item $inv\left(u \delta_i\right) = \delta_i \left(inv\left(u\right)\right) \cup \{\left(i,i+1\right)\}$, если $\left(i,i+1\right) \in inv\left(u\right)$
+\end{enumerate}
+
+где под $\delta_i \left(inv\left(u\right)\right) = \{\delta_i x, \delta_i y | \left(x,y\right) \in inv\left(u\right)\}$
+\end{Lem}
+
+Ну идейно эта теорема очень простая, но дает ряд полезных очевидных результатов, например $S_n = <\delta_1, ... , \delta_{n-1}>$, т. е. получили порождающей множество для симметрической группы, а кроме того $min\{t|u = \delta_{i_1}\cdot ... \cdot \delta_{i_t}\} = \left|inv\left(u\right)\right|$
+
+\paragraph{Задачка.} Доказать, что $S_n = <\delta_1, \left(1, 2, 3, ... , n\right)>$
+
+Перестановка $\left(1, 2, 3, ..., n\right)$ раскладывается следующим образом $\left(1,2\right)\left(1,3\right)...\left(1,n\right)$, тогда $\delta_1 \cdot \left(1,2\right) = \left(2,1\right)$, $\left(2,1\right)\cdot\left(1,3\right) = \left(2,3\right)$ далее проделывая такие же манипуляции далее можно получить все фундаментальные транспозиции, что очень забавно.
+
+\section{Знак}
+Пусть $u \in S_n$, тогда $sgn\left(u\right) = \left(-1\right)^{\left|inv\left(u\right)\right|}$
+
+\begin{Th}
+Тогда $sgn: S_n \rightarrow \{\pm 1\}$ - гомоморфизм
+\end{Th}
+Тут в целом нужно доказать только свойство мультипликативности:
+\[
+	sgn\left(uv\right) = sgn\left(u\right)\cdot sgn\left(v\right)
+\]
+но это очевидно следует из второго пункта теоремы выше.
+
+\begin{Def}
+$Ker ~sgn = A_n$ - знакопеременная группу (на самом деле группа четных перестановок, или группа перестановок со знаком 1).
+\end{Def}
+
+Ну и теперь совсем все очевидно $S_n / A_n \cong C_2$, что на самом деле очевидно, так как индекс $A_n$ равен 2.
+
+\begin{Th}
+Цикл четен, если в нем нечетное число элементов.
+\end{Th}
+
+Щас будет хы-хы доказательство:
+\begin{Proof}
+$sgn\left(\left(i,j\right)\right) = -1$, т. к. $\left|inv\left(\left(i,j\right)\right)\right| = 2\left(j-i\right)-1$, но кроме этого $\left(i_1 ... i_t\right) = \left(i_1 i_2\right)\left(i_2 i_3\right) ... \left(i_{t-1} i_t\right) \Rightarrow sgn\left(i_1 ... i_t\right) = \left(-1\right)^{t-1}$
+\end{Proof}
+
+Перечтановка четна, если и только если она имеет четное число нечетных циклов.
+
+\paragraph{Пример}
+Для $S_3$ $A_3 = \{id, \left(1 2 3\right), \left(1 3 2\right)\}$
+
+\begin{Th}[о сопряжении циклов]
+$u \left(i_1 ... i_t\right) u^{-1} = \left(u\left(i_1\right) ... u\left(i_t\right)\right)$
+\end{Th}
+\begin{Proof}
+Нус поехали.... Пусть $x \not\in \{u\left(i_1\right), ... ,u\left(i_t\right)\}$, т. е. под действием $\left(i_1 ... i_t\right)$ элемент $u^{-1}\left(x\right)$ остается неподвижен, так как в этом случае $u^{-1}\left(x\right)\not= i_k$. Тогда левая часть действует на $x$ следующим образом:
+\[
+	x \mapsto u^{-1}\left(x\right) \mapsto u^{-1}\left(x\right) \mapsto x
+\]
+и правая часть действет совершенно очевидным образом:
+\[
+	x \mapsto x
+\]
+т. е. обе перестановки действуют одинкаово в данном случае.
+
+Теперь пусть $x = u\left(i_k\right)$, тогда левая часть действует на $x$ следующим образом:
+\[
+	x \mapsto i_k \mapsto i_{k+1} \mapsto u\left(i_{k+1}\right)
+\]
+а правая часть действует на $x$ так:
+\[
+	x = u\left(i_k\right) \mapsto u\left(i_{k+1}\right)
+\]
+то есть обе перестановки дейсвтуют на все элементы одинаково, следовательно они равны.
+\end{Proof}
+
+\begin{Def}
+Цикловый тип перестановки из $u \in S_n$ есть разбиение числа $n$ на сумму длин циклов в $u$
+\end{Def}
+
+\begin{Th}
+Две перестановки сопряжены если и только если они имеют один цикловый тип.
+\end{Th}
+
+\begin{Proof}
+Пусть $x$ и $y$ сопряжены, т. е. $u x u^{-1} = y$, разложим $x$ в произведение циклов:
+\[
+	x = \left(i_1^{1}...i_{k_1}^1\right)...\left(i_1^s...i_{k_s}^s\right)
+\]
+теперь сопряжем его через $u$, тогда:
+\[
+	\begin{split}
+		&u x u^{-1} = u \left(i_1^1...i_{k_1}^1\right)....\left(i_1^s...i_{k_s}^s\right) u^{-1} = \\
+		& = \underbrace{u \left(...\right) u^{-1}}_{k_1} \underbrace{u \left(...\right) u^{-1}}_{k_2} ... \underbrace{u \left(...\right) u^{-1}}_{k_s} = y
+	\end{split}
+\]
+
+Теперь пусть $x$ и $y$ имеют одинаковый цикловый тип, тогда запишем перестановки $x$ и $y$ друг под ругом, так чтобы циклы равной длины были друг под другом, но тогда задав перестановку $u$ так чтобы он сопоставляля $i$-ому элементу из $x$ $i$-ый элемент из $y$ (тот что под ним), получаем перестановку через которую $x$ и $y$ сопряжены.
+\end{Proof}
+
+\section{Действие групп на множество}
+
+\begin{Def}
+$X$ - множество, $G$ - группа. На $X$ задана структура $G$-множеств (или $G$ действует на $X$), если $\forall g \in G$ задана $\phi_g : X \rightarrow X$, для которой выполнены условия:
+\begin{enumerate}
+\item $\phi_g \phi_h = \phi_{gh}$ $\forall g,h \in G$
+
+\item $\phi_e = id$
+\end{enumerate}
+\end{Def}
+Ну в общем понятно в чем суть дела, мы сопоставляем каждому элементу из $G$ <<сдвиг>> в множестве $X$, да так чтоб эти <<сдвиги>> образовывали группу, посему вот вам альтернативное определение:
+
+\begin{Def}
+На $X$ задана структура $G$-множества равносильно заданию гомоморфизмов групп $\phi: G \rightarrow S\left(X\right)$, где $S\left(X\right)$ - группа биекций на $X$.
+\end{Def}
+
+\paragraph{Пример:}
+Возьмем в качестве $G = \mathbb{T}$, а в качестве $X = \mathbb{C}$:
+\[
+	\begin{split}
+		& \mathbb{T} \rightarrow S\left(\mathbb{C}\right) \\
+		& z \mapsto \left(x \mapsto zx\right)
+	\end{split}
+\]
+графически это просто поворот на аргумент $z$.
+
+\begin{Def}
+Пусть $G$ - группа, $X$ - множество, тогда орбитой точки $x \in X$ называется множество элементов $\{gx | g \in G\} \subseteq X$
+\end{Def}

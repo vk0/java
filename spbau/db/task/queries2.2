@@ -1,0 +1,28 @@
+7.4
+SELECT PlyNo, Street + ' ' + HouseNo AS Address
+FROM SFD_FOLK, Players
+WHERE PlyNo = PlayerNo;
+
+SELECT PlayerNo, Street + ' ' + HouseNo AS Address
+FROM Players, SFD_FOLK
+WHERE PlyNo = PlayerNo;
+
+8.1
+SELECT PlyNo, LeagueNo
+FROM SFD_FOLK, Players
+WHERE PlyNo = PlayerNo
+ORDER BY LeagueNo;
+
+SELECT PlayerNo, LeagueNo
+FROM Players, SFD_FOLK
+WHERE PlyNo = PlayerNo
+ORDER BY LeagueNo;
+
+10.6
+SELECT PlyNo, 'Stratford', Born
+FROM SFD_FOLK
+WHERE Born <> 1963;
+
+SELECT PlayerNo, Town, BirthYear
+FROM Players
+WHERE BirthYear = 1963 AND Town <> 'Stratford';

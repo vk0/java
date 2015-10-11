@@ -1,0 +1,67 @@
+\chapter{Вопрос № 31}
+
+Цикловой индекс и дополненный цикловой индекс перестановки, их комбинаторный смысл, явное выражение и связь с композиционной формулой. Рекуррентные соотношения для цикловых индексов.
+
+\section{Цикловый индекс и дополненный цикловый индекс}
+
+Теперь рассмотрим композицию экспоненциальный производящих функций с коэффициентами $b_k = t^k$ и $a_n = \left(n-1\right)!x_n$, в этом случае получем разложение э. п. ф. следующего вида:
+\[
+	C\left(x,t\right) = \sum_{n=0}^{\infty} \left[\sum_{k=0}^n t^k C_{n,k}\left(x_1,...,x_{n-k+1}\right)\right]\frac{x^n}{n!}
+\]
+где коэффициент
+\[
+	\begin{split}
+		&C_{n,k}\left(x_1, ... , x_{n-k+1}\right) =\\
+		& = \sum_{
+			k_1 + ... + k_{n-k+1} = k
+			\atop
+			1\cdot k_1 + ... +\left(n-k+1\right)\cdot k_{n-k+1} = n
+			} \frac{n!}{k_1!\cdot ... \cdot k_{n-k+1}!} \left(\frac{x_1}{1}\right)^{k_1}\cdot...\cdot\left(\frac{x_{n-k+1}}{\left(n-k+1\right)}\right)^{k_{n-k+1}}
+	\end{split}
+\]
+получили коэффициенты очень похожие на полиномы Белла (но все же не их), смысл которых не трудно понять - количество перестановок, в которых ровно $k_1$ циклов единичной длинны, $k_2$ циклов из двух элементов и т. д. (можно сказать, что это количество перестановок совпадающих по "сигнатуре" - цикловому классу перестановки).
+
+Теперь пусть нам не надо следить за общим количеством циклов, то есть рассматриваем коэффициенты
+\[
+	\tilde Z_n \left(x_1, ... , x_n\right) = \sum_{k=0}^n C_{n,k}\left(x_1, ... x_{n-k+1}\right)
+\]
+эти коэффициенты называются дополненным цикловым индексом, кроме них есть еще и просто цикловый индекс:
+\[
+	Z_n \left(x_1, ..., x_n\right) = \frac{1}{n!} \tilde Z_n \left(x_1, ..., x_n\right)
+\]
+
+Примеры:
+\begin{enumerate}
+\item $\tilde Z_1 \left(x_1\right) = x_1 \mapsto \left(1\right)$
+
+\item $\tilde Z_2 \left(x_1,x_2\right) = x_1^2 + x_2 \mapsto \left(1\right)\left(2\right),\left(12\right)$
+
+\item $\tilde Z_3 \left(x_1, x_2, x_3\right) = x_1^3 + 3x_1x_2 + 2x_3 \mapsto \left(1\right)\left(2\right)\left(3\right),\left(12\right)\left(3\right),\left(13\right)\left(2\right), \left(23\right)\left(1\right), \left(132\right),\left(123\right)$
+\end{enumerate}
+
+\section{Рекуррентное соотношение}
+
+Теперь построим рекуррентное соотношение для дополненного цикловго индекса, используя производящуюю функцию:
+\[
+	\begin{split}
+		& C\left(x\right) = \sum_{n=0}^{\infty} \tilde Z_n\left(x_1, ..., x_n\right) \frac{x^n}{n!} = exp\left(x_1x + x_2 \frac{x^2}{2} + x_3 \frac{x^3}{3} + ...\right)
+	\end{split}
+\]
+
+Дифференцируем обе части по $x$:
+\[
+	\begin{split}
+		&\frac{\partial C\left(x\right)}{\partial x} = \sum_{n=1}^{\infty} \tilde Z_n \left(x_1, ..., x_n\right) \frac{x^{n-1}}{\left(n-1\right)!} = \sum_{n=0}^{\infty} \tilde Z_{n+1} \left(x_1, ..., x_{n+1}\right) \frac{x^n}{n!}\\
+		&\frac{\partial C\left(x\right)}{\partial x} = C\left(x\right)\frac{\partial \left[x_1x + x_2\frac{x^2}{2} + x_3 \frac{x^3}{3} + ...\right]}{\partial x} = C\left(x\right) \left[x_1 + x_2 x + x_3 x^2 + ...\right] = \\
+		& = \left[\tilde Z_0 + \tilde Z_1 \frac{x}{1!} + \tilde Z_2 \frac{x^2}{2!} + \tilde Z_3 \frac{x^3}{3!} + ...\right]\left[\tilde x_1 + \tilde x_2 \frac{x}{1!} + \tilde x_3 \frac{x^2}{2!} + \tilde x_4 \frac{x^3}{3!} + ...\right]
+	\end{split}
+\]
+где в качестве $\tilde x_{k+1} = x_{k+1} k!$
+
+Теперь приравнивая левую и правую часть дифференцирования, и перемножив в правой части экспоненциальные производящие функции по определению получаем:
+\[
+	\begin{split}
+		&\tilde Z_{n+1} \left(x_1, ... x_{n+1}\right) = \sum_{k=0}^n \tilde x_{k+1} \binom{n}{k} \tilde Z_{n-k}\left(x_1, ..., x_{n-k}\right) =\\
+		&= \sum_{k=0}^n \left(n\right)_k x_{k+1} \tilde Z_{n-k} \left(x_1, ..., x_{n-k}\right)
+	\end{split}
+\]

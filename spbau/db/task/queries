@@ -1,0 +1,40 @@
+7.4
+SELECT PlayerNo, Street + ' ' + HouseNo AS Address
+FROM Players
+WHERE Town = 'Stratford';
+
+8.1
+SELECT PlayerNo, LeagueNo
+FROM Players
+WHERE Town = 'Stratford'
+ORDER BY LeagueNo;
+
+10.18
+SELECT PlayerNo, Name
+FROM Players
+WHERE PlayerNo IN
+	(SELECT PlayerNo
+	 FROM Matches
+	 WHERE TeamNo = 1);
+
+15.9
+SELECT PlayerNo
+FROM Players P
+WHERE NOT EXISTS
+	(SELECT *
+	 FROM Matches M1
+	 WHERE PlayerNo = 57
+	 AND NOT EXISTS
+		(SELECT *
+		 FROM Matches M2
+		 WHERE M1.TeamNo = M2.TeamNo
+		 AND P.PlayerNo = M2.PlayerNo))
+AND PlayerNo NOT IN
+	(SELECT PlayerNo
+	 FROM Matches
+	 WHERE TeamNo IN
+		(SELECT TeamNo
+		 FROM Teams
+		 WHERE TeamNo NOT IN
+			(SELECT TeamNo
+			 FROM Matches)));

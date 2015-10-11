@@ -1,0 +1,351 @@
+\chapter{Числа Стирлинга первого рода.}
+
+По выложенным лекциям. Каюсь, я не на всех лекциях был)
+
+\section{Начала комбинаторики перестановок.}
+
+Задача разбить $n$-множество на блоки, затем каждый блок циклически упорядочить. Известно, что циклически упорядочить блок из $n$ элементов можно $\left(n-1\right)!$ способами, т. е. имеется производящая функция:
+\[
+	A\left(x\right) = 0 + x + \frac{x^2}{2} + \frac{x^3}{3} + ...
+\]
+
+Рассмотрим также производящую функцию $B\left(x\right)$ с коэффициентами:
+\[
+	1, 1, 1, 1, ...
+\]
+
+Их композиция, согласно смыслу композиции экспоненциальных производящих функций дает нам решение исходной задачи:
+\[
+	B\left(A\left(x\right)\right) = exp\left(x + \frac{x^2}{2} + \frac{x^3}{3} + ... \right) = exp\left(ln\left(\frac{1}{1-x}\right)\right)
+\]
+
+Таким образом решением является производящая функция $\frac{1}{1 - x}$, но эта производящая функция представляет следующий степенной ряд:
+\[
+	\frac{1}{1 - x} = \sum_{i=0}^{\infty} x^i = \sum_{i=0}^{\infty}i!\frac{x^i}{i!}
+\]
+
+т. е. получили производящую функцию для числа всех перестановок. Можно получить этот результат и другим способом. Число всех перестановок из $n$ элементов $n!$, каждая перестановка может быть пресдтавлена в произведение независимых циклов, например, $\left(1 3 5\right)\left(2 4\right)\left(6\right)$, а это очевидно разбиение $n$-множества на блоки и циклическое упорядочение каждого из них.
+
+Теперь двигаемся дальше, расссмотрим производящую функцию $B\left(x\right)$ с коэффициентами:
+\[
+	1, t, t^2, t^3, ...
+\]
+
+Тогда композиция функций $B\left(A\left(x\right)\right)$ (где $A\left(x\right)$ таже что и раньше) будет представляться как:
+\[
+	\hat c\left(x,t\right) = \sum_{n=0}^{\infty}\left(\sum_{k=0}^n c\left(n,k\right) t^k\right) \frac{x^n}{n!}
+\]
+где коэффициенты $c\left(n,k\right)$ - количество разбиений $n$-элементного множества ровно на $k$ циклов. Эти числа называются числами Стирлинга первого рода (часто обозначаются как $\left[n \atop k\right]$).
+
+Очевидно, что производящая функция для них в свернутом виде представляется как:
+\[
+	\hat c\left(x,t\right) = exp\left(t\cdot ln\left(\frac{1}{1-x}\right)\right) = \frac{1}{\left(1-x\right)^t}
+\]
+
+Теперь повыводим из этого всякие разные свойства чисел Стирлинга первого рода, но для начала выпишем несколько очевидных соотношений для них:
+\[
+	\begin{split}
+		& \left[0\atop 0\right] = 1\\
+		& \left[n\atop 0\right] = 0, n > 0\\
+		& \left[n\atop k\right] = 0, k > n
+	\end{split}
+\]
+
+Далее обозначим через $c_n\left(t\right)$ следующую сумму:
+\[
+	c_n\left(t\right) = \sum_{k=0}^{n} \left[n\atop k\right] t^k
+\]
+тогда вся производящая функция записывается как:
+\[
+	\hat c\left(x,t\right) = \sum_{n=0}^{\infty} c_n\left(t\right) \frac{x^n}{n!}
+\]
+
+Продиффиренцируем $\hat c\left(x,t\right)$ по $x$ и получаем следующее:
+\[
+	\frac{\partial \hat c \left(x,t\right)}{\partial x} = \sum_{n=1}^{\infty} c_n\left(t\right) \frac{x^{n-1}}{\left(n-1\right)!} = \sum_{n=0}^{\infty} c_{n+1}\left(t\right) \frac{x^n}{n!}
+\]
+
+Теперь продиффиринцируем $\frac{1}{\left(1-x\right)^t}$ по $x$:
+\[
+	\frac{\partial \frac{1}{\left(1-x\right)^t}}{\partial x} = \frac{t}{\left(1-x\right)^{t+1}} = \frac{t}{1-x} \hat c\left(x,t\right)
+\]
+
+Откуда подставив предыдущее равенство для частной проивзодной получаем соотношение:
+\[
+	\begin{split}
+		& \left(1-x\right) \frac{\partial \hat c\left(x,t\right)}{\partial x} = t\hat c\left(x,t\right) \Leftrightarrow\\
+		& \Leftrightarrow \left(1-x\right)\sum_{n=0}^{\infty} c_{n+1}\left(t\right) \frac{x^n}{n!} = t\sum_{n=0}^{\infty}c_n\left(t\right)\frac{x^n}{n!} \Leftrightarrow\\
+		& \Leftrightarrow \sum_{n=0}^{\infty}c_{n+1}\left(t\right) \frac{x^n}{n!} = x\sum_{n=0}^{\infty} c_{n+1}\left(t\right)\frac{x^n}{n!} + t \sum_{n=0}^{\infty}c_n\left(t\right)\frac{x^n}{n!} \Leftrightarrow\\
+		& \Leftrightarrow \sum_{n=0}^{\infty}c_{n+1}\left(t\right) \frac{x^n}{n!} = \sum_{n=0}^{\infty} \left(n+1\right) c_{n+1}\left(t\right) \frac{x^{n+1}}{\left(n+1\right)!} + t \sum_{n=0}^{\infty} c_n\left(t\right) \frac{x^n}{n!} \Leftrightarrow\\
+		& \Leftrightarrow \sum_{n=0}^{\infty}c_{n+1}\left(t\right) \frac{x^n}{n!} = \sum_{n=0}^{\infty} n c_n\left(t\right)\frac{x^n}{n!} + t\sum_{n=0}^{\infty} c_n\left(t\right) \frac{x^n}{n!}
+	\end{split}
+\]
+
+откуда получаем рекуррентное соотношение для полиномов $c_n\left(t\right)$:
+\[
+	c_{n+1}\left(t\right) = n c_n\left(t\right) + t c_n\left(t\right)
+\]
+Исходя из того, что $c_0\left(t\right) = 1$ можно построить последующие полиномы:
+\[
+	\begin{split}
+		& c_0\left(t\right) = 1\\
+		& c_1\left(t\right) = t c_0\left(t\right) = t\\
+		& c_2\left(t\right) = 1 c_1\left(t\right) + t c_1\left(t\right) = t + t^2\\
+		& c_3\left(t\right) = 2 c_2\left(t\right) + t c_2\left(t\right) = 2 t + 3 t^2 + t^3
+	\end{split}
+\]
+
+Теперь совсем не трудно получить рекуррентное соотношение для чисел Стирлинга:
+\[
+	\begin{split}
+		& \sum_{k=0}^{n+1} \left[n+1 \atop k\right] t^k = n \sum_{k=0}^n \left[n\atop k\right] t^k + \sum_{k=0}^n \left[n\atop k\right] t^{k+1} \Rightarrow\\
+		& \Rightarrow \sum_{k=1}^{n+1} \left[n+1 \atop k\right] t^k = n \sum_{k=1}^{n+1} \left[n \atop k\right] t^k + \sum_{k=1}^{n+1} \left[n \atop k-1\right] t^k
+	\end{split}
+\]
+т. к. мы знаем, что числа Стирлинга $\left[n \atop k\right] = 0$ при $k = 0 \land n > 0$, а также при $k > n$, в итоге имеем следующее:
+\[
+	\left[n+1 \atop k\right] = n \left[n \atop k\right] + \left[n \atop k-1\right]
+\]
+
+Комбинаторное доказательство этого же факта гораздо проще и понятнее. Разобьем все перестановки $\left(n+1\right)$-множества состоящие ровно из $k$ циклов на 2 блока:
+\begin{enumerate}
+\item В первый блок войдут только те перестановки, в которых элемент $n+1$ входит в единицный цикл
+
+\item Во второй блок войдут только те перестановки, в которых элемент $n+1$ входит в цикл длинны $\ge 2$.
+\end{enumerate}
+
+Очевидно, что если из всех перестановок первого блока удалить цикл из $n+1$ элемента, полуичм все перестановки из $n$ элементов с $k-1$ циклом.
+
+Все перестановки второго блока можно полутить из перестановок $n$-элементного множества с $k$ циклами добавив в любой цикл $n+1$ элемент, количество способов сделать это равно $n$, откуда получаем требуемое рекуррентное соотношение.
+
+Теперь с помощью производящей функции для чисел Стирлинга первого рода получим еще одно выражение для полиномов $c_n\left(t\right)$. Используя формулу бинома Ньютона получаем следующее:
+\[
+	\begin{split}
+		& \hat c\left(x,t\right) = \frac{1}{\left(1-x\right)^t} = \left(1 + \left(-x\right)\right)^{-t} = \\
+		& = \sum_{n=0}^{\infty} \frac{\left(-t\right)\left(-t-1\right) ... \left(-t - n + 1\right)}{n!} \left(-1\right)^n x^n = \sum_{n=0}^{\infty} \frac{t\left(t+1\right)...\left(t+n-1\right)}{n!} x^n
+	\end{split}
+\]
+откуда получаем, что:
+\[
+	c_n\left(t\right) = \sum_{k=0}^n \left[n\atop k\right] t^k = t\left(t+1\right)\cdot ... \cdot\left(t+n-1\right) = \left(t\right)^{n}
+\]
+эти числа называются возрастающим факториалом (а известные нам $\left(t\right)_n$, соответственно, убывающим).
+
+Теперь введем некоторое обобщение чисел Стирлинга первого рода - числа стирлинга первого рода со знаком:
+\[
+	s\left(n,k\right) = \left(-1\right)^{n-k} \left[n\atop k\right] = \left(-1\right)^{k-n} \left[n\atop k\right]
+\]
+
+Известно, что $c_n\left(t\right)$ - возрастающий факториал, сделаем подстановку $t \mapsto -t$, тогда получаем:
+\[
+	c_n\left(-t\right) = \sum_{k=0}^n \left[n\atop k\right] \left(-1\right)^k t^k = \left(-1\right)^n t \left(t-1\right)\cdot ... \cdot\left(t-n+1\right)
+\]
+Теперь домножим каждый член суммы на $\left(-1\right)^{n-2k}$ (очевидно знак будет зависеть только от четности $n$, но не от значения $k$), и получаем соотношение:
+\[
+	\left(-1\right)^n c_n\left(-t\right) = \sum_{k=0}^{n} \left[n\atop k\right] \left(-1\right)^{n-k} t^k = t\left(t-1\right)\cdot ... \cdot\left(t-n+1\right) = \left(t\right)_n
+\]
+или получаем:
+\[
+	\sum_{k=0}^n s\left(n,k\right) t^k = \left(t\right)_n
+\]
+
+Теперь вспомним, что были у нас еще и числа Стирлинга второго рода, рассмотрим как эти числовые последовательности связаны между собой, для этого вспомним соотношение:
+\[
+	t^n = \sum_{k=0}^n \left(t\right)_k \{ {{n}\atop {k}}\}
+\]
+Видно, что одна числовая последовательность получается из другой "обращением":
+\[
+	\begin{split}
+		& \left(t\right)_n = \sum_{i=0}^n s\left(n,i\right)t^i = \sum_{i=0}^ns\left(n,i\right) \sum_{k=0}^i\left(t\right)_k\{ {{i}\atop {k}}\} =\\
+		& = \sum_{k=0}^n \left[\sum_{i=k}^n s\left(n,i\right)\{ {{i} \atop {k}}\} \right] \left(t\right)_k
+	\end{split}
+\]
+откуда получаем, что $\sum_{i=k}^n s\left(n,i\right)\{ {{i} \atop {k}}\} = 1$ при $k=n$, и равно 0 в противном случае. Далее можно поговорить про базисы в гильбертовом пространстве, про то что матрицы из чисел Стирлинга взаимообратны, и каждая из них является матрицей перехода от степенного базиса к факториальному и наоборот, но в общем в этом уже нет особого смысла.
+
+\section{Цикловый индекс перестановки}
+
+Теперь рассмотрим композицию экспоненциальный производящих функций с коэффициентами $b_k = t^k$ и $a_n = \left(n-1\right)!x_n$, в этом случае получем разложение э. п. ф. следующего вида:
+\[
+	C\left(x,t\right) = \sum_{n=0}^{\infty} \left[\sum_{k=0}^n t^k C_{n,k}\left(x_1,...,x_{n-k+1}\right)\right]\frac{x^n}{n!}
+\]
+где коэффициент
+\[
+	\begin{split}
+		&C_{n,k}\left(x_1, ... , x_{n-k+1}\right) =\\
+		& = \sum_{
+			k_1 + ... + k_{n-k+1} = k
+			\atop
+			1\cdot k_1 + ... +\left(n-k+1\right)\cdot k_{n-k+1} = n
+			} \frac{n!}{k_1!\cdot ... \cdot \left(n-k+1\right)!} \left(\frac{x_1}{1}\right)^{k_1}\cdot...\cdot\left(\frac{x_{n-k+1}}{\left(n-k+1\right)}\right)^{k_{n-k+1}}
+	\end{split}
+\]
+получили коэффициенты очень похожие на полиномы Белла (но все же не их), смысл которых не трудно понять - количество перестановок, в которых ровно $k_1$ циклов единичной длинны, $k_2$ циклов из двух элементов и т. д. (можно сказать, что это количество перестановок совпадающих по "сигнатуре" - цикловому классу перестановки).
+
+Теперь пусть нам не надо следить за общим количеством циклов, то есть рассматриваем коэффициенты
+\[
+	\tilde Z_n \left(x_1, ... , x_n\right) = \sum_{k=0}^n C_{n,k}\left(x_1, ... x_{n-k+1}\right)
+\]
+эти коэффициенты называются дополненным цикловым индексом, кроме них есть еще и просто цикловый индекс:
+\[
+	Z_n \left(x_1, ..., x_n\right) = \frac{1}{n!} \tilde Z_n \left(x_1, ..., x_n\right)
+\]
+
+Примеры:
+\begin{enumerate}
+\item $\tilde Z_1 \left(x_1\right) = x_1 \mapsto \left(1\right)$
+
+\item $\tilde Z_2 \left(x_1,x_2\right) = x_1^2 + x_2 \mapsto \left(1\right)\left(2\right),\left(12\right)$
+
+\item $\tilde Z_3 \left(x_1, x_2, x_3\right) = x_1^3 + 3x_1x_2 + 2x_3 \mapsto \left(1\right)\left(2\right)\left(3\right),\left(12\right)\left(3\right),\left(13\right)\left(2\right), \left(23\right)\left(1\right), \left(132\right),\left(123\right)$
+\end{enumerate}
+
+Теперь построим рекуррентное соотношение для дополненного цикловго индекса, используя производящуюю функцию:
+\[
+	\begin{split}
+		& C\left(x\right) = \sum_{n=0}^{\infty} \tilde Z_n\left(x_1, ..., x_n\right) \frac{x^n}{n!} = exp\left(x_1x + x_2 \frac{x^2}{2} + x_3 \frac{x^3}{3}\right)
+	\end{split}
+\]
+
+Дифференцируем обе части по $x$:
+\[
+	\begin{split}
+		&\frac{\partial C\left(x\right)}{\partial x} = \sum_{n=1}^{\infty} \tilde Z_n \left(x_1, ..., x_n\right) \frac{x^{n-1}}{\left(n-1\right)!} = \sum_{n=0}^{\infty} \tilde Z_{n+1} \left(x_1, ..., x_{n+1}\right) \frac{x^n}{n!}\\
+		&\frac{\partial C\left(x\right)}{\partial x} = C\left(x\right)\frac{\partial \left[x_1x + x_2\frac{x^2}{2} + x_3 \frac{x^3}{3} + ...\right]}{\partial x} = C\left(x\right) \left[x_1 + x_2 x + x_3 x^2 + ...\right] = \\
+		& = \left[\tilde Z_0 + \tilde Z_1 \frac{x}{1!} + \tilde Z_2 \frac{x^2}{2!} + \tilde Z_3 \frac{x^3}{3!} + ...\right]\left[\tilde x_1 + \tilde x_2 \frac{x}{1!} + \tilde x_3 \frac{x^2}{2!} + \tilde x_4 \frac{x^3}{3!} + ...\right]
+	\end{split}
+\]
+где в качестве $\tilde x_{k+1} = x_{k+1} k!$
+
+Теперь приравнивая левую и правую часть дифференцирования, и перемножив в правой части экспоненциальные производящие функции по определению получаем:
+\[
+	\begin{split}
+		&\tilde Z_{n+1} \left(x_1, ... x_{n+1}\right) = \sum_{k=0}^n \tilde x_{k+1} \binom{n}{k} \tilde Z_{n-k}\left(x_1, ..., x_{n-k}\right) =\\
+		&= \sum_{k=0}^n \left(n\right)_k x_{k+1} \tilde Z_{n-k} \left(x_1, ..., x_{n-k}\right)
+	\end{split}
+\]
+
+В качестве примера рассмотрим задачу о беспорядках, т. е. о подсчете числа перестановок без единицных циклов, это число обозначается как $D_n$. Для решения задачи рассмотрим задачу о подсчете числа перестановок без единичных циклов, содержащих ровно $k$ циклов $d\left(n,k\right)$. Очевидно, что возвращаяесь к цикловым индексам этот сулчай отвечает подстановке вместо $x_1 = 0$, а вместо остальных $x_i = 1$, т. е. $C_{n,k}\left(0,1,...,1\right) = d\left(n,k\right)$, а соответсвующая производящая функция выглядит:
+\[
+	\begin{split}
+		&d\left(x,t\right) = \sum_{n=0}^{\infty}\left(\sum_{k=0}^n d\left(n,k\right)t^k\right)\frac{x^n}{n!} = exp\left(t\left(\frac{x^2}{2} + \frac{x^3}{3} + ...\right)\right) = \\
+		& = exp\left(t\left(ln\left(\frac{1}{1-x}\right) - x\right)\right)
+	\end{split}
+\]
+откуда получаем связь с производящей функцией для всех перестановок:
+\[
+	d\left(x,t\right) = \frac{exp\left(-tx\right)}{\left(1-x\right)^t} = exp\left(-tx\right)\hat c\left(x,t\right)
+\]
+
+Суть функции $exp\left(tx\right)$ - э. п. ф. для количества перестановок из циклов единичной длинны, а тогда интерпритация равенства:
+\[
+	\hat c\left(x,t\right) = exp\left(tx\right)d\left(x,t\right)
+\]
+может быть следующей, по определнию произведения э. п. ф. получаем, что
+\[
+	\left[{{n} \atop {k}}\right] = \sum_{i = 0}^n \binom{n}{i} d\left(n-i,k-i\right)
+\]
+т. е. разбиваем $n$-множества на два блока, в первом $i$ элементов, во втором $n-i$, при этом во втором блоке производим разбиение на неединичные циклы, а в первом наоборот на единичные.
+
+По формуле обращения получаем следующее соотношение:
+\[
+	d\left(n,k\right) = \sum_{i=0}^n \left(-1\right)^i \binom{n}{i} \left[{{n-i}\atop{k-i}}\right]
+\]
+Числа $d\left(n,k\right)$ называются присоединенными числами Стирлинга первого рода.
+
+Теперь представим э. п. ф. $d\left(x,t\right)$ следующим образом:
+\[
+	d\left(x,t\right) = \sum_{n=0}^{\infty} d_n\left(t\right)\frac{x^n}{n!}
+\]
+откуда можно получить:
+\[
+	\hat c\left(x,t\right) = \sum_{n=0}^{\infty} c_n\left(t\right)\frac{x^n}{n!} = exp\left(xt\right)d\left(x,t\right)
+\]
+откуда приравнивая соответствующие коэффициенты получаем:
+\[
+	c_n\left(t\right) = \sum_{k=0}^n \binom{n}{k} t^k d_{n-k}\left(t\right)
+\]
+а по формуле обращения получаем:
+\[
+	d_n\left(t\right) = \sum_{k=0}^n \left(-1\right)^kt^kc_{n-k}\left(t\right)
+\]
+
+Теперь получим рекуррентные соотношения для $d_n\left(t\right)$ и $d\left(n,k\right)$:
+\[
+	\begin{split}
+		&d\left(x,t\right) = \frac{exp\left(-xt\right)}{\left(1-x\right)^t} \Rightarrow \\
+		&\Rightarrow \frac{\partial d}{\partial x} = -td + \frac{t}{1-x}d = \frac{tx}{1-x}d\left(x,t\right) \Leftrightarrow \\
+		&\Leftrightarrow \sum_{n=0}^{\infty}d_{n+1}\left(t\right) \frac{x^n}{n!} = \sum_{n=0}^{\infty}d_{n+1}\left(t\right)\frac{x^{n+1}}{n!} + \sum_{n=0}^{\infty} td_n\left(t\right) \frac{x^{n+1}}{n!} \Leftrightarrow\\
+		&\Leftrightarrow \sum_{n=0}^{\infty}d_{n+1}\left(t\right)\frac{x^n}{n!} = \sum_{n=0}^{\infty}nd_n\left(t\right)\frac{x^n}{n!} + \sum_{n=0}^{\infty}ntd_{n-1}\left(t\right)\frac{x^n}{n!} \Leftrightarrow\\
+		&\Leftrightarrow d_{n+1} \left(t\right) = n\cdot d_n\left(t\right) + nt d_{n-1}\left(t\right)
+	\end{split}
+\]
+при этом начальные условия:
+\[
+	d_0 = 1; d_1 = 0
+\]
+отсюда и из соотношения:
+\[
+	d_n\left(t\right) = \sum_{k=0}^n d\left(n,k\right) t^k
+\]
+следует, что:
+\[
+	d\left(n+1,k\right) = nd\left(n,k\right) + nd\left(n-1,k-1\right)
+\]
+
+Задача о беспорядках теперь решается очень просто:
+\[
+	D_n = d_n\left(1\right) = \sum_{k=0}^nd\left(n,k\right)
+\]
+Рекуррентное соотношение для $D_n$ вытекает из рекуррентного соотношения для $d_n$:
+\[
+	D_{n+1} = n\left[D_n + D_{n-1}\right]
+\]
+при начальных условиях:
+\[
+	D_0 = 1; D_1 = 0
+\]
+производящая функция для $D_n$:
+\[
+	D\left(x\right) = d\left(x,1\right) = \frac{exp\left(-x\right)}{1-x}
+\]
+Из связи производящих функций:
+\[
+	D\left(x\right) exp\left(x\right) = \frac{1}{1-x} = c\left(x\right)
+\]
+следует, что:
+\[
+	n! = \sum_{k=0}^n \binom{n}{k}D_{n-k} \Leftrightarrow D_n = \sum_{k=0}^n \left(-1\right)^k \binom{n}{k} \left(n-l\right)!
+\]
+вынесем $n!$ и получаем:
+\[
+	D_n = n! \left[1 - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} + ...\right] \approx \frac{n!}{e}
+\]
+это число называется субфакториалом.
+
+Пример, пусть студент сдает экзамен, в процессе он должен ответить на 10 различных вопросов, но вот блин все шпоры перепутаны, и какая из них к какому вопросу относится неизвестно, сколькими способами можно ответить на все вопросы неправильно?
+Ответ очевидно будет $D_{10}$, а каково количество способов ответить правильно ровно на $k$ вопросов из $n$. Ответ опять же очевиден:
+\[
+	D\left(n,k\right) = \binom{n}{k} D_{n-k}
+\]
+Учитывая, что $D_{n-k} = \left(n-k\right)! \left(1 - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} + ... + \frac{\left(-1\right)^{n-k}}{\left(n-k\right)!}\right)$ получаем явную формулу:
+\[
+	D\left(n,k\right) = \frac{n!}{k!} \sum_{i=0}^{n-k} \frac{\left(-1\right)^i}{i!}
+\]
+Производящую функцию для этих чисел можно получить из соотношения:
+\[
+	\begin{split}
+		& D\left(n,k\right) = \binom{n}{k} D_{n-k} \Rightarrow\\
+		& \Rightarrow \sum_{k=0}^n D\left(n,k\right) t^k = D_n\left(t\right) = \sum_{k=0}^n \binom{n}{k}t^k D_{n-k}
+	\end{split}
+\]
+в правой части стоит произведение пары э. п. ф.:
+\[
+	\begin{split}
+		& D\left(x\right) = \sum_{n=0}^{\infty} D_n \frac{x^n}{n!} = \frac{exp\left(-x\right)}{1-x}\\
+		& C_1\left(x,t\right) = \sum_{n=0}^{\infty} t^n \frac{x^n}{n!} = exp\left(tx\right)
+	\end{split}
+\]
+следовательно:
+\[
+	D\left(x,t\right) = D\left(x\right) exp\left(tx\right) = \frac{exp\left(-x\right)}{1-x} exp\left(tx\right)
+\]

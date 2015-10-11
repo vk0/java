@@ -1,0 +1,168 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[T2A]{fontenc} 
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{listings}
+\usepackage[dvips]{graphicx}
+\usepackage{indentfirst}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{left=1.5cm}
+\geometry{right=1.5cm}
+\geometry{top=1cm}
+\geometry{bottom=2cm}
+
+\graphicspath{{images/}}
+
+\begin{document}
+\sloppy
+
+\lstset{
+	basicstyle=\small,
+	stringstyle=\ttfamily,
+	showstringspaces=false,
+	columns=fixed,
+	breaklines=true,
+	numbers=right,
+	numberstyle=\tiny
+}
+
+\newtheorem{Def}{Определение}[section]
+\newtheorem{Th}{Теорема}
+\newtheorem{Lem}[Th]{Лемма}
+\newenvironment{Proof}
+	{\par\noindent{\bf Доказательство.}}
+	{\hfill$\scriptstyle\blacksquare$}
+\newenvironment{Solution}
+	{\par\noindent{\bf Решение.}}
+	{\hfill$\scriptstyle\blacksquare$}
+
+
+\begin{flushright}
+	Кринкин М. Ю. группа 504 (SE)
+\end{flushright}
+
+\section{Домашнее задание 3}
+
+\paragraph{Задание 3.} Избыточные структуры - использование индекса.
+
+Необходимо выполнить запросы из списка ниже с использованием индексов и без них.
+
+На основе практических наблюдений за серией запросов ответить на следющие вопросы:
+\begin{enumerate}
+\item Какие индексы создаются при создании БД и почему система решила их создать?
+
+\item При каких условиях использование индексов может улучшить время выполнения запросов (и каких запросов)?
+
+\item При каком наполнении базы целесообразно использовать индексы?
+\end{enumerate}
+
+При создании базы данных Sport автоматически создаются следующие индексы:
+\begin{itemize}
+\item pk\_Players
+
+\item pk\_Teams
+
+\item pk\_Matches
+
+\item pk\_Penalties
+
+\item fks\_0\_Teams
+
+\item fks\_0\_Matches
+
+\item fks\_1\_Matches
+
+\item fks\_0\_Penalties
+\end{itemize}
+
+Эти индексы создаются автоматически и соответствуют первичным ключам (префикс pk) и внешним ключам для каждой таблицы (префикс fks\_i).
+Кроме того в самих скриптах создания базы данных создается ключ:
+
+\begin{lstlisting}
+CREATE   UNIQUE INDEX PLAYER_Idx ON
+         Players (Name ASC, Initials ASC);
+\end{lstlisting}
+
+Правда в тех запросах, которые я выбрал, этот индекс бесполезен, поэтому создадим свой индекс, в запросах к таблице Players используется фильтр по городу, поэтому создадим соответствующий индекс:
+
+\begin{lstlisting}
+CREATE   INDEX PLAYER_TOWN ON
+         Players (Town ASC);
+\end{lstlisting}
+
+В качестве запросов будем использовать 7.4, 8.1 и приобразованный 10.18. И протестируем их производительность с индексами:
+
+\begin{lstlisting}
+7.4
+SELECT PlayerNo, Street + ' ' + HouseNo AS Address
+FROM Players
+WHERE Town = 'Stratford';
+\end{lstlisting}
+
+\begin{lstlisting}
+8.1
+SELECT PlayerNo, LeagueNo
+FROM Players
+WHERE Town = 'Stratford'
+ORDER BY LeagueNo;
+\end{lstlisting}
+
+\begin{lstlisting}
+10.18
+SELECT DISTINCT Players.PlayerNo, Name
+FROM Players, Matches
+WHERE Players.PlayerNo = Matches.PlayerNo AND TeamNo = 1;
+\end{lstlisting}
+
+Результаты измерения времени без использования пользовательских ключей, но с использованием системных:
+
+\begin{tabular}[t]{|c|c|c|c|c|}
+\hline
+запрос   & 1   & 2  & 2   & 3 \\
+\hline
+7.4      & 35  & 28 & 295 & 1150 \\
+\hline
+8.1      & 47  & 43 & 310 & 1180 \\
+\hline
+10.18    & 100 & 90 & 90  & 1120 \\
+\hline
+\end{tabular}
+
+Результаты с использованием пользовательского ключа:
+
+\begin{tabular}[t]{|c|c|c|c|c|}
+\hline
+запрос   & 1   & 2  & 2   & 3 \\
+\hline
+7.4      & 35  & 40 & 310 & 1130 \\
+\hline
+8.1      & 55  & 50 & 310 & 1150 \\
+\hline
+10.18    & 120 & 90 & 100 & 1120 \\
+\hline
+\end{tabular}
+
+Теперь удалим foreign ключи из таблицы Matches и снова протестируем запрос 10.18:
+
+\begin{tabular}[t]{|c|c|c|c|c|}
+\hline
+запрос   & 1   & 2  & 2   & 3 \\
+\hline
+10.18    & 80 & 70 & 85 & 1090 \\
+\hline
+\end{tabular}
+
+\paragraph{Выводы:} в данной базе данных и при данной заполнености не получается увеличить производительность базы данных, но тем не менее все же прослеживается влияние индексов на производительность:
+\begin{itemize}
+\item Во-первых, можно заметить сравнив таблицы результатов времени выполнения запросов с и без индекса, можно увидеть, что с увеличением объема базы скорость выполнения запросов к базе данных с индексами начинает обгонять скорость выполнения запросов к базе без индексов. Проследить такое улучшение на данной базе данных довольно трудно, так как она работает слишком медленно, и просто не позволяет нормально работать с такими объемами базы данных, на которых выигрышь от использования с индексами действительно значителен.
+
+\item Во-вторых, при работе с малыми размерами индексы замедляют работу, так как приходится читать с диска больше информации для работы, а это полностью съедает выигрышь от использования индексов.
+
+\item В-третьих, неправильное использование индексов может не просто не дать выигрыша, а даже ухужшить производительность, для этого достаточно посмотреть на результаты выполнения запроса 10.18 после удаления индекса соответствующего foreign ключа из таблицы Matches.
+\end{itemize}
+\end{document}

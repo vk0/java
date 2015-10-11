@@ -1,0 +1,35 @@
+current dir: /home/mirovingen/aptu/aptu-tex/db/src/lab1
+jdbc arj: /home/mirovingen/aptu/aptu-tex/db/src/lab1/postgresql.jar
+classpath: :/home/mirovingen/aptu/aptu-tex/db/src/lab1/postgresql.jar
+start speed test:
+======== Datebase creation ========
+======== Datebase filling ========
+100000 records
+200000 records
+300000 records
+400000 records
+500000 records
+600000 records
+700000 records
+800000 records
+900000 records
+1000000 records
+======== Test without index ========
+Query: SELECT * FROM INDEX_SPEED_TEST
+time = 2711701200
+Query: SELECT count(*) FROM INDEX_SPEED_TEST WHERE rowid>450000 AND rowid<550000
+time = 288659580
+Query: SELECT name FROM INDEX_SPEED_TEST WHERE rowid%2>0
+time = 851363786
+Query: SELECT name FROM INDEX_SPEED_TEST WHERE rowid = 500000
+time = 206699732
+Time of index creation = 2516679509
+======== Test with index ========
+Query: SELECT * FROM INDEX_SPEED_TEST
+time = 1879507833
+Query: SELECT count(*) FROM INDEX_SPEED_TEST WHERE rowid>450000 AND rowid<550000
+time = 44298414
+Query: SELECT name FROM INDEX_SPEED_TEST WHERE rowid%2>0
+time = 774887851
+Query: SELECT name FROM INDEX_SPEED_TEST WHERE rowid = 500000
+time = 635998

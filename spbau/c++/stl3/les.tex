@@ -1,0 +1,159 @@
+\chapter{Стандартная библиотека}
+
+\section{Лекция 06.03.2012. Адаптеры и итераторы}
+
+\subsection{Адаптеры}
+
+В stl содержатся еще кое-какие сущности, например, stack, queue и priority\_queue, понятно, что делать такие контейнеры не имеет смысла, все более или менее
+значимые способы хранения объектов исчерпываются рассмотренными выше объектами, в то время как stack или queue - это структуры данных, которые являются
+обертками-адаптерами для последовательных контейнеров:
+\begin{lstlisting}
+template <class T, class C = std::deque<T> > class stack;
+template <class T, class C = std::deque<T> > class queue;
+template <T, C = std::vector<T>, class Compare = std::less<typename Container::value_type> > class priority_queue;
+\end{lstlisting}
+которые принимают тип хранимых элементов и контейнер для хранения.
+
+Кроме того, существует еще и шаблон bitset, который не очень понятно куда запихнуть, посему упоминаю его здесь. Этот шаблон параметризуется количеством битов,
+т. е. в отличие от std::vector<bool>, размер bitset должен быть известен на момент компиляции:
+\begin{lstlisting}
+template <size_t N> class bitset;
+\end{lstlisting}
+
+\subsection{Итераторы}
+
+Если воспринимать контейнер как некоторый массив, а итераторы как указатели, то типичная работа с c-style массивами выглядела бы примерно так:
+\begin{lstlisting}
+void f(int *b, int *e) {
+	for ( ; b != e; ++b) {
+		//do something with *b;
+	}
+}
+\end{lstlisting}
+это вам некоторый tip, для понимания, что такое итератор.
+
+\subsection{Типы итераторов}
+
+Итераторы разделяются по действиям, которые они позволяют совершать:
+
+\begin{itemize}
+\item Random Access позволяют выполнять операции [], ++, --, i + 10, j - i. Такой итератор существует у std::vector и std::deque.
+
+\item Bidirectional итераторы позволяют перемещаться по элементам последовательно, т. е. существуют только операции ++ и --, которые работают за константу.
+Такие итераторы у контейнера std::list.
+
+\item Forward итератор позволяет двигаться только в одну сторону, т. е. имеет операцию ++.
+
+\item Input и Output итераторы также позволяют двигаться только в одну сторону, т. е. реализуют операцию ++, но при этом у Input итератора есть доступ только
+на чтение, а у Output только для записи.
+\end{itemize}
+
+Такая классификация позволяет, в некотором смысле, указать требования к алгоритмам на итераторах, как правило такие требования выражаются не вполне формально,
+т. е. например:
+\begin{lstlisting}
+template <class RandomAccessIterator>
+void sort(RandomAccessIterator b, RandomAccessIterator e) {
+...
+}
+std::list<int> l;
+...
+sort(l.begin(), l.end()); //very sad...
+\end{lstlisting}
+т. е. метод sort в таком виде сработает только для std::deque и std::vector, для остальных будет получена ошибка компиляции, указывающая, что переданные итераторы
+не имееют некоторых операций.
+
+Таким образом полезно узнавать какой именно тип итератора передан некоторому алгортиму, чтобы для разных итераторов иметь соответствующую реализацию алгоритма.
+Как это сделать? На самом деле хотелось бы узнавать и другие вещи. Рассмотрим некоторый бесполезный алгоритм:
+\begin{lstlisting}
+template <class FwdIt>
+? getnth(FwdIt b, FwdIt e, int p) {
+	while (n-- > 0)
+		++p;
+	return *p;
+}
+\end{lstlisting}
+какой тип должна возвращать функция? Внутри итератора можно сделать typedef, который позволит решить эту проблему:
+\begin{lstlisting}
+template <class T>
+struct MyIterator {
+	typedef T value_type;
+}
+\end{lstlisting}
+Тогда функция будет выглядеть так:
+\begin{lstlisting}
+template <class FwdIt>
+typename FwdIt::value_type getnth(FwdIt b, FwdIt e, int p) {
+	while (n-- > 0)
+		++p;
+	return *p;
+}
+\end{lstlisting}
+Но если рассматривать указатели как итераторы, то такое решение не прокатит, так как указатель не является структурой, и, следовательно, нет возможности указать
+внутренний typedef. Как решить эту проблему? Для ее решения используется iterator\_traits:
+\begin{lstlisting}
+iterator_traits<FwdIt>::value_type;
+iterator_traits<SomeIt>::iterator_category;
+iterator_traits<SomeIt>::difference_type
+iterator_traits<SomeIt>::pointer
+iterator_traits<SomeIt>::reference
+\end{lstlisting}
+для указателя существует частичная специализация этого шаблона. Как видно выше, такой подход позволяет решить и некоторые другие проблемы. Тут стоит пояснить
+только difference\_type, который определяет тип разности итераторов, или void в случае, если операция вычитания не реализуется.
+
+Как задается категория итератора? Для ответа, посмотрим как этим пользоваться, на примере абстрактной шаблонной функции rotate:
+\begin{lstlisting}
+void rotate(It b, It e) {
+	rotate_impl(b, e, iterator_traits<It>::iterator_category());
+}
+\end{lstlisting}
+т. е. вызывается реализации функции, но с третим параметром, который является некоторой пустой структурой с именем, далее для каждого конкретного имени
+требуется указать специализацию функции (для каждой нужной категории итераторов). Как поддержать iterator\_traits для пользовательского класса? Для этого
+существует три основных способа:
+
+\begin{enumerate}
+\item определить все typedef-ы
+
+\item специализировать iterator\_traits для своего класса
+
+\item и правильный подход, унаследоваться от std::iterator
+\end{enumerate}
+
+\subsection{Всякие странности}
+
+Каждый контейнер имеет два typedef-а:
+\begin{lstlisting}
+typedef iterator ...
+typedef const_iterator ...
+\end{lstlisting}
+приведение iterator к const\_iterator возможно, но вот наоборот нет. Кроме того контейнеры содержат еще один интересный typedef:
+\begin{lstlisting}
+typedef const_reverse_iterator ...
+\end{lstlisting}
+который позволяет обходить последовательность в обратном порядке, и тут есть в помощь забавный шаблон reverse\_iterator<BiDiIt>, который по bidirectional
+итератору получит обратный итератор. В связи с реверсными итераторами есть тонкость, известно, что итератор указывает не на элемент, а на место между элементами
+(т. е. если мы что-то вставляем по итератору, то вставка будет как раз в то место, на которое указывает итератор), в случае же с удалением мы удаляем элемент
+стоящий после позиции на которую указывает итератор, это не вполне верно для реверс итераторов, если смотреть на порядок последовательности как на порядок ее
+обхода с помощью итератора, они скорее указывают на позицию за рассматриваемым итератором, а не перед ним.
+
+\subsection{Input и Output итераторы}
+
+Существуют еще два итератора для потоков:
+\begin{itemize}
+\item istream\_iterator, использовать который можно так:
+\begin{lstlisting}
+istream_iterator<double>(file);
+\end{lstlisting}
+
+\item ostream\_iterator, в целом с ним все понятно, просто покажем, как его использовать:
+\begin{lstlisting}
+ostream_iterator<int>(cout, "\n");
+\end{lstlisting}
+\end{itemize}
+
+\paragraph{Полезный пример использования Output итератора}:
+\begin{lstlisting}
+void f(back_inserter(v)) { //or front_insertor, insertor
+	//write to v elemtns
+}
+\end{lstlisting}
+back\_inserter является Output итератором, который позволяет дописывать элементы в конец контейнера v (аналогично front\_iterator).

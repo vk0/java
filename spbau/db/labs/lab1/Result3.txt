@@ -1,0 +1,442 @@
+__ SQL command _________________
+
+   SELECT   PlayerNo, Street + ' ' + HouseNo AS Address
+   FROM     Players
+   WHERE    Town = 'Stratford';
+   ______________________
+
+__ STATISTICS _________________
+
+   Table Players
+         NPag = 285, NReg = 1400
+      Index pk_Players
+         Attributes = [Players.PlayerNo asc]
+         NLeaf = 116, NKeys = 1400, Clustered = false
+      Index PLAYER_Idx
+         Attributes = [Players.Name asc, Players.Initials asc]
+         NLeaf = 122, NKeys = 1400, Clustered = false 
+
+
+__ GREEDY SEARCH __________ 
+
+   Time               = 28 ms (min: 0, sec: 0, ms: 28)
+   Result cardinality = 140.0 Records
+   Cost               = 285.0 Logical Reads
+
+   Project(
+           Filter(
+                  TableScan(
+                            Players
+                           )
+                  Town = 'Stratford'
+                 )
+           {PlayerNo,Street + ' ' + HouseNo AS Address}
+          )
+____________________
+
+
+	PlayerNo    Address                                                             
+	______________________________________________________________________________
+	6           Haseltine Lane 80                                                   
+	83          Magdalene Road 16A                                                  
+	2           Stoney Road 43                                                      
+	7           Edgecombe Way 39                                                    
+	57          Edgecombe Way 16                                                    
+	39          Eaton Square 78                                                     
+	100         Haseltine Lane 80                                                   
+	______________________________________________________________________________
+	No of records 7
+
+
+	Access Plan Generation Time = 63 ms (min: 0, sec: 0, ms: 63)
+	Access Plan Execution Time  = 410 ms (min: 0, sec: 0, ms: 410)
+	Total Execution Time        = 473 ms (min: 0, sec: 0, ms: 473)
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, LeagueNo
+   FROM     Players
+   WHERE    Town = 'Stratford'
+   ORDER BY LeagueNo asc;
+   ______________________
+
+__ STATISTICS _________________
+
+   Table Players
+         NPag = 285, NReg = 1400
+      Index pk_Players
+         Attributes = [Players.PlayerNo asc]
+         NLeaf = 116, NKeys = 1400, Clustered = false
+      Index PLAYER_Idx
+         Attributes = [Players.Name asc, Players.Initials asc]
+         NLeaf = 122, NKeys = 1400, Clustered = false 
+
+
+__ GREEDY SEARCH __________ 
+
+   Time               = 22 ms (min: 0, sec: 0, ms: 22)
+   Result cardinality = 140.0 Records
+   Cost               = 315.0 Logical Reads
+   Order              = [Players.LeagueNo asc]
+
+
+   Sort(
+        Project(
+                Filter(
+                       TableScan(
+                                 Players
+                                )
+                       Town = 'Stratford'
+                      )
+                {PlayerNo,LeagueNo}
+               )
+        {LeagueNo asc}
+       )
+____________________
+
+
+	PlayerNo    LeagueNo  
+	____________________
+	7           null      
+	39          null      
+	83          1608      
+	2           2411      
+	57          6409      
+	100         6524      
+	6           8467      
+	____________________
+	No of records 7
+
+
+	Access Plan Generation Time = 170 ms (min: 0, sec: 0, ms: 170)
+	Access Plan Execution Time  = 402 ms (min: 0, sec: 0, ms: 402)
+	Total Execution Time        = 572 ms (min: 0, sec: 0, ms: 572)
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, BirthYear
+   FROM     Players
+   WHERE    BirthYear IN (1962,1963,1970);
+   ______________________
+
+__ STATISTICS _________________
+
+   Table Players
+         NPag = 285, NReg = 1400
+      Index pk_Players
+         Attributes = [Players.PlayerNo asc]
+         NLeaf = 116, NKeys = 1400, Clustered = false
+      Index PLAYER_Idx
+         Attributes = [Players.Name asc, Players.Initials asc]
+         NLeaf = 122, NKeys = 1400, Clustered = false 
+
+
+__ GREEDY SEARCH __________ 
+
+   Time               = 15 ms (min: 0, sec: 0, ms: 15)
+   Result cardinality = 421.0 Records
+   Cost               = 285.0 Logical Reads
+
+   Project(
+           Filter(
+                  TableScan(
+                            Players
+                           )
+                  BirthYear IN (1962,1963,1970)
+                 )
+           {PlayerNo,BirthYear}
+          )
+____________________
+
+
+	PlayerNo    BirthYear   
+	______________________
+	44          1963        
+	104         1970        
+	7           1963        
+	112         1963        
+	8           1962        
+	100         1963        
+	28          1963        
+	1024        1970        
+	1025        1970        
+	1029        1962        
+	1032        1970        
+	1043        1962        
+	1050        1962        
+	1056        1962        
+	1075        1963        
+	1079        1970        
+	1096        1963        
+	1102        1963        
+	1105        1963        
+	1174        1962        
+	1210        1962        
+	1218        1963        
+	1225        1970        
+	1247        1962        
+	1258        1962        
+	1267        1970        
+	1274        1963        
+	1279        1963        
+	1301        1962        
+	1334        1970        
+	1341        1962        
+	1347        1970        
+	1364        1962        
+	1366        1970        
+	1373        1970        
+	1383        1962        
+	1384        1963        
+	1404        1962        
+	1416        1963        
+	1417        1962        
+	1457        1962        
+	1478        1962        
+	1521        1963        
+	1523        1962        
+	1530        1963        
+	1536        1970        
+	1542        1970        
+	1576        1962        
+	1610        1963        
+	1637        1963        
+	1638        1963        
+	1641        1962        
+	1698        1962        
+	1704        1963        
+	1713        1962        
+	1746        1970        
+	1756        1962        
+	1765        1970        
+	1768        1962        
+	1772        1963        
+	1804        1963        
+	1816        1963        
+	1818        1963        
+	1828        1962        
+	1832        1963        
+	1880        1963        
+	1881        1963        
+	1894        1962        
+	1914        1962        
+	1915        1963        
+	1949        1962        
+	1959        1970        
+	1960        1970        
+	1963        1963        
+	1969        1970        
+	1976        1962        
+	1997        1962        
+	1999        1962        
+	2016        1963        
+	2023        1970        
+	2048        1970        
+	2057        1962        
+	2064        1963        
+	2098        1963        
+	2130        1970        
+	2138        1963        
+	2174        1970        
+	2179        1963        
+	2192        1970        
+	2194        1963        
+	2199        1970        
+	2201        1970        
+	2222        1963        
+	2244        1962        
+	2260        1970        
+	2279        1963        
+	2305        1963        
+	2331        1970        
+	2360        1962        
+	2367        1962        
+	2369        1962        
+	______________________
+	No of records 101
+
+
+	Access Plan Generation Time = 111 ms (min: 0, sec: 0, ms: 111)
+	Access Plan Execution Time  = 392 ms (min: 0, sec: 0, ms: 392)
+	Total Execution Time        = 503 ms (min: 0, sec: 0, ms: 503)
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, Name
+   FROM     Players
+   WHERE    PlayerNo IN 
+           (
+            SELECT   PlayerNo
+            FROM     Matches
+            WHERE    TeamNo = 1
+           );
+   ______________________
+
+__ STATISTICS _________________
+
+   Table Matches
+         NPag = 51, NReg = 1098
+      Index pk_Matches
+         Attributes = [Matches.MatchNo asc]
+         NLeaf = 70, NKeys = 1098, Clustered = false
+      Index fks_0_Matches
+         Attributes = [Matches.TeamNo asc]
+         NLeaf = 67, NKeys = 241, Clustered = false
+      Index fks_1_Matches
+         Attributes = [Matches.PlayerNo asc]
+         NLeaf = 71, NKeys = 754, Clustered = false 
+
+
+__ GREEDY SEARCH __________ 
+
+   Time               = 16 ms (min: 0, sec: 0, ms: 16)
+   Result cardinality = 5.0 Records
+   Cost               = 51.0 Logical Reads
+
+   Project(
+           Filter(
+                  TableScan(
+                            Matches
+                           )
+                  TeamNo = 1
+                 )
+           {PlayerNo}
+          )
+____________________
+
+__ STATISTICS _________________
+
+   Table Players
+         NPag = 285, NReg = 1400
+      Index pk_Players
+         Attributes = [Players.PlayerNo asc]
+         NLeaf = 116, NKeys = 1400, Clustered = false
+      Index PLAYER_Idx
+         Attributes = [Players.Name asc, Players.Initials asc]
+         NLeaf = 122, NKeys = 1400, Clustered = false 
+
+
+__ GREEDY SEARCH __________ 
+
+   Time               = 18 ms (min: 0, sec: 0, ms: 18)
+   Result cardinality = 1400.0 Records
+   Cost               = 285.0 Logical Reads
+
+   Project(
+           Filter(
+                  TableScan(
+                            Players
+                           )
+                  PlayerNo IN 
+                          ( 
+                           SELECT   PlayerNo
+                           FROM     Matches
+                           WHERE    TeamNo = 1
+                          )
+                 )
+           {PlayerNo,Name}
+          )
+____________________
+
+
+	PlayerNo    Name                                           
+	_________________________________________________________
+	6           Parmenter                                      
+	44          Baker                                          
+	83          Hope                                           
+	2           Everett                                        
+	57          Brown                                          
+	8           Newcastle                                      
+	_________________________________________________________
+	No of records 6
+
+
+	Access Plan Generation Time = 202 ms (min: 0, sec: 0, ms: 202)
+	Access Plan Execution Time  = 12919 ms (min: 0, sec: 12, ms: 919)
+	Total Execution Time        = 13121 ms (min: 0, sec: 13, ms: 121)
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, Name, BirthYear
+   FROM     Players
+   WHERE    BirthYear > ANY 
+           (
+            SELECT   BirthYear
+            FROM     Players
+           );
+   ______________________
+
+__ STATISTICS _________________
+
+   Table Players
+         NPag = 285, NReg = 1400
+      Index pk_Players
+         Attributes = [Players.PlayerNo asc]
+         NLeaf = 116, NKeys = 1400, Clustered = false
+      Index PLAYER_Idx
+         Attributes = [Players.Name asc, Players.Initials asc]
+         NLeaf = 122, NKeys = 1400, Clustered = false 
+
+
+__ GREEDY SEARCH __________ 
+
+   Time               = 10 ms (min: 0, sec: 0, ms: 10)
+   Result cardinality = 1400.0 Records
+   Cost               = 285.0 Logical Reads
+
+   Project(
+           TableScan(
+                     Players
+                    )
+           {BirthYear}
+          )
+____________________
+
+__ STATISTICS _________________
+
+   Table Players
+         NPag = 285, NReg = 1400
+      Index pk_Players
+         Attributes = [Players.PlayerNo asc]
+         NLeaf = 116, NKeys = 1400, Clustered = false
+      Index PLAYER_Idx
+         Attributes = [Players.Name asc, Players.Initials asc]
+         NLeaf = 122, NKeys = 1400, Clustered = false 
+
+
+__ GREEDY SEARCH __________ 
+
+   Time               = 11 ms (min: 0, sec: 0, ms: 11)
+   Result cardinality = 1400.0 Records
+   Cost               = 285.0 Logical Reads
+
+   Project(
+           Filter(
+                  TableScan(
+                            Players
+                           )
+                  BirthYear > ANY 
+                          ( 
+                           SELECT   BirthYear
+                           FROM     Players
+                          )
+                 )
+           {PlayerNo,Name,BirthYear}
+          )
+____________________
+
+
+	PlayerNo    Name                                           BirthYear   
+	_____________________________________________________________________
+	6           Parmenter                                      1964        
+	44          Baker                                          1963        
+	83          Hope                                           1956        
+	2           Everett                                        1948        
+	27          Collins                                        1964        
+	104         Moorman                                        1970        
+	7           Wise                                           1963        
+	57          Brown                                          1971        
+	39          Bishop                                         1956        
+	112         Bailey                                         1963        
+	8           Newcastle                                      1962        
+

@@ -1,0 +1,51 @@
+\documentclass[a4paper,12pt,fleqn]{report}
+
+\usepackage[T2A]{fontenc} 
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{listings}
+\usepackage[dvips]{graphicx}
+\usepackage{indentfirst}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\graphicspath{{images/}}
+
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{red}{rgb}{1,0,0}
+\definecolor{green}{rgb}{0,0.6,0}
+
+\lstset{
+	language=C,
+	basicstyle=\footnotesize,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	stepnumber=2,
+	numbersep=5pt,
+	stringstyle=\ttfamily,
+	showstringspaces=false,
+	columns=fixed,
+	breaklines=true,
+	keywordstyle=\color{red},
+	commentstyle=\color{green}
+}
+
+\newtheorem{Def}{Определение}[section]
+\newtheorem{Th}{Теорема}
+\newtheorem{Lem}[Th]{Лемма}
+\newenvironment{Proof}
+	{\par\noindent{\bf Доказательство.}}
+	{\hfill$\scriptstyle\blacksquare$}
+\newenvironment{Solution}
+	{\par\noindent{\bf Решение.}}
+	{\hfill$\scriptstyle\blacksquare$}
+
+\begin{document}
+\sloppy
+
+\input{title}
+\input{les1/les}
+\tableofcontents
+\end{document}

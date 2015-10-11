@@ -1,0 +1,226 @@
+1.
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, Street + ' ' + HouseNo AS Address
+   FROM     Players
+   WHERE    Town = 'Stratford';
+   ______________________
+
+__ STATISTICS _________________
+
+   Table Players
+         NPag = 3, NReg = 14
+      Index pk_Players
+         Attributes = [Players.PlayerNo asc]
+         NLeaf = 1, NKeys = 14, Clustered = false
+      Index PLAYER_Idx
+         Attributes = [Players.Name asc, Players.Initials asc]
+         NLeaf = 1, NKeys = 14, Clustered = false 
+
+
+__ GREEDY SEARCH __________ 
+
+   Time               = 90 ms (min: 0, sec: 0, ms: 90)
+   Result cardinality = 2.0 Records
+   Cost               = 3.0 Logical Reads
+
+   Project(
+           Filter(
+                  TableScan(
+                            Players
+                           )
+                  Town = 'Stratford'
+                 )
+           {PlayerNo,Street + ' ' + HouseNo AS Address}
+          )
+____________________
+
+
+	PlayerNo    Address                                                             
+	______________________________________________________________________________
+	6           Haseltine Lane 80                                                   
+	83          Magdalene Road 16A                                                  
+	2           Stoney Road 43                                                      
+	7           Edgecombe Way 39                                                    
+	57          Edgecombe Way 16                                                    
+	39          Eaton Square 78                                                     
+	100         Haseltine Lane 80                                                   
+	______________________________________________________________________________
+	No of records 7
+
+
+	Access Plan Generation Time = 150 ms (min: 0, sec: 0, ms: 150)
+	Access Plan Execution Time  = 109 ms (min: 0, sec: 0, ms: 109)
+	Total Execution Time        = 259 ms (min: 0, sec: 0, ms: 259)
+
+2.
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, Street + ' ' + HouseNo AS Address
+   FROM     Players
+   WHERE    Town = 'Stratford';
+   ______________________
+
+__ STATISTICS _________________
+
+   Table Players
+         NPag = 3, NReg = 14
+      Index pk_Players
+         Attributes = [Players.PlayerNo asc]
+         NLeaf = 1, NKeys = 14, Clustered = false
+      Index PLAYER_Idx
+         Attributes = [Players.Name asc, Players.Initials asc]
+         NLeaf = 1, NKeys = 14, Clustered = false 
+
+
+__ GREEDY SEARCH __________ 
+
+   Time               = 17 ms (min: 0, sec: 0, ms: 17)
+   Result cardinality = 2.0 Records
+   Cost               = 3.0 Logical Reads
+
+   Project(
+           Filter(
+                  TableScan(
+                            Players
+                           )
+                  Town = 'Stratford'
+                 )
+           {PlayerNo,Street + ' ' + HouseNo AS Address}
+          )
+____________________
+
+
+	PlayerNo    Address                                                             
+	______________________________________________________________________________
+	6           Haseltine Lane 80                                                   
+	83          Magdalene Road 16A                                                  
+	2           Stoney Road 43                                                      
+	7           Edgecombe Way 39                                                    
+	57          Edgecombe Way 16                                                    
+	39          Eaton Square 78                                                     
+	100         Haseltine Lane 80                                                   
+	______________________________________________________________________________
+	No of records 7
+
+
+	Access Plan Generation Time = 33 ms (min: 0, sec: 0, ms: 33)
+	Access Plan Execution Time  = 59 ms (min: 0, sec: 0, ms: 59)
+	Total Execution Time        = 92 ms (min: 0, sec: 0, ms: 92)
+
+3.
+
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, Street + ' ' + HouseNo AS Address
+   FROM     Players
+   WHERE    Town = 'Stratford';
+   ______________________
+
+__ STATISTICS _________________
+
+   Table Players
+         NPag = 3, NReg = 14
+      Index pk_Players
+         Attributes = [Players.PlayerNo asc]
+         NLeaf = 1, NKeys = 14, Clustered = false
+      Index PLAYER_Idx
+         Attributes = [Players.Name asc, Players.Initials asc]
+         NLeaf = 1, NKeys = 14, Clustered = false 
+
+
+__ GREEDY SEARCH __________ 
+
+   Time               = 19 ms (min: 0, sec: 0, ms: 19)
+   Result cardinality = 2.0 Records
+   Cost               = 3.0 Logical Reads
+
+   Project(
+           Filter(
+                  TableScan(
+                            Players
+                           )
+                  Town = 'Stratford'
+                 )
+           {PlayerNo,Street + ' ' + HouseNo AS Address}
+          )
+____________________
+
+
+	PlayerNo    Address                                                             
+	______________________________________________________________________________
+	6           Haseltine Lane 80                                                   
+	83          Magdalene Road 16A                                                  
+	2           Stoney Road 43                                                      
+	7           Edgecombe Way 39                                                    
+	57          Edgecombe Way 16                                                    
+	39          Eaton Square 78                                                     
+	100         Haseltine Lane 80                                                   
+	______________________________________________________________________________
+	No of records 7
+
+
+	Access Plan Generation Time = 64 ms (min: 0, sec: 0, ms: 64)
+	Access Plan Execution Time  = 289 ms (min: 0, sec: 0, ms: 289)
+	Total Execution Time        = 353 ms (min: 0, sec: 0, ms: 353)
+
+
+4.
+
+
+__ SQL command _________________
+
+   SELECT   PlayerNo, Street + ' ' + HouseNo AS Address
+   FROM     Players
+   WHERE    Town = 'Stratford';
+   ______________________
+
+__ STATISTICS _________________
+
+   Table Players
+         NPag = 3, NReg = 14
+      Index pk_Players
+         Attributes = [Players.PlayerNo asc]
+         NLeaf = 1, NKeys = 14, Clustered = false
+      Index PLAYER_Idx
+         Attributes = [Players.Name asc, Players.Initials asc]
+         NLeaf = 1, NKeys = 14, Clustered = false 
+
+
+__ GREEDY SEARCH __________ 
+
+   Time               = 49 ms (min: 0, sec: 0, ms: 49)
+   Result cardinality = 2.0 Records
+   Cost               = 3.0 Logical Reads
+
+   Project(
+           Filter(
+                  TableScan(
+                            Players
+                           )
+                  Town = 'Stratford'
+                 )
+           {PlayerNo,Street + ' ' + HouseNo AS Address}
+          )
+____________________
+
+
+	PlayerNo    Address                                                             
+	______________________________________________________________________________
+	6           Haseltine Lane 80                                                   
+	83          Magdalene Road 16A                                                  
+	2           Stoney Road 43                                                      
+	7           Edgecombe Way 39                                                    
+	57          Edgecombe Way 16                                                    
+	39          Eaton Square 78                                                     
+	100         Haseltine Lane 80                                                   
+	______________________________________________________________________________
+	No of records 7
+
+
+	Access Plan Generation Time = 99 ms (min: 0, sec: 0, ms: 99)
+	Access Plan Execution Time  = 1301 ms (min: 0, sec: 1, ms: 301)
+	Total Execution Time        = 1400 ms (min: 0, sec: 1, ms: 400)

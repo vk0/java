@@ -1,0 +1,146 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[T2A]{fontenc} 
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{listings}
+\usepackage[dvips]{graphicx}
+\usepackage{indentfirst}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{left=1.5cm}
+\geometry{right=1.5cm}
+\geometry{top=1cm}
+\geometry{bottom=2cm}
+
+\graphicspath{{images/}}
+
+\begin{document}
+\sloppy
+
+\lstset{
+	basicstyle=\small,
+	stringstyle=\ttfamily,
+	showstringspaces=false,
+	columns=fixed,
+	breaklines=true,
+	numbers=right,
+	numberstyle=\tiny
+}
+
+\newtheorem{Def}{Определение}[section]
+\newtheorem{Th}{Теорема}
+\newtheorem{Lem}[Th]{Лемма}
+\newenvironment{Proof}
+	{\par\noindent{\bf Доказательство.}}
+	{\hfill$\scriptstyle\blacksquare$}
+\newenvironment{Solution}
+	{\par\noindent{\bf Решение.}}
+	{\hfill$\scriptstyle\blacksquare$}
+
+
+\begin{flushright}
+	Кринкин М. Ю. группа 504 (SE)
+\end{flushright}
+
+\section{Домашнее задание 2}
+
+\paragraph{Задание 1.} Проверьте, что комбинатор неподвижной точки Тьюринга $\Theta$:
+
+\[
+	\begin{split}
+		&A = \lambda xy . y\left(xxy\right)\\
+		&\Theta = AA
+	\end{split}
+\]
+обладает свойством
+\[
+	\Theta F \twoheadrightarrow_{\beta} F\left(\Theta F\right)
+\]
+
+\begin{Solution}
+$$\left(\lambda xy . y\left(xxy\right)\right)\left(\lambda xy . y\left(xxy\right)\right)F \rightarrow F \left(\left(\lambda xy . y\left(xxy\right)\right)\left(\lambda xy . y\left(xxy\right)\right)F\right) \rightarrow F\left(\Theta F\right)$$
+\end{Solution}
+
+\paragraph{Задание 2.} Найти $G$ такой что $\forall X$ справедливо $GX \twoheadrightarrow X\left(XG\right)$
+
+\begin{Solution}
+\[
+	\begin{split}
+		&GX = X\left(XG\right) \Rightarrow G = \lambda z . z\left(zG\right) \Rightarrow  G = \left(\lambda xz . z\left(zx\right)\right)G\\
+		&G = \Theta\left(\lambda xz . z\left(zx\right)\right)
+	\end{split}
+\]
+\end{Solution}
+
+\paragraph{Задание 3.}
+
+\paragraph{Задание 4.} Постройте функцию tail, возвращающую хвост списка
+
+\begin{Solution}
+Действуем по аналогии с функцией pred, т. е. будем последовательно наращивать пару, на втором месте которой будет стоять в конечном итоге весь список,
+а на первом месте хвост списка, для этого определим вспомогательные функции:
+
+\[
+	\begin{split}
+		&zp = pair ~nil ~nil\\
+		&sp = \lambda xp. pair \left(snd~p\right) \left(cons ~x \left(snd ~p\right)\right)
+	\end{split}
+\]
+тогда вся функция
+\[
+	tail \equiv = \lambda l . fst\left(l ~sp ~zp\right)
+\]
+\end{Solution}
+
+\paragraph{Зданаие 5.} Постройте функцию sum суммирующую элементы списка
+
+\begin{Solution}
+$$sum \equiv \lambda l . iif\left(empty ~l\right) l ~plus\left(head ~l\right)\left(sum\left(tail ~l\right)\right)$$
+\end{Solution}
+
+\paragraph{Задание 6.} Используя Y-комбинатор, сконструируйте:
+\begin{itemize}
+\item "пожиратель", то есть такой терм F, который для любого M обеспецивает $FM = F$
+
+\item F таким образом, чтобы для любого M выполнялось $FM = MF$
+
+\item F таким образом, чтобы для любых термов M и N выполнялось $FMN = NF\left(NMF\right)$
+\end{itemize}
+
+\begin{Solution}
+\[
+	\begin{split}
+		&FM = F \Rightarrow F = \lambda z . F \Rightarrow F = \left(\lambda xz . x\right)F \Rightarrow F = Y \left(\lambda xz . x\right)\\
+		&FM = MF \Rightarrow F = \lambda z . zF \Rightarrow F = \left(\lambda xz . zx\right) F \Rightarrow F = Y \left(\lambda xz . zx\right)\\
+		&FMN = NF\left(NMF\right) \Rightarrow FM = \lambda z. zF\left(zMF\right) \Rightarrow F = \lambda xz . zF\left(zxF\right) \Rightarrow F = \left(\lambda yxz . zy\left(zxy\right)\right) F \Rightarrow F = Y \left(\lambda yxz . zy\left(zxy\right)\right)
+	\end{split}
+\]
+\end{Solution}
+
+\paragraph{Задание 7.} Пусть имеются взаимно-рекурсивное определение функций f и g:
+\[
+	\begin{split}
+		&f = Ffg\\
+		&g = Gfg\\
+	\end{split}
+\]
+Используя Y-комбинатор, найдите нерекурсивные определения для f и g.
+
+\begin{Solution}
+\[
+	\begin{split}
+		&T = pair ~f ~g\\
+		&f = fst ~T\\
+		&g = snd ~T\\
+		&T = pair \left(F\left(fst ~T\right)\left(snd ~T\right)\right)\left(G\left(fst ~T\right)\left(snd ~T\right)\right)\\
+		&T = \left(pair \left(F\left(fst ~T\right)\left(snd ~T\right)\right)\left(G\left(fst ~T\right)\left(snd ~T\right)\right)\right)T = AT\\
+		&T = YA \Rightarrow f = fst ~YA, g = snd ~YA 
+	\end{split}
+\]
+
+\end{Solution}
+\end{document}

@@ -1,0 +1,229 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[T2A]{fontenc} 
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{listings}
+\usepackage[dvips]{graphicx}
+\usepackage{indentfirst}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{left=1.5cm}
+\geometry{right=1.5cm}
+\geometry{top=1cm}
+\geometry{bottom=2cm}
+
+\graphicspath{{images/}}
+
+\begin{document}
+\sloppy
+
+\lstset{
+	basicstyle=\small,
+	stringstyle=\ttfamily,
+	showstringspaces=false,
+	columns=fixed,
+	breaklines=true,
+	numbers=right,
+	numberstyle=\tiny
+}
+
+\newtheorem{Def}{Определение}[section]
+\newtheorem{Th}{Теорема}
+\newtheorem{Lem}[Th]{Лемма}
+\newenvironment{Proof}
+	{\par\noindent{\bf Доказательство.}}
+	{\hfill$\scriptstyle\blacksquare$}
+\newenvironment{Solution}
+	{\par\noindent{\bf Решение.}}
+	{\hfill$\scriptstyle\blacksquare$}
+
+
+\begin{flushright}
+	Кринкин М. Ю. группа 504 (SE)
+\end{flushright}
+
+\section{Домашнее задание 1}
+
+Тестовая программа:
+\begin{lstlisting}
+import java.sql.*;
+import java.util.Random;
+import java.lang.Integer;
+
+class lab1 {
+	static Random rnd = new Random(System.nanoTime());
+
+	static String interval = "SELECT count(*) FROM INDEX_SPEED_TEST WHERE rowid>450000 AND rowid<550000";
+	static String parity = "SELECT name FROM INDEX_SPEED_TEST WHERE rowid%2>0";
+        static String one = "SELECT name FROM INDEX_SPEED_TEST WHERE rowid = 500000";
+	static String all = "SELECT * FROM INDEX_SPEED_TEST";
+
+	static Connection dbh;
+	static Statement st;
+
+	static void test() throws SQLException {
+		long beginTime, endTime;
+		ResultSet rs;
+
+		beginTime = System.nanoTime();
+		rs = st.executeQuery(all);
+		endTime = System.nanoTime();
+		rs.close();
+		System.out.println("Query: " + all);
+		System.out.print("time = ");
+		System.out.println(endTime-beginTime);
+
+		beginTime = System.nanoTime();
+		rs = st.executeQuery(interval);
+		endTime = System.nanoTime();
+		rs.close();
+		System.out.println("Query: " + interval);
+		System.out.print("time = ");
+		System.out.println(endTime-beginTime);
+
+		beginTime = System.nanoTime();
+		rs = st.executeQuery(parity);
+		endTime = System.nanoTime();
+		rs.close();
+		System.out.println("Query: " + parity);
+		System.out.print("time = ");
+		System.out.println(endTime-beginTime);
+
+		beginTime = System.nanoTime();
+		rs = st.executeQuery(one);
+		endTime = System.nanoTime();
+		rs.close();
+		System.out.println("Query: " + one);
+		System.out.print("time = ");
+		System.out.println(endTime-beginTime);
+	}
+
+	public static void main(String args[]) {
+		try {
+			dbh = DriverManager.getConnection("jdbc:postgresql:lab1", "postgres", "postgres");
+			st = dbh.createStatement();
+
+			System.out.println("======== Datebase creation ========");
+			st.executeUpdate("CREATE TABLE INDEX_SPEED_TEST (rowid SERIAL, name VARCHAR(100))");
+			PreparedStatement ps = dbh.prepareStatement("INSERT INTO INDEX_SPEED_TEST (name) VALUES (?)");
+
+			System.out.println("======== Datebase filling ========");
+			for (int i = 0; i < 1000000; i++) {
+				ps.setString(1, (new Integer(rnd.nextInt())).toString());
+				ps.executeUpdate();
+				if (((i+1)%100000)==0) {
+					System.out.print(i+1);
+					System.out.println(" records");
+				}
+			}
+			ps.close();
+
+			System.out.println("======== Test without index ========");
+			test();
+
+			long startTime = System.nanoTime();
+			st.executeUpdate("CREATE UNIQUE INDEX indexid ON INDEX_SPEED_TEST (rowid)");
+			long endTime = System.nanoTime();
+			System.out.print("Time of index creation = ");
+			System.out.println(endTime-startTime);
+
+			System.out.println("======== Test with index ========");
+			test();
+
+			st.executeUpdate("DROP TABLE INDEX_SPEED_TEST");
+			st.close();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+}
+\end{lstlisting}
+
+Как видно время работы проверяется на 4 запросах:
+
+\begin{lstlisting}
+SELECT count(*) 
+FROM INDEX_SPEED_TEST 
+WHERE rowid>450000 AND rowid<550000
+\end{lstlisting}
+
+\begin{lstlisting}
+SELECT name 
+FROM INDEX_SPEED_TEST 
+WHERE rowid%2>0
+\end{lstlisting}
+
+\begin{lstlisting}
+SELECT name 
+FROM INDEX_SPEED_TEST 
+WHERE rowid = 500000
+\end{lstlisting}
+
+\begin{lstlisting}
+SELECT * 
+FROM INDEX_SPEED_TEST
+\end{lstlisting}
+
+Так как явно тип индекса не указывается, то предпологаем, что для индексации используется некоторое дерево поиска (деревья поиска
+самая очевидная структура для организации эффективного поиска).
+Основываясь на этом предположении можно предположить, что запрос 1 и запрос 3 должны сильно ускоряться при сипользовании индекса,
+в то время, как запросы 2 и 4 при таком индексе не будут значительно изменяться.
+
+Предположение основано на том, что дерево поиска позволяет организовать эффективный поиск по ключу (как и любой другой вид индекса,
+как я пологаю), а также позволяет эффективно локализовать данные в некотором диапазоне значений ключа, причем чем сложнее задан
+диапазон, тем больше времени потребуется на локализацию, по этим причинам запрос с выбором только нечетных $rowid$ не ускорится при
+использовании данного индекса.
+
+Выборка всех данных из таблицы в свою очередь определяется только размером таблицы и не может быть ускорена индексацией.
+
+Сравним предположения с результатами замера времени работы:
+\begin{lstlisting}
+current dir: /home/mirovingen/aptu/aptu-tex/db/src/lab1
+jdbc arj: /home/mirovingen/aptu/aptu-tex/db/src/lab1/postgresql.jar
+classpath: :/home/mirovingen/aptu/aptu-tex/db/src/lab1/postgresql.jar
+start speed test:
+======== Datebase creation ========
+======== Datebase filling ========
+100000 records
+200000 records
+300000 records
+400000 records
+500000 records
+600000 records
+700000 records
+800000 records
+900000 records
+1000000 records
+======== Test without index ========
+Query: SELECT * FROM INDEX_SPEED_TEST
+time = 2711701200
+Query: SELECT count(*) FROM INDEX_SPEED_TEST WHERE rowid>450000 AND rowid<550000
+time = 288659580
+Query: SELECT name FROM INDEX_SPEED_TEST WHERE rowid%2>0
+time = 851363786
+Query: SELECT name FROM INDEX_SPEED_TEST WHERE rowid = 500000
+time = 206699732
+Time of index creation = 2516679509
+======== Test with index ========
+Query: SELECT * FROM INDEX_SPEED_TEST
+time = 1879507833
+Query: SELECT count(*) FROM INDEX_SPEED_TEST WHERE rowid>450000 AND rowid<550000
+time = 44298414
+Query: SELECT name FROM INDEX_SPEED_TEST WHERE rowid%2>0
+time = 774887851
+Query: SELECT name FROM INDEX_SPEED_TEST WHERE rowid = 500000
+time = 635998
+\end{lstlisting}
+
+Результаты согласуются с нашими предположениями, примечателен факт, что в данном случае при индексах все запросы оказались быстрее,
+но при повторении экспермента такое происходит не всегда, т. е. как и ожидалось, в некоторых видах запросов индекс в таком виде
+бесполезен.
+
+В качестве вывода замечу, что можно менять тип индекса, например, можно построить такую хэш-функцию, которая позволит очень эффективно
+выбирать записи с четным или нечетным $rowid$ (хотя универсальность такой функции под вопросом), а также замечу, что если создать слишком
+много индексов, то производительность может не улучшиться, а даже упасть.
+\end{document}

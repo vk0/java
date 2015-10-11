@@ -1,0 +1,234 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[T2A]{fontenc} 
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{listings}
+\usepackage[dvips]{graphicx}
+\usepackage{indentfirst}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{left=1.5cm}
+\geometry{right=1.5cm}
+\geometry{top=1cm}
+\geometry{bottom=2cm}
+
+\graphicspath{{images/}}
+
+\begin{document}
+\sloppy
+
+\lstset{
+	basicstyle=\small,
+	stringstyle=\ttfamily,
+	showstringspaces=false,
+	columns=fixed,
+	breaklines=true,
+	numbers=right,
+	numberstyle=\tiny
+}
+
+\newtheorem{Def}{Определение}[section]
+\newtheorem{Th}{Теорема}
+\newtheorem{Lem}[Th]{Лемма}
+\newenvironment{Proof}
+	{\par\noindent{\bf Доказательство.}}
+	{\hfill$\scriptstyle\blacksquare$}
+\newenvironment{Solution}
+	{\par\noindent{\bf Решение.}}
+	{\hfill$\scriptstyle\blacksquare$}
+
+
+\begin{flushright}
+	Кринкин М. Ю. группа 504 (SE)
+\end{flushright}
+
+\section{Домашнее задание 1}
+
+\paragraph{Задание 1.} Доказать следующее равенство:
+
+\begin{equation}
+	\sum_{k=0}^n \binom{m+k}{k} = \binom{m+n+1}{n}
+\end{equation}
+
+\underline{Первое доказательство}
+
+\begin{Proof}
+	\begin{equation}
+		\begin{split}
+			& \binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k} \\
+			& \binom{n}{0} = 1, \forall n = 0, 1, 2, ... \\
+			& \binom{n}{k} = 0, \forall k > n \ge 0
+		\end{split}
+		\label{math::recurrent_binom}
+	\end{equation}
+	Доказательство состоит в многократном применении формулы \ref{math::recurrent_binom} к правой части, при этом получается:
+	\[
+		\begin{split}
+			& \binom{m+n+1}{n} = \binom{m+n}{n-1} + \binom{m+n}{n} = \\ 
+			& = \binom{m+n-1}{n-2} + \binom{m+n-1}{n-1} + \binom{m+n}{n} = ... = \\
+			& = \binom{m}{-1} + \binom{m}{0} + \binom{m+1}{1} + ... + \binom{m+n-1}{n-1} + \binom{m+n}{n}
+		\end{split}
+	\]
+	Первое слагаемое равно нулю и его можно отбросить, все остальные образуют сумму равную сумме в левой части.
+\end{Proof}
+\par\bigskip
+
+\underline{Второе доказательство}
+
+\begin{Proof}
+	При доказательстве пригодится формула:
+	\begin{equation}
+		\binom{n+1}{m+1} = \sum_{k=0}^n \binom{k}{m} = \sum_{k=m}^{n} \binom{k}{m}
+		\label{math::binom_sum}
+	\end{equation}
+
+	Воспользуемся симметрией бинома:
+	\[
+		\sum_{k=0}^n \binom{m+k}{k} = \sum_{k=0}^n \binom{m+k}{m}
+	\]
+	Теперь сделаем замену:
+	\[\tilde n = m + n\] тогда можно сказать, что $m+k = \overline{m .. \tilde n}$ при $k = \overline{0 .. n}$. Получаем следующее выражение:
+	\[
+		\sum_{k=0}^n \binom{m+k}{m} = \sum_{\tilde k=m}^{\tilde n} \binom{\tilde k}{m}
+	\]
+	Теперь используя формулу \ref{math::binom_sum}
+	\[
+		\sum_{\tilde k=m}^{\tilde n} \binom{\tilde k}{m} = \binom{\tilde n + 1}{m + 1} = \binom{m + n + 1}{m + 1} = \binom{m+n+1}{n}
+	\]
+\end{Proof}
+
+\underline{Третье доказательство.}
+
+\begin{Proof}
+	Зафиксируем в $(n+m+1)$-множестве $n$ элементов $x_1, ... , x_n$. Разобьем все множество $n$-сочетаний на $n+1$ блок, так чтобы в $i$-ый блок $X_i$ попали только те $n$-сочетания, которые не содержат $x_i$, но содержат все $x_k$ для $k<i$, в $X_{n+1}$ содержится единственное $n$-сочетание, состоящее из зафиксированных элементов.
+	\[
+		\left|X_i\right| = \binom{m+n+1-i}{n+1-i}
+	\]
+	Просуммируем по всем $i=\overline{1..n+1}$:
+	\[
+		\sum_{i=1}^{n+1} \binom{m+n+1-i}{n+1-i} = \sum_{i=0}^{n} \binom{m+n-i}{n-i} = \sum_{k=0}^{n} \binom{m+k}{k}
+	\]
+\end{Proof}
+
+\paragraph{Задание 2.} Доказать следующее равенство:
+
+\begin{equation}
+	\sum_{i=0}^k \binom{n}{i} \cdot \binom{m}{k-i} = \binom{n+m}{k}
+\end{equation}
+
+\begin{Proof}
+	Пусть есть два непересекающихся множества $N$ и $M$, причем $\left| N \right| = n$, а $ \left| M \right| = m $. Число способов, которым можно выбрать $k$ элементов из их объединения так, чтобы $i$ элементов были из $N$ и $(k-i)$ из $M$ определяется формулой:
+	\[
+		\binom{m}{k-i} \cdot \binom{n}{i}
+	\]
+	А количество способов выбора любых $k$ элементов из $M \cup N$ определяется с одной стороны суммированием предыдущего выражения по $i$, а сдругой количеством сочетаний без повторений по $k$ из $n+m$:
+	\[
+		\sum_{i=0}^k \binom{m}{k-i} \cdot \binom{n}{i} = \binom{n+m}{k}
+	\]
+\end{Proof}
+
+\paragraph{Задание 3.} Доказать следующее реккурентное соотношение для сочетаний с повторениями:
+
+\begin{equation}
+	\begin{split}
+		& \left( \binom{n}{k} \right) = \left( \binom{n-1}{k} \right) + \left( \binom{n}{k-1} \right) \\
+		& \left( \binom{n}{1} \right) = \binom{n}{1} = n \\
+		& \left( \binom{n}{k} \right) = \binom{1 + k - 1}{k} = 1
+	\end{split}
+\end{equation}
+
+\begin{Proof}
+	Доказательство построим по принципу аналогичному сочетаниям без поторений. Зафиксируем элемент $x_1 \in X$, и разобьем все $k$-мультимножества над $X$ на два множества:
+
+\begin{itemize}
+	\item Первое ($\sum_k^1$) - содержит мультимножества содержащие $x_1$
+
+	\item Второе ($\sum_k^2$) - содержит мультимножества не содержащие $x_1$
+\end{itemize}
+
+Мощность первого подмножества определяется из соображений, что входящие мультимножества сожержат один элемент $x_1$, остальные $(k-1)$ элементов находятся сочетанием с повторениями из $n$ (а не из $(n-1)$, т. к. $x_1$ также может повториться в мультимножестве), в итоге имеем:
+	\[
+		\left| \sum\nolimits_k^1 \right| = \left( \binom{n}{k-1} \right)
+	\]
+Мощность второго множества находится проще, т. к. все его элементы не содержат $x_1$, нужно просто выбрать $k$ элементов из множества без $x_1$, т. е:
+	\[
+		\left| \sum\nolimits_k^2 \right| = \left( \binom{n-1}{k} \right)
+	\]
+Добавляя граничные условия к сумме полученных выражений получаем требуемое соотношение
+\end{Proof}
+
+\paragraph{Задание 4.} Сколькими способами можно выбрать две кости домино, так чтобы их можно было приложить?
+
+\begin{Solution}
+Кость домино имеет две половины, на каждой из них стоит от 0 до 6 точек. В наборе есть кости всех сочетаний, т. к. кость домино - 2-сочетание с повторениями из 7, а значит всего 28 костей в наборе.
+
+Рассмотрим различные приложения костей домино (по совмещаемому число точек). Количество костей, на которых присутсвует половина с $i \in \left[0 .. 6\right]$ точек, равно 7. Любая пара из них прикладывается, количество различных вариантов приложений: \[ \binom{7}{2} = 21 \] Общее число вариантов получается суммированием по всем значениям $i$: \[ 7 \cdot \binom{7}{2} = 7 \cdot 21 = 147 \]
+\end{Solution}
+
+\paragraph{Задание 5.} Рота состоит из трех офицеров, 6 сержантов и 60 рядовых. Сколько существует различных способов формирования отряда из 1 офицера, 2 сержантов и 20 рядовых?
+\begin{Solution}
+	\[ \binom{6}{1} \cdot \binom{6}{2} \cdot \binom{60}{20} = 6 \cdot 15 \cdot \binom{60}{20} = 80 \cdot \binom{60}{20} \]
+\end{Solution}
+
+\paragraph{Задание 6.} Вывести формулы $\sum_{i=0}^{k} i^2$ и $\sum_{i=0}^{k} i^3$
+
+\begin{Solution}
+Для доказательства потребуется формула \ref{math::binom_to_sum}
+\begin{equation}
+	\binom{n+k}{n+1} = \sum_{i=0}^{k-1} \binom{n+k-i-1}{n}
+	\label{math::binom_to_sum}
+\end{equation}
+
+Подставим в формулу \ref{math::binom_to_sum} $n=2$, получаем:
+\[
+	\begin{split}
+		& \binom{k+2}{3} = \sum_{i=0}^{k-1} \binom{k-i+1}{2} = \sum_{i=0}^{k-1} \frac{\left(k-i\right)\left(k-i+1\right)}{2} = \sum_{i=0}^{k-1} \frac{\left(k^2+k\right) - i\left(2k+1\right) + i^2}{2} = \\
+		& = \sum_{i=0}^{k-1} \frac{k\left(k+1\right)}{2} - \frac{2k+1}{2}\sum_{i=0}^{k-1} i + \frac{1}{2}\sum_{i=0}^{k-1} i^2 = \frac{k^2\left(k+1\right)}{2} - \frac{\left(2k+1\right)\left(k-1\right)k}{4} + \frac{1}{2}\sum_{i=0}^{k-1} i^2
+	\end{split}
+\]
+С другой стороны
+\[
+	\binom{k+2}{3} = \frac{k\left(k+1\right)\left(k+2\right)}{6}
+\]
+Объединим все вместе:
+\begin{multline*}
+	\frac{k\left(k+1\right)\left(k+2\right)}{6} = \frac{k^2\left(k+1\right)}{2} - \frac{\left(2k+1\right)\left(k-1\right)k}{4} + \frac{1}{2}\sum_{i=0}^{k-1} i^2 \Leftrightarrow \\
+	\Leftrightarrow \frac{k\left(k+1\right)\left(k+2\right)}{3} = \frac{k^2\left(k+1\right)}{1} - \frac{\left(2k+1\right)\left(k-1\right)k}{2} + \sum_{i=0}^{k-1} i^2 \Leftrightarrow \\
+	\Leftrightarrow \frac{2k\left(k+1\right)\left(k+2\right)}{6} - \frac{6k^2\left(k+1\right)}{6} + \frac{\left(2k+1\right)\left(k-1\right)3k}{6} = \sum_{i=0}^{k-1} i^2 \Leftrightarrow \\
+	\Leftrightarrow \frac{2k^3-3k^2+k}{6} = \sum_{i=0}^{k-1} i^2
+\end{multline*}
+Сделаем замену переменной $\tilde k = k-1$:
+\begin{equation}
+	\sum_{i=0}^{\tilde k} i^2 = \frac{\tilde k\left(\tilde k + 1\right)\left(2 \tilde k + 1\right)}{6}
+	\label{math::sum_of_squares}
+\end{equation}
+
+Теперь аналогичным путем найдем сумму кубов, подставив в формулу \ref{math::binom_to_sum} $n=3$:
+\[
+	\begin{split}
+		& \binom{k+3}{4} = \sum_{i=0}^{k-1} \binom{k-i+2}{3} = \sum_{i=0}^{k-1} \frac{\left(k-i\right)\left(k-i+1\right)\left(k-i+2\right)}{6} = \\
+		& = \sum_{i=0}^{k-1} \frac{\left[\left(k^2+k\right)-i\left(2k+1\right)+i^2\right]\left(k-i+2\right)}{6}
+	\end{split}
+\]
+С другой стороны
+\[
+	\binom{k+3}{4} = \frac{k\left(k+1\right)\left(k+2\right)\left(k+3\right)}{24}
+\]
+Объединяем все вместе и заменяем сумму $i^2$ по формуле \ref{math::sum_of_squares}:
+\begin{multline*}
+	\frac{k\left(k+1\right)\left(k+2\right)\left(k+3\right)}{24} = \sum_{i=0}^{k-1} \frac{\left[\left(k^2+k\right)-i\left(2k+1\right)+i^2\right]\left(k-i+2\right)}{6} \Leftrightarrow \sum_{i=0}^{k-1} i^3 = \\
+	= \frac{4k^2\left(k+1\right)\left(k+2\right)-2k\left(k-1\right)\left(3k^2+6k+2\right)+2k\left(k+1\right)\left(2k^2-3k+1\right)-k\left(k+1\right)\left(k+2\right)\left(k+3\right)}{4} = \\
+	= \frac{k^4-2k^3+k^2}{4}
+\end{multline*}
+Сделаем замену переменной $\tilde k = k-1$:
+\begin{equation}
+	\sum_{i=0}^{\tilde k} i^3 = \frac{{\left(\tilde k + 1\right)}^4-2{\left(\tilde k + 1\right)}^3+{\left(\tilde k + 1\right)}^2}{4} = \frac{{\tilde k}^2{\left(\tilde k + 1\right)}^2}{4} = {\left[\frac{\left(\tilde k + 1\right)\tilde k}{2}\right]}^2
+\end{equation}
+
+\end{Solution}
+
+\end{document}

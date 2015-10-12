@@ -29,7 +29,7 @@ import java.math.*;
 import java.util.Arrays;
 
 public class Main {
-    public static void main(String[] args) {
+public static void main(String[] args) {
         System.out.println(getCallerClassAndMethodName());
         anotherMethod();
     }
@@ -39,7 +39,12 @@ public class Main {
     }
 
     public static String getCallerClassAndMethodName() {
-        StackTraceElement stack = Thread.currentThread().getStackTrace()[2];
-        return stack.getFileName() + "#" + stack.getMethodName();
+        StackTraceElement[] stackTraceElements = new Exception().getStackTrace();
+
+        if (stackTraceElements.length > 2) {
+            StackTraceElement callerElement = stackTraceElements[2];
+            return callerElement.getClassName() + "#" + callerElement.getMethodName();
+        }
+        return null;
     }
 }

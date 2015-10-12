@@ -18,14 +18,6 @@
 #include <iostream>
 using namespace std;
 
-struct Cls {
-    Cls(char c, double d, int i):c(c),d(d),i(i){}
-private:
-    char c;
-    double d;
-    int i;
-};
-
 /*
  * Класс Cls определен точно таким образом:
  *
@@ -42,73 +34,40 @@ private:
 // Эта функция должна предоставить доступ к полю c объекта cls.
 // Обратите внимание, что возвращается ссылка на char, т. е.
 // доступ предоставляется на чтение и запись.
-char &get_c(Cls &cls) {
-    struct Cls2 {
-    public:
-        char c;
-        double d;
-        int i;
-    };
-
-    void *p=&cls;
-    Cls2 *p1=new (p) Cls2;
-    return p1->c;
-}
 
 // Эта функция должна предоставить доступ к полю d объекта cls.
 // Обратите внимание, что возвращается ссылка на double, т. е.
 // доступ предоставляется на чтение и запись.
-double &get_d(Cls &cls) {
-    struct Cls2 {
-    public:
-        char c;
-        double d;
-        int i;
-    };
-
-    void *p=&cls;
-    Cls2 *p1=new (p) Cls2;
-    return p1->d;
-}
 
 // Эта функция должна предоставить доступ к полю i объекта cls.
 // Обратите внимание, что возвращается ссылка на int, т. е.
 // доступ предоставляется на чтение и запись.
+
+char &get_c(Cls &cls) {
+
+    Cls * obj = &cls;
+    char * p_obj = (char *) obj;
+
+    char & r_c = * p_obj;
+    return r_c;
+}
+
+double &get_d(Cls &cls) {
+
+    Cls * obj = &cls;
+    double * p_obj = (double *) obj;
+    double * p_d = p_obj + 1;
+
+    double & r_d = * p_d;
+    return r_d;
+}
+
 int &get_i(Cls &cls) {
-    struct Cls2 {
-    public:
-        char c;
-        double d;
-        int i;
-    };
 
-    void *p=&cls;
-    Cls2 *p1=new (p) Cls2;
-    return p1->i;
+    Cls * obj = &cls;
+    int * p_obj = (int *) obj;
+    int * p_i = p_obj + 4;
+
+    int & r_i = * p_i;
+    return r_i;
 }
-
-int main() {
-    Cls c('a', 2.3, 3);
-
-    cout<<get_c(c)<<' '<<get_d(c)<<' '<<get_i(c)<<endl;
-
-    return 0;
-}
-
-
-// Compilation error
-// main.cpp: In function ‘char& get_c(Cls&)’:
-// main.cpp:24:22: error: no matching function for call to ‘operator new(sizetype, void*&)’
-// main.cpp:24:22: note: candidate is:
-// :0:0: note: void* operator new(long unsigned int)
-// :0:0: note:   candidate expects 1 argument, 2 provided
-// main.cpp: In function ‘double& get_d(Cls&)’:
-// main.cpp:40:22: error: no matching function for call to ‘operator new(sizetype, void*&)’
-// main.cpp:40:22: note: candidate is:
-// :0:0: note: void* operator new(long unsigned int)
-// :0:0: note:   candidate expects 1 argument, 2 provided
-// main.cpp: In function ‘int& get_i(Cls&)’:
-// main.cpp:56:22: error: no matching function for call to ‘operator new(sizetype, void*&)’
-// main.cpp:56:22: note: candidate is:
-// :0:0: note: void* operator new(long unsigned int)
-// :0:0: note:   candidate expects 1 argument, 2 provided

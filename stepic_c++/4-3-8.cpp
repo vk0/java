@@ -12,9 +12,13 @@
 
 // Требования к реализации: при выполнении этого задания не нужно вводить или выводить что-либо. Вы можете заводить любые вспомогательные функции, методы или классы, но не нужно реализовывать функцию main.
 
+#include <iostream>
+using namespace std;
+
 struct Expression
 {
-    double evaluate() const = 0;
+    double virtual evaluate() const = 0;
+    virtual ~Expression() {};
 };
 
 struct Number : Expression
@@ -25,6 +29,13 @@ struct Number : Expression
 
 private:
     double value;
+
+public:
+    double evaluate() const {
+        return value;
+    }
+
+    ~Number() {}
 };
 
 struct BinaryOperation : Expression
@@ -35,10 +46,36 @@ struct BinaryOperation : Expression
      */
     BinaryOperation(Expression const * left, char op, Expression const * right)
         : left(left), op(op), right(right)
-    { }
+    {}
 
 private:
     Expression const * left;
     Expression const * right;
     char op;
+
+
+    double evaluate() const {
+        if (op == '+') {
+            return left->evaluate() + right->evaluate();
+        } else if (op == '-') {
+            return left->evaluate() - right->evaluate();
+        } else if (op == '*') {
+            return left->evaluate() * right->evaluate();
+        } else if (op == '/') {
+            return left->evaluate() / right->evaluate();
+        }
+    }
+
+    ~BinaryOperation() {
+        delete left;
+        delete right;
+    }
 };
+
+int main() {
+    Expression * a = new Number(7);
+    Expression * b = new Number(3);
+    Expression * apb = new BinaryOperation(a, '+', b);
+    cout << apb->evaluate() << '\n';
+
+}

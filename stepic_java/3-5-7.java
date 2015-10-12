@@ -16,6 +16,31 @@
 // Если разность двух последовательных приближений интеграла функции достаточно мала, то завершаем алгоритм и возвращаем текущее приближение в качестве результата.
 // Иначе возвращаемся к шагу 2.
 
-public static double integrate(DoubleUnaryOperator f, double a, double b) {
-    return f.applyAsDouble(a);
+import java.util.function.DoubleUnaryOperator;
+
+public class Integrate {
+    public static double integrate(DoubleUnaryOperator f, double a, double b) {
+        double dx = (b - a);
+        double sum0;
+        double sum1 = f.applyAsDouble(a) * (b - a);
+        int it = 1;
+
+        do {
+            dx /= 2.;
+            it *= 2;
+            sum0 = sum1;
+            sum1 = .0;
+
+            for (double x = a, eps = dx / 2.; x + eps < b; x += dx) {
+                sum1 += dx * f.applyAsDouble(x);
+            }
+        } while (Math.abs(sum0 - sum1) > 1e-7 && it < 100000000);
+
+        return sum1;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("x -> 1, 0, 10: " + integrate(x -> 1, 0, 10));
+        System.out.println("x -> x * x, -1, 1: " + integrate(x -> x * x, -1, 1));
+    }
 }

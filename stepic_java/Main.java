@@ -1,8 +1,89 @@
 import java.math.*;
 import java.util.Arrays;
+import java.io.File;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.IOException;
+import java.net.Socket;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import java.io.FileInputStream;
 
 public class Main {
+    public static void main(String[] args) {
+        String sourceDirName = "src";
+        String mainFileName = "Main.java";
+        String mainFilePath = sourceDirName + File.separator + mainFileName ;
+        File mainFile = new File ( sourceDirName , mainFileName );
+        System.out.println(mainFile);
+
+        try ( InputStream inputStream = Main.class.getResourceAsStream ("Main.class")) {
+            int read = inputStream.read();
+        while ( read >= 0) {
+            System.out.printf ("%02x", read );
+                read = inputStream.read();
+            }
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+
+        try ( Socket socket = new Socket ("ya.ru", 80)) {
+            OutputStream outputStream = socket.getOutputStream();
+            outputStream.write(" GET / HTTP /1.0\r\n\r\n".getBytes());
+            outputStream.flush();
+            InputStream inputStream = socket.getInputStream();
+            int read = inputStream.read();
+        while ( read >= 0) {
+            System.out.print((char) read);
+                read = inputStream.read();
+            }
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+
+
+        Path rn_demo = Paths.get("./HelloWorld.java");
+        //using NIO.2 unbuffered stream
+        int n;
+        try (InputStream in = new FileInputStream(rn_demo.toFile())) {
+            while ((n = in.read()) != -1) {
+                System.out.print((char) n);
+            }
+        } catch (IOException e) {
+            System.err.println(e);
+        }
+
+    }
+}
+
+// public class Main {
+// public static void main(String[] args) {
+//         System.out.println(getCallerClassAndMethodName());
+//         anotherMethod();
+//     }
+
+//     private static void anotherMethod() {
+//         System.out.println(getCallerClassAndMethodName());
+//     }
+
+//     public static String getCallerClassAndMethodName() {
+//         StackTraceElement[] stackTraceElements = new Exception().getStackTrace();
+
+//         if (stackTraceElements.length > 2) {
+//             StackTraceElement callerElement = stackTraceElements[2];
+//             return callerElement.getClassName() + "#" + callerElement.getMethodName();
+//         }
+//         return null;
+//     }
+// }
+
 
 // public static BigInteger Factorial(int n) {
 //     // BigInteger one = BigInteger.valueOf(1);
@@ -15,7 +96,7 @@ public class Main {
 //     }
 // }
 
-    public static void main(String[] args) {
+    // public static void main(String[] args) {
 //         System.out.println(getCallerClassAndMethodName());
 //         anotherMethod();
 //     }
@@ -60,9 +141,9 @@ public class Main {
             // System.out.println(text);
             // StackTraceElement e = stacktrace[2];//maybe this number needs to be corrected
         // System.out.println(e.getMethodName());
-        // return name;
-    }
-}
+//         // return name;
+//     }
+// }
         // int a[] = new int[] {0, 2};
         // int b[] = new int[] {1, 3};
         // int result[] = new int[a.length + b.length];

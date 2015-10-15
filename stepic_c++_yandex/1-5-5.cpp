@@ -10,15 +10,15 @@
 // 1 2 4 8 16 32
 
 #include <iostream>
-
 using namespace std;
 
 int main() {
-  int n,n1 = 1;
-  cin >> n;
-  while (n >= n1 * n1 && (n1 * n1) % 2 == 0 ) {
-    cout << n1 * n1 << " ";
-    n1 = n1 + 1;
-  }
-  return 0;
+    int n;
+    cin >> n;
+    int pow2 = 1;
+    while (pow2 <= n) {
+        cout << pow2 <<' ';
+        pow2 *=2;
+    }
+    return 0;
 }

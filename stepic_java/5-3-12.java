@@ -6,19 +6,24 @@
 
 // Метод, вызванный для такого InputStream и кодировки ASCII, должен вернуть строку "0123".
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.nio.charset.Charset;
 
-public class Reader {
-    public static void main(String[] args) throws Exception {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            for (;;) {
-                System.out.println(">> ");
-                String expr = reader.readLine();
-                String result = "OK";
-                System.out.println(result);
-            }
+public class Main {
+    public static void main(String[] args) throws IOException {
+        byte[] bytes = {48, 49, 50, 51};
+        InputStream inputStream = new ByteArrayInputStream(bytes);
+        String sout = readAsString(inputStream, Charset.forName("ASCII"));
+        System.out.println(sout);
+    }
+
+    public static String readAsString(InputStream inputStream, Charset charset) throws IOException {
+        Reader reader = new InputStreamReader(inputStream, charset);
+        String str = "";
+        int i;
+        while ( (i = reader.read()) != -1) {
+                str += (char)i;
         }
+        return str;
     }
 }
-

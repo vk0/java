@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="1" hostname="crystal" name="point.PointSetTest" tests="1" time="0.063" timestamp="2009-10-08T10:10:59">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.6.0_14\jre\bin" />
+    <property name="java.vm.version" value="14.0-b16" />
+    <property name="java.vm.vendor" value="Sun Microsystems Inc." />
+    <property name="java.vendor.url" value="http://java.sun.com/" />
+    <property name="path.separator" value=";" />
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="user.country" value="RU" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="sun.os.patch.level" value="Service Pack 2" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="user.dir" value="F:\Students\TTP\Lections\sem3\06\SetExample" />
+    <property name="java.runtime.version" value="1.6.0_14-b08" />
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment" />
+    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.6.0_14\jre\lib\endorsed" />
+    <property name="os.arch" value="x86" />
+    <property name="java.io.tmpdir" value="C:\DOCUME~1\Mike\LOCALS~1\Temp\" />
+    <property name="line.separator" value="
+" />
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="user.variant" value="" />
+    <property name="os.name" value="Windows XP" />
+    <property name="sun.jnu.encoding" value="Cp1251" />
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.6.0_14\bin;.;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\ATI Technologies\ATI.ACE\Core-Static" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="java.class.version" value="50.0" />
+    <property name="sun.management.compiler" value="HotSpot Client Compiler" />
+    <property name="os.version" value="5.1" />
+    <property name="user.home" value="C:\Documents and Settings\Mike" />
+    <property name="user.timezone" value="" />
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob" />
+    <property name="file.encoding" value="Cp1251" />
+    <property name="java.specification.version" value="1.6" />
+    <property name="user.name" value="Mike" />
+    <property name="java.class.path" value="C:\Program Files\NetBeans 6.7\java2\ant\patches\72080.jar;C:\Program Files\NetBeans 6.7\java2\ant\patches\ant-42275.jar;C:\Program Files\NetBeans 6.7\java2\ant\lib\ant.jar;C:\Program Files\NetBeans 6.7\java2\ant\lib\ant-junit.jar;F:\Students\TTP\Lections\sem3\06\SetExample\build\classes;F:\Students\TTP\Lections\sem3\06\SetExample\src;C:\Program Files\NetBeans 6.7\platform10\modules\ext\junit-4.5.jar;F:\Students\TTP\Lections\sem3\06\SetExample\build\test\classes;F:\Students\TTP\Lections\sem3\06\SetExample\test" />
+    <property name="java.vm.specification.version" value="1.0" />
+    <property name="sun.arch.data.model" value="32" />
+    <property name="java.home" value="C:\Program Files\Java\jdk1.6.0_14\jre" />
+    <property name="java.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="user.language" value="ru" />
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="java.version" value="1.6.0_14" />
+    <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.6.0_14\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext" />
+    <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.6.0_14\jre\lib\resources.jar;C:\Program Files\Java\jdk1.6.0_14\jre\lib\rt.jar;C:\Program Files\Java\jdk1.6.0_14\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.6.0_14\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.6.0_14\jre\lib\jce.jar;C:\Program Files\Java\jdk1.6.0_14\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.6.0_14\jre\classes" />
+    <property name="java.vendor" value="Sun Microsystems Inc." />
+    <property name="file.separator" value="\" />
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="sun.desktop" value="windows" />
+    <property name="sun.cpu.isalist" value="" />
+  </properties>
+  <testcase classname="point.PointSetTest" name="testContains" time="0.016">
+    <failure message="Множество [(2.0,1.0)] не содержит (2.0,1.0)" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Множество [(2.0,1.0)] не содержит (2.0,1.0)
+	at point.PointSetTest.assertContains(PointSetTest.java:17)
+	at point.PointSetTest.testContains(PointSetTest.java:29)
+</failure>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -19,19 +19,38 @@
 // Sample Output 3:
 // -981.889000
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+// import java.io.BufferedReader;
+// import java.io.InputStreamReader;
 
-public class Reader {
-    public static void main(String[] args) throws Exception {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            for (;;) {
-                System.out.println(">> ");
-                String expr = reader.readLine();
-                String result = "OK";
-                System.out.println(result);
+// public class Reader {
+//     public static void main(String[] args) throws Exception {
+//         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+//             for (;;) {
+//                 System.out.println(">> ");
+//                 String expr = reader.readLine();
+//                 String result = "OK";
+//                 System.out.println(result);
+//             }
+//         }
+//     }
+// }
+
+import java.io.*;
+import java.lang.*;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        Scanner sc= new Scanner(System.in);
+        double sum = 0.;
+        while (sc.hasNext()) {
+            try {
+                double d = Double.parseDouble(sc.next());
+                sum += d;
             }
+            catch (NumberFormatException e) { }
         }
+        sc.close();
+        System.out.println(String.format("%.6f", sum));
     }
 }
-

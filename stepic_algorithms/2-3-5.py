@@ -16,6 +16,7 @@
 # Sample Output 2:
 
 # 4
+
 import sys
 a,b = sys.stdin.readline().split(' ')
 a,b = int(a), int(b)

@@ -1,1 +1,3 @@
 https://github.com/vitaly-chibrikov/stepic_java_webserver.git
+
+https://github.com/finnetrolle/java-server-lessons

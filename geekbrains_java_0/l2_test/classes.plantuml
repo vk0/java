@@ -1,0 +1,204 @@
+@startuml
+top to bottom direction
+skinparam headerFontSize 30
+skinparam headerFontStyle bold
+skinparam classAttributeIconSize 0
+scale 1.0
+package ex0_seabattle {
+class ex0_seabattle.Main {
+.. Methods ..
+.. Static ..
++ {static} main() : void
+}
+class ex0_seabattle.Field {
+.. Fields  ..
+~cells : char[]
+~ships : Ship[]
+.. Methods ..
+~doShoot(int) : void
+-drawShip(Ship) : void
+~init() : void
+~isNotGameOver() : boolean
+~setShips() : void
+~show() : void
+.. Static ..
++ {static} SHIPS_AMOUNT : int
+~ {static} SIZE : int
+}
+class ex0_seabattle.Ship {
+.. Fields  ..
+~positionEnd : int
+~positionStart : int
+~size : int
+.. Methods ..
+~initWithRandomPositionAndSize() : void
+~isIntersectWithAnotherShip(Ship) : boolean
+}
+class ex0_seabattle.Player {
+.. Methods ..
+~getShoot() : int
+}
+
+}
+package ex0_stackoverflow {
+class ex0_stackoverflow.Main {
+.. Fields  ..
+.. Methods ..
+.. Static ..
++ {static} main() : void
+- {static} i : int
+- {static} test() : void
+}
+
+}
+package ex1_arraylist {
+class ex1_arraylist.Ship {
+}
+class ex1_arraylist.Main2 {
+.. Methods ..
+.. Static ..
++ {static} main() : void
+}
+class ex1_arraylist.Main3 {
+.. Methods ..
+.. Static ..
++ {static} main() : void
+}
+
+}
+package ex2_static {
+class ex2_static.Main1 {
+.. Methods ..
+.. Static ..
++ {static} main() : void
+}
+class ex2_static.Field {
+.. Fields  ..
+~cells : char[]
+.. Methods ..
+~show() : void
+.. Static ..
+~ {static} instance : Field
+}
+class ex2_static.Cat {
+.. Fields  ..
+~age : int
+~name : String
+.. Methods ..
+~about() : void
+~showCatsAmount() : void
+.. Static ..
+~ {static} catsAmount : int
+~ {static} staticShowCatsAmount() : void
+}
+class ex2_static.Main {
+.. Methods ..
+.. Static ..
++ {static} main() : void
+}
+class ex2_static.SuperField {
+.. Fields  ..
+.. Methods ..
+.. Static ..
++ {static} getInstance() : SuperField
+- {static} ourInstance : SuperField
+}
+class ex2_static.Point {
+.. Fields  ..
+-x : int
+-y : int
+.. Methods ..
++getX() : int
++getY() : int
++setX(int) : void
++setY(int) : void
+.. Static ..
++ {static} getRandomPoint() : Point
+}
+
+}
+package ex3_equals {
+class ex3_equals.Main {
+.. Methods ..
+.. Static ..
++ {static} main() : void
+}
+class ex3_equals.Main2 {
+.. Methods ..
+.. Static ..
++ {static} main() : void
+}
+class ex3_equals.Cat {
+.. Fields  ..
+~age : int
+~name : String
+.. Methods ..
+~about() : void
++equals(Object) : boolean
++hashCode() : int
+~showCatsAmount() : void
+.. Static ..
+~ {static} catsAmount : int
+~ {static} staticShowCatsAmount() : void
+}
+
+}
+package ex4_inc {
+class ex4_inc.Date {
+.. Fields  ..
+-day : int
+-month : int
+-year : int
+.. Methods ..
++getDay() : int
++getMonth() : int
++getYear() : int
++setDay(int) : void
++setMonth(int) : void
++setYear(int) : void
++show() : void
+}
+class ex4_inc.Main {
+.. Methods ..
+.. Static ..
++ {static} main() : void
+}
+
+}
+package ex5_oop {
+class ex5_oop.Feline <? extends Animal>  {
+.. Fields  ..
+~eye : String
+}
+class ex5_oop.Lion <? extends Feline>  {
+}
+class ex5_oop.Crocodile <? extends Animal>  {
+}
+class ex5_oop.Dog <? extends Animal>  {
+}
+class ex5_oop.Animal {
+.. Fields  ..
+~age : int
+~name : String
+.. Methods ..
+~about() : void
+}
+class ex5_oop.Cat <? extends Feline>  {
+.. Fields  ..
+~home : String
+~murrString : String
+}
+class ex5_oop.Main {
+.. Methods ..
+.. Static ..
++ {static} main() : void
+}
+
+}
+ex5_oop.Animal <|-- ex5_oop.Feline
+ex5_oop.Feline <|-- ex5_oop.Lion
+ex0_seabattle.Field *-- "0..*" ex0_seabattle.Ship
+ex5_oop.Animal <|-- ex5_oop.Crocodile
+ex5_oop.Animal <|-- ex5_oop.Dog
+ex5_oop.Feline <|-- ex5_oop.Cat
+@enduml

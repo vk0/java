@@ -4,4 +4,7 @@
 
 # aggregate(y ~ x + z, df, sd)
 
-df <- mtcars
+# df <- mtcars
+
+# aggregate(x = df[,c(4,3)], by = list (df$am), FUN = sd)
+aggregate(cbind(hp,disp) ~ am, df,sd)

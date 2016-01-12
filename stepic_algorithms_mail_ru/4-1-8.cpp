@@ -1,174 +1,26 @@
-// Дан фрагмент последовательности скобок, состоящей из символов (){}[].
+// Даны неотрицательные целые числа n, k и массив целых чисел из [0..10^9] размера n. Требуется найти k-ю порядковую статистику, т.е. напечатать число, которое бы стояло на позиции с индексом k (0..n-1) в отсортированном массиве. Напишите нерекурсивный алгоритм методом "разделяй и властвуй".
 
-// Требуется определить, возможно ли продолжить фрагмент в обе стороны, получив корректную последовательность.
+// Требования к дополнительной памяти: O(n). Требуемое среднее время работы: O(n).
 
-// Если возможно - выведите минимальную корректную последовательность, иначе - напечатайте "IMPOSSIBLE".
+// Функцию Partition следует реализовывать методом прохода двумя итераторами в одном направлении от начала массива к концу:
 
-// Максимальная длина строки 10^6 символов.
+//     Выбирается опорный элемент. Опорный элемент меняется с последним элементом массива.
 
-// Sample Input 1:
+//     Во время работы Partition в начале массива содержатся элементы, не бОльшие опорного. Затем располагаются элементы, строго бОльшие опорного. В конце массива лежат нерассмотренные элементы. Последним элементом лежит опорный.
 
-// }[[([{[]}
+//     Итератор (индекс) i указывает на начало группы элементов, строго бОльших опорного.
 
-// Sample Output 1:
+//     Итератор j больше i, итератор j указывает на первый нерассмотренный элемент.
 
-// {}[[([{[]}])]]
+//     Шаг алгоритма. Рассматривается элемент, на который указывает j. Если он больше опорного, то сдвигаем j. Если он не больше опорного, то меняем a[i] и a[j] местами, сдвигаем i и сдвигаем j.
 
+//     В конце работы алгоритма меняем опорный и элемент, на который указывает итератор i.
 
-// Sample Input 2:
+// Sample Input:
 
-// {][[[[{}[]
+// 10 0
+// 3 6 5 7 2 9 8 10 4 1
 
-// Sample Output 2:
+// Sample Output:
 
-// IMPOSSIBLE
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
-#include "assert.h"
-
-const char sym[] = {'(', '[', '{', ')', ']', '}'};  //Массив возможных входных данных
-
-//Класс Стек
-class CStack
-{
-private:
-    char* mas;
-    int size;
-    int last;       //Указатель на следующей после последнего
-    void Grow();
-public:
-    CStack() { last = 0; size = 1; mas = (char*)malloc( size*sizeof(char) ); };
-    void Push_Back(char);
-    char Pop_Back();
-    int Size() {return last; };
-    ~CStack() { free(mas); };
-};
-
-//Увеличение размера массива
-void CStack::Grow()
-{
-    size *= 2;
-    mas = (char*)realloc(mas, size * sizeof(char) ) ;
-    if ( mas == NULL ) printf("ups\n");
-}
-
-//Внесение элемент в стек
-void CStack::Push_Back(char c)
-{
-    if ( last + 1 == size )
-    {
-        Grow();
-    }
-    assert( mas != NULL );
-    mas[last++] = c;
-}
-
-//Получение последнего элемента из стека
-char CStack::Pop_Back()
-{
-    assert( last > 0 );
-    char temp = mas[--last];
-    if ( last == size/2 - 1 )
-    {
-        size /= 2;
-        mas = (char*)realloc(mas, size * sizeof(char) ) ;
-    if ( mas == NULL ) printf("ups\n");
-    }
-    return temp;
-}
-
-//Получение данных
-CStack* input()
-{
-    char c;
-    CStack *temp = new (CStack);
-    while( (c=getchar()) != '\n' )
-    {
-        temp->Push_Back(c);
-    }
-    return temp;
-}
-
-//Вывод стека
-void output(CStack* Sequence)
-{
-    CStack* Temp = new CStack;
-    while( Sequence->Size() != 0 )
-        Temp->Push_Back(Sequence->Pop_Back());
-    while( Temp->Size() != 0 )
-        printf("%c",Temp->Pop_Back());
-    putchar('\n');
-}
-
-//Зеркальное отображение элементов
-CStack* ReverseIt(CStack* Sequence)
-{
-    CStack* Reverse = new CStack;
-    char temp;
-    int i;
-    while ( Sequence->Size() != 0 )
-    {
-        temp = Sequence->Pop_Back();
-        i = -1;
-        while ( i < 5 && temp != sym[++i] );
-        Reverse->Push_Back( sym[ ( i + 3 ) % 6 ] );
-    }
-    delete Sequence;
-    return Reverse;
-}
-
-//Дополнение недостающими элементами по левому краю
-CStack* MakeItFull(CStack *Sequence)
-{
-    CStack* ToAdd = new CStack;
-    CStack* Reverse = new CStack;
-    char temp;
-    int i;
-
-    while ( Sequence->Size() != 0 )
-    {
-        temp = Sequence->Pop_Back();
-        Reverse->Push_Back(temp);
-
-        i = -1;
-        while ( i < 5 && temp != sym[++i] );
-        if ( i < 3 )
-        {
-            if (ToAdd->Size() != 0)
-            {
-                if( ToAdd->Pop_Back() != temp )
-                        return NULL;
-            }
-        }
-        else
-        {
-            ToAdd->Push_Back(sym[i-3]);
-        }
-    }
-    while ( ToAdd->Size() != 0 )
-        Reverse->Push_Back(ToAdd->Pop_Back());
-    while ( Reverse->Size() != 0 )
-        Sequence->Push_Back(Reverse->Pop_Back());
-    delete Reverse;
-    delete ToAdd;
-    return Sequence;
-}
-
-int main()
-{
-    CStack *Sequence = input();
-    if ((Sequence = MakeItFull(Sequence)) == NULL)
-    {
-        printf("IMPOSSIBLE\n");
-        return 0;
-    }
-
-    Sequence = ReverseIt(Sequence);
-    Sequence = MakeItFull(Sequence);
-    Sequence = ReverseIt(Sequence);
-    output(Sequence);
-    delete Sequence;
-    return 0;
-}
+// 1

@@ -1,0 +1,35 @@
+For each of the following expressions, indicate the type of the expression and the value returned, or, if the evaluation would lead to an error, choose the type 'NoneType' and write the word 'error' (note this is a word, not a string) as the value returned.
+
+While you could simply type these expressions into an IDLE or Canopy shell, we encourage you to answer them directly since this will help reinforce your understanding of basic Python expressions.
+
+3 + 5.0
+float - correct
+8.0
+
+5/2
+int - correct
+2
+
+5/2 == 5/2.0
+bool - correct
+False
+
+5/2.0
+float - correct
+2.5
+
+round(2.6)
+float - correct
+3.0
+
+int(2.6)
+int - correct
+2
+
+2.0 + 5.0
+float - correct
+7.0
+
+5*2 == 5.0 * 2.0
+bool - correct
+True

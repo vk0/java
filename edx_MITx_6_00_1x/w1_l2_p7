@@ -1,0 +1,88 @@
+For each of the expressions below, specify its type and value. If it generates an error, select type 'NoneType' and write the word 'error' (note this is a word, not a string) in the box for the value. While you could simply type these expressions into an Idle shell, we encourage you to answer them directly since this will help reinforce your understand of basic Python expressions.
+
+Assume we've made the following assignments:
+
+> str1 = 'hello'
+> str2 = ','
+> str3 = 'world'
+
+str1
+string - correct
+hello
+
+str1[0]
+string - correct
+h
+
+str1[1]
+string - correct
+e
+
+str1[-1]
+string - correct
+o
+
+len(str1)
+int - correct
+5
+
+str1[len(str1)]
+NoneType - correct
+error
+
+str1 + str2 + str3
+string - correct
+hello,world
+
+str1 + str2 + ' ' + str3
+string - correct
+hello, world
+
+str3 * 3
+string - correct
+worldworldworld
+
+'hello' == str1
+boolean - correct
+True
+
+'HELLO' == str1
+boolean - correct
+False
+
+'a' in str3
+boolean - correct
+False
+
+str4 = str1 + str3
+'low' in str4
+boolean - correct
+True
+
+str3[1:3]
+string - correct
+or
+
+str3[:3]
+string - correct
+wor
+
+str3[:-1]
+string - correct
+worl
+
+str1[1:]
+string - correct
+ello
+
+str4[1:9]
+string - correct
+elloworl
+
+str4[1:9:2]
+string - correct
+elwr
+
+str4[::-1]
+string - correct
+dlrowolleh

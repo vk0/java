@@ -1,0 +1,79 @@
+Below are some short Python programs. For each program, answer the associated questions.
+
+Try to answer the questions without running the code. Check your answers, then run the code for the ones you get wrong. You'll learn the most this way, by figuring things out, instead of just running the code and reading off the answers.
+
+myStr = '6.00x'
+
+for char in myStr:
+    print char
+print 'done'
+
+How many times does 6 print out?
+1 - correct
+
+How many times does . print out?
+1 - correct
+
+How many times does 0 print out?
+2 - correct
+
+How many times does x print out?
+1 - correct
+
+How many times does done print out?
+1 - correct
+
+greeting = 'Hello!'
+count = 0
+
+for letter in greeting:
+    count += 1
+    if count % 2 == 0:
+        print letter
+    print letter
+print 'done'
+
+How many times does H print out?
+1 - correct
+
+How many times does e print out? Disregard the letters in the word done.
+2 - correct
+
+How many times does l print out?
+3 - correct
+
+How many times does o print out? Disregard the letters in the word done.
+1 - correct
+
+How many times does ! print out?
+2 - correct
+
+How many times does done print out?
+1 - correct
+
+school = 'Massachusetts Institute of Technology'
+numVowels = 0
+numCons = 0
+for char in school:
+    if char == 'a' or char == 'e' or char == 'i' \
+       or char == 'o' or char == 'u':
+        numVowels += 1
+    elif char == 'o' or char == 'M':
+        print char
+    else:
+        numCons -= 1
+print 'numVowels is: ' + str(numVowels)
+print 'numCons is: ' + str(numCons)
+
+How many times does o print out? Disregard the o's in last two print statements.
+0 - correct
+
+How many times does M print out?
+1 - correct
+
+What will the value of the variable numVowels be?
+11 - correct
+
+What will the value of the variable numCons be?
+-25 - correct
+

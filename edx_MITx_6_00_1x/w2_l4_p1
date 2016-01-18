@@ -1,0 +1,101 @@
+Part 1: Function Types
+
+For each of the following functions, specify the type of its output. You can assume each function is called with an appropriate argument, as specified by its docstring.
+
+If the output can be either an int or a float, select num, which isn't a real Python type, but which we'll use to indicate that either basic numeric type is legal.
+
+In fact, in Python, booleans True and False can be operated on as if they were the integers 1 and 0; but it is ugly and confusing to take advantage of this fact, and we will resolutely pretend that it isn't true.
+
+What are those lines under the function definitions?
+
+def a(x):
+   '''
+   x: int or float.
+   '''
+   return x + 1
+
+Indicate the type of the output that the function a will yield.
+num - correct
+
+def b(x):
+   '''
+   x: int or float.
+   '''
+   return x + 1.0
+
+Indicate the type of the output that the function b will yield.
+float - correct
+
+def c(x, y):
+   '''
+   x: int or float.
+   y: int or float.
+   '''
+   return x + y
+
+Indicate the type of the output that the function c will yield.
+num - correct
+
+def d(x, y):
+   '''
+   x: Can be of any type.
+   y: Can be of any type.
+   '''
+   return x > y
+
+Indicate the type of the output that the function d will yield.
+boolean - correct
+
+def e(x, y, z):
+   '''
+   x: Can be of any type.
+   y: Can be of any type.
+   z: Can be of any type.
+   '''
+   return x >= y and x <= z
+
+Indicate the type of the output that the function e will yield.
+boolean - correct
+
+def f(x, y):
+   '''
+   x: int or float.
+   y: int or float
+   '''
+   x + y - 2
+
+Indicate the type of the output that the function f will yield.
+NoneType - correct
+
+Part 2: Transcript
+
+Below is a transcript of a session with the Python shell. Assume the functions from Part 1 (above) have been defined. Provide the type and value of the expressions being evaluated. If evaluating an expression would cause an error, select NoneType and write 'error' in the box. If the value of an expression is a function, select function as the type and write 'function' in the box.
+
+a(6)
+int - correct
+7 - correct
+
+a(-5.3)
+float - correct
+-4.3 - correct
+
+a(a(a(6)))
+int - correct
+9 - correct
+
+c(a(1), b(1))
+float - correct
+4.0 - correct
+
+d('apple', 11.1)
+boolean - correct
+True - correct
+
+e(a(3), b(4), c(3, 4))
+boolean - correct
+False - correct
+
+f
+function - correct
+function - correct
+

@@ -1,0 +1,22 @@
+Enter the value of the expressions below.
+
+To get the most out of this problem, try to figure out the answers by reading the code, not running it. Run the code only after you've used up a few of your checks.
+
+Hint: If you are confused, you may find it helpful to draw out an environment diagram similar to what was presented in lecture.
+
+def foo(x):
+   def bar(x):
+      return x + 1
+   return bar(x * 2)
+
+foo(3)
+7 - correct
+
+def foo (x):
+   def bar (z):
+      return z + x
+   return bar(3)
+
+foo(2)
+5 - correct
+

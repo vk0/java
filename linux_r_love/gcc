@@ -1,0 +1,4 @@
+#!/bin/sh
+gcc -Wall -Wextra -O2 -g -o $1.o $1
+
+#fsync() и fdatasync()

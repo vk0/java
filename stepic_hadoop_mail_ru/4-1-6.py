@@ -16,3 +16,6 @@
 # www.facebook.com    100
 # www.google.com  10
 # stepic.org  80
+
+
+import sys

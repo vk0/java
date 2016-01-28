@@ -1,0 +1,14 @@
+grunt> chars = LOAD 'data.txt' AS (c: chararray, n: int);
+grunt> charGroup = GROUP chars by c;
+grunt> DUMP charGroup;
+
+(a,{(a,7),(a,3),(a,5)})
+(b,{(b,4),(b,2)})
+(c,{(c,9),(c,1)})
+
+grunt> result = FOREACH charGroup GENERATE COUNT(chars);
+grunt> DUMP result;
+
+Какая будет напечатана первая строка после выполнения последней команды?
+
+(3)

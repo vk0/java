@@ -1,0 +1,17 @@
+Дан файл latin.txt с латинскими афоризмами:
+
+Veni, vidi, vici
+Alea jacta est
+Gutta cavat lapidem
+
+ Пользователь выполняет следующие команды:
+
+grunt> text =  LOAD 'latin.txt' AS (line:chararray);
+
+grunt> tokens = FOREACH text GENERATE FLATTEN( TOKENIZE(line) );
+
+grunt> DUMP tokens;
+
+Напишите число строчек в результате выполнения последней команды DUMP:
+
+9

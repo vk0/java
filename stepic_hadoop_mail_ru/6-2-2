@@ -1,0 +1,18 @@
+Файл /data/logs.txt состоит из двух колонок, разделенных табуляцией (адрес страницы и время перехода в виде unix timestamp):
+
+https://stepic.org/ 1453650641
+
+https://www.google.ru/?gws_rd=ssl 1453657297
+
+https://mail.ru/ 1453656735
+
+
+Пользователь в интерактивной оболочке Pig выполняет следующие действия:
+
+grunt> log = LOAD '/data/logs.txt' AS (url: chararray, ts:long);
+
+grunt> DESCRIBE log
+
+Напишите результат выполнения команды DESCRIBE:
+
+log: {url: chararray,ts: long}

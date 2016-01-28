@@ -1,0 +1,15 @@
+Дан файл latin.txt с латинскими афоризмами:
+
+Alea jacta est
+Amicus Plato, sed magis amica est veritas
+Carpe diem
+Vivere est cogitare, vivere militate est
+Veni, vidi, vici
+
+Пользователь выполняет следующие команды:
+
+grunt> text =  LOAD 'latin.txt' AS (line:chararray);
+
+grunt> result = FILTER text BY line MATCHES 'est';
+
+Сколько кортежей будет содержать итоговый бег result?

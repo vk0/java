@@ -1,0 +1,29 @@
+Пользователь зачитал файл log.txt:
+
+grunt> log = LOAD ‘log.txt' AS (url: chararray, uid: chararray, ts: long);
+
+grunt> DUMP log;
+
+(stepic.org,HDdvYgA,1453654300)
+
+(google.ru,fUGjjqL,1453656234)
+
+(mail.ru,wJllQwo,1453650390)
+
+(hadoop.apache.org,opIUUqw,1453651432)
+
+grunt> urls = ???????????????????
+
+grunt> DUMP urls;
+
+(1453654300,stepic.org)
+
+(1453656234,google.ru)
+
+(1453650390,mail.ru)
+
+(1453651432,hadoop.apache.org)
+
+Напишите пропущенную команду (на месте знаков вопроса), которая из бэга log удаляет поле uid, а поля ts и url меняет местами.
+
+FOREACH log GENERATE ts,url;

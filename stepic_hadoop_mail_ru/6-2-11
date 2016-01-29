@@ -13,3 +13,5 @@ grunt> text =  LOAD 'latin.txt' AS (line:chararray);
 grunt> result = FILTER text BY line MATCHES 'est';
 
 Сколько кортежей будет содержать итоговый бег result?
+
+//0

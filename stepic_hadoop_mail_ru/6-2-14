@@ -1,0 +1,34 @@
+Есть два файла posts.txt и likes.txt:
+
+$ cat posts.txt
+user2,Funny Story
+
+user3,Cool Deal
+
+user4,Interesting Post
+
+user5,Yet Another Blog
+
+$ cat likes.txt
+
+user1,12
+
+user2,7
+
+user3,0
+
+user4,50
+
+Пользователь делает Join этих файлов:
+
+grunt> posts = LOAD 'posts.txt' USING PigStorage(',') AS (user: chararray, post: chararray);
+
+grunt> likes = LOAD 'likes.txt' USING PigStorage(',') AS (user: chararray, likes: int);
+
+grunt> result = JOIN posts BY user RIGHT OUTER, likes BY user;
+
+grunt> DUMP result;
+
+Напишите первую строку в результате выполнения последней команды DUMP:
+
+(,,user1,12)

@@ -1,0 +1,4 @@
+Напишите команду для создания в Hive таблицы users с полями имя (name), эл. почта (email), возраст (age), использующую в качестве разделителя ';', а в качестве хранилища текстовый файл.
+
+
+CREATE TABLE users (name STRING, email STRING, age INT) ROW FORMAT DELIMITED FIELDS TERMINATED BY ';' STORED AS TEXTFILE;

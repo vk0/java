@@ -1,0 +1,45 @@
+
+Даны два файла log.txt и urls.txt.
+Файл log.txt содержит 3 поля: ID пользователя, адрес посещенной страницы, время посещения:
+
+user1 https://stepic.org/ 1453815208
+
+user2 https://google.ru/ 1453818329
+user3 https://mail.ru/ 2016-01-07
+
+user4 https://facebook.com/ 1453811462
+
+Файл urls.txt содержит 2 поля: адрес страницы и ее заголовок.
+
+https://stepic.org/ Stepic
+
+https://google.ru/ Google
+https://mail.ru/ Mail.ru
+
+https://facebook.com/ Facebook
+
+
+Пользователь загружает в Hive содержимое этих файлов в таблицы log и urls:
+
+hive> CREATE TABLE log (user STRING, url STRING, time BIGINT) ROW FORMAT DELIMITED
+
+    > FIELDS TERMINATED BY '\t' STORED AS TEXTFILE;
+
+hive> CREATE TABLE urls (url STRING, title STRING) ROW FORMAT DELIMITED
+
+    > FIELDS TERMINATED BY '\t' STORED AS TEXTFILE;
+
+hive> LOAD DATA LOCAL INPATH 'log.txt' OVERWRITE INTO TABLE log;
+
+hive> LOAD DATA LOCAL INPATH 'urls.txt' OVERWRITE INTO TABLE urls;
+
+hive> CREATE TABLE log_urls (time ﻿﻿BIGINT, url STRING, title STRING) ROW FORMAT DELIMITED
+
+    > FIELDS TERMINATED BY '\t' STORED AS TEXTFILE;
+
+Напишите команду для объединения (Join) этих таблиц по полю url так, чтобы результат оказался в таблице log_urls с тремя ﻿полями: time, url, title.
+
+(Ответ лучше пишите одной строкой)
+
+
+INSERT OVERWRITE TABLE log_urls SELECT l.time, l.url, u.title FROM log l JOIN urls u ON (l.url = u.url);

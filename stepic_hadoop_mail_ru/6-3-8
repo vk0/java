@@ -1,0 +1,3 @@
+Напишите команду Hive, которая загружает данные из локального файла /data/users.txt в таблицу users. Если таблица уже содержит данные, то они должны удалиться.
+
+LOAD DATA LOCAL INPATH '/data/users.txt' OVERWRITE INTO TABLE users;

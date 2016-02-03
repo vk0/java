@@ -1,0 +1,43 @@
+For the last expression in each question below, specify its type and value. If it generates an error, select type 'NoneType' and put the word 'error' in the box for the value.
+
+>>> aList = range(1, 6)
+>>> bList = aList
+>>> aList[2] = 'hello'
+>>> aList == bList
+
+boolean - correct
+True - correct
+
+>>> aList is bList
+boolean - correct
+True - correct
+
+>>> aList
+list - correct
+[1, 2, 'hello', 4, 5] - correct
+
+>>> bList
+list - correct
+[1, 2, 'hello', 4, 5] - correct
+
+>>> cList = range(6, 1, -1)
+>>> dList = []
+>>> for num in cList:
+    dList.append(num)
+>>> cList == dList
+
+boolean - correct
+True - correct
+
+>>> cList is dList
+boolean - correct
+False - correct
+
+>>> cList[2] = 20
+>>> cList
+list - correct
+[6, 5, 20, 3, 2] - correct
+
+>>> dList
+list - correct
+[6, 5, 4, 3, 2] - correct

@@ -1,0 +1,40 @@
+For each of the expressions below, specify its type and value. If it generates an error, select type 'NoneType' and put the word 'error' in the box for the value.
+
+Assume we've made the following assignment:
+
+x = [1, 2, [3, 'John', 4], 'Hi']
+
+Additionally, assume that the expressions are evaluated in the order shown - that is, each problem part is evaluated directly after the previous problem part(s).
+
+range(3)
+list - correct
+[0, 1, 2] - correct
+
+range(3, 10)
+list - correct
+[3, 4, 5, 6, 7, 8, 9] - correct
+
+range(3, 10, 3)
+list - correct
+[3, 6, 9] - correct
+
+range(3, 10.5, 0.5)
+NoneType - correct
+error - correct
+
+range(10, 3)
+list - correct
+[] - correct
+
+range(10, 3, -1)
+list - correct
+[10, 9, 8, 7, 6, 5, 4] - correct
+
+range(len(x))
+list - correct
+[0, 1, 2, 3] - correct
+
+sum(range(len(x)))
+int - correct
+6 - correct
+

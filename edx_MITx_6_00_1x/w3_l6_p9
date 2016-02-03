@@ -1,0 +1,46 @@
+Suppose we evaluate the following expressions:
+
+animals = {'a': 'aardvark', 'b': 'baboon', 'c': 'coati'}
+
+animals['d'] = 'donkey'
+
+We are now going to evaluate a set of expressions, resulting in the following sequence of interactions. Fill in each blank to show what the Python interpreter would print at that point. If an expression below would generate an error, enter 'error'.
+
+>>> animals
+{'a': 'aardvark', 'c': 'coati', 'b': 'baboon', 'd': 'donkey'} - correct
+
+>>> animals['c']
+coati - correct
+
+>>> animals['donkey']
+error - correct
+
+>>> len(animals)
+4 - correct
+
+>>> animals['a'] = 'anteater'
+>>> animals['a']
+anteater - correct
+
+>>> len(animals['a'])
+8 - correct
+
+>>> animals.has_key('baboon')
+False - correct
+
+>>> 'donkey' in animals.values()
+True - correct
+
+>>> animals.has_key('b')
+True - correct
+
+>>> animals.keys()
+['a', 'c', 'b', 'd'] - correct
+
+>>> del animals['b']
+>>> len(animals)
+3 - correct
+
+>>> animals.values()
+['anteater', 'coati', 'donkey'] - correct
+

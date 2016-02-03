@@ -1,0 +1,80 @@
+For each of the expressions below, specify its type and value. If it generates an error, select type 'NoneType' and put the word 'error' in the box for the value. If it would be a function, select type 'function' and put the word 'function' in the box for the value.
+
+If the method returns None, select type 'NoneType' and put the word 'None' in the box for the value.
+
+Assume we've made the following assignments:
+
+> listA = [1, 4, 3, 0]
+> listB = ['x', 'z', 't', 'q']
+
+
+
+listA.sort
+function - correct
+function - correct
+
+listA.sort()
+NoneType - correct
+None - correct
+
+listA
+list - correct
+[0, 1, 3, 4] - correct
+
+listA.insert(0, 100)
+NoneType - correct
+None - correct
+
+listA.remove(3)
+NoneType - correct
+None - correct
+
+listA.append(7)
+NoneType - correct
+None - correct
+
+listA
+list - correct
+[100, 0, 1, 4, 7] - correct
+
+listA + listB
+list - correct
+[100, 0, 1, 4, 7, 'x', 'z', 't', 'q'] - correct
+
+listB.sort()
+listB.pop()
+string - correct
+z - correct
+
+listB.count('a')
+int - correct
+0 - correct
+
+listB.remove('a')
+NoneType - correct
+error - correct
+
+listA.extend([4, 1, 6, 3, 4])
+NoneType - correct
+None - correct
+
+listA.count(4)
+int - correct
+3 - correct
+
+listA.index(1)
+int - correct
+2 - correct
+
+listA.pop(4)
+int - correct
+7 - correct
+
+listA.reverse()
+NoneType - correct
+None - correct
+
+listA
+list - correct
+[4, 3, 6, 1, 4, 4, 1, 0, 100] - correct
+

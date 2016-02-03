@@ -1,0 +1,59 @@
+ For each of the expressions below, specify its type and value. If it generates an error, select type 'NoneType' and put the word 'error' in the box for the value.
+
+Assume we've made the following assignment:
+
+x = (1, 2, (3, 'John', 4), 'Hi')
+
+
+x[0]
+int - correct
+1 - correct
+
+x[2]
+tuple - correct
+(3, 'John', 4) - correct
+
+x[-1]
+string - correct
+Hi - correct
+
+x[2][2]
+int - correct
+4 - correct
+
+x[2][-1]
+int - correct
+4 - correct
+
+x[-1][-1]
+string - correct
+i - correct
+
+x[-1][2]
+NoneType - correct
+error - correct
+
+x[0:1]
+tuple - correct
+(1,) - correct
+
+x[0:-1]
+tuple - correct
+(1, 2, (3, 'John', 4)) - correct
+
+len(x)
+int - correct
+4 - correct
+
+2 in x
+boolean - correct
+True - correct
+
+3 in x
+boolean - correct
+False - correct
+
+x[0] = 8
+NoneType - correct
+error - correct
+

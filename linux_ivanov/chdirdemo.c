@@ -10,39 +10,39 @@ char file_buf [FILE_BUF_SIZE];
 
 int main (void)
 {
-int fd;
-ssize_t count;
-char * buf = getcwd (NULL, PWD_BUF_SIZE);
+    int fd;
+    ssize_t count;
+    char * buf = getcwd (NULL, PWD_BUF_SIZE);
 
-if (buf == NULL) {
-    fprintf (stderr, "getcwd() error\n");
-    return 1;
-}
-printf ("Old dir: %s\n", buf);
+    if (buf == NULL) {
+        fprintf (stderr, "getcwd() error\n");
+        return 1;
+    }
+    printf ("Old dir: %s\n", buf);
 // free(buf);
 
-if (chdir ("/etc") == -1) {
-    fprintf (stderr, "chdir() error\n");
-    return 1;
-}
-buf = getcwd (NULL, PWD_BUF_SIZE);
+    if (chdir ("/etc") == -1) {
+        fprintf (stderr, "chdir() error\n");
+        return 1;
+    }
+    buf = getcwd (NULL, PWD_BUF_SIZE);
 
-if (buf == NULL) {
-fprintf (stderr, "getcwd() error\n");
-return 1;
-}
-printf ("New dir: %s\n", buf);
+    if (buf == NULL) {
+        fprintf (stderr, "getcwd() error\n");
+        return 1;
+    }
+    printf ("New dir: %s\n", buf);
 // free(buf);
 
-fd = open ("fstab", O_RDONLY);
+    fd = open ("fstab", O_RDONLY);
 
-if (fd == -1) {
-fprintf (stderr, "Cannot open fstab\n");
-return 1;
-}
-printf ("FSTAB:\n");
-while ((count = read (fd, file_buf, FILE_BUF_SIZE)) > 0)
-write (1, file_buf, count);
-close (fd);
-return 0;
+    if (fd == -1) {
+        fprintf (stderr, "Cannot open fstab\n");
+        return 1;
+    }
+    printf ("FSTAB:\n");
+    while ((count = read (fd, file_buf, FILE_BUF_SIZE)) > 0)
+        write (1, file_buf, count);
+    close (fd);
+    return 0;
 }

@@ -1,0 +1,12 @@
+Write a function called ndigits, that takes an integer x (either positive or negative) as an argument. This function should return the number of digits in x.
+Hints
+How to Move Digit-to-digit?
+
+This is an optional exercise, but great for extra practice!
+
+def ndigits (x):
+    x = abs(x) / 10
+    if x > 0:
+        return 1 + ndigits ( x )
+    else:
+        return 1

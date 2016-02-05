@@ -19,3 +19,23 @@
 
 
 import sys
+
+prev = ''
+time_spent = 0
+people = 0
+
+for line in sys.stdin:
+    site, time = line.strip().split("\t")
+    if prev == '':
+        prev = site
+    if site != prev:
+        print('%s\t%d' % (prev, time_spent/people))
+        time_spent = int(time)
+        people = 1
+        prev = site
+    else:
+        time_spent += int(time)
+        people += 1
+
+if prev:
+    print('%s\t%d' % (prev, time_spent/people))

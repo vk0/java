@@ -1,0 +1,3 @@
+Создайте на языке CQL таблицу (keyspace) Users с фактором репликации 10:
+
+CREATE KEYSPACE Users WITH REPLICATION = {'replication_factor' : 10};

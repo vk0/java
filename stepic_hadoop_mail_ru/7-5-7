@@ -1,0 +1,7 @@
+Какие стратегии записи в таблицу Cassandra существуют?
+
+Any
+Quorum
+Zero
+One
+All

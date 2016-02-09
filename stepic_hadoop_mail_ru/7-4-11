@@ -1,0 +1,4 @@
+Выберите верные отличия Minor Compaction от Major Compaction:Выберите верные отличия Minor Compaction от Major Compaction:
+
+Major происходит дольше, чем Minor
+При Major происходит удаление данных с пометкой на удаление, а при Minor - нет

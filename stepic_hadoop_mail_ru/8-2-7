@@ -1,0 +1,22 @@
+Дан файл latin.txt:
+
+Veni, vidi, vici.
+Alea jacta est.
+Gutta cavat lapidem.
+
+Он обрабатывается с помощью Spark программы:
+
+val text = sc.textFile("latin.txt")
+
+val result = text.flatMap(line => line.split(""))
+                 .filter(x => x >= "A" && x <= "z")
+                 .map(x => (x, 1))
+                 .reduceByKey((a, b) => a + b)
+                 .map(x => x.swap)               // меняет местами ключ и значение
+                 .sortByKey(false)               // сортировка по убыванию ключа
+
+result.collect().foreach(println)
+
+Напишите первый элемент (ключ и значение) в итоговом RDD result:
+
+(7,a)

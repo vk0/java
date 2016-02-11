@@ -1,0 +1,13 @@
+Дан файл latin.txt:
+
+Veni, vidi, vici.
+Alea jacta est.
+Gutta cavat lapidem.
+
+Он обрабатывается с помощью Spark программы:
+val text = sc.textFile("latin.txt")
+text.flatMap(line => line.split(" ")).map(x => (x, 1)).count()
+
+Напишите результат выполнения этой программы
+
+Long = 9

@@ -1,0 +1,9 @@
+Напишите результат выполнения последней команды:
+
+val a = sc.broadcast(1)
+val b = sc.accumulator(1)
+sc.parallelize(Array(1,2,3)).foreach(x => b += x + a.value)
+b.value
+
+//
+Int = 10

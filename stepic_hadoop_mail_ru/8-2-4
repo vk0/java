@@ -1,0 +1,5 @@
+Отметьте операторы transformations в приведенном списке:
+
+union
+cogroup
+reduceByKey

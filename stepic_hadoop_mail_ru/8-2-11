@@ -1,0 +1,20 @@
+Дан файл latin.txt:
+
+Carpe diem
+
+Homo homoni lupus est
+
+Ceterum censeo carthaginem esse delendam
+
+Si vis pacem, para bellum
+
+Cogito, ergo sum
+
+Quod licet Jovi, non licet bovi
+
+
+Напишите результат выполнения следующей программы:
+val text = sc.textFile("latin.txt")
+text.map(line => line.split(" ").size).reduce((a, b) => if (a > b) a else b)
+
+6

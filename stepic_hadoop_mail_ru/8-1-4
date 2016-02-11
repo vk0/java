@@ -1,0 +1,3 @@
+Как в Spark называется абстрактное представление распределенной RAM?
+
+RDD (Resilient Distributed Dataset)

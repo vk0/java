@@ -1,0 +1,5 @@
+Выберите операторы с wide зависимостями между RDD:
+
+join
+reduceByKey
+groupByKey

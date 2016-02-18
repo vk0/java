@@ -1,0 +1,19 @@
+Web-клиент и web-сервер обмениваются следующими пакетами:
+
+GET /index.html HTTP/1.1
+Host: site.com
+Connection: Keep-Alive
+
+...
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+Content-Length: 1393
+
+...
+
+
+Будет ли сетевое соединение закрыто или останется открытым ?
+
+Останется открытым, т.к. используется HTTP/1.1 и нет заголовка Connection: close

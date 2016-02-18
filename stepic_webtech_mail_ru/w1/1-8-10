@@ -1,0 +1,23 @@
+Допустим, у nginx запущены следующие процессы:
+
+$ ps -o pid,ruser,cmd -C nginx
+PID RUSER    CMD
+1718 root     nginx: master process /usr/sbin/nginx
+1719 www-data nginx: worker process
+1720 www-data nginx: worker process
+
+
+Nginx пытается отдать файл /home/box/web/1.html
+
+Причем права доступа выглядят следующим образом:
+
+$ ls -lad /home/  /home/box/  /home/box/web/  /home/box/web/1.html
+drwxr-xr-x  4 root root  4096 Apr 11  2014 /home/
+drwx------ 96 box  box  12288 Oct  4 01:57 /home/box/
+drwxr-xr-x 96 box  box   8192 Oct  4 01:57 /home/box/web/
+-rwxr--r-- 96 box  box   1024 Oct  4 02:00 /home/box/web/1.html
+
+
+Какой HTTP код ответа вернет Nginx ?
+
+404, т.к. у сервера не хватит прав что бы даже проверить наличие файла

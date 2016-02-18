@@ -1,0 +1,27 @@
+Какие из WSGI приложений корректны ?
+
+A)
+
+def app(env, start_response):
+    start_response('200 OK', [('Content-Type', 'text/plain')])
+    return  ['Hello, world!']
+
+B)
+
+def application(env, start_response):
+    start_response('200 OK')
+    return  ['Hello, world!']
+
+C)
+
+def application(env, start_response):
+    start_response('200 OK', [('Content-Type', 'text/plain')])
+    return  'Hello, world!'
+
+D)
+
+def application(env):
+    return  ['Hello, world!']
+
+A
+C

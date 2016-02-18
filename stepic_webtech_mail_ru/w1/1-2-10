@@ -1,0 +1,17 @@
+Выберите правильные способы загрузки связанных ресурсов
+
+A) <style src="/index.css"></style>
+
+B) <link rel="stylesheet" href="/index.css">
+
+C) <script href="/js/jquery.js">
+
+D) <script src="/js/jquery.js"></script>
+
+E) <code src="/js/jquery.js"></code>
+
+F) <img src="/img/logo.png">
+
+G) <img href="/img/logo.png"></img>
+
+BDF

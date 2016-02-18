@@ -1,0 +1,21 @@
+Resource Manager имеет следующие настройки:
+
+yarn.scheduler.maximum-allocation-mb = 8192
+yarn.scheduler.minimum-allocation-mb = 512
+
+Настройки Node Manager:
+
+yarn.nodemanager.resource.memory-mb = 12288
+yarn.nodemanager.vmem-pmem-ratio = 2.1
+
+Задача имеет следующую конфигурацию:
+
+mapreduce.map.memory.mb = 1200
+mapreduce.reduce.memory.mb = 2500
+
+mapreduce.map.java.opts = -Xmx1024m
+mapreduce.reduce.java.opts = -Xmx2048m
+
+Укажите, какой объем памяти (в Мб) в контейнере будет выделять Resource Manager для мапперов данной задачи:
+
+1536

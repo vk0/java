@@ -1,0 +1,3 @@
+Какой компонент реализует логику shuffle (передачу данных между Map и Reduce) в MapReduce задаче на YARN?
+
+Shuffle Service

@@ -1,0 +1,14 @@
+<html>
+    <p class="article">
+        Hello <a href="https://stepic.org/">Stepic</a>!
+    </p>
+    <style>
+        body { color: red; }
+        p    { font-size: 120%; }
+        a    { width: 50px; margin-left: 5px; margin-top: 10px; }
+    </style>
+</html>
+
+Какие стили подействуют на тэг a ?
+
+font-size:120%; margin-left: 5px;

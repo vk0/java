@@ -1,0 +1,13 @@
+Сопоставьте CGI заголовки с их (вероятными) значениями
+
+QUERY_STRING
+REMOTE_ADDR
+HTTP_USER_AGENT
+REQUEST_URI
+HTTP_HOST
+
+sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8&client=ubuntu
+213.193.10.20
+Googlebot/2.1 (+http://www.googlebot.com/bot.html)
+/book/ch3/text.html
+www.demo.org

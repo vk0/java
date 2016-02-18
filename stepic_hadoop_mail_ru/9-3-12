@@ -1,0 +1,4 @@
+Отметьте верные утверждения о падении Application Master:
+
+Resource Manager перезапускает Application Master
+MRAppMaster восстанавливает состояние задачи, которое было до падения AM

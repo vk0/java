@@ -1,0 +1,10 @@
+Вы хотите разделить страницу на две части.
+
+Какие стили для этого правильно использовать ?
+
+<div class="all">
+  <div class="left">...</div>
+  <div class="right">...</div>
+</div>
+
+.left, .right { float: left; width: 50% } .all { float: left; width: 100% } .all:after { clear: both }

@@ -1,0 +1,6 @@
+Какие функции выполняет Node Manager?
+
+Запускает и следит за процессами в container
+Взаимодействует с Resource Manager
+Создает container по запросу Resource Manager
+Логирует данные воркеров

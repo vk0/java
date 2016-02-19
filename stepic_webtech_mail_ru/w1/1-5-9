@@ -1,0 +1,10 @@
+Расположите селекторы сверху вниз в порядке возрастания специфичности (приоритета).
+http://htmldog.com/guides/css/intermediate/specificity/
+https://www.w3.org/wiki/CSS/Training/Priority_level_of_selector
+
+div a
+.article a
+.article a.btn
+#article a
+div a#btn
+

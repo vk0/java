@@ -22,6 +22,3 @@ b=3
     http://127.0.0.1:8080/
 
 5) Не забудьте закомитить и сохранить на github полученную структуру директорий и конфиги.
-
-sudo apt-get update
-sudo apt-get install nginx

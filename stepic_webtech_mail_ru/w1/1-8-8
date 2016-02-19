@@ -1,0 +1,9 @@
+Расставьте директивы в порядке приоритета (в порядке проверок)
+http://stackoverflow.com/questions/5238377/nginx-location-priority
+http://nginx.org/ru/docs/http/ngx_http_core_module.html#location
+
+location = /uploads/favicon.ico
+location ^~ /uploads/
+location ~ \.(ico|jpeg|jpg|png|css|js)$
+location /uploads/
+location /

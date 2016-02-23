@@ -1,0 +1,6 @@
+Воспользовавшись справочной системой Hoogle, найдите имя функции типа Char -> Char, переводящей символ в нижний регистр.
+
+$ hoogle search tolower
+Data.Char toLower :: Char -> Char
+
+toLower

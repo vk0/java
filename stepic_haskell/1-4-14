@@ -1,0 +1,10 @@
+Операторы (:) и (++) имеют одинаковую ассоциативность и приоритет. Укажите их. (Воспользуйтесь командой интерпретатора GHCi :info).
+
+:i :
+data [] a = ... | a : [a]       -- Defined in ‘GHC.Types’
+infixr 5 :
+
+data [] a = ... | a : [a]       -- Defined in ‘GHC.Types’
+infixr 5 :
+
+//infixr 5

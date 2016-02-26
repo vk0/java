@@ -1,0 +1,8 @@
+В основании иерархии наследования классов стандартной библиотеки java.io лежат четыре класса
+http://images.myshared.ru/7/817192/slide_8.jpg
+
+
+InputStream
+Reader
+Writer
+OutputStream

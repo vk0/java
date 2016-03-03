@@ -1,0 +1,3 @@
+Переменная INSTALLED_APPS﻿ в settings.py содержит список установленных Django приложений. Допустим мы используем паттерн local settings и хотим (временно) подключить еще одно приложение - debug_toolbar.  Что в таком случае мы должны написать в local_settings.py
+
+INSTALLED_APPS = ('debug_toolbar',) + tuple(INSTALLED_APPS)

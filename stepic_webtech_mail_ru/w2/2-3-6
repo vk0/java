@@ -1,0 +1,27 @@
+Допустим вам нужно выбрать 1 статью с определенной категорией (не важно какую именно). Отметьте правильные способы сделать это:
+
+A)
+
+cursor.execute("select * from articles where category = " + category_id + " limit 1")
+article = cursor.fetchall()[0]
+
+
+B)
+
+cursor.execute("select * from articles where category = %s", (category_id,))
+article = cursor.fetchall()[0]
+
+
+C)
+
+cursor.execute("select * from articles where category = %s limit 1", (category_id,))
+article = cursor.fetchone()
+
+
+D)
+
+cursor.execute("select * from articles where category = %s limit 1", (category_id,))
+article = cursor.fetchmany(size=1)[0]
+
+
+C

@@ -1,0 +1,12 @@
+Сколько таблиц будет создано в СУБД, если определены следующие Django модели ?
+
+class User(models.Model):
+    name = models.CharField(max_length=24)
+    friends = models.ManyToManyField('User')
+    groups = models.ManyToManyField('Group')
+
+class Group(models.Model):
+    name = models.CharField(max_length=100)
+    moderator = models.ForeignKey('User')
+
+4

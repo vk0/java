@@ -1,0 +1,30 @@
+Допустим в urls.py есть следующий маршрут
+
+url(r'article/(?P<id>\d+)/?', article)
+
+Какой из нижеприведенных view правильно получает захваченную переменную ?
+
+A)
+
+def article(request, id):
+    ...
+B)
+
+def article(request, *args):
+    id = args[0]
+    ...
+C)
+
+def article(request, **kwargs):
+    id = kwargs[0]
+    ...
+D)
+
+def article(request):
+    id = request.ARGS['id']
+    ...
+
+
+A
+B
+C

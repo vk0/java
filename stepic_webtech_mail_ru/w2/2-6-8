@@ -1,0 +1,56 @@
+В каком из вариантов  правильно определена Django форма ?
+
+A)
+
+class AddArticleForm(forms.Form):
+    title = forms.CharField(max_length=80)
+    text = forms.TextField()
+    tags = forms.CharField()
+    def clean(self):
+        tags = self.cleaned_data.get('tags', '')
+        tags = [ t.trim() for t in tags.split(',') ]
+        if len(tags) < 2:
+            raise ValidationError('bad tags')
+        return tags
+
+B)
+
+class AddArticleForm(forms.Form):
+    title = forms.CharField(max_length=80)
+    text = forms.CharField(widget=forms.Textarea)
+    tags = forms.CharField()
+    def clean_tags(self):
+        tags = [ t.trim() for t in tags.split(',') ]
+        if len(tags) < 2:
+            raise ValidationError('bad tags')
+        return tags
+
+C)
+
+class AddArticleForm():
+    title = forms.CharField(max_length=80)
+    text = forms.CharField(widget=forms.Textarea)
+    tags = forms.CharField()
+    def clean(self):
+        tags = self.cleaned_data.get('tags', '')
+        tags = [ t.trim() for t in tags.split(',') ]
+        if len(tags) < 2:
+            raise ValidationError('bad tags')
+        return tags
+
+D)
+
+class AddArticleForm(forms.Form):
+    title = forms.CharField(max_length=80)
+    text = forms.CharField(widget=forms.Textarea)
+    tags = forms.CharField()
+    def clean(self):
+        tags = self.cleaned_data.get('tags', '')
+        tags = [ t.trim() for t in tags.split(',') ]
+        if len(tags) < 2:
+            return False
+        else:
+            self.cleaned_data['tags'] = tags
+            return True
+
+B

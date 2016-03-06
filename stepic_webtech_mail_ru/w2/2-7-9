@@ -1,0 +1,7 @@
+
+
+Какие методы могут быть определены у middleware классов в Django (1.8) ?
+
+
+process_request(request)
+process_exception(request, exception)

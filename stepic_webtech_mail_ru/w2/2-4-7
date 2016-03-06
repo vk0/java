@@ -1,0 +1,17 @@
+Допустим имеются следующие модели.
+
+class Author(models.Model):
+    rating = models.IntegerField()
+    name = models.CharField(max_length=50)
+
+class Article(models.Model):
+    author = models.ForeignKey(Author)
+    text = models.TextField()
+
+Необходимо выбрать статьи авторов с рейтингом более 10
+
+best = Article.objects.filter(...)
+
+Какое условие нужно написать на месте многоточия ?
+
+author__rating__gt=10

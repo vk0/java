@@ -1,0 +1,18 @@
+Допустим имеются следующие два шаблона Django
+
+base.html
+
+A
+{% block A %}B{% endblock %}
+C
+
+
+index.html
+
+{% extends 'base.html' %}
+D
+{% block A %}{{ block.super }}E{% endblock %}
+F
+
+
+Напишите текст (без переносов строк и пробелов), который получится при шаблонизации index.html

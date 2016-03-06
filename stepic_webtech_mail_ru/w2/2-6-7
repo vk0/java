@@ -1,0 +1,28 @@
+Выберите правильный способ сделать редирект в Django
+
+A)
+
+def view(request):
+    return HttpResponseRedirect('/new_url/')
+
+
+B)
+
+def view(request):
+    resp = HttpResponse(content = '', status = 302)
+    resp['Location'] = '/new_url/'
+    return resp
+
+C)
+
+def view(request):
+    raise Http302('/new_url/')
+
+D)
+
+def view(request):
+    return request.redirect('/new_url/')
+
+
+A
+B

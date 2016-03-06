@@ -1,0 +1,17 @@
+Сопоставьте классы HTTP ответов в Django и коды ответов в протоколе HTTP
+
+302
+301
+404
+400
+403
+200
+500
+
+HttpResponseRedirect
+HttpResponsePermanentRedirect
+HttpResponseNotFound
+HttpResponseBadRequest
+HttpResponseForbidden
+HttpResponse
+HttpResponseServerError

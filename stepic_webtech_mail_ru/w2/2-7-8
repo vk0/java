@@ -1,0 +1,11 @@
+Страница по адресу https://site.com/login/  устанавливает следующие куки
+
+﻿response.set_cookie('alpha', ﻿'1')
+response﻿.set_cookie('beta', ﻿﻿'2', ﻿domain='.site.com')
+response﻿.set_cookie('gamma', ﻿'3', expires=datetime.now()-timedelta(days=30))﻿
+response﻿.set_cookie('delta', ﻿'4', secure=True)
+response﻿.set_cookie('epsilon', ﻿'5', httponly=True)
+
+Какие из этих кук будут присланы при последующем запросе по URL http://www.site.com/article/1 ?
+
+beta

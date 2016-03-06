@@ -1,0 +1,36 @@
+Допустим имеются следующие модели.
+
+class Author(models.Model):
+    rating = models.IntegerField()
+    name = models.CharField(max_length=50)
+
+class Article(models.Model):
+    author = models.ForeignKey(Author)
+    text = models.TextField()
+
+Выберите правильные способы создания нового объекта статьи (Article) для данного автора (объект author)
+
+A)
+
+article = Article(author=author, text=text); article.save()
+
+
+B)
+
+article = author.article_set.create(text=text)
+
+
+C)
+
+article = Article.objects.create(text=text, author=author)
+
+
+D)
+
+article = Article.objects.create(text=text, author_id=author.id)
+
+
+A
+B
+C
+D

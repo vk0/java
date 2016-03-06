@@ -1,0 +1,24 @@
+Выберите правильные способы получить прямой доступ к базе данных default (база по-умолчанию) в Django
+
+A)
+
+from django.db import connection
+connection.cursor().execute(...)
+
+B)
+
+from django.db import default
+default.cursor().execute(...)
+
+C)
+
+from django.db import connections
+connections['default'].cursor().execute(...)
+
+D)
+
+from django.db import connect
+connect('default').cursor().execute(...)
+
+A
+C

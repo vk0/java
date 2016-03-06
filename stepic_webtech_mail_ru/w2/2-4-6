@@ -1,0 +1,5 @@
+Какие из методов QuerySet возвращают также объект QuerySet (т.е. являются chaining методами)
+
+order_by
+exclude
+filter

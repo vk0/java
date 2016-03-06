@@ -1,0 +1,43 @@
+Допустим имееются следующие модели.
+
+class Author(models.Model):
+    rating = models.IntegerField()
+    name = models.CharField(max_length=50)
+
+class Article(models.Model):
+    author = models.ForeignKey(Author)
+    text = models.TextField()
+
+В шаблоне происходит отрисовка объекта article (тип Article)
+
+Каким образом возможно вывести имя автора статьи
+
+A)
+
+{{ article.author.name }}
+
+B)
+
+{% article.author.name %}
+
+C)
+
+{{ article.author }}
+
+D)
+
+{% article.author %}
+
+E)
+
+Добавить дополнительную переменную в контекст шаблона перед отрисовкой
+
+author_name = article.author.name
+return render(request, 'article_details.html', {
+    'article': article,
+    'author_name': author_name,
+})
+
+
+A
+E

@@ -1,0 +1,16 @@
+Давайте экспериментировать с типами! Функции семейства as.*﻿ дают возможность устраивать форменные безобразия. Установите соответствие между вызовами слева и результатами справа.
+Попробуйте пройти это задание, не пользуясь консолью R.
+
+-1 0 1
+TRUE FALSE TRUE
+"TRUE" "FALSE" "TRUE"
+1 0 1
+"1" "0" "1"
+NA NA NA
+
+-1:1
+as.logical(-1:1)
+as.character(as.logical(-1:1))
+as.numeric(as.logical(-1:1))
+as.character(as.numeric(as.logical(-1:1)))
+as.numeric(as.character(as.logical(-1:1)))

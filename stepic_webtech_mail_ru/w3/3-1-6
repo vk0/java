@@ -1,0 +1,5 @@
+Допустим в браузере загружена страница с URL  https://site.com/
+JavaScript код пытается выполнить ﻿AJAX запрос по URL https://api.com/
+﻿В чем заключается Same Origin Policy ﻿в данном случае ?
+
+Браузер выполнит AJAX запрос к api.com, но вместо результата JavaScript код получит ошибку

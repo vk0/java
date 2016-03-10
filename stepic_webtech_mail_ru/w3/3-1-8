@@ -1,0 +1,4 @@
+Допустим разработчики сайта https://api.com/  хотят разрешить AJAX запросы с сайта https://site.com/ (но не для всех остальных). Какой заголовок они должны добавить к своим HTTP ответам ?
+
+
+Access-Control-Allow-Origin: https://site.com

@@ -1,0 +1,3 @@
+Какой (нестандартный) HTTP заголовок часто добавляют JavaScript библиотеки при AJAX запросах ?
+
+X-Requested-With: XMLHttpRequest

@@ -1,0 +1,11 @@
+Давайте проверим, что вы можете устанавливать пакеты. Если в какой-то момент что-то пойдёт не так, обращайтесь к R FAQ (раздел 6.3) либо ищите в google по запросам с текстом ошибок.
+
+Установите и подключите пакет под названием randtoolbox. У вас должно появиться сообщение
+
+This is randtoolbox. For ???, type 'help("randtoolbox")'.
+
+Какое слово я замаскировал?
+
+install.packages("randtoolbox")
+This is randtoolbox. For overview, type 'help("randtoolbox")'.
+Warning messages:

@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html><body>
+<h1>{{ title }}</h1>
+{% for q in page.object_list %}
+    <div>
+        <a href="/question/{{ q.id }}/">{{ q.title }}</a>
+        <p>{{ q.text }}</p>
+    </div>
+{% endfor %}
+</body></html>

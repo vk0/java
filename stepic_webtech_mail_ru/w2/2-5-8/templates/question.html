@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html><body>
+<h1>{{ question.title }}</h1>
+<p>{{ question.text }}</h1>
+{% for a in page.object_list %}
+    <div>
+        <p>{{ a.text }}</p>
+    </div>
+{% endfor %}
+<form method="POST" action="/answer/">
+{% if request.err %}
+<h2 style="color:red">не удалось добавить ответ</h2>
+{% endif %}
+{% csrf_token %}
+<table>
+{{ form.as_table }}
+</table>
+</form>
+</body></html>

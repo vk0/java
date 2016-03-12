@@ -1,0 +1,12 @@
+Попробуйте, не используя GHCi, определить, какого контекста не хватает для того, чтобы выражение
+
+True + False * False
+могло бы быть типизировано.
+
+Num Bool
+
+> True + False * False
+<interactive>:9:6:
+    No instance for (Num Bool) arising from a use of ‘+’
+    In the expression: True + False * False
+    In an equation for ‘it’: it = True + False * False

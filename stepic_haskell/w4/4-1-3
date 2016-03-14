@@ -1,0 +1,6 @@
+Выберите корректные определения типов данных.
+
+data T = Con1 | Con2
+data Data = A | B
+data T = A
+data Type = A | B | C

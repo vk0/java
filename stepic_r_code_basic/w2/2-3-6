@@ -1,0 +1,43 @@
+В память о бедном Йорике я подготовил небольшую тираду и обработал её средствами stringr. Вы не могли бы дать мне небольшой лингвистический обзор этого предложения? Выполните следующий код, чтобы начать работу с фразой в удобной форме:
+
+library(stringr)
+
+hamlet <- "To be, or not to be: that is the question:
+Whether 'tis nobler in the mind to suffer
+The slings and arrows of outrageous fortune,
+Or to take arms against a sea of troubles,
+And by opposing end them?"
+
+hamlet <- str_replace_all(hamlet, "[:punct:]", "")
+hamlet <- tolower(unlist(str_split(hamlet, "[:space:]")))
+
+
+P.S. Обратите внимание, как я препарировал предложение регулярными выражениями, чтобы вам было удобно. Все ли шаги понятны?
+
+P.P.S. При копировании кода сверху пропадают пробелы. Либо добавьте их обратно в текстовом редакторе, либо сразу возьмите конечный результат:
+
+hamlet <- c("to", "be", "or", "not", "to", "be", "that", "is", "the", "question",
+"whether", "tis", "nobler", "in", "the", "mind", "to", "suffer",
+"the", "slings", "and", "arrows", "of", "outrageous", "fortune",
+"or", "to", "take", "arms", "against", "a", "sea", "of", "troubles",
+"and", "by", "opposing", "end", "them")
+
+
+4
+7
+5
+3
+
+Количество слов "to"
+Количество слов, содержащих любую букву из "f", "q" и "w"
+Количество слов, содержащих букву "b", после которой -- любой другой символ
+Количество слов ровно из семи букв
+
+
+table(hamlet)
+length(grep("[wqf]", hamlet)
+length(grep("[b]", hamlet)
+
+library(stringi)
+stri_length(hamlet)
+table(stri_length(hamlet))

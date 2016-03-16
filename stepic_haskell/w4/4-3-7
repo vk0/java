@@ -1,0 +1,11 @@
+Допустим мы объявили тип
+
+data Shape = Circle Double | Rectangle Double Double
+
+Что произойдет при объявлении такой функции:
+
+isRectangle :: Shape -> Bool
+isRectangle Rectangle{} = True
+isRectangle _ = False
+
+Она компилируется и возвращает True, если на вход передается Rectangle, иначе она возвращает False

@@ -1,3 +1,5 @@
 Укажите вид конструктора типов Either (Maybe Int).
 
+:k Either (Maybe Int)
+
 * -> *

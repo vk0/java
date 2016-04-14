@@ -36,26 +36,22 @@
 # Обратите внимание, что во время выполнения метода add﻿ выводить сумму пятерок может потребоваться несколько раз до тех пор, пока в буфере не останется менее пяти элементов.
 
 class Buffer:
-    lst = []
     def __init__(self):
         # конструктор без аргументов
-        # self.lol = 1
-        pass
+        self.lst = []
 
     def add(self, *a):
         # добавить следующую часть последовательности
-        self.lst.extend(a)
-        while len(self.lst) >= 5:
-        # if len(self.lst) == 5:
-            print(sum(self.lst[0:5]))
-            self.lst = self.lst[5:]
-        # elif
-        # print(self.lst)
+        for i in a
+            self.lst.append(i)
+            while len(self.lst) >= 5:
+                print(sum(self.lst[:5]))
+                self.lst = self.lst[5:]
 
     def get_current_part(self):
         # вернуть сохраненные в текущий момент элементы последовательности в порядке, в котором они были
         # добавлены
-        print(self.lst)
+        return self.lst
 
 buf = Buffer()
 buf.add(1, 2, 3)

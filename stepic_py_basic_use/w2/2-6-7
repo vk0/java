@@ -1,0 +1,14 @@
+Какие имена переменных не стоит использовать с точки зрения рекомендаций PEP 8?
+
+https://www.python.org/dev/peps/pep-0008/#id37
+Never use the characters 'l' (lowercase letter el), 'O' (uppercase letter oh), or 'I' (uppercase letter eye) as single character variable names.
+
+In some fonts, these characters are indistinguishable from the numerals one and zero. When tempted to use 'l', use 'L' instead.
+
+a
+*O
+*l
+bad_name
+L
+i
+*I

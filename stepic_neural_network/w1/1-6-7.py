@@ -3,3 +3,7 @@
 import numpy as np
 z = mat.flatten()
 print(z.reshape(z.shape+(1,)))
+
+# import numpy as np
+# mat = mat.reshape((12,1))
+# print(mat)

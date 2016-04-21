@@ -7,3 +7,5 @@
 
 import numpy as np
 print(np.array([[2,1,0,0], [0,2,1,0], [0,0,2,1]]))
+
+# print(np.concatenate((np.zeros((3,1)), np.eye(3)), axis=1) + np.eye(3,4)*2)

@@ -14,3 +14,13 @@
 
 # There’ll be no more "argh"
 # argh AaAaAaA
+
+import sys
+import re
+
+pattern = r'\ba+\b'
+
+for line in sys.stdin:
+    line = line.rstrip()
+    fixed_typos = re.sub(pattern, "argh", line, re.I)
+    print(fixed_typos)

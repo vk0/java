@@ -13,3 +13,13 @@
 
 # blabla is a tandem repetition
 # 123123 is good too
+
+import sys
+import re
+
+pattern = r'\b(\w+)\1\b'
+
+for line in sys.stdin:
+    line = line.rstrip()
+    if re.match(pattern, line):
+        print(line)

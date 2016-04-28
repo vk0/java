@@ -49,3 +49,18 @@
 # Sample Output 4:
 
 # Impossible
+
+s, a, b = [input() for _ in range(3)]
+impossible = False
+count = 0
+
+while a in s:
+    s = s.replace(a, b)
+    count += 1
+    if count > 50:
+        impossible = True
+        break
+if impossible:
+    print('Impossible')
+else:
+    print(count)

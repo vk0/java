@@ -79,9 +79,17 @@ r = requests.post("https://api.artsy.net/api/tokens/xapp_token",
 j = json.loads(r.text)
 token = j["token"]
 headers = {"X-Xapp-Token" : token}
+artlist = []
 for line in sys.stdin:
     artists_id = line.rstrip()
     r = requests.get("https://api.artsy.net/api/artists/" + artists_id, headers=headers)
     j = json.loads(r.text)
     # print(j)
-    print(j["sortable_name"])
+    # print(j["sortable_name"], j["birthday"])
+    artlist.append((j["sortable_name"], j["birthday"]))
+# print(artlist)
+artlist.sort(key=lambda s: s[1])
+
+# for name, date in reversed(artlist):
+for name, date in artlist:
+    print(name)

@@ -1,0 +1,36 @@
+Функции R
+
+Посмотреть информацию/help по функции ?[function name], например, ?str
+
+чтение данных из файла
+
+    read.table
+    read.csv
+
+знакомство с данными
+
+    str
+    summary
+
+сортировка
+
+    sort
+
+графическое представление
+
+    hist
+    plot
+    boxplot
+
+уникализация
+
+    unique
+
+выборочные характеристики
+
+    mean
+    var
+    sd
+    quantile
+    median
+

@@ -1,0 +1,10 @@
+Найдите соответствие между прототипами функций С++ и их закодированными именами
+getValue(int)
+getValue(void (*)(int))
+getValue(void*, int)
+getValue()
+
+_Z8getValuei
+_Z8getValuePFviE
+_Z8getValuePvi
+_Z8getValuev

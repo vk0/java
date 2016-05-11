@@ -1,0 +1,6 @@
+Вам требуется скомпилировать программу, состоящую из единственного файла main.c в исполняемый файл loader. Вы знаете, что данная программа использует libdl для загрузки динамических библиотек в run-time. Какая команда, на ваш взгляд, для этого больше всего подходит?
+
+*gcc main.c -fPIC -ldl -o loader
+gcc main.c -fPIC -ldl -L.
+gcc main.c -fPIC --shared -o loader
+gcc -o main.c -libdl -fPIC loader

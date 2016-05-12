@@ -14,3 +14,5 @@
 -- Выведите в качестве результата одного запроса общее количество заказов, сумму стоимостей (бюджетов) всех проектов, средний срок исполнения заказа в днях.
 
 -- NB! Для вычисления длительности проекта удобно использовать встроенную функцию datediff().
+
+SELECT COUNT(*), sum(budget), AVG(datediff(project_finish, project_start)) as avg_days FROM project where project_finish is not null;

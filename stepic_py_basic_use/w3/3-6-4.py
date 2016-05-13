@@ -29,3 +29,16 @@
 # Sample Output:
 
 # 4 3 1
+
+from xml.etree import ElementTree
+
+tree = ElementTree.fromstring(input())
+result = {'red':0, 'blue':0, 'green':0}
+
+def rec_walk(element, counter):
+    result[element.attrib["color"]] += counter
+    for child in element:
+        rec_walk(child, counter+1)
+
+rec_walk(tree, 1)
+print(result["red"], result["green"], result["blue"])

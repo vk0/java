@@ -25,33 +25,18 @@
 
 import requests
 import re
-# url = input()
-url = "http://ya.ru"
+res = requests.get(input().rstrip())
+linkset = set()
 
-res = requests.get(url)
-# print(res.status_code)
-# print(res.headers['Content-Type'])
-# print(res.url)
-html = res.text
-# links = re.findall('"((http|ftp)s?://.*?)"', html)
-# print(links)
+if res.status_code == 200:
 
-regexp_link = r'''</?a((s+w+(s*=s*(?:".*?"|'.*?'|[^'">s]+))?)+s*|s*)/?>w+</a>'''
-pattern = re.compile(regexp_link)
-links = re.findall(pattern, html)
+    pattern = re.compile(r'(?:<a.+?href=.)(\w.+?)(?:[\S\s]>)', re.IGNORECASE)
+    pattern2 = re.compile(r'^(?:\w+://|\b)(.+?)(?:["\'\ ].*|[/:].*|\b)$', re.IGNORECASE)
+    match = pattern.findall(res.text)
 
-#print all matches
-print(links)
+    for i in match:
+        match2 = pattern2.findall(i)
+        linkset.add(match2[0])
 
-# link_list = re.findall(r"(?<=href=\").+?(?=\")|(?<=href=\').+?(?=\')", html)
-# link_list = re.findall(r'href=[\'"]?([^\'" >]+)', html)
-# # for url in link_list:
-# print(link_list)
-
-
-# linkregex = re.compile('<a\s*href=[\'|"](.*?)[\'"].*?>')
-# links = linkregex.findall(html)
-# # links = re.findall(r"<a.*?\s*href=\"(.*?)\".*?>(.*?)</a>", html)
-# print(links)
-# for link in links:
-    # print('href: %s, HTML text: %s' % (link[0], link[1]))
+for i in sorted(list(linkset)):
+    print(i)

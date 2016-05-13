@@ -24,3 +24,18 @@
 --   INNER JOIN C
 --     ON a.c_id = C.id
 -- ;
+
+select c.first_name, c.last_name, count(*) new_sale_num from client as c join sale as s on s.client_id = c.id join status as st on st.id = status_id and st.name = "new" group by 1, 2;
+
+-- Query result:
+-- +------------+-----------+--------------+
+-- | first_name | last_name | new_sale_num |
+-- +------------+-----------+--------------+
+-- | Bessie     | Reynolds  | 1            |
+-- | Brandon    | Porter    | 2            |
+-- | Ellis      | Ortega    | 1            |
+-- | Kristy     | Dean      | 1            |
+-- | Lowell     | Hamilton  | 3            |
+-- | Maggie     | Jennings  | 1            |
+-- | Sherman    | Rogers    | 1            |
+-- +------------+-----------+--------------+

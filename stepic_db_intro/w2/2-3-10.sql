@@ -19,3 +19,23 @@
 --   INNER JOIN C
 --     ON a.c_id = C.id
 -- ;
+
+select g.name as good_name from good g join category_has_good as c on c.good_id = g.id join category as cat on cat.id = c.category_id and cat.name = "Cakes" group by g.name union select g.name as good_name from good g join sale_has_good as sg on sg.good_id = g.id join sale as s on s.id = sg.sale_id join status as su on su.id = s.status_id and su.name = "delivering"
+ group by g.name order by 1;
+
+--  Query result:
+-- +--------------+
+-- | good_name    |
+-- +--------------+
+-- | Geo-Ity      |
+-- | Konksing     |
+-- | Re Hattip    |
+-- | Sailjob      |
+-- | Saltsoft     |
+-- | Sancof       |
+-- | Saoplus      |
+-- | Statcom      |
+-- | Transtraxing |
+-- | Trust-Dax    |
+-- | Volt Fan     |
+-- | Zaam Warm    |

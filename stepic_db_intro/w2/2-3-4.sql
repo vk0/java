@@ -25,11 +25,16 @@
 --     ON a.c_id = C.id
 -- ;
 
-select * from good cross join category ORDER BY 1,2;
-
-select * from product INNER join category on product.category_id = category.category_id;
-
-select good.name, category.name from good INNER join category on good.id = category.id ORDER BY 1,2;
+select g.name, cat.name from good as g join category_has_good as c on c.good_id = g.id join category as cat on cat.id = c.category_id order by 1, 2;
 
 
-ORDER  BY  1, 2
+-- Query result:
+-- +--------------+-------------------+
+-- | name         | name              |
+-- +--------------+-------------------+
+-- | Bio Hotin    | Bath Products     |
+-- | Bio Hotin    | Dental Care       |
+-- | Bio Hotin    | Health & Medicine |
+-- | Bio Hotin    | Juices            |
+-- | Bio Hotin    | Water             |
+-- ...

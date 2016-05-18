@@ -1,0 +1,9 @@
+Перед вами следующий консольный вывод. Отметьте верные высказывания относительно файлов.
+
+https://ucarecdn.com/12b0dbb0-0995-45ab-91be-46d91c94ce2a/
+
+*file2 является символической (мягкой) ссылкой на file1
+если удалить makefile, то автоматически удалится Makefile
+cat file3 вернет ошибку "No such file or directory"
+*Makefile является жесткой ссылкой на makefile
+*cat libMylib.so.2.3.1 вернет ошибку "No such file or directory"

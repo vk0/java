@@ -28,3 +28,18 @@
 --   INNER JOIN C
 --     ON a.c_id = C.id
 -- ;
+
+
+select s.name as source_name from source as s where s.id in (select src.id from client as c join sale as s on s.client_id = c.id join status as sts on sts.id = s.status_id and sts.name = 'rejected' join source as src on src.id = c.source_id group by src.id) union select s.name as source_name from source as s where s.id not in (select src.id from client as c join sale as s on s.client_id = c.id join source as src on src.id = c.source_id group by src.id);
+
+-- Query result:
+-- +---------------+
+-- | source_name   |
+-- +---------------+
+-- | Google search |
+-- | Direct link   |
+-- | Advertisement |
+-- | Campaign      |
+-- | SN            |
+-- | Banner        |
+-- +---------------+

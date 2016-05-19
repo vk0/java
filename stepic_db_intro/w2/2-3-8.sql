@@ -38,3 +38,16 @@
 -- ;
 
 select g.name, cat.name from good as g left outer join category_has_good as c on c.good_id = g.id left outer join category as cat on cat.id = c.category_id union select g.name, cat.name from good as g right outer join category_has_good as c on c.good_id = g.id right outer join category as cat on cat.id = c.category_id;
+
+-- Query result:
+-- +--------------+---------------------+
+-- | name         | name                |
+-- +--------------+---------------------+
+-- | Trust-Dax    | Air Fresheners      |
+-- | Trust-Dax    | Cakes               |
+-- | Trust-Dax    | Health & Medicine   |
+-- | Trust-Dax    | Snacks              |
+-- | Statcom      | Snacks              |
+-- | Konksing     | Air Fresheners      |
+-- | Konksing     | Cakes               |
+-- | Konksing     | Health & Medicine   |

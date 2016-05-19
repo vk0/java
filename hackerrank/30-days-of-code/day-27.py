@@ -67,3 +67,35 @@
 # print('-1 -3 4 2')
 # print('5 2')
 # print('0 -1 2 1 4')
+
+import random
+# no of tests
+print('5')
+for i in range(5):
+    students = i+5
+    treshold = random.randint(3,students-1)
+    print(str(students) + " " + str(treshold))
+    arrivals = "0 "
+    if not i%2:
+        arrivals += ( "-1 " )
+        for x in range(2,students):
+            arrivals += ( str(random.randint(1,5)) + " " )
+    else:
+        arrivals += ( "1 " )
+        for x in range(2,students):
+            arrivals += ( str(random.randint(-5,-1)) + " " )
+    print(arrivals.strip())
+
+
+
+# print("5")
+# print("3 3")
+# print("-1 0 1")
+# print("4 3")
+# print("-2 -1 0 2")
+# print("5 3")
+# print("-2 0 1 2 3")
+# print("6 3")
+# print("-3 -2 -1 0 1 2")
+# print("7 3")
+# print("-1 0 1 2 3 4 5")

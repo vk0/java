@@ -42,3 +42,15 @@
 # Sample Output 3:
 
 # Result: "abc"
+
+import string
+def caesar(text, shift):
+    shift %= 27
+    alphabet = ' abcdefghijklmnopqrstuvwxyz'
+    shifted_alphabet = alphabet[shift:] + alphabet[:shift]
+    table = str.maketrans(alphabet, shifted_alphabet)
+    return text.translate(table)
+
+shift = int(input())
+text = input().strip()
+print("Result: " + "\"" + caesar(text, shift) +"\"")

@@ -38,6 +38,8 @@ l = input().split()
 if l.count('A') == 0:
     print("0.0{:}".format(0))
 elif l.count('A') >= len(l):
-    print("{:.0f}".format(round((100.0 * l.count('A'))/len(l))))
+    # print("{:.0f}".format(round((100.0 * l.count('A'))/len(l))))
+    print('{0:.2f}'.format(round((100.0 * l.count('A'))/len(l))))
 else:
-    print("0.{:.0f}".format(round((100.0 * l.count('A'))/len(l))))
+    # print("0.{:.0f}".format(round((100.0 * l.count('A'))/len(l))))
+    print('{0:.2f}'.format(round((100.0 * l.count('A'))/len(l))))

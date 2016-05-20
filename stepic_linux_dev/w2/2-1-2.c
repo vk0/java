@@ -16,6 +16,7 @@
 // Программа (функция в библиотеке) ничего не выводит на консоль
 
 // solution.c
+#include <string.h>
 
 int stringStat(const char *string, int multiplier, int *count)
 {

@@ -1,0 +1,6 @@
+В данных iris расположите по убыванию значения медиан количественных переменных в группе virginica.
+
+Sepal.Length
+Petal.Length
+Sepal.Width
+Petal.Width

@@ -1,0 +1,8 @@
+Предположим, вы рассчитали стандартное отклонение вашей выборки, сохранили результат в переменную my_sd и хотите сохранить этот объект в файл "my_sd.RData".
+
+Какая команда позволит вам это сделать?
+
+rm(my_sd)
+*save(my_sd, file = "my_sd.RData")
+write.csv(my_sd, file = "my_sd.RData")
+write.table(my_sd, file = "my_sd.RData")

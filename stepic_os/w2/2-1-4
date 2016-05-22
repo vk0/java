@@ -1,0 +1,11 @@
+Отметьте корректные ассемблерные инструкции (синтаксис Intel)
+
+*mov eax, ebx
+*sub eax, eax
+*push eax
+*inc eax
+dec 3
+sub 3, eax
+mov 3
+pop 3
+pop(eax, ebx)

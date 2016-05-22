@@ -1,4 +1,7 @@
 Перечислите команды, корректно записанные с синтаксисом AT&T
 
-sub $3,%eax
-mov $3, %eax
+*sub $3,%eax
+pop $3
+pop %eax, %ebx
+mov %eax, $3
+*mov $3, %eax

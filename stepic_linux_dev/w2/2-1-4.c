@@ -24,6 +24,40 @@
 // Программа выводит символ корректности опций командной строки
 
 // solution.c
+#include <stdio.h>
+#include <stdlib.h>
+#include <getopt.h>
 
+int main (int argc, char **argv) {
+    int c;
+    int res = 1;
+    while (1) {
+        static struct option long_options[] =
+        {
+            {"query",   required_argument, 0, 'q'},
+            {"longinformationrequest",  no_argument, 0, 'i'},
+            {"version", no_argument, 0, 'v'},
+            {0, 0, 0, 0}
+        };
+        int option_index = 0;
+
+        c = getopt_long (argc, argv, "q:iv", long_options, &option_index);
+        if (c == 63) {
+            res = 0;
+            break;
+        }
+        if (c == -1)
+            break;
+    }
+    if (res)
+        printf("+\n");
+    else
+        printf("-\n");
+    exit (0);
+}
 
 // Makefile
+
+all:    exe
+exe:    solution.c
+    gcc -o solution  solution.c

@@ -4,22 +4,20 @@ df  <- mtcars
 df$vs  <- factor(df$vs  , labels = c("V", "S"))
 df$am  <- factor(df$am  , labels = c("Auto", "Manual"))
 
-hist(df$mpg, breaks = 20, xlab = "MPG", main ="Histogram of MPG", 
+hist(df$mpg, breaks = 20, xlab = "MPG", main ="Histogram of MPG",
      col = "green", cex.lab = 1.3, cex.axis = 1.3)
 
-plot(density(df$mpg), xlab = "MPG", main ="Density of MPG", 
+plot(density(df$mpg), xlab = "MPG", main ="Density of MPG",
      col = "green", cex.lab = 1.3, cex.axis = 1.3)
 
-boxplot(mpg ~ am, df, ylab = "MPG", main ="MPG and AM", 
-        col = "green", cex.lab = 1.3, cex.axis = 1.3)
+boxplot(mpg ~ am, df, ylab = "MPG", main ="MPG and AM", col = "green", cex.lab = 1.3, cex.axis = 1.3)
 
-boxplot(df$mpg[df$am == "Auto"], df$mpg[df$am == "Manual"], ylab = "MPG", main ="MPG and AM", 
-        col = "green", cex.lab = 1.3, cex.axis = 1.3)
+boxplot(df$mpg[df$am == "Auto"], df$mpg[df$am == "Manual"], ylab = "MPG", main ="MPG and AM", col = "green", cex.lab = 1.3, cex.axis = 1.3)
 
 
 plot(df$mpg, df$hp, xlab = "MPG", ylab ="HP" , main ="MPG and HP", pch = 22)
 
-plot(~ mpg + hp, df) 
+plot(~ mpg + hp, df)
 
 
 #Step 2, 3: Library ggplot2

@@ -1,0 +1,11 @@
+Укажите, при помощи какого варианта кода мы можем построить следующий график по данным iris:
+https://ucarecdn.com/a792748d-2789-4e4c-8997-04ae8074ad36/
+
+Гистограмма распределения переменной Sepal.Length, в которой цвет заполнения столбцов гистограммы зависит от значения переменной Species.
+
+Возможно несколько вариантов правильного ответа.
+ggplot(iris, aes(Sepal.Length, col = Species)) + geom_histogram()
+*ggplot(iris, aes(Sepal.Length, fill = Species)) + geom_histogram()
+ggplot(iris, aes(Sepal.Length)) + geom_histogram(fill = Species)
+*ggplot(iris, aes(Sepal.Length)) + geom_histogram(aes(fill = Species))
+ggplot(iris, aes(Sepal.Length)) + geom_histogram(aes(col = Species))

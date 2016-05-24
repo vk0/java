@@ -6,16 +6,5 @@
 
 # print(AirPassengers)
 
-sma1 <- 0
-for(i in 1:10) {
-    sma1 <- sma1+AirPassengers[i]
-}
-sma2 <- 0
-for(i in 2:11) {
-    sma2 <- sma2+AirPassengers[i]
-}
-sma3 <- 0
-for(i in 135:144) {
-    sma3 <- sma3+AirPassengers[i]
-}
-print(c(sma1/10, sma2/10, sma3/10))
+for (i in 1:(length(AirPassengers)-9)){
+       print(mean(AirPassengers[i : (i+9)]))}

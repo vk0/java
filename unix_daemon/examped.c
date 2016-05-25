@@ -11,8 +11,10 @@ To terminate:   kill `cat /tmp/exampled.lock`
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <fcntl.h>
 #include <signal.h>
+#include <string.h>
 #include <unistd.h>
 
 #define RUNNING_DIR "/tmp"

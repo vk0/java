@@ -41,3 +41,9 @@ main()
     daemonize();
     while (1) sleep(1);
 }
+
+// Makefile
+
+all:    exe
+exe:    solution.c
+    gcc solution.c -o solution

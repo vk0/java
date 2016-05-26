@@ -20,13 +20,58 @@
 
 #include <stdio.h>
 #include <unistd.h>
+#include <linux/limits.h>
 
-int main ()
-{
-  // printf ("%d\n", (int) getpid ());
-  printf ("%d\n", (int) getppid ());
-  return 0;
+typedef long long int num;
+num pid;
+char tcomm[PATH_MAX];
+char state;
+num ppid;
+
+FILE *input;
+
+int main(int argc, char *argv[]) {
+    input = NULL;
+    input = fopen("/proc/self/stat", "r");
+    fscanf(input, "%lld %s %c %lld ", &pid, tcomm, &state, &ppid);
+    printf("%lld\n", ppid);
+    return 0;
 }
+
+// #include <stdio.h>
+// #include <unistd.h>
+// #include <linux/limits.h>
+
+// typedef long long int num;
+// num pid;
+// char tcomm[PATH_MAX];
+// char state;
+// num ppid;
+
+// FILE *input;
+
+// void readone(num *x) { fscanf(input, "%lld ", x); }
+// void readstr(char *x) { fscanf(input, "%s ", x);}
+// void readchar(char *x) { fscanf(input, "%c ", x);}
+// void printone(num x) { printf("%lld\n", x);}
+
+// int main(int argc, char *argv[]) {
+//     input = NULL;
+//     input = fopen("/proc/self/stat", "r");
+//     if (!input) {
+//         perror("open");
+//         return 1;
+//     }
+//     readone(&pid);
+//     readstr(tcomm);
+//     readchar(&state);
+//     readone(&ppid);
+//     {
+//         printone(ppid);
+//     }
+//     return 0;
+// }
+
 
 // Makefile
 

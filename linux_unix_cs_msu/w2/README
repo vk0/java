@@ -1,0 +1,2 @@
+Краткий справочник по системным вызовам и библиотечным функциям (man-pages).
+open, creat, close, dup, dup2, read, write, lseek, stat, lstat, fstat, access, link, symlink, readlink, unlink, rename, mkdir, rmdir, chdir, fchdir, getcwd, opendir, readdir, telldir, seekdir, closedir, chmod, fchmod, utime, umask, truncate, ftruncate

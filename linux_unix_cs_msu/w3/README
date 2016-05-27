@@ -1,0 +1,2 @@
+Работа с процессами. Перенаправление стандартных потоков.
+fork, getpid, getppid, setpgid, getpgid, execve, execv, execvp, execle, execl, execlp, environ, exit, _exit, abort, wait, wait4, system, dup2

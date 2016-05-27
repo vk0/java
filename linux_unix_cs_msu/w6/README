@@ -1,0 +1,2 @@
+Сигналы.
+kill, raise, strsignal, sigemptyset, sigfillset, sigaddset, sigdelset, sigismember, signal, sigaction, sigprocmask, pause, sigsuspend

@@ -24,9 +24,9 @@
 
 typedef long long int num;
 num pid;
+num ppid;
 char tcomm[PATH_MAX];
 char state;
-num ppid;
 
 FILE *input;
 

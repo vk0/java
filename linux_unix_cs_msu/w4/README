@@ -1,0 +1,2 @@
+Работа с астрономическим временем. Отсчёт интервалов времени.
+time, gmtime, localtime, mktime, ctime, asctime, strftime, gettimeofday, sleep, usleep, nanosleep

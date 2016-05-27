@@ -1,0 +1,2 @@
+Управление терминалом
+tcgetattr, tcsetattr, tcdrain, tcflush, tcflow, initscr, cbreak, noecho, nonl, meta, intrflush, keypad, has_colors, start_color, init_pair, wattrset, wbkgdset, clear, refresh, endwin, wrefresh, wnoutrefresh, doupdate, redrawwin, wredrawln, erase, werase, wclear, clrtobot, wclrtobot, clrtoeol, wclrtoeol, и т. д.

@@ -1,0 +1,2 @@
+Средства System V IPC. Семафоры. Разделяемая память. Очереди сообщений.
+ftok, semget, semctl, semop, shmget, shmctl, shmat, shmdt, msgget, msgctl, msgsnd, msgrcv

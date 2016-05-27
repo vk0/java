@@ -1,0 +1,2 @@
+Сокеты. Мультиплексирование ввода-вывода.
+gethostbyaddr, gethostbyname, inet_ntoa, htonl, htons, ntohl, ntohs, socket, bind, connect, listen, accept, setsockopt, select, FD_CLR, FD_ISSET, FD_SET, FD_ZERO

@@ -1,0 +1,2 @@
+Управление заданиями
+isatty, ttyname, ctermid, setsid, getsid, setpgid, getpgid, tcsetpgrp, tcsetpgrp, tcgetsid

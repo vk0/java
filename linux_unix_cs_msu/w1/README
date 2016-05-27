@@ -1,0 +1,2 @@
+Интерфейс библиотечных функций и системных вызовов. Работа с файлами. Работа с файловой системой.
+strerror, perror, open, creat, close, read, write, lseek, setvbuf, fileno, fdopen, mkstemp, opendir, closedir, readdir, telldir, seekdir, stat, lstat, fstat

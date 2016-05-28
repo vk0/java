@@ -1,0 +1,2 @@
+Функции форматного ввода-вывода.
+printf, fprintf, sprintf, snprintf, vprintf, vfprintf, vsprintf, vsnprintf, scanf, fscanf, sscanf, vscanf, vfscanf, vsscanf

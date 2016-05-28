@@ -1,0 +1,34 @@
+Занятия по программированию в среде Unix
+
+===== w1 =====
+Интерфейс библиотечных функций и системных вызовов. Работа с файлами. Работа с файловой системой.
+strerror, perror, open, creat, close, read, write, lseek, setvbuf, fileno, fdopen, mkstemp, opendir, closedir, readdir, telldir, seekdir, stat, lstat, fstat
+===== w2 =====
+Краткий справочник по системным вызовам и библиотечным функциям (man-pages).
+open, creat, close, dup, dup2, read, write, lseek, stat, lstat, fstat, access, link, symlink, readlink, unlink, rename, mkdir, rmdir, chdir, fchdir, getcwd, opendir, readdir, telldir, seekdir, closedir, chmod, fchmod, utime, umask, truncate, ftruncate
+===== w3 =====
+Работа с процессами. Перенаправление стандартных потоков.
+fork, getpid, getppid, setpgid, getpgid, execve, execv, execvp, execle, execl, execlp, environ, exit, _exit, abort, wait, wait4, system, dup2
+===== w4 =====
+Работа с астрономическим временем. Отсчёт интервалов времени.
+time, gmtime, localtime, mktime, ctime, asctime, strftime, gettimeofday, sleep, usleep, nanosleep
+===== w5 =====
+Средства межпроцессного взаимодействия и синхронизации. Файлы-замки. Анонимные каналы. Именованные каналы. Обработчики завершения программы. Принудительное завершение процесса.
+open, pipe, mkfifo, atexit, kill
+===== w6 =====
+Сигналы.
+kill, raise, strsignal, sigemptyset, sigfillset, sigaddset, sigdelset, sigismember, signal, sigaction, sigprocmask, pause, sigsuspend
+===== w7 =====
+Средства System V IPC. Семафоры. Разделяемая память. Очереди сообщений.
+ftok, semget, semctl, semop, shmget, shmctl, shmat, shmdt, msgget, msgctl, msgsnd, msgrcv
+===== w8 =====
+Сокеты. Мультиплексирование ввода-вывода.
+gethostbyaddr, gethostbyname, inet_ntoa, htonl, htons, ntohl, ntohs, socket, bind, connect, listen, accept, setsockopt, select, FD_CLR, FD_ISSET, FD_SET, FD_ZERO
+===== w9 =====
+Система сборки программ make.
+===== w10 =====
+Управление заданиями
+isatty, ttyname, ctermid, setsid, getsid, setpgid, getpgid, tcsetpgrp, tcsetpgrp, tcgetsid
+===== w11 =====
+Управление терминалом
+tcgetattr, tcsetattr, tcdrain, tcflush, tcflow, initscr, cbreak, noecho, nonl, meta, intrflush, keypad, has_colors, start_color, init_pair, wattrset, wbkgdset, clear, refresh, endwin, wrefresh, wnoutrefresh, doupdate, redrawwin, wredrawln, erase, werase, wclear, clrtobot, wclrtobot, clrtoeol, wclrtoeol, и т. д.

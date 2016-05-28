@@ -1,0 +1,2 @@
+Правила вычисления выражений. Инициализация составных типов. Передача параметров в программу. Функции работы с файлами и потоками.
+main, putchar, getchar, fopen, fclose, getc, fgetc, putc, fputc, fgets, fputs, fscanf, fprintf, ungetc, feof

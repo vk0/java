@@ -1,0 +1,72 @@
+Работа с IPython Notebook
+
+4/4 points earned (100%)
+Excellent!
+Correct
+1 / 1 points
+1.
+
+Какие из перечисленных команд позволяют вывести на экран строку 'Hello, world!'?
+
+'Hello, world!'
+Correct Response
+
+Это утверждение верное.
+
+print Hello, world!
+Correct Response
+
+Это утверждение неверное. Обратите внимание на тип объекта, который выводится на печать.
+
+print 'Hello, world!'
+Correct Response
+
+Это утверждение верное.
+Correct
+1 / 1 points
+2.
+
+Как называется встроенная функция python, которая позволяет округлять числа?
+
+circle(number[, ndigits])
+
+reduction(number[, ndigits])
+
+round(number[, ndigits])
+Correct Response
+
+Это утверждение верное!
+
+cutting(number[, ndigits])
+Correct
+1 / 1 points
+3.
+
+Предположим, что мы работаем с ipython notebook. Мы создали новую ячейку и задали ей тип 'Markdown'. Какая из перечисленных ниже команд позволит вывести строку 'Header' в виде заголовка первого уровня?
+
+! Header
+
+% Header
+
+# Header
+Correct Response
+
+Это утверждение верное.
+
+? Header
+Correct
+1 / 1 points
+4.
+
+ipython часто используют в качестве интерактивного калькулятора. Посчитайте результат следующего арифметического выражения: (190**4 - 120/0.3)*1780 Какой результат из перечисленных ниже верный?
+
+2319713088000.0
+Correct Response
+
+Это утверждение верное.
+
+1155756783000.0
+
+4619713088000
+
+319909130880.0

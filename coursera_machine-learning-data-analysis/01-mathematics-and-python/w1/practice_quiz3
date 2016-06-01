@@ -1,0 +1,36 @@
+Работа с файлами в Python
+
+2/2 points earned (100%)
+Excellent!
+Correct
+1 / 1 points
+1.
+
+С помощью какой встроенной (built-in) функции можно открыть файл для чтения, записи или редактирования в python.2?
+
+функция open_file(name[, mode[, buffering]])
+
+функция open(name[, mode[, buffering]])
+Correct Response
+
+Это утверждение верное.
+
+функция read(name[, mode[, buffering]])
+
+функция read_file(name[, mode[, buffering]])
+Correct
+1 / 1 points
+2.
+
+Как называется библиотека python, предназначенная для работы с файлами в различных кодировках?
+
+encodes
+
+decodes
+
+codecs
+Correct Response
+
+Это утверждение верное.
+
+codes

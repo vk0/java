@@ -1,0 +1,90 @@
+Векторные пространства и NumPy
+
+8 questions
+1
+point
+1.
+
+Выберите те наборы векторов, которые являются линейно независимыми
+
+(1, 0), (1, 1)
+
+(1, 0), (0, 1)
+
+(1, 0), (0, 1), (-1, 1)
+
+(1, 0)
+1
+point
+2.
+
+Чему равна манхэттенская норма вектора (-1, 2, -1)?
+1
+point
+3.
+
+Чему равно скалярное произведение векторов (1, 2, 3) и (-3, 1, 1)?
+1
+point
+4.
+
+В пространствах какой размерности можно выбрать k линейно независимых векторов?
+
+k
+
+k+1
+
+k-1
+1
+point
+5.
+
+Какие из нижеприведенных команд корректно отработают и создадут вектор?
+
+b = np.array(1, 2, 3, 4, 5, dtype=float)
+
+c = np.array([False, False, True])
+
+f = np.arange(1, 2, 0.3, dtype=float)
+
+b = np.array([1, 2, 3, 4, 5], dtype=float)
+1
+point
+6.
+
+Пусть даны два вектора a = np.array([6, 3, -5]) и b = np.array([-1, 0, 7]). Какая из следующих команд считает евклидово расстояние между этими векторами?
+
+np.linalg.norm(a, ord=2) - np.linalg.norm(b, ord=2)
+
+scipy.spatial.distance.cdist(a[np.newaxis, :], b[np.newaxis, :], metric='euclidean')
+
+scipy.spatial.distance.cdist(a[:, np.newaxis], b[:, np.newaxis], metric='euclidean')
+
+scipy.spatial.distance.cdist(b, a, metric='euclidean')
+1
+point
+7.
+
+Пусть даны два вектора a = np.array([0, -1, 11]) и b = np.array([3, 7, 2]). Какие из следующих команд считают скалярное произведение этих векторов?
+
+b.dot(a)
+
+np.dot(a, b) / np.linalg.norm(a) / np.linalg.norm(b)
+
+np.dot(a, b)
+
+a * b
+1
+point
+8.
+
+Пусть дан вектор a = np.array([8, 10, -1, 0, 0]). Какие из следующих команд преобразуют вектор a к вектор-столбцу?
+
+a = a[:, np.newaxis]
+
+a = a.reshape((5, 1))
+
+a = a[np.newaxis, :]
+
+a = a.reshape((1, 5))
+3 questions unanswered

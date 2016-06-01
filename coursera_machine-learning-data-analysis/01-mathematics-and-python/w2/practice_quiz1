@@ -1,0 +1,59 @@
+Pandas
+
+2/2 points earned (100%)
+Excellent!
+Correct
+1 / 1 points
+1.
+
+Объект frame имеет тип pandas.DataFrame (pandas.core.frame.DataFrame). Какая из предложенных команд позволяет получить размер объекта frame в строках и столбцах?
+
+frame.size()
+
+frame.shape
+Correct Response
+
+Это утверждение верное. Атрибут shape возвращает tuple, соттветсвующий размерности DataFrame в строках и столбцах
+
+frame.shape()
+
+frame.size
+Correct
+1 / 1 points
+2.
+
+Объект frame имеет тип pandas.DataFrame() :
+    Name    Birth
+1   Михаил Зайцев   22.04.1976
+2   Максим Королёв  08.12.1993
+
+Какие из предложенных команд позволяют добавить в frame новый столбец под названием IsStudent так, чтобы после добавления столбца получившийся объект frame выглядел следующим образом:
+
+    Name    Birth   IsStudent
+1   Михаил Зайцев   22.04.1976  False
+2   Максим Королёв  08.12.1993  True
+
+frame.addColumn('IsStudent', [False, True])
+Correct Response
+
+У объектов типа DataFrame нет метода addColumn. Это утверждение неверное.
+
+frame['IsStudent'] = [False, True]
+Correct Response
+
+Это утверждение верное.
+
+frame['IsStudent'] = False, True
+Correct Response
+
+Это утверждение верное.
+
+frame['IsStudent'] = (False, True)
+Correct Response
+
+Это утверждение верное.
+
+frame['IsStudent'] = False True
+Correct Response
+
+Эта строчка не верна с точки зрения синтаксиса Python

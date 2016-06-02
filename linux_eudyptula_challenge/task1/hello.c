@@ -12,7 +12,7 @@ MODULE_DESCRIPTION("Eudyptula Challenge Task 1: Hello World");
 
 static int __init hello_init(void)
 {
-    printk(KERN_DEBUG "Load hello.ko module\n");
+    printk(KERN_DEBUG "Hello World!\n");
     return 0;
 }
 

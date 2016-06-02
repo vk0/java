@@ -1,0 +1,12 @@
+Signed-off-by: EK <ekoz@protonmail.com>
+--- Makefile    2016-06-01 22:18:22.000000000 +0300
++++ Makefile    2016-06-02 19:02:53.860000000 +0300
+@@ -1,7 +1,7 @@
+ VERSION = 4
+ PATCHLEVEL = 6
+ SUBLEVEL = 1
+-EXTRAVERSION =
++EXTRAVERSION = -eudyptula
+ NAME = Charred Weasel
+
+ # *DOCUMENTATION*

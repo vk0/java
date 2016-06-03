@@ -1,0 +1,20 @@
+Rust
+
+Welcome! This practical lesson is based on the Rust Book(https://doc.rust-lang.org/stable/book/getting-started.html) and will teach you about the Rust Programming Language. Rust is a modern systems programming language focusing on safety and speed. It accomplishes these goals by being memory safe without using garbage collection.
+
+Featuring
+
+    zero-cost abstractions
+    move semantics
+    guaranteed memory safety
+    threads without data races
+    trait-based generics
+    pattern matching
+    type inference
+    minimal runtime
+    efficient C bindings
+
+Basics
+
+This lesson contains gradable exercises on basic syntax and semantics of Rust. It has individual steps on each part of Rust's syntax.
+

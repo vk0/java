@@ -22,7 +22,7 @@ int main(void) {
 
     fd = 0;
     while (1) {
-	/* if data is available read it and display it */
+        /* if data is available read it and display it */
         i = read(fds[fd], buf, sizeof(buf) - 1);
         if (i < 0) {
             perror("read");
@@ -30,12 +30,12 @@ int main(void) {
         } else if (!i) {
             printf("pipe closed\n");
             return 0;
-        } 
+        }
 
         buf[i] = '\0';
         printf("read: %s", buf);
 
-	/* read from the other file descriptor */
+        /* read from the other file descriptor */
         fd = (fd + 1) % 2;
     }
 }

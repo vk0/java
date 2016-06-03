@@ -17,65 +17,69 @@
 
 // Программа выводит в стандартный поток вывода число (в отдельной строке)
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <errno.h>
 #include <fcntl.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
 #include <sys/select.h>
+#include <unistd.h>
 
-#define FIFO1 "./in1"
-#define FIFO2 "./in2"
-
-int main()
-{
-    char buf1[100];
-    char buf2[100];
+int main() {
     int fd1, fd2;
-    int sum = 0;
-    int nread;
+    int total = 0;
+    char buf1[256];
+    char buf2[256];
 
-    fd1 = open(FIFO1, O_RDONLY | O_NONBLOCK, 0);
-    fd2 = open(FIFO2, O_RDONLY | O_NONBLOCK, 0);
+    /* open both pipes */
+    if ((fd1 = open("in1", O_RDONLY | O_NONBLOCK)) < 0) {
+        perror("open p1");
+        return 1;
+    }
 
-    while (1)
-    {
-        int fsum = 2;
-        fd_set fds;
-        int maxfd;
-        int res;
-        FD_ZERO(&fds);
-        FD_SET(fd1, &fds);
-        FD_SET(fd2, &fds);
+    if ((fd2 = open("in2", O_RDONLY | O_NONBLOCK)) < 0) {
+        perror("open p2");
+        return 1;
+    }
+
+    while (1) {
+        int sum = 2;
+        int rc, maxfd;
+        fd_set watchset;       /* fds to read from */
+        fd_set inset;          /* updated by select() */
+
+        FD_ZERO(&watchset);
+        FD_SET(fd1, &watchset);
+        FD_SET(fd2, &watchset);
+
         maxfd = fd1 > fd2 ? fd1 : fd2;
-        select(maxfd + 1, &fds, NULL, NULL, NULL);
-        memset(buf1, 0, sizeof(buf1));
-        if (FD_ISSET(fd1, &fds))
-        {
-            if (nread = read(fd1, buf1, sizeof(buf1)) > 0)
-            {
-                sum = sum + atoi(buf1);
-            } else {
-                fsum--;
-            }
+        inset = watchset;
 
+        if (select(maxfd + 1, &inset, NULL, NULL, NULL) < 0) {
+            perror("select");
+            return 1;
         }
-        memset(buf2, 0, sizeof(buf2));
-        if (FD_ISSET(fd2, &fds))
-        {
-            if (nread = read(fd2, buf2, sizeof(buf2)) > 0)
-            {
-                sum = sum + atoi(buf1);
+
+        if (FD_ISSET(fd1, &inset)) {
+            rc = read(fd1, buf1, sizeof(buf1));
+            total = total + atoi(buf1);
+            if (rc < 0) {
+                perror("read");
+                return 1;
             } else {
-                fsum--;
+                sum--;
             }
         }
-        if (fsum == 0)
+        if (FD_ISSET(fd2, &inset)) {
+            rc = read(fd2, buf2, sizeof(buf2));
+            total = total + atoi(buf1);
+            if (rc < 0) {
+                perror("read");
+                return 1;
+            } else {
+                sum--;
+            }
+        }
+        if (sum == 0)
             break;
     }
-    printf("%d\n", sum);
+    printf("%d\n", total);
     return 0;
 }

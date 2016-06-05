@@ -8,3 +8,5 @@ _Z8getValuei
 _Z8getValuePFviE
 _Z8getValuePvi
 _Z8getValuev
+
+//use c++filt

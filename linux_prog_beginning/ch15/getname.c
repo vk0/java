@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
     printf("Aliases:");
     names = hostinfo -> h_aliases;
     while(*names) {
-        printf(" %s", *names);
+        printf("%s\n", *names);
         names++;
     }
     printf("\n");
@@ -51,10 +51,10 @@ int main(int argc, char *argv[])
     }
 
 /*  Otherwise, display the IP address(es).  */
-
+    printf("IP address(es):\n");
     addrs = hostinfo -> h_addr_list;
     while(*addrs) {
-        printf(" %s", inet_ntoa(*(struct in_addr *)*addrs));
+        printf("%s\n", inet_ntoa(*(struct in_addr *)*addrs));
         addrs++;
     }
     printf("\n");

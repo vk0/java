@@ -1,0 +1,72 @@
+Morkovka mafia
+Задача:
+Добро пожаловать в Специальное подразделение первого управления оперативно-тактической группы по контролю за незаконным оборотом овощей и фруктов. Недавно наш отдел закупил за полтора миллиарда рублей open-source утилиту volatility.
+Нам поступил анонимный донос на подозреваемого в незаконной продаже овощей и фруктов. Оперативная группа выехала на задержание. У подозреваемого был изъят мешок кураги и два килограмма ценнейшего груза - морковка. В ходе задержания пострадал компьютер подозреваемого, но наши умельцы успели снять дамп перед тем, как он окончательно отключился.
+
+﻿https://cloud.mail.ru/public/E5DE/f6PuYyGvu﻿
+
+Серия задач про форенсик-расследование. По ссылке
+https://cloud.mail.ru/public/E5DE/f6PuYyGvu﻿
+дан дамп памяти некоторой системы. Нужно найти в ней флаги.
+
+Решение:
+В условии есть подсказка - качаем volatility:
+https://github.com/volatilityfoundation/volatility
+Распаковываем образ. Определяем тип образа
+
+sudo ./vol.py imageinfo -f ../20160425.mem
+Volatility Foundation Volatility Framework 2.5
+INFO    : volatility.debug    : Determining profile based on KDBG search...
+      Suggested Profile(s) : Win7SP0x86, Win7SP1x86
+                 AS Layer1 : IA32PagedMemory (Kernel AS)
+                 AS Layer2 : FileAddressSpace (/root/20160425.mem)
+                  PAE type : No PAE
+                       DTB : 0x185000L
+                      KDBG : 0x82939c28L
+      Number of Processors : 1
+ Image Type (Service Pack) : 1
+            KPCR for CPU 0 : 0x8293ac00L
+         KUSER_SHARED_DATA : 0xffdf0000L
+       Image date and time : 2016-04-24 20:24:11 UTC+0000
+ Image local date and time : 2016-04-25 00:24:11 +0400
+
+
+Разумеется, первое, что нужно сделать, это поискать флаг в строках.
+    strings 20160425.mem | grep STCTF
+STCTFflg_ws_lst_ :( Sorry
+Name: STCTF#MORKOVKA_IS_BesT_PRIZE#
+Name: STCTF#MORKOVKA_IS_BesT_PRIZE#
+Первый флаг найден. Однако я такого решения не подразумевал ( Флаг был положен в файл и файл был прочитан командой
+    python -c "boryga_address = open('boryga1.txt').read();import base64;print base64.b64encode(boryga_address)"
+Но каким-то образом файл открылся и оказался в памяти проклятой винды, не будучи стерт оттуда после окончания работы программы.
+Задачу нужно было решать командой
+    vol.py consoles --profile=Win7SP0x86  -f 20160425.mem
+Получить все содержимое консоли и увидеть там странную команду.
+
+Далее видим еще такую строку
+STCTFflg_ws_lst_ :( Sorry
+Вроде тут должен быть флаг, но говорят что его нет.
+Посмотрим какие процессы запущены в системе
+sudo vol.py pslist  --profile=Win7SP0x86  -f 20160425.mem
+Видим, что запущен chrome и странный процесс morkovka_admin.
+Раз запустили хром, то хорошо бы узнать, куда там зашли.
+Узнать историю заходов по ссылкам можно былос помощью специальных плагинов, а можно также просто через strings
+    strings 20160425.mem | grep "^http://"| uniq -u |less
+Одна из ссылок была
+http://pastebin.com/YudXuFeU
+Там лежал флаг в base64
+Процесс morkovka_admin видимо содержит третий флаг - самый тяжелый. Сдампим процесс в файл
+sudo vol.py procdump -D . -p 3796 --profile=Win7SP0x86  -f 20160425.mem
+
+Откроем в ida pro и начнем читать. После беглого осмотра видно, что по адресу 00381B10 работает интересная логика - там есть ссылка на строку STCTFflg_ws_lst_ :( Sorry - видимо там должын быть флаг. После этого строка подвергается обработке: она разбивается на куски по 5 байт, по кускам считается md5, результат записывается в файл. Затем портится буфер с флагом. Итак, получается, что где-то в памяти процесса сконкатенированы md5 от кусков флага. Поищем.
+strings 20160425.mem  | grep -P "^[a-z0-9]{128}$"
+Выдает
+6830501c6b9ce6ae36b78cc5326417d2229671bee9839de0b41b1e01e6edab60c7c499707db4d2ce103741ea38e88594f8180329e73d5efc888ad26e3884b750
+Что при расшифровке дает
+6830501c6b9ce6ae36b78cc5326417d2 MD5 : MNOGO
+229671bee9839de0b41b1e01e6edab60 MD5 : _MORK
+c7c499707db4d2ce103741ea38e88594 MD5 : OVKI_
+f8180329e73d5efc888ad26e3884b750 MD5 : G00D!
+Вариантов решения такой задачи много, желающие могут написать свой.
+
+STCTF#MNOGO_MORKOVKI_G00D!#

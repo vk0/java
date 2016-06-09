@@ -1,0 +1,15 @@
+Superman
+Задача
+Эта программа была привезена в космолете  Кларка Кента!
+https://cloud.mail.ru/public/K7aU/4Fo6zkwfH
+Решение (задачу решило 6 участников)
+http://pastebin.com/myxSVhLH - исходник задачи.
+Но все было бы просто, если бы не было выполнено
+clang -S -emit-llvm testkey.cpp -o testkey.ll
+opt -S -load ./llvm-functionpass-kryptonite-obfuscater.so -kryptonite -heavy-add-obfu  testkey.ll -o testkey.obfu.ll
+llc -filetype=obj -O0 testkey.obfu.ll -o testkey.obfu.o
+clang testkey.obfu.o -o testkey
+Это обфускация кода на уровне LLVM, не самое сложное, что бывает. IDA hex-rays его неплохо раскрывает. Дальше удаляется лишний мусор из кода и все.
+https://habrahabr.ru/post/213259/ - статья про обфускацию, также можете поискать, как ее люди снимают.
+
+Алгоритм - получение рандомных символов алфавита и сравнение путем подсчета суммы квадратов отклонения каждого символа от необходимого.

@@ -1,0 +1,8 @@
+---
+answer_regex: STCTF#4285c6bbc998#
+author: tonyo
+category: forensics
+description: |
+  А как вы генерируете <a href="https://stepic.org/media/attachments/lesson/11428/capture.pcap">пароли</a>?
+name: Passgen
+price: 200

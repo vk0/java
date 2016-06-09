@@ -1,0 +1,17 @@
+OnlineCal
+Условие:
+Здесь вы получаете уникальную возможность посмотреть текущий календарь
+nc ﻿spbctf.ppctf.net 7777
+https://cloud.mail.ru/public/GFXN/UPjNVAnPq - исходник сервиса
+
+Решение (Задачу решили 18 человек):
+Это классическая задача на атаку увеличения длины.
+https://blog.skullsecurity.org/2012/everything-you-need-to-know-about-hash-length-extension-attacks
+Сервис исполняет команды, у которых известно
+h = md5(secret + cmd).
+К cmd мы можем приписать некоторую строку shell и узнать ее h’=md5(secret+cmd+shell),
+зная только h и cmd.
+Это помогает сделать утилита
+https://github.com/iagox86/hash_extender
+
+hash_extender --data "cal" --secret 5 --append ";cat flag" --signature=8993b373e32a85d1e4d3e88843021e1a --format md5

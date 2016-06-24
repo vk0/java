@@ -16,9 +16,8 @@ static ssize_t hello_read(struct file *fp, char __user *user, size_t size,
 static ssize_t hello_write(struct file *fp, const char __user *user,
                            size_t size, loff_t *offs);
 
-#define EUDYPTULA_ID_SIZE 13
-
 #define EUDYPTULA_ID "123456789012"
+#define EUDYPTULA_ID_SIZE 13
 
 #define DEVICE_NAME "eudyptula"
 

@@ -1,0 +1,188 @@
+Question 1
+
+
+The kernel is defined as:
+*The glue between the hardware and applications
+
+Question 2
+
+
+Which statements are true about the Linux Boot Loader:
+It is executed before Linux
+It gives us more control on how we boot the system
+It can be used to select operating systems or kernels
+*All of the above
+
+Question 3
+
+
+If the display manager is not started by default in the default runlevel, you can start the X-Window System by:
+*Running the startx command from the command-line
+
+Question 4
+
+
+To change your desktop background:
+*Right-click on the desktop, select Change Desktop Background and select a wallpaper
+
+Question 5
+
+
+For best coordination between multiple Linux systems, you should set the date and time:
+*Using the Network Time Protocol (NTP) so that machines are automatically very close to the same time
+
+Question 6
+
+
+Display settings allow you to change things like:
+*Screen resolution and multiple screens configuration
+
+Question 7
+
+
+One of the reasons you should learn text mode operations is:
+*Your server may not have the overhead for a graphical user interface (GUI)
+
+Question 8
+
+
+To move around the file system tree from one directory to another you can use:
+*cd
+
+Question 9
+
+
+To remove a directory named data and all of its files, including sub-directories, in that directory, use:
+*rm –rf data
+
+Question 10
+
+
+The Linux manual pages can be read using:
+*man
+
+Question 11
+
+
+Many programs have built-in help; to access this, use:
+*The -h or --help option
+
+Question 12
+
+
+Which of the following compares two files line by line and reports differences?
+*diff
+
+Question 13
+
+
+Which of the following is useful for creating a backup of a disk Master Boot Record (MBR)?
+*dd
+
+Question 14
+
+
+In order to execute a Linux command as the root user, what should you prefix it with?
+*sudo command (as in sudo ls /etc)
+
+Question 15
+
+
+The_________environment variable lists the directories in which the shell looks for executable programs and scripts.
+*$PATH
+
+Question 16
+
+
+Which command is used to set the Linux file permissions to make the file named data, readable and writable by the owner and group owner of the file, but not accessible by any others?
+*chmod 660 data
+
+Question 17
+
+
+An easy to use text-based editor that utilizes on-screen prompts is:
+*nano
+
+Question 18
+
+
+The command-mode key stroke(s)______within vi will delete the characters from the cursor to the end of the word.
+*dw
+
+Question 19
+
+
+Encrypted account passwords are found in the file,_________, and are typically encrypted using the__________algorithm.
+*/etc/shadow; SHA-512
+
+Question 20
+
+
+The root account:
+Has authority over the entire system
+Requires extreme caution when using because small mistakes can lead to disasters
+Should be used carefully; think before pressing the Enter key and run complex commands in a safe way, first, to ensure mistakes aren’t made
+*All of the above
+
+Question 21
+
+
+IP addresses are divided into two parts:
+*Network and host
+
+Question 22
+
+
+To confirm that a remote host is online and responding and to measure network latency between machines at the same time , one can use:
+*ping
+
+Question 23
+
+
+How would you use sed to replace all the occurrences of the word "tiger" with "lion" in the file named data?
+*sed -i ‘s/tiger/lion/g’ data
+
+Question 24
+
+
+The command "wc –l data" will print out the number of :
+*lines in the file data
+
+Question 25
+
+
+Which of following could you use to check the status of all your printers?
+*lpstat –a
+
+Question 26
+
+
+Why should we use shell scripts?
+They combine long, possibly repetitive commands into one simple command
+They allow you to create new commands and share these procedures among several users
+They automate tasks and reduce risk of errors
+*All of the above
+
+Question 27
+
+
+Your shell script uses an "if" statement to see if the word "yes" was entered. This "if" statement looks like:
+*if [ $RESPONSE == "yes" ] ; then
+
+Question 28
+
+
+Your shell script needs to test to see if a directory, document, exists; a way to do this is:
+*[ -d document ]
+
+Question 29
+
+
+Which of the following can be used to show which processes are using most of the CPU or memory resources on your system:
+*top
+
+Question 30
+
+
+The ssh command provides a way to:
+*Connect securely to remote systems

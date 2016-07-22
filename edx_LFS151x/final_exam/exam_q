@@ -1,0 +1,191 @@
+Question 1
+
+
+Does KVM perform any hardware virtualization itself? Please select the correct answer.
+*No.
+
+Question 2
+
+
+Which of the following providers are supported by Vagrant? Please select the correct answer.
+VirtualBox
+Docker
+Hyper-V
+*All of the above
+
+Question 3
+
+
+Do physical resources have to exist somewhere for us to implement Cloud Computing? Please select the correct answer.
+*True
+
+Question 4
+
+
+Which of the Linux kernel features help us do container isolation? Please select the correct answer.
+*Namespaces
+Control Groups (cGroups)
+VFS
+None of the above
+
+Question 5
+
+
+Which of the following is not an example of PaaS? Please select the correct answer.
+Google App Engine
+OpenShift
+*Atomic Host
+Deis
+
+Question 6
+
+
+With OpenStack Magnum we get the multi-tenancy feature of OpenStack as well. Please select the correct answer.
+*True
+
+Question 7
+
+
+Docker Overlay Driver is based on ____________. Please select the correct answer.
+Border Gateway Protocol (BGP)
+Virtual Local Area Network (VLAN)
+*Virtual Extensible Local Area Network (VXLAN)
+Software Defined Networking (SDN)
+
+Question 8
+
+
+What are the different kinds of planes defined in Software Defined Networking? Please select all answers that apply.
+*Data Plane
+*Control Plane
+*Management Plane
+Store Plane
+
+Question 9
+
+
+How do containers in the same pod share the same IP address with Kubernetes? Please select the correct answer from the dropdown menu.
+*By sharing the same netwrok namespace
+
+Question 10
+
+
+Docker Swarm must be configured with Docker Machine. Please select the correct answer.
+*False
+
+Question 11
+
+
+Which of the following can be deployed as a private IaaS? Please select the correct answer from the dropdown menu.
+*OpenStack
+
+Question 12
+
+
+Running multiple services in a container is an example of microservices. Please select the correct answer.
+*False
+
+Question 13
+
+
+Which container orchestration tool is used by Google Container Engine to deploy containerized applications? Please select the correct answer from the dropdown menu.
+Docker Swarm
+Mesos Marathon
+Amazon ECS
+*None of the above
+
+Question 14
+
+
+Which Docker feature is used with the atomic command in Atomic Host to install/unistall given containers/applications? Please select the correct answer.
+*Labels
+Logs
+Inspect
+Info
+
+Question 15
+
+
+How does CoreOS bind more than one node in a cluster? Please select the correct answer.
+By node hostname
+*By Cluster Discovery Token
+By putting nodes in the same rack
+By connecting all nodes with the same switch
+
+Question 16
+
+
+Which of the following tools can you use to create Docker images? Please select all answers that apply.
+*Debootstrap
+*Packer
+*docker build with Dockerfile
+*docker commit
+
+Question 17
+
+
+What does RADOS Gateway provide in Ceph? Please select the correct answer from the dropdown menu.
+*REST API interface for Ceph
+
+Question 18
+
+
+For which of the following container technologies does Sysdig provide native support? Please select the correct answer.
+Docker
+Kubernetes
+Mesos
+*All of the above
+
+Question 19
+
+
+Which of the following are providers for Terraform? Please select all answers that apply.
+*AWS
+*OpenStack
+*Heroku
+*DNSimple
+
+Question 20
+
+
+The Docker volume stores content using Union Filesystems. Please select the correct answer.
+*False
+
+Question 21
+
+
+A Docker container can be part of two different networks. Please select the correct answer.
+*True
+
+Question 22
+
+
+Which of the following are popular container networking standards? Please select all answers that apply?
+*Container Networking Interface
+Container Connecting Interface
+*Container Network Model
+Container Model Networking
+
+Question 23
+
+
+With Amazon Elastic Container Service (ECS), a loadbalancer is needed ___________. Please select the correct answer.
+Per Container
+*Per Service
+Per Network
+Per Daemon
+
+Question 24
+
+
+Nomad is ____________. Please select the correct answer from the dropdown menu.
+*Both Cluster Manager and Resource Scheduler
+
+Question 25
+
+
+Which of the following underlying technologies is used by Deis? Please select all answers that apply.
+*CoreOS
+Mesos Marathon
+Project Calico
+*Docker

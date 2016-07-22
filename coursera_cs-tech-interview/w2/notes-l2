@@ -1,0 +1,77 @@
+Sample demonstrating key pitfalls
+
+Can you write a method that will convert a string to a number please?
+
+/*
+* "123" -> 123
+*/
+
+// charArr = ["1", "2", "3"];
+// value = 100 + 20 + 3
+// i = 1
+
+public int strToInt(String input){
+    if(input == null || input.equals("")) {
+        throw new illegalArgumentException("Myst be a valid number string")
+    }
+    char[] charArr = String.toCharArray(input);
+    int value = 0;
+    for (int i = 0; i < charArr.length; i++){
+        value = value * 10 + Character.toDigit(charArr[i]);
+    }
+    return value;
+}
+
+Now, what went wrong in Huang's video?
+3:56
+We're going to look at four aspects that really are key pitfalls that people run into when they're doing these live coding problems. So the first thing was, that Huang made a whole bunch of assumptions. About the solution to the problem and about the problem itself that she shouldn't have made. The second thing that you probably noticed, was that there was a lot of silence in that video. While she was thinking and typing, she wasn't saying anything. So, it was impossible for the person on the other end of the phone screen to really get into her head. And help her out where she needed help and believe me, interviewers do want to help you. They're not trying to make you fail, They want to see you succeed. So, you need to let them into your head a little bit.
+4:35
+The third thing was, that when she did make errors, she wasn't capable of correcting herself in those errors. So, she wasn't taking the recruiters hints and turning them into better solutions. And then finally, when she was finished, she just sort of quit and said, okay, I'm done. That's not how you want to end this kind of a problem. You want tp really go back and think, does my solution work, let me work through some test cases. So, we'll look at each of those aspects of what went wrong in her interview. And show you how she could have done things better. Now, one thing that you might be thinking is, well, you know if she was just technically stronger, things would have gone better. But in fact, theres a ton of room for improvement, even in a situation where you still make mistakes. You're going to make some mistakes in your technical phones screens, that's okay. But the key here is, what can you do to make things go as well as possible. Even in the face of where you don't exactly know the answer. Or you get off on a wrong path initially. It's not all lost, you can get yourself back on track and have a very strong interview. So let's dive in, to look at how to solve these issues
+=====
+
+All right, so the next pitfall we're going to talk about is silence. You remember from Wong's video that there was a lot of long stretches of periods where Wong was just typing and not saying anything, and that's definitely something you want to avoid in a live coding situation, especially on the phone. So by the end of this video, you'll be able to talk through your thought process as you're solving technical problems in that live coding situation. Nobody's going to expect you to be able to solve the problem immediately with no thought. But the important thing to keep in mind is that the interviewer who's on the other side of the phone, or even if the interviewer is in person, can't hear what's going on in your head. They have no idea what you're thinking about. So, if you don't say anything, they don't get any information. So, if you remember back to when Wong was doing that coding example, in particular, when she was writing that loop that looped through all the characters in the string, she was just typing away, and she was making some mistakes, and the interviewer really didn't have a good sense of what she was thinking at that point. And when she did talk, she really said not too much more than what she was already typing.
+
+So let's take another look, let's take a look at Wong's next attempt and see how she does a much better job. Her approach is pretty much the same as it was in the first video, but she does a much better job of thinking out loud, letting the interviewer into her head, and you'll see how this causes the interviewer to really give her some key guidance at different points along the way and help her come to a better solution.
+
+All right, so you saw that when Wong thought out loud, things went much better for her, because again, these interviewers really want to help you. They don't want to see you struggle. So by letting them into your head and know what you're thinking, you'll really give them an opportunity to do so. So no matter what is going through your head, no matter what idea you have, even if it seems totally off base, talk about it. You might preface it by saying, well, all I can think of is something that I know isn't right, and here's what I think it is. That's a great thing to say. That really helps the interviewer help you with your process. So, keep talking.
+=====
+In this video we're going to be focused on that first pitfall that Christine mentioned, which was making too many assumptions or failing to clarify the problem. So, by the end of this video you should know that when you're given a problem in a technical phone screen you're going to start by asking clarifying questions about the problem as well as identifying potential issues with the problem. When you're first given the problem this is the time to make sure that you really actually understand the problem.
+
+Asking those clarifying questions is an important part of the interview process.
+
+Much better, so she asked key questions about the nature of the problem, and then she asked clarifying questions like does this have to handle decimals. Does it have to handle values like E or Pi? Does it have to handle negatives? She's asking really good questions, and now that she has a better understanding of the problem she can actually start coding.
+=====
+So let's continue our analysis of this example of coding on the fly, we'll focus on another pitfall this time, that of mistakes. So by the end of this video, you'll be able to think about how you find and recover from mistakes when you're doing live coding in the technical phone screen. You all know that when you sit down to write a new program, they're going to be bugs. They're just part of development and especially when we're trying to solve a problem while also implementing the solution at the same time, we all make mistakes. And so, the interviewer who is seeing your process developing your solution in the technical film screen expects you to make some mistakes, this is okay. It's not surprising if your presentation is not going to be flawless. But what the interviewer is interested in is, how you recover from these mistakes, what you do about them? Do you even notice that they're there, and can you fix them?
+
+We might feel stuck and that can happen in the technical phone screen, and what you'll notice is that Huang asked for help. She asked for a hint, and if you're stuck, then what's important is to reach out for help, and the interviewer may well be able to give you a hint that can get you unstuck. And what's important then is to really listen at the hint that you're given.
+
+And so, careful listening and also asking for help is a really important part of recovering from mistakes in the technical phone screen.
+=====
+
+In this video we're going to focus on the fourth pitfall that Christine mentioned, which is failing to test your solution. So failing to trace your code, and failing to consider edge cases. So by the end of this video you should be able to recognize the value of testing your code when you finish your technical phone screen.
+
+In a technical phone screen or an interview, where you're doing this with a whiteboard or on the phone and a Google doc, you have to do this yourself and you have to play computer, emulate your code and find the bugs.
+
+Tracing you code:
+
+// charArr = ["1", "2", "3"];
+
+// value = 0 * 10 + 1 = 1
+// i = 0
+
+// value = 1 * 10 + 2 = 12
+// i = 1
+
+// value = 12 * 10 + 3 = 123
+// i = 2
+
+=====
+
+At the end of this week (at the end of the next lesson), we'll have you repeat the exercise and self-assessment you just did. We want you to practice a lot before then. Below we have listed a few resources on where to find questions that are similar to the ones you might be asked in this type of interview setting:
+
+    http://codingbat.com/ Tons of Java programming problems, from the simple to the more complex
+    Cracking the Coding Interview by Gayle Laakmann McDowell. We highly recommend this whole book, but the website also has a lot of great information: http://www.crackingthecodinginterview.com/
+    CS9: Problem-Solving for the CS Technical Interview, Stanford University: A course offered by Cynthia Bailey Lee at Stanford University with lots of great information and problems.
+    https://www.interviewcake.com/ This site allows you to access a few free questions. If you like it, you can decide to purchase more.
+    http://javarevisited.blogspot.com/2011/06/top-programming-interview-questions.html This site has a number of good questions.
+    Want more? Google it! There's a lot out there!

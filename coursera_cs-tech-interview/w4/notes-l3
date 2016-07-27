@@ -1,0 +1,77 @@
+Evaluation questions
+
+We've worked through several examples of the 6-step process for solving technical problems in an interactive setting. To prepare for the assignment this week, which will ask you to critique both the mock interviews we provide as well as your own interview which you will record, this reading summarizes the main questions that interviewers will ask themselves to evaluate your execution of the 6-step process. We will ask you to apply some of these questions to the mock interviews and then to your own interview.
+
+    How did the candidate analyze the problem?
+    Did the candidate miss any special or edge cases?
+    Did the candidate approach the problem methodically and logically?
+    Did the candidate ask clarifying questions when they were stuck?
+    Does the candidate have a strong foundation in basic computer science concepts?
+    Did the candidate produce working code? Did the candidate test the code?
+    Is the candidate’s code clean and easy to read and maintain?
+    Can the candidate explain their ideas clearly?
+    Is the candidate pleasant to work with?
+
+Remember, an interviewer is trying to understand how you approach and solve a problem. The answer doesn’t always need to be right.
+
+=====
+Once you get your question, your task is to apply the 6-step process to solve the problem all the way through writing the code. You should behave exactly as you would in an actual interview (hint: try to emulate the interviewee from the "good" interview you watched and reviewed). Ask questions, work through examples, and don't start writing code until you've iterated on your solution a few times. You should record the entire "interview" starting with your interviewer asking the question, and ending with your coded final solution, written on the whiteboard.
+
+
+For the prompt: Given list of n numbers from 0 to 1000, find the number that occurs most often (frequently).
+
+Optimal solution: since the numbers in the list are bounded by 1000, we can use them to index an array where we accumulate counts. This solution runs in O(n).
+
+public int findMode(ArrayList<Integer> nums, int bound)
+{
+  // Java will automatically initalize this counts array to contain all 0s
+  int[] counts = new int[bound];
+
+  for (int k = 0; k < nums.size(); k++)
+  {
+    counts[nums.get(k)] ++;
+  }
+  int maxFreq = counts[0];
+  int mode = 0;
+  for (int k = 1; k < counts.length; k++)
+  {
+    if (counts[k] > maxFreq)
+    {
+      maxFreq = counts[k];
+      mode = k;
+    }
+  }
+  return mode;
+}
+
+For the prompt: Given a list of numbers from 0 to n, with exactly one number removed, find the missing number.
+
+Optimal solution: We can leverage the known formula for the sum of integers from 0 to n. This solution runs in O(n). Notice that the prompt does not explicitly state that the given list is sorted. So it is important to formulate solution without making an assumption.
+
+public int findMissing(ArrayList<Integer> nums)
+{
+  int sum = 0;
+  int n = nums.size();
+  for (int k=0; k < n; k++)
+  {
+    sum += nums.get(k);
+  }
+  return (n*(n+1)/2 - sum);
+}
+
+=====
+Did you ask clarifying questions, both at the beginning and along the way?
+
+How methodical were you in your approach to solving the problem? (Very methodical. I started with a simple and clear solution, even though I knew it wasn't optimal, and then carefully refined it over several iterations.)
+
+Did you arrive at a correct solution? Was it optimal?
+
+Did you work through test cases to verify the correctness of your solution?
+
+Were there any basic computer science concepts that this question revealed that you are weak on?
+
+Did you miss any special or edge cases?
+
+Did you produce code that is clean and easy to read and maintain?
+
+What was the biggest strength in your interview? What did you do particularly well?

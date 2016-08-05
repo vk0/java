@@ -1,3 +1,5 @@
+# Medium warmup string/list problems with loops (solutions available)
+
 # Given a string and a non-negative int n, return a larger string that is n copies of the original string.
 
 # string_times('Hi', 2) → 'HiHi'

@@ -44,3 +44,69 @@ int main()
     cin.get();
     return 0;
 }
+
+
+// =====
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <math.h>
+
+enum {
+    MAX_COUNT = 20,
+    BUFF_LENGTH = MAX_COUNT + 1
+};
+
+long position (long long);
+long long getTriang ();
+
+int main(int argc, char **argv)
+{
+    printf("%Li\n", position(getTriang()));
+
+    return 0;
+}
+
+long position (long long triangle)
+{
+    if (triangle < 1) return 0L;
+
+    double d = 1 + (8 * triangle);
+    if (d > 0) {
+        double x1 = (sqrt(d) - 1) / 2;
+        double x2 = -(sqrt(d) + 1) / 2;
+        double n = 0.0;
+        if (x1 >= 0 && modf(x1, &n) == 0.0) return (long) x1;
+        if (x2 >= 0 && modf(x2, &n) == 0.0) return (long) x2;
+    }
+
+    return 0L;
+}
+
+long long getTriang ()
+{
+    char buff[BUFF_LENGTH];
+    int c = 0;
+    int count = 0;
+    while ((c = getchar()) != EOF) {
+        if (count >= MAX_COUNT) return 0L;
+
+        char ch = (char) c;
+        if (ch == '\n') break;
+
+        if (isdigit(ch)) {
+            buff[count] = ch;
+            ++count; /* счетчик */
+        } else if (count == 0 && ch == '+') {
+            /* do nothing */
+            continue;
+        } else {
+            return 0L;
+        }
+    }
+
+    buff[count] = '\0';
+
+    // printf("%s - %LLi\n", buff, atoll(buff));
+    return atoll(buff);
+}

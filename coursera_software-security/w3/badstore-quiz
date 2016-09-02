@@ -6,7 +6,13 @@ ans: role
 
 ans: 16 (*'--')
 
-3. What operations are suppliers permitted to do once they have logged into the "suppliers only" area? Use SQL injection to bypass authentication, or find a way to create an account as a supplier.
+3. Which of the following operations are suppliers permitted to do? Use SQL injection to bypass authentication, or find a way to create an account as a supplier.
+
+View existing price list
+Cancel contract
+Upload price list
+Submit monthly bill payment
+Download an activity report
 
 ans: 'OR 1=1 OR'
 
